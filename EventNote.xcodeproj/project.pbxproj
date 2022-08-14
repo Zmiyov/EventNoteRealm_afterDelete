@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4F7BBF2B58A79DB5795C54B9 /* Pods_EventNote.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F294DBB57595AF6E435B570C /* Pods_EventNote.framework */; };
+		A545940028A923070078A2BE /* ScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54593FF28A923070078A2BE /* ScheduleTableViewCell.swift */; };
 		A547D46928A81D0000173BA8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A547D46828A81D0000173BA8 /* AppDelegate.swift */; };
 		A547D46B28A81D0000173BA8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A547D46A28A81D0000173BA8 /* SceneDelegate.swift */; };
 		A547D46D28A81D0000173BA8 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A547D46C28A81D0000173BA8 /* MainViewController.swift */; };
@@ -19,6 +20,7 @@
 
 /* Begin PBXFileReference section */
 		214843824417410227A0911F /* Pods-EventNote.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EventNote.debug.xcconfig"; path = "Target Support Files/Pods-EventNote/Pods-EventNote.debug.xcconfig"; sourceTree = "<group>"; };
+		A54593FF28A923070078A2BE /* ScheduleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewCell.swift; sourceTree = "<group>"; };
 		A547D46528A81D0000173BA8 /* EventNote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EventNote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A547D46828A81D0000173BA8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A547D46A28A81D0000173BA8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 				A547D46828A81D0000173BA8 /* AppDelegate.swift */,
 				A547D46A28A81D0000173BA8 /* SceneDelegate.swift */,
 				A547D46C28A81D0000173BA8 /* MainViewController.swift */,
+				A54593FF28A923070078A2BE /* ScheduleTableViewCell.swift */,
 				A547D47428A81D0200173BA8 /* Assets.xcassets */,
 				A547D47628A81D0200173BA8 /* LaunchScreen.storyboard */,
 				A547D47928A81D0200173BA8 /* Info.plist */,
@@ -218,6 +221,7 @@
 			files = (
 				A547D46D28A81D0000173BA8 /* MainViewController.swift in Sources */,
 				A547D46928A81D0000173BA8 /* AppDelegate.swift in Sources */,
+				A545940028A923070078A2BE /* ScheduleTableViewCell.swift in Sources */,
 				A547D47328A81D0000173BA8 /* EventNote.xcdatamodeld in Sources */,
 				A547D48028A8212D00173BA8 /* PhotoEventModel.swift in Sources */,
 				A547D46B28A81D0000173BA8 /* SceneDelegate.swift in Sources */,
