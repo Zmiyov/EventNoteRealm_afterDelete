@@ -10,7 +10,7 @@
 		4F7BBF2B58A79DB5795C54B9 /* Pods_EventNote.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F294DBB57595AF6E435B570C /* Pods_EventNote.framework */; };
 		A547D46928A81D0000173BA8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A547D46828A81D0000173BA8 /* AppDelegate.swift */; };
 		A547D46B28A81D0000173BA8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A547D46A28A81D0000173BA8 /* SceneDelegate.swift */; };
-		A547D46D28A81D0000173BA8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A547D46C28A81D0000173BA8 /* ViewController.swift */; };
+		A547D46D28A81D0000173BA8 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A547D46C28A81D0000173BA8 /* MainViewController.swift */; };
 		A547D47328A81D0000173BA8 /* EventNote.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A547D47128A81D0000173BA8 /* EventNote.xcdatamodeld */; };
 		A547D47528A81D0200173BA8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A547D47428A81D0200173BA8 /* Assets.xcassets */; };
 		A547D47828A81D0200173BA8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A547D47628A81D0200173BA8 /* LaunchScreen.storyboard */; };
@@ -22,7 +22,7 @@
 		A547D46528A81D0000173BA8 /* EventNote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EventNote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A547D46828A81D0000173BA8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A547D46A28A81D0000173BA8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		A547D46C28A81D0000173BA8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A547D46C28A81D0000173BA8 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		A547D47228A81D0000173BA8 /* EventNote.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EventNote.xcdatamodel; sourceTree = "<group>"; };
 		A547D47428A81D0200173BA8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A547D47728A81D0200173BA8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -50,7 +50,6 @@
 				214843824417410227A0911F /* Pods-EventNote.debug.xcconfig */,
 				E4E3D2E7E9EDC120441B0F0C /* Pods-EventNote.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -86,7 +85,7 @@
 				A547D48128A825AC00173BA8 /* Model */,
 				A547D46828A81D0000173BA8 /* AppDelegate.swift */,
 				A547D46A28A81D0000173BA8 /* SceneDelegate.swift */,
-				A547D46C28A81D0000173BA8 /* ViewController.swift */,
+				A547D46C28A81D0000173BA8 /* MainViewController.swift */,
 				A547D47428A81D0200173BA8 /* Assets.xcassets */,
 				A547D47628A81D0200173BA8 /* LaunchScreen.storyboard */,
 				A547D47928A81D0200173BA8 /* Info.plist */,
@@ -217,7 +216,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A547D46D28A81D0000173BA8 /* ViewController.swift in Sources */,
+				A547D46D28A81D0000173BA8 /* MainViewController.swift in Sources */,
 				A547D46928A81D0000173BA8 /* AppDelegate.swift in Sources */,
 				A547D47328A81D0000173BA8 /* EventNote.xcdatamodeld in Sources */,
 				A547D48028A8212D00173BA8 /* PhotoEventModel.swift in Sources */,
