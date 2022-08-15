@@ -8,16 +8,16 @@
 import Foundation
 import UIKit
 
-struct PhotoEvent {
+struct Event {
     var customerName: String
-    var customerPhoto: UIImage?
+//    var customerPhoto: UIImage?
     var customerPhoneNumber: Int
-    var kindOfShooting: String
-    var dateAndTime: Date
+//    var kindOfShooting: String
+//    var dateAndTime: Date
     var location: String
     var price: Int
-    var amountOfHours: Int
-    var prepayment: Int?
-    var notes: String?
+//    var amountOfHours: Int
+//    var prepayment: Int?
+//    var notes: String?
     
 }
