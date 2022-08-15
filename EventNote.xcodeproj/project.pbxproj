@@ -16,6 +16,7 @@
 		A547D47528A81D0200173BA8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A547D47428A81D0200173BA8 /* Assets.xcassets */; };
 		A547D47828A81D0200173BA8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A547D47628A81D0200173BA8 /* LaunchScreen.storyboard */; };
 		A547D48028A8212D00173BA8 /* PhotoEventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A547D47F28A8212D00173BA8 /* PhotoEventModel.swift */; };
+		A5E5619628AA362B00DC4E3E /* ScheduleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E5619528AA362B00DC4E3E /* ScheduleCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		A547D47728A81D0200173BA8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A547D47928A81D0200173BA8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A547D47F28A8212D00173BA8 /* PhotoEventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEventModel.swift; sourceTree = "<group>"; };
+		A5E5619528AA362B00DC4E3E /* ScheduleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCollectionViewCell.swift; sourceTree = "<group>"; };
 		E4E3D2E7E9EDC120441B0F0C /* Pods-EventNote.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EventNote.release.xcconfig"; path = "Target Support Files/Pods-EventNote/Pods-EventNote.release.xcconfig"; sourceTree = "<group>"; };
 		F294DBB57595AF6E435B570C /* Pods_EventNote.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EventNote.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -88,6 +90,7 @@
 				A547D46828A81D0000173BA8 /* AppDelegate.swift */,
 				A547D46A28A81D0000173BA8 /* SceneDelegate.swift */,
 				A547D46C28A81D0000173BA8 /* MainViewController.swift */,
+				A5E5619528AA362B00DC4E3E /* ScheduleCollectionViewCell.swift */,
 				A54593FF28A923070078A2BE /* ScheduleTableViewCell.swift */,
 				A547D47428A81D0200173BA8 /* Assets.xcassets */,
 				A547D47628A81D0200173BA8 /* LaunchScreen.storyboard */,
@@ -219,6 +222,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5E5619628AA362B00DC4E3E /* ScheduleCollectionViewCell.swift in Sources */,
 				A547D46D28A81D0000173BA8 /* MainViewController.swift in Sources */,
 				A547D46928A81D0000173BA8 /* AppDelegate.swift in Sources */,
 				A545940028A923070078A2BE /* ScheduleTableViewCell.swift in Sources */,
