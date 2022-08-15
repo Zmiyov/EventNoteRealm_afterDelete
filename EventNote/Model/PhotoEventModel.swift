@@ -12,12 +12,13 @@ struct Event {
     var customerName: String
 //    var customerPhoto: UIImage?
     var customerPhoneNumber: Int
-//    var kindOfShooting: String
+    var kindOfShooting: String
 //    var dateAndTime: Date
     var location: String
-    var price: Int
 //    var amountOfHours: Int
+    var price: Int
 //    var prepayment: Int?
+//    var lastToPay: Int?
 //    var notes: String?
     
 }

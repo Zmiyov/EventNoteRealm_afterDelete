@@ -10,9 +10,9 @@ import FSCalendar
 
 class MainViewController: UIViewController {
     
-    var events = [ Event(customerName: "Irina", customerPhoneNumber: 0668334455, location: "Kiev", price: 400),
-                   Event(customerName: "Dasha", customerPhoneNumber: 0998887766, location: "Centr", price: 300),
-                   Event(customerName: "Sasha", customerPhoneNumber: 0934445566, location: "Brovary", price: 500)
+    var events = [ Event(customerName: "Irina", customerPhoneNumber: 0668334455, kindOfShooting: "Wedding", location: "Kiev", price: 400),
+                   Event(customerName: "Dasha", customerPhoneNumber: 0998887766, kindOfShooting: "Reportage", location: "Centr", price: 300),
+                   Event(customerName: "Sasha", customerPhoneNumber: 0934445566, kindOfShooting: "Portrait", location: "Brovary", price: 500)
     ]
     
     var calendarHeightConstraint: NSLayoutConstraint!
@@ -153,7 +153,7 @@ extension MainViewController {
 extension MainViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width, height: collectionView.frame.width/4)
+        return CGSize(width: collectionView.frame.width, height: collectionView.frame.width/3)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -162,8 +162,10 @@ extension MainViewController: UICollectionViewDelegateFlowLayout, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ScheduleCollectionViewCell
-        cell.backgroundColor = .systemGray6
-        cell.layer.cornerRadius = 12
+        let event = events[indexPath.item]
+
+        cell.nameLabel.text = event.customerName
+        cell.kindOfShootingLabel.text = event.kindOfShooting
         return cell
     }
     
@@ -171,7 +173,8 @@ extension MainViewController: UICollectionViewDelegateFlowLayout, UICollectionVi
         
         let currentEvent = events[indexPath.item]
 
-        let details = EventDetailsViewController(coder: coder, event: currentEvent)
+        let details = EventDetailsViewController()
+        details.event = currentEvent
         let navVC = UINavigationController(rootViewController: details)
 
 //        navVC.modalPresentationStyle = .fullScreen
