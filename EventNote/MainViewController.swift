@@ -47,6 +47,7 @@ class MainViewController: UIViewController {
         calendar.delegate = self
         calendar.dataSource = self
         calendar.scope = .week
+        showHideButton.addTarget(self, action: #selector(showHideButtonTapped), for: .touchUpInside)
         
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -54,20 +55,11 @@ class MainViewController: UIViewController {
         setConstraints()
         swipeAction()
         
-        showHideButton.addTarget(self, action: #selector(showHideButtonTapped), for: .touchUpInside)
-        
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithDefaultBackground()
+        self.navigationController?.navigationBar.standardAppearance = appearance
+        self.navigationController?.navigationBar.scrollEdgeAppearance = appearance
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonTapped))
-        
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        clearNavigationBar(clear: true)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        clearNavigationBar(clear: false)
     }
     
     @objc func addButtonTapped() {
@@ -202,21 +194,4 @@ extension MainViewController: UICollectionViewDelegateFlowLayout, UICollectionVi
         present(navVC, animated: true)
     }
     
-}
-
-extension MainViewController {
-
-    func clearNavigationBar(clear: Bool) {
-        if clear {
-            let appearance = UINavigationBarAppearance()
-            appearance.configureWithTransparentBackground()
-            self.navigationController?.navigationBar.standardAppearance = appearance
-            self.navigationController?.navigationBar.scrollEdgeAppearance = appearance
-        } else {
-            let appearance = UINavigationBarAppearance()
-            appearance.configureWithOpaqueBackground()
-            self.navigationController?.navigationBar.standardAppearance = appearance
-            self.navigationController?.navigationBar.scrollEdgeAppearance = appearance
-        }
-    }
 }
