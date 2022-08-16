@@ -46,8 +46,6 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         
-        
-        
         calendar.delegate = self
         calendar.dataSource = self
         calendar.scope = .week
@@ -59,6 +57,13 @@ class MainViewController: UIViewController {
         swipeAction()
         
         showHideButton.addTarget(self, action: #selector(showHideButtonTapped), for: .touchUpInside)
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonTapped))
+        
+    }
+    
+    @objc func addButtonTapped() {
+        print("Tap")
     }
     
     @objc func showHideButtonTapped() {
