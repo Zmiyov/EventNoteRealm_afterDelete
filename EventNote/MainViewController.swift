@@ -10,9 +10,9 @@ import FSCalendar
 
 class MainViewController: UIViewController {
     
-    var events = [ Event(customerName: "Irina", customerPhoneNumber: 0668334455, kindOfShooting: "Wedding", location: "Kiev", price: 400),
-                   Event(customerName: "Dasha", customerPhoneNumber: 0998887766, kindOfShooting: "Reportage", location: "Centr", price: 300),
-                   Event(customerName: "Sasha", customerPhoneNumber: 0934445566, kindOfShooting: "Portrait", location: "Brovary", price: 500)
+    var events = [ Event(customerName: "Irina", customerPhoneNumber: 380668334455, kindOfShooting: "Wedding", location: "Kiev", price: 400),
+                   Event(customerName: "Dasha", customerPhoneNumber: 380998887766, kindOfShooting: "Reportage", location: "Centr", price: 300),
+                   Event(customerName: "Sasha", customerPhoneNumber: 380934445566, kindOfShooting: "Portrait", location: "Brovary", price: 500)
     ]
     
     var calendarHeightConstraint: NSLayoutConstraint!
@@ -177,7 +177,7 @@ extension MainViewController: UICollectionViewDelegateFlowLayout, UICollectionVi
         details.event = currentEvent
         let navVC = UINavigationController(rootViewController: details)
 
-//        navVC.modalPresentationStyle = .fullScreen
+        navVC.modalPresentationStyle = .popover
         present(navVC, animated: true)
     }
     

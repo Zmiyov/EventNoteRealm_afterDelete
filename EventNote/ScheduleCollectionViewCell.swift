@@ -9,21 +9,9 @@ import UIKit
 
 class ScheduleCollectionViewCell: UICollectionViewCell {
     
-    let nameLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .label
-        label.font = UIFont.boldSystemFont(ofSize: 17)
-        
-        return label
-    }()
+    let nameLabel = UILabel(font: UIFont.boldSystemFont(ofSize: 17), alighment: .left)
     
-    let kindOfShootingLabel: UILabel = {
-       let label = UILabel()
-        label.textColor = .label
-        label.font = UIFont.boldSystemFont(ofSize: 17)
-        
-        return label
-    }()
+    let kindOfShootingLabel = UILabel(font: UIFont.boldSystemFont(ofSize: 17), alighment: .right)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
