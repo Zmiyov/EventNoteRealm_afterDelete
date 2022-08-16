@@ -17,8 +17,6 @@ class MainViewController: UIViewController {
     
     var calendarHeightConstraint: NSLayoutConstraint!
     
-//    let navController = UINavigationController()
-    
     private var calendar: FSCalendar = {
         let calendar = FSCalendar()
         calendar.translatesAutoresizingMaskIntoConstraints = false
@@ -62,8 +60,20 @@ class MainViewController: UIViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        clearNavigationBar(clear: true)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        clearNavigationBar(clear: false)
+    }
+    
     @objc func addButtonTapped() {
-        print("Tap")
+        
+        let addEventVC = AddEventViewController()
+        navigationController?.pushViewController(addEventVC, animated: true)
     }
     
     @objc func showHideButtonTapped() {
@@ -76,7 +86,7 @@ class MainViewController: UIViewController {
         }
     }
     
-    //MARK: SwipeGestureRecognizer
+//MARK: SwipeGestureRecognizer
     
     func swipeAction() {
         
@@ -181,9 +191,32 @@ extension MainViewController: UICollectionViewDelegateFlowLayout, UICollectionVi
         let details = EventDetailsViewController()
         details.event = currentEvent
         let navVC = UINavigationController(rootViewController: details)
-
         navVC.modalPresentationStyle = .popover
+        
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithDefaultBackground()
+        
+        navVC.navigationBar.standardAppearance = appearance
+        navVC.navigationBar.scrollEdgeAppearance = appearance
+        
         present(navVC, animated: true)
     }
     
+}
+
+extension MainViewController {
+
+    func clearNavigationBar(clear: Bool) {
+        if clear {
+            let appearance = UINavigationBarAppearance()
+            appearance.configureWithTransparentBackground()
+            self.navigationController?.navigationBar.standardAppearance = appearance
+            self.navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        } else {
+            let appearance = UINavigationBarAppearance()
+            appearance.configureWithOpaqueBackground()
+            self.navigationController?.navigationBar.standardAppearance = appearance
+            self.navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        }
+    }
 }

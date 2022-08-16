@@ -13,7 +13,7 @@ class EventDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = .blue
         title = "Details"
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Dismiss",
                                                             style: .plain,
@@ -36,6 +36,7 @@ class EventDetailsViewController: UIViewController {
         let kindOfShootingLabel = UILabel(text: event.kindOfShooting,
                                           font: .systemFont(ofSize: 21, weight: .bold),
                                           alighment: .center)
+        kindOfShootingLabel.backgroundColor = .blue
         
         let nameLabel = UILabel(text: event.customerName,
                                 font: .systemFont(ofSize: 21, weight: .bold),
