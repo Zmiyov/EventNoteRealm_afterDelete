@@ -64,19 +64,16 @@ class AddEventTableViewController: UITableViewController  {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath)
+
         if indexPath == [4, 0] {
             
             let alertVC = KindOfAlertListTableViewController()
             
+            let appearance = UINavigationBarAppearance()
+            appearance.configureWithTransparentBackground()
             
-            
-            
-//            let appearance = UINavigationBarAppearance()
-//            appearance.configureWithDefaultBackground()
-//
-//            navigationController.navigationBar.standardAppearance = appearance
-//            navigationController.navigationBar.scrollEdgeAppearance = appearance
+            navigationController?.navigationBar.standardAppearance = appearance
+            navigationController?.navigationBar.scrollEdgeAppearance = appearance
             
             navigationController?.pushViewController(alertVC, animated: true)
         }

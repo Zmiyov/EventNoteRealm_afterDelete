@@ -16,23 +16,30 @@ class KindOfAlertListTableViewController: UITableViewController {
                      ["At time of event", "5 minutes before", "10 minutes before", "15 minutes before", "30 minutes before", "1 hour before", "2 hours before", "1 day before", "2 days before", "1 week before"]
     ]
     
+    let alertsTableView = UITableView(frame: .zero, style: .insetGrouped)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Alert"
         
+        self.tableView = alertsTableView
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = #colorLiteral(red: 0.9594197869, green: 0.9599153399, blue: 0.975127399, alpha: 1)
         tableView.separatorStyle = .none
-        
+//        tableView.sectionHeaderTopPadding = 20
         tableView.register(AddEventTableViewCell.self, forCellReuseIdentifier: idKindOfAlertCell)
         tableView.register(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: idKindOfAlertCellHeader)
+        
+//        NSLayoutConstraint.activate([
+//            tableView.topAnchor.constraint(equalTo: view.topAnchor, constant: 20)
+//        ])
 
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 2
     }
 
@@ -65,5 +72,7 @@ class KindOfAlertListTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 15
     }
+    
+    
 
 }
