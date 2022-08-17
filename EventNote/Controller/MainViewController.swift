@@ -64,7 +64,7 @@ class MainViewController: UIViewController {
     
     @objc func addButtonTapped() {
         
-        let addEventVC = AddEventViewController()
+        let addEventVC = AddEventTableViewController()
         navigationController?.pushViewController(addEventVC, animated: true)
     }
     

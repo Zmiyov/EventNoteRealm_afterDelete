@@ -1,5 +1,5 @@
 //
-//  AddEventViewController.swift
+//  AddEventTableViewController.swift
 //  EventNote
 //
 //  Created by Vladimir Pisarenko on 17.08.2022.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AddEventViewController: UITableViewController  {
+class AddEventTableViewController: UITableViewController  {
     
     let idAddEventCell = "idAddEventCell"
     
@@ -16,10 +16,12 @@ class AddEventViewController: UITableViewController  {
         
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: idAddEventCell)
+        tableView.backgroundColor = #colorLiteral(red: 0.9594197869, green: 0.9599153399, blue: 0.975127399, alpha: 1)
+        tableView.separatorStyle = .none
+        tableView.register(AddEventTableViewCell.self, forCellReuseIdentifier: idAddEventCell)
         
         title = "New Event"
-        view.backgroundColor = .red
+
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -38,9 +40,12 @@ class AddEventViewController: UITableViewController  {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: idAddEventCell, for: indexPath)
-        cell.textLabel?.text = "Cell"
+        let cell = tableView.dequeueReusableCell(withIdentifier: idAddEventCell, for: indexPath) as! AddEventTableViewCell
+//        cell.textLabel?.text = "Cell"
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 44
+    }
 }
