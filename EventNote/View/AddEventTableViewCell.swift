@@ -24,6 +24,12 @@ class AddEventTableViewCell: UITableViewCell {
         return label
     }()
     
+    let cellNameArray = [["Type of shooting", "Name", "Date", "Amount of Hours"],
+                         ["Phone", "Add Phone", "Telegram", "Instagram"],
+                         ["Main", "Start", "End"],
+                         ["For Hour", "Final Price", "Prepayment"],
+                         ["Alert"]
+    ]
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -38,6 +44,9 @@ class AddEventTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func cellConfigure(indexPath: IndexPath) {
+        nameCellLabel.text = cellNameArray[indexPath.section][indexPath.row]
+    }
     
     private func setupView() {
         self.addSubview(backgroundViewCell)
