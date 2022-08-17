@@ -9,16 +9,26 @@ import Foundation
 import UIKit
 
 struct Event {
-    var customerName: String
-//    var customerPhoto: UIImage?
-    var customerPhoneNumber: Int
     var kindOfShooting: String
-//    var dateAndTime: Date
-    var location: String
-//    var amountOfHours: Int
-    var price: Int
-//    var prepayment: Int?
-//    var lastToPay: Int?
-//    var notes: String?
+    var customerName: String
+    //    var dateAndTime: Date
+    //    var amountOfHours: Int
     
+    var customerPhoneNumber: Int
+    var additionalPhoneNumber: Int?
+    var customerTelegramOrChat: String?
+    var customerInstagram: String?
+    
+    var mainLocation: String
+    var startLocation: String?
+    var endLocation: String?
+
+    var priceForHour: Int?
+    var fullPrice: Int
+    var prepayment: Int?
+    
+    var alert: Date?
+
+//    var notes: String?
+    //    var customerPhoto: UIImage?
 }

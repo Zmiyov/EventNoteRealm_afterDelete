@@ -26,14 +26,9 @@ class KindOfAlertListTableViewController: UITableViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = #colorLiteral(red: 0.9594197869, green: 0.9599153399, blue: 0.975127399, alpha: 1)
-        tableView.separatorStyle = .none
-//        tableView.sectionHeaderTopPadding = 20
-        tableView.register(AddEventTableViewCell.self, forCellReuseIdentifier: idKindOfAlertCell)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: idKindOfAlertCell)
         tableView.register(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: idKindOfAlertCellHeader)
-        
-//        NSLayoutConstraint.activate([
-//            tableView.topAnchor.constraint(equalTo: view.topAnchor, constant: 20)
-//        ])
 
     }
 
@@ -70,7 +65,10 @@ class KindOfAlertListTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 15
+        switch section {
+        case 0: return 40
+        default: return 15
+        }
     }
     
     

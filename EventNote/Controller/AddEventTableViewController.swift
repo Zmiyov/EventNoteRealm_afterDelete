@@ -70,7 +70,7 @@ class AddEventTableViewController: UITableViewController  {
             let alertVC = KindOfAlertListTableViewController()
             
             let appearance = UINavigationBarAppearance()
-            appearance.configureWithTransparentBackground()
+            appearance.configureWithOpaqueBackground()
             
             navigationController?.navigationBar.standardAppearance = appearance
             navigationController?.navigationBar.scrollEdgeAppearance = appearance

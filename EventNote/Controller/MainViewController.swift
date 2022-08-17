@@ -10,9 +10,9 @@ import FSCalendar
 
 class MainViewController: UIViewController {
     
-    var events = [ Event(customerName: "Irina", customerPhoneNumber: 380668334455, kindOfShooting: "Wedding", location: "Kiev", price: 400),
-                   Event(customerName: "Dasha", customerPhoneNumber: 380998887766, kindOfShooting: "Reportage", location: "Centr", price: 300),
-                   Event(customerName: "Sasha", customerPhoneNumber: 380934445566, kindOfShooting: "Portrait", location: "Brovary", price: 500)
+    var events = [ Event(kindOfShooting: "Wedding", customerName: "Irina", customerPhoneNumber: 380668334455, mainLocation: "Kiev", fullPrice: 400),
+                   Event(kindOfShooting: "Reportage", customerName: "Dasha", customerPhoneNumber: 380998887766, mainLocation: "Centr", fullPrice: 300),
+                   Event(kindOfShooting: "Portrait", customerName: "Sasha", customerPhoneNumber: 380934445566, mainLocation: "Brovary", fullPrice: 500)
     ]
     
     var calendarHeightConstraint: NSLayoutConstraint!

@@ -24,10 +24,10 @@ class AddEventTableViewCell: UITableViewCell {
         return label
     }()
     
-    let cellNameArray = [["Type of shooting", "Name", "Date", "Amount of Hours"],
+    let cellNameArray = [["Kind of shooting", "Name", "Date", "Amount of Hours"],
                          ["Phone", "Add Phone", "Telegram", "Instagram"],
                          ["Main", "Start", "End"],
-                         ["For Hour", "Final Price", "Prepayment"],
+                         ["For Hour", "Full Price", "Prepayment"],
                          ["Alert"]
     ]
     
