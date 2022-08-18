@@ -7,13 +7,17 @@
 
 import UIKit
 
+protocol AmountOfHoursListTableViewControllerDelegate {
+    func amountOfHoursListTableViewController(_ controller: AmountOfHoursListTableViewController, didSelect amount: Int)
+}
+
 class AmountOfHoursListTableViewController: UITableViewController {
     
     let idAmountOfHoursListCell = "idAmountOfHoursListCell"
     let idAmountOfHoursListCellHeader = "idAmountOfHoursListCellHeader"
 
-    let kindArray = [["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"]
-    ]
+    var amountOrHours: Int?
+    var delegate: AmountOfHoursListTableViewControllerDelegate?
     
     let alertsTableView = UITableView(frame: .zero, style: .insetGrouped)
     
@@ -48,10 +52,30 @@ class AmountOfHoursListTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: idAmountOfHoursListCell, for: indexPath)
-        var content = cell.defaultContentConfiguration()
-        content.text = kindArray[indexPath.section][indexPath.row]
-        cell.contentConfiguration = content
+        for i in 1...indexPath.row + 1 {
+            
+            var content = cell.defaultContentConfiguration()
+            content.text = String(i)
+            cell.contentConfiguration = content
+            
+        }
+        
+        if amountOrHours != nil && amountOrHours == indexPath.row + 1 {
+            cell.accessoryType = .checkmark
+        } else {
+            cell.accessoryType = .none
+        }
+        
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        amountOrHours = indexPath.row + 1
+        if let kindSelected = amountOrHours {
+            delegate?.amountOfHoursListTableViewController(self, didSelect: kindSelected)
+            tableView.reloadData()
+            dismiss(animated: true, completion: nil)
+        }
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

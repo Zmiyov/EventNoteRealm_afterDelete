@@ -55,51 +55,39 @@ class AddEventTableViewController: UITableViewController  {
         switch indexPath.section {
         case 0:
             let type = AddEventCellNameMainSectionType.allCases[indexPath.row]
-            
             var content = cell.defaultContentConfiguration()
             content.text = type.description
             cell.contentConfiguration = content
-
             return cell
         case 1:
             let type = AddEventCellNameContactsSectionType.allCases[indexPath.row]
-            
             var content = cell.defaultContentConfiguration()
             content.text = type.description
             cell.contentConfiguration = content
-
             return cell
         case 2:
             let type = AddEventCellLocationsMainSectionType.allCases[indexPath.row]
-            
             var content = cell.defaultContentConfiguration()
             content.text = type.description
             cell.contentConfiguration = content
-
             return cell
         case 3:
             let type = AddEventCellNamePaymentSectionType.allCases[indexPath.row]
-            
             var content = cell.defaultContentConfiguration()
             content.text = type.description
             cell.contentConfiguration = content
-
             return cell
         case 4:
             let type = AddEventCellNameReminderSectionType.allCases[indexPath.row]
-            
             var content = cell.defaultContentConfiguration()
             content.text = type.description
             cell.contentConfiguration = content
-
             return cell
         default:
             let type = AddEventCellNameContactsSectionType.allCases[indexPath.row]
-
             var content = cell.defaultContentConfiguration()
             content.text = type.description
             cell.contentConfiguration = content
-
             return cell
         }
     }
@@ -119,7 +107,6 @@ class AddEventTableViewController: UITableViewController  {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         switch indexPath {
         case [0, 0]:
                 let alertVC = KindOfShootingTableViewController()
