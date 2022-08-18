@@ -1,5 +1,5 @@
 //
-//  PhotoEventModel.swift
+//  EventModel.swift
 //  EventNote
 //
 //  Created by Vladimir Pisarenko on 13.08.2022.

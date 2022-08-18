@@ -12,7 +12,7 @@ class AddEventTableViewCell: UITableViewCell {
     let backgroundViewCell: UIView = {
         let view = UIView()
         view.backgroundColor = .white
-        view.layer.cornerRadius = 10
+        view.layer.cornerRadius = 5
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -25,7 +25,7 @@ class AddEventTableViewCell: UITableViewCell {
     }()
     
     let cellNameArray = [["Kind of shooting", "Name", "Date", "Amount of Hours"],
-                         ["Phone", "Add Phone", "Telegram", "Instagram"],
+                         ["Phone", "Additional Phone", "Telegram", "Instagram"],
                          ["Main", "Start", "End"],
                          ["For Hour", "Full Price", "Prepayment"],
                          ["Alert"]

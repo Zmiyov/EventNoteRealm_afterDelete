@@ -1,19 +1,18 @@
 //
-//  KindOfAlertListTableViewController.swift
+//  AmountOfHoursListTableViewController.swift
 //  EventNote
 //
-//  Created by Vladimir Pisarenko on 17.08.2022.
+//  Created by Vladimir Pisarenko on 18.08.2022.
 //
 
 import UIKit
 
-class KindOfAlertListTableViewController: UITableViewController {
+class AmountOfHoursListTableViewController: UITableViewController {
     
-    let idKindOfAlertCell = "idKindOfAlertCell"
-    let idKindOfAlertCellHeader = "idKindOfAlertCellHeader"
+    let idAmountOfHoursListCell = "idAmountOfHoursListCell"
+    let idAmountOfHoursListCellHeader = "idAmountOfHoursListCellHeader"
 
-    let kindArray = [["None"],
-                     ["At time of event", "5 minutes before", "10 minutes before", "15 minutes before", "30 minutes before", "1 hour before", "2 hours before", "1 day before", "2 days before", "1 week before"]
+    let kindArray = [["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"]
     ]
     
     let alertsTableView = UITableView(frame: .zero, style: .insetGrouped)
@@ -26,29 +25,29 @@ class KindOfAlertListTableViewController: UITableViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = #colorLiteral(red: 0.9594197869, green: 0.9599153399, blue: 0.975127399, alpha: 1)
+        tableView.alwaysBounceVertical = false
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: idKindOfAlertCell)
-        tableView.register(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: idKindOfAlertCellHeader)
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: idAmountOfHoursListCell)
+        tableView.register(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: idAmountOfHoursListCellHeader)
 
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
-        case 0: return 1
-        case 1: return 10
+        case 0: return 12
         default: return 1
         }
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "idKindOfAlertCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: idAmountOfHoursListCell, for: indexPath)
         var content = cell.defaultContentConfiguration()
         content.text = kindArray[indexPath.section][indexPath.row]
         cell.contentConfiguration = content
@@ -60,7 +59,7 @@ class KindOfAlertListTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: idKindOfAlertCellHeader)
+        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: idAmountOfHoursListCellHeader)
         return header
     }
     
@@ -70,7 +69,4 @@ class KindOfAlertListTableViewController: UITableViewController {
         default: return 15
         }
     }
-    
-    
-
 }

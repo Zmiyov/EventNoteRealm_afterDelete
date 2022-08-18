@@ -9,10 +9,10 @@ import UIKit
 
 class AddEventTableViewController: UITableViewController  {
     
+    var event: Event?
+    
     let idAddEventCell = "idAddEventCell"
     let idAddEventHeader = "idAddEventHeader"
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,12 +21,16 @@ class AddEventTableViewController: UITableViewController  {
         tableView.dataSource = self
         tableView.backgroundColor = #colorLiteral(red: 0.9594197869, green: 0.9599153399, blue: 0.975127399, alpha: 1)
         tableView.separatorStyle = .none
+        tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.register(AddEventTableViewCell.self, forCellReuseIdentifier: idAddEventCell)
         tableView.register(AddEventTableViewHeader.self, forHeaderFooterViewReuseIdentifier: idAddEventHeader)
         
         title = "New Event"
-
     }
+    
+    
+    
+    //MARK: - Table View
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 5
@@ -64,18 +68,31 @@ class AddEventTableViewController: UITableViewController  {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
-        if indexPath == [4, 0] {
-            
-            let alertVC = KindOfAlertListTableViewController()
-            
-            let appearance = UINavigationBarAppearance()
-            appearance.configureWithOpaqueBackground()
-            
-            navigationController?.navigationBar.standardAppearance = appearance
-            navigationController?.navigationBar.scrollEdgeAppearance = appearance
-            
-            navigationController?.pushViewController(alertVC, animated: true)
+        
+        switch indexPath {
+        case [0, 0]:
+                let alertVC = KindOfShootingTableViewController()
+                let appearance = UINavigationBarAppearance()
+                appearance.configureWithOpaqueBackground()
+                navigationController?.navigationBar.standardAppearance = appearance
+                navigationController?.navigationBar.scrollEdgeAppearance = appearance
+                navigationController?.pushViewController(alertVC, animated: true)
+        case [0, 3]:
+                let alertVC = AmountOfHoursListTableViewController()
+                let appearance = UINavigationBarAppearance()
+                appearance.configureWithOpaqueBackground()
+                navigationController?.navigationBar.standardAppearance = appearance
+                navigationController?.navigationBar.scrollEdgeAppearance = appearance
+                navigationController?.pushViewController(alertVC, animated: true)
+        case [4, 0]:
+                let alertVC = KindOfAlertListTableViewController()
+                let appearance = UINavigationBarAppearance()
+                appearance.configureWithOpaqueBackground()
+                navigationController?.navigationBar.standardAppearance = appearance
+                navigationController?.navigationBar.scrollEdgeAppearance = appearance
+                navigationController?.pushViewController(alertVC, animated: true)
+        default:
+            break
         }
     }
 }

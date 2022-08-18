@@ -43,6 +43,7 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        title = "Schedule"
         
         calendar.delegate = self
         calendar.dataSource = self

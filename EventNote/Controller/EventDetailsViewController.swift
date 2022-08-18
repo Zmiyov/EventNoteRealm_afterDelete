@@ -42,7 +42,7 @@ class EventDetailsViewController: UIViewController {
                                 font: .systemFont(ofSize: 21, weight: .bold),
                                 alighment: .center)
         
-        let locationLabel = UILabel(text: event.location,
+        let locationLabel = UILabel(text: event.mainLocation,
                                     font: .systemFont(ofSize: 21, weight: .bold),
                                     alighment: .center)
         
@@ -50,7 +50,7 @@ class EventDetailsViewController: UIViewController {
                                                font: .systemFont(ofSize: 21, weight: .bold),
                                                alighment: .center)
         
-        let priceLabel = UILabel(text: String(describing: event.price),
+        let priceLabel = UILabel(text: String(describing: event.fullPrice),
                                  font: .systemFont(ofSize: 21, weight: .bold),
                                  alighment: .center)
 
