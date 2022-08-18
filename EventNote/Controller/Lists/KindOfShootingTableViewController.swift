@@ -7,13 +7,21 @@
 
 import UIKit
 
+protocol KindOfShootingTableViewControllerDelegate {
+    func kindOfShootingTableViewController(_ controller: KindOfShootingTableViewController, didSelect employee: KindOfShootingList)
+}
+
 class KindOfShootingTableViewController: UITableViewController {
     
     let idKindOfShootingCell = "idKindOfShootingCell"
     let idKindOfShootingCellHeader = "idKindOfShootingCellHeader"
+    
+    var delegate: KindOfShootingTableViewControllerDelegate?
+    var kindOfShooting: KindOfShootingList?
 
-    let kindArray = [["Wedding", "Portrait", "Reportage", "Pregnant", "Birthday", "Family", "Love Story"]
-    ]
+
+//    let kindArray = [["Wedding", "Portrait", "Reportage", "Pregnant", "Birthday", "Family", "Love Story"]
+//    ]
     
     let alertsTableView = UITableView(frame: .zero, style: .insetGrouped)
     
@@ -39,19 +47,34 @@ class KindOfShootingTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-        case 0: return 7
-        default: return 1
-        }
+        return KindOfShootingList.allCases.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: idKindOfShootingCell, for: indexPath)
+        
+        let type = KindOfShootingList.allCases[indexPath.row]
+        
         var content = cell.defaultContentConfiguration()
-        content.text = kindArray[indexPath.section][indexPath.row]
+        content.text = type.description
         cell.contentConfiguration = content
+        
+        if kindOfShooting == type {
+            cell.accessoryType = .checkmark
+        } else {
+            cell.accessoryType = .none
+        }
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        kindOfShooting = KindOfShootingList.allCases[indexPath.row]
+        if let kindSelected = kindOfShooting {
+            delegate?.kindOfShootingTableViewController(self, didSelect: kindSelected)
+            tableView.reloadData()
+            dismiss(animated: true, completion: nil)
+        }
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
