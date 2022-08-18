@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol KindOfAlertListTableViewControllerDelegate {
+    func kindOfAlertListTableViewController(_ controller: KindOfAlertListTableViewController, didSelect employee: KindOfShootingList)
+}
+
 class KindOfAlertListTableViewController: UITableViewController {
     
     let idKindOfAlertCell = "idKindOfAlertCell"
