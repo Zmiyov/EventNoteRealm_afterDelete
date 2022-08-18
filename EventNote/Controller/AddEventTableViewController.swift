@@ -14,6 +14,8 @@ class AddEventTableViewController: UITableViewController  {
     let idAddEventCell = "idAddEventCell"
     let idAddEventHeader = "idAddEventHeader"
     
+    var addEventCellName: AddEventCellNameMainSectionType?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -38,19 +40,68 @@ class AddEventTableViewController: UITableViewController  {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
-        case 0: return 4
-        case 1: return 4
-        case 2: return 3
-        case 3: return 3
-        case 4: return 1
+        case 0: return AddEventCellNameMainSectionType.allCases.count
+        case 1: return AddEventCellNameContactsSectionType.allCases.count
+        case 2: return AddEventCellLocationsMainSectionType.allCases.count
+        case 3: return AddEventCellNamePaymentSectionType.allCases.count
+        case 4: return AddEventCellNameReminderSectionType.allCases.count
         default: return 1
         }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: idAddEventCell, for: indexPath) as! AddEventTableViewCell
-        cell.cellConfigure(indexPath: indexPath )
-        return cell
+        
+        switch indexPath.section {
+        case 0:
+            let type = AddEventCellNameMainSectionType.allCases[indexPath.row]
+            
+            var content = cell.defaultContentConfiguration()
+            content.text = type.description
+            cell.contentConfiguration = content
+
+            return cell
+        case 1:
+            let type = AddEventCellNameContactsSectionType.allCases[indexPath.row]
+            
+            var content = cell.defaultContentConfiguration()
+            content.text = type.description
+            cell.contentConfiguration = content
+
+            return cell
+        case 2:
+            let type = AddEventCellLocationsMainSectionType.allCases[indexPath.row]
+            
+            var content = cell.defaultContentConfiguration()
+            content.text = type.description
+            cell.contentConfiguration = content
+
+            return cell
+        case 3:
+            let type = AddEventCellNamePaymentSectionType.allCases[indexPath.row]
+            
+            var content = cell.defaultContentConfiguration()
+            content.text = type.description
+            cell.contentConfiguration = content
+
+            return cell
+        case 4:
+            let type = AddEventCellNameReminderSectionType.allCases[indexPath.row]
+            
+            var content = cell.defaultContentConfiguration()
+            content.text = type.description
+            cell.contentConfiguration = content
+
+            return cell
+        default:
+            let type = AddEventCellNameContactsSectionType.allCases[indexPath.row]
+
+            var content = cell.defaultContentConfiguration()
+            content.text = type.description
+            cell.contentConfiguration = content
+
+            return cell
+        }
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
