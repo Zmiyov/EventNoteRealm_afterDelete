@@ -23,13 +23,13 @@ class KindOfShootingTableViewController: UITableViewController {
 //    let kindArray = [["Wedding", "Portrait", "Reportage", "Pregnant", "Birthday", "Family", "Love Story"]
 //    ]
     
-    let alertsTableView = UITableView(frame: .zero, style: .insetGrouped)
+    let kindOfShootingTableView = UITableView(frame: .zero, style: .insetGrouped)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Alert"
         
-        self.tableView = alertsTableView
+        self.tableView = kindOfShootingTableView
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = #colorLiteral(red: 0.9594197869, green: 0.9599153399, blue: 0.975127399, alpha: 1)

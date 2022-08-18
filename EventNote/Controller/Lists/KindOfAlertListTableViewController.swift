@@ -8,17 +8,20 @@
 import UIKit
 
 protocol KindOfAlertListTableViewControllerDelegate {
-    func kindOfAlertListTableViewController(_ controller: KindOfAlertListTableViewController, didSelect employee: KindOfShootingList)
+    func kindOfAlertListTableViewController(_ controller: KindOfAlertListTableViewController, didSelect employee: KindOfAlertList)
 }
 
 class KindOfAlertListTableViewController: UITableViewController {
     
     let idKindOfAlertCell = "idKindOfAlertCell"
     let idKindOfAlertCellHeader = "idKindOfAlertCellHeader"
+    
+    var delegate: KindOfAlertListTableViewControllerDelegate?
+    var kindOfAlert: KindOfAlertList?
 
-    let kindArray = [["None"],
-                     ["At time of event", "5 minutes before", "10 minutes before", "15 minutes before", "30 minutes before", "1 hour before", "2 hours before", "1 day before", "2 days before", "1 week before"]
-    ]
+//    let kindArray = [["None"],
+//                     ["At time of event", "5 minutes before", "10 minutes before", "15 minutes before", "30 minutes before", "1 hour before", "2 hours before", "1 day before", "2 days before", "1 week before"]
+//    ]
     
     let alertsTableView = UITableView(frame: .zero, style: .insetGrouped)
     
@@ -54,10 +57,54 @@ class KindOfAlertListTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "idKindOfAlertCell", for: indexPath)
-        var content = cell.defaultContentConfiguration()
-        content.text = kindArray[indexPath.section][indexPath.row]
-        cell.contentConfiguration = content
-        return cell
+        switch indexPath {
+        case [0, 0]:
+            let type = KindOfAlertList.allCases[indexPath.row]
+            
+            var content = cell.defaultContentConfiguration()
+            content.text = type.description
+            cell.contentConfiguration = content
+            
+            if kindOfAlert == type {
+                cell.accessoryType = .checkmark
+            } else {
+                cell.accessoryType = .none
+            }
+            return cell
+        default:
+            let type = KindOfAlertList.allCases[indexPath.row + 1]
+            
+            var content = cell.defaultContentConfiguration()
+            content.text = type.description
+            cell.contentConfiguration = content
+            
+            if kindOfAlert == type {
+                cell.accessoryType = .checkmark
+            } else {
+                cell.accessoryType = .none
+            }
+            return cell
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath {
+        case [0, 0]:
+            kindOfAlert = KindOfAlertList.allCases[indexPath.row]
+            if let kindSelected = kindOfAlert {
+                delegate?.kindOfAlertListTableViewController(self, didSelect: kindSelected)
+                tableView.reloadData()
+                dismiss(animated: true, completion: nil)
+            }
+        default:
+            kindOfAlert = KindOfAlertList.allCases[indexPath.row + 1]
+            if let kindSelected = kindOfAlert {
+                delegate?.kindOfAlertListTableViewController(self, didSelect: kindSelected)
+                tableView.reloadData()
+                dismiss(animated: true, completion: nil)
+            }
+        }
+        
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
