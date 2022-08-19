@@ -12,7 +12,7 @@ struct Event {
     var kindOfShooting: String
     var customerName: String
     //    var dateAndTime: Date
-    //    var amountOfHours: Int
+        var amountOfHours: Int?
     
     var customerPhoneNumber: Int
     var additionalPhoneNumber: Int?
@@ -27,7 +27,7 @@ struct Event {
     var fullPrice: Int
     var prepayment: Int?
     
-    var alert: Date?
+    var alertString: String?
 
 //    var notes: String?
     //    var customerPhoto: UIImage?

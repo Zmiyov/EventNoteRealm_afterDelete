@@ -9,18 +9,18 @@ import Foundation
 
 enum AddEventCellNameMainSectionType: CaseIterable, CustomStringConvertible {
     case kindOfShooting
-    case name
     case date
+    case datePicker
     case amountOfHours
     
     var description: String {
         switch self {
         case .kindOfShooting:
             return "Kind of shooting"
-        case .name:
-            return "Name"
         case .date:
             return "Date"
+        case .datePicker:
+            return ""
         case .amountOfHours:
             return "Amount of Hours"
         }
@@ -28,6 +28,7 @@ enum AddEventCellNameMainSectionType: CaseIterable, CustomStringConvertible {
 }
 
 enum AddEventCellNameContactsSectionType: CaseIterable, CustomStringConvertible {
+    case name
     case phone
     case additionalPhone
     case telegram
@@ -35,6 +36,8 @@ enum AddEventCellNameContactsSectionType: CaseIterable, CustomStringConvertible 
     
     var description: String {
         switch self {
+        case .name:
+            return "Name"
         case .phone:
             return "Phone"
         case .additionalPhone:

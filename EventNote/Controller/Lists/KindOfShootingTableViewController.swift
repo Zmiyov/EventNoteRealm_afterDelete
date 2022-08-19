@@ -8,7 +8,7 @@
 import UIKit
 
 protocol KindOfShootingTableViewControllerDelegate {
-    func kindOfShootingTableViewController(_ controller: KindOfShootingTableViewController, didSelect employee: KindOfShootingList)
+    func kindOfShootingTableViewController(_ controller: KindOfShootingTableViewController, didSelect kindOfShooting: KindOfShootingList)
 }
 
 class KindOfShootingTableViewController: UITableViewController {

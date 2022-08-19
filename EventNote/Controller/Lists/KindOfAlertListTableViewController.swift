@@ -8,7 +8,7 @@
 import UIKit
 
 protocol KindOfAlertListTableViewControllerDelegate {
-    func kindOfAlertListTableViewController(_ controller: KindOfAlertListTableViewController, didSelect employee: KindOfAlertList)
+    func kindOfAlertListTableViewController(_ controller: KindOfAlertListTableViewController, didSelect kindOfAlert: KindOfAlertList)
 }
 
 class KindOfAlertListTableViewController: UITableViewController {
