@@ -116,23 +116,25 @@ class AddEventTableViewController: UITableViewController  {
             appearance.configureWithOpaqueBackground()
             navController.navigationBar.standardAppearance = appearance
             navController.navigationBar.scrollEdgeAppearance = appearance
-//            self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: AddEventTableViewController.self, action: nil)
-            
             present(navController, animated: true)
         case [0, 3]:
             let alertVC = AmountOfHoursListTableViewController()
+            alertVC.modalTransitionStyle = .coverVertical
+            let navController = UINavigationController(rootViewController: alertVC)
             let appearance = UINavigationBarAppearance()
             appearance.configureWithOpaqueBackground()
-            navigationController?.navigationBar.standardAppearance = appearance
-            navigationController?.navigationBar.scrollEdgeAppearance = appearance
-            navigationController?.pushViewController(alertVC, animated: true)
+            navController.navigationBar.standardAppearance = appearance
+            navController.navigationBar.scrollEdgeAppearance = appearance
+            present(navController, animated: true)
         case [4, 0]:
             let alertVC = KindOfAlertListTableViewController()
+            alertVC.modalTransitionStyle = .coverVertical
+            let navController = UINavigationController(rootViewController: alertVC)
             let appearance = UINavigationBarAppearance()
             appearance.configureWithOpaqueBackground()
-            navigationController?.navigationBar.standardAppearance = appearance
-            navigationController?.navigationBar.scrollEdgeAppearance = appearance
-            navigationController?.pushViewController(alertVC, animated: true)
+            navController.navigationBar.standardAppearance = appearance
+            navController.navigationBar.scrollEdgeAppearance = appearance
+            present(navController, animated: true)
         default:
             break
         }
