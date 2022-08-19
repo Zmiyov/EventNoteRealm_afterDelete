@@ -24,6 +24,8 @@ class AddEventTableViewController: UITableViewController  {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(saveButton))
+    
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = #colorLiteral(red: 0.9594197869, green: 0.9599153399, blue: 0.975127399, alpha: 1)
@@ -35,6 +37,10 @@ class AddEventTableViewController: UITableViewController  {
         tableView.register(AddEventTableViewHeader.self, forHeaderFooterViewReuseIdentifier: idAddEventHeader)
         
         title = "New Event"
+    }
+    
+    @objc func saveButton() {
+        
     }
     
     
@@ -136,7 +142,7 @@ class AddEventTableViewController: UITableViewController  {
             navController.navigationBar.standardAppearance = appearance
             navController.navigationBar.scrollEdgeAppearance = appearance
             present(navController, animated: true)
-        case [0, 3]:
+        case [0, 2]:
             let alertVC = AmountOfHoursListTableViewController()
             alertVC.modalTransitionStyle = .coverVertical
             let navController = UINavigationController(rootViewController: alertVC)
