@@ -1,5 +1,5 @@
 //
-//  TextFieldTableViewCell.swift
+//  DatePickerTableViewCell.swift
 //  EventNote
 //
 //  Created by Vladimir Pisarenko on 19.08.2022.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TextFieldTableViewCell: UITableViewCell {
+class DatePickerTableViewCell: UITableViewCell {
     
     let backgroundViewCell: UIView = {
         let view = UIView()
@@ -17,11 +17,18 @@ class TextFieldTableViewCell: UITableViewCell {
         return view
     }()
     
-    let textField: UITextField = {
-        let textField = UITextField()
-        
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        return textField
+    let datePicker: UIDatePicker = {
+        let datePicker = UIDatePicker()
+        datePicker.preferredDatePickerStyle = .compact
+        datePicker.translatesAutoresizingMaskIntoConstraints = false
+        return datePicker
+    }()
+    
+    var nameCellLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 17)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
     }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -46,13 +53,18 @@ class TextFieldTableViewCell: UITableViewCell {
             backgroundViewCell.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -1)
         ])
         
-        self.contentView.addSubview(textField)
+        self.addSubview(nameCellLabel)
         NSLayoutConstraint.activate([
-            textField.topAnchor.constraint(equalTo: self.topAnchor , constant: 5),
-            textField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
-            textField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
-            textField.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -5)
-         
+            nameCellLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            nameCellLabel.leadingAnchor.constraint(equalTo: backgroundViewCell.leadingAnchor, constant: 15)
+        ])
+        
+        self.contentView.addSubview(datePicker)
+        NSLayoutConstraint.activate([
+            datePicker.topAnchor.constraint(equalTo: self.topAnchor , constant: 5),
+            datePicker.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
+            datePicker.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
+            datePicker.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -5)
         ])
      
         

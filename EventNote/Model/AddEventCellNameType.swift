@@ -10,7 +10,6 @@ import Foundation
 enum AddEventCellNameMainSectionType: CaseIterable, CustomStringConvertible {
     case kindOfShooting
     case date
-    case datePicker
     case amountOfHours
     
     var description: String {
@@ -19,8 +18,6 @@ enum AddEventCellNameMainSectionType: CaseIterable, CustomStringConvertible {
             return "Kind of shooting"
         case .date:
             return "Date"
-        case .datePicker:
-            return ""
         case .amountOfHours:
             return "Amount of Hours"
         }

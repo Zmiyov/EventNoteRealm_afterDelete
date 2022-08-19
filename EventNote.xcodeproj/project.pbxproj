@@ -26,6 +26,7 @@
 		A5DE68BB28AED66E00C34183 /* KindOfAlertList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DE68BA28AED66E00C34183 /* KindOfAlertList.swift */; };
 		A5DE68BD28AEE57700C34183 /* AddEventCellNameType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DE68BC28AEE57700C34183 /* AddEventCellNameType.swift */; };
 		A5DE68BF28AFD96600C34183 /* TextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DE68BE28AFD96600C34183 /* TextFieldTableViewCell.swift */; };
+		A5DE68C128AFF9DA00C34183 /* DatePickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DE68C028AFF9DA00C34183 /* DatePickerTableViewCell.swift */; };
 		A5E5619628AA362B00DC4E3E /* ScheduleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E5619528AA362B00DC4E3E /* ScheduleCollectionViewCell.swift */; };
 		A5E5619828AA3E6100DC4E3E /* EventDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E5619728AA3E6100DC4E3E /* EventDetailsViewController.swift */; };
 /* End PBXBuildFile section */
@@ -52,6 +53,7 @@
 		A5DE68BA28AED66E00C34183 /* KindOfAlertList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KindOfAlertList.swift; sourceTree = "<group>"; };
 		A5DE68BC28AEE57700C34183 /* AddEventCellNameType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventCellNameType.swift; sourceTree = "<group>"; };
 		A5DE68BE28AFD96600C34183 /* TextFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldTableViewCell.swift; sourceTree = "<group>"; };
+		A5DE68C028AFF9DA00C34183 /* DatePickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerTableViewCell.swift; sourceTree = "<group>"; };
 		A5E5619528AA362B00DC4E3E /* ScheduleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCollectionViewCell.swift; sourceTree = "<group>"; };
 		A5E5619728AA3E6100DC4E3E /* EventDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailsViewController.swift; sourceTree = "<group>"; };
 		E4E3D2E7E9EDC120441B0F0C /* Pods-EventNote.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EventNote.release.xcconfig"; path = "Target Support Files/Pods-EventNote/Pods-EventNote.release.xcconfig"; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 				A5DE68AD28ACFDDF00C34183 /* AddEventTableViewCell.swift */,
 				A5DE68AF28AD05D500C34183 /* AddEventTableViewHeader.swift */,
 				A5DE68BE28AFD96600C34183 /* TextFieldTableViewCell.swift */,
+				A5DE68C028AFF9DA00C34183 /* DatePickerTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -293,6 +296,7 @@
 				A5DE68BD28AEE57700C34183 /* AddEventCellNameType.swift in Sources */,
 				A5DE68AE28ACFDDF00C34183 /* AddEventTableViewCell.swift in Sources */,
 				A5DE68B728AEC55300C34183 /* AmountOfHoursListTableViewController.swift in Sources */,
+				A5DE68C128AFF9DA00C34183 /* DatePickerTableViewCell.swift in Sources */,
 				A547D46928A81D0000173BA8 /* AppDelegate.swift in Sources */,
 				A5DE68B228AD415700C34183 /* KindOfAlertListTableViewController.swift in Sources */,
 				A5E5619828AA3E6100DC4E3E /* EventDetailsViewController.swift in Sources */,

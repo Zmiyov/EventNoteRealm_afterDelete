@@ -14,6 +14,7 @@ class AddEventTableViewController: UITableViewController  {
 //    var kindOfAlertOpted: String?
 //    var kindOfShooting: String?
     
+    let idDatePickerCell = "idDatePickerCell"
     let idTextFieldCell = "idTextFieldCell"
     let idAddEventCell = "idAddEventCell"
     let idAddEventHeader = "idAddEventHeader"
@@ -28,6 +29,7 @@ class AddEventTableViewController: UITableViewController  {
         tableView.backgroundColor = #colorLiteral(red: 0.9594197869, green: 0.9599153399, blue: 0.975127399, alpha: 1)
         tableView.separatorStyle = .none
         tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.register(DatePickerTableViewCell.self, forCellReuseIdentifier: idDatePickerCell)
         tableView.register(TextFieldTableViewCell.self, forCellReuseIdentifier: idTextFieldCell)
         tableView.register(AddEventTableViewCell.self, forCellReuseIdentifier: idAddEventCell)
         tableView.register(AddEventTableViewHeader.self, forHeaderFooterViewReuseIdentifier: idAddEventHeader)
@@ -62,38 +64,23 @@ class AddEventTableViewController: UITableViewController  {
             case 0:
                 let cell = tableView.dequeueReusableCell(withIdentifier: idAddEventCell, for: indexPath) as! AddEventTableViewCell
                 let type = AddEventCellNameMainSectionType.allCases[indexPath.row]
-                var content = cell.defaultContentConfiguration()
-                content.text = type.description
-                cell.contentConfiguration = content
+                cell.nameCellLabel.text = type.description
                 return cell
             case 1:
-                let cell = tableView.dequeueReusableCell(withIdentifier: idAddEventCell, for: indexPath) as! AddEventTableViewCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: idDatePickerCell, for: indexPath) as! DatePickerTableViewCell
                 let type = AddEventCellNameMainSectionType.allCases[indexPath.row]
-                var content = cell.defaultContentConfiguration()
-                content.text = type.description
-                cell.contentConfiguration = content
+                cell.nameCellLabel.text = type.description
                 return cell
             case 2:
                 let cell = tableView.dequeueReusableCell(withIdentifier: idAddEventCell, for: indexPath) as! AddEventTableViewCell
                 let type = AddEventCellNameMainSectionType.allCases[indexPath.row]
-                var content = cell.defaultContentConfiguration()
-                content.text = type.description
-                cell.contentConfiguration = content
-                return cell
-            case 3:
-                let cell = tableView.dequeueReusableCell(withIdentifier: idAddEventCell, for: indexPath) as! AddEventTableViewCell
-                let type = AddEventCellNameMainSectionType.allCases[indexPath.row]
-                var content = cell.defaultContentConfiguration()
-                content.text = type.description
-                cell.contentConfiguration = content
+                cell.nameCellLabel.text = type.description
                 return cell
                 
             default:
                 let cell = tableView.dequeueReusableCell(withIdentifier: idAddEventCell, for: indexPath) as! AddEventTableViewCell
                 let type = AddEventCellNameMainSectionType.allCases[indexPath.row]
-                var content = cell.defaultContentConfiguration()
-                content.text = type.description
-                cell.contentConfiguration = content
+                cell.nameCellLabel.text = type.description
                 return cell
             }
         case 1:
@@ -114,16 +101,12 @@ class AddEventTableViewController: UITableViewController  {
         case 4:
             let cell = tableView.dequeueReusableCell(withIdentifier: idAddEventCell, for: indexPath) as! AddEventTableViewCell
             let type = AddEventCellNameReminderSectionType.allCases[indexPath.row]
-            var content = cell.defaultContentConfiguration()
-            content.text = type.description
-            cell.contentConfiguration = content
+            cell.nameCellLabel.text = type.description
             return cell
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: idAddEventCell, for: indexPath) as! AddEventTableViewCell
             let type = AddEventCellNameContactsSectionType.allCases[indexPath.row]
-            var content = cell.defaultContentConfiguration()
-            content.text = type.description
-            cell.contentConfiguration = content
+            cell.nameCellLabel.text = type.description
             return cell
         }
     }
