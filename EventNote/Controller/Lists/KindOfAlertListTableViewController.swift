@@ -91,14 +91,14 @@ class KindOfAlertListTableViewController: UITableViewController {
             if let kindSelected = kindOfAlert {
                 delegate?.kindOfAlertListTableViewController(self, didSelect: kindSelected)
                 tableView.reloadData()
-                dismiss(animated: true, completion: nil)
+                
             }
         default:
             kindOfAlert = KindOfAlertList.allCases[indexPath.row + 1]
             if let kindSelected = kindOfAlert {
                 delegate?.kindOfAlertListTableViewController(self, didSelect: kindSelected)
                 tableView.reloadData()
-                dismiss(animated: true, completion: nil)
+                
             }
         }
         

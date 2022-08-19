@@ -109,26 +109,30 @@ class AddEventTableViewController: UITableViewController  {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath {
         case [0, 0]:
-                let alertVC = KindOfShootingTableViewController()
-                let appearance = UINavigationBarAppearance()
-                appearance.configureWithOpaqueBackground()
-                navigationController?.navigationBar.standardAppearance = appearance
-                navigationController?.navigationBar.scrollEdgeAppearance = appearance
-                navigationController?.pushViewController(alertVC, animated: true)
+            let alertVC = KindOfShootingTableViewController()
+            alertVC.modalTransitionStyle = .coverVertical
+            let navController = UINavigationController(rootViewController: alertVC)
+            let appearance = UINavigationBarAppearance()
+            appearance.configureWithOpaqueBackground()
+            navController.navigationBar.standardAppearance = appearance
+            navController.navigationBar.scrollEdgeAppearance = appearance
+//            self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: AddEventTableViewController.self, action: nil)
+            
+            present(navController, animated: true)
         case [0, 3]:
-                let alertVC = AmountOfHoursListTableViewController()
-                let appearance = UINavigationBarAppearance()
-                appearance.configureWithOpaqueBackground()
-                navigationController?.navigationBar.standardAppearance = appearance
-                navigationController?.navigationBar.scrollEdgeAppearance = appearance
-                navigationController?.pushViewController(alertVC, animated: true)
+            let alertVC = AmountOfHoursListTableViewController()
+            let appearance = UINavigationBarAppearance()
+            appearance.configureWithOpaqueBackground()
+            navigationController?.navigationBar.standardAppearance = appearance
+            navigationController?.navigationBar.scrollEdgeAppearance = appearance
+            navigationController?.pushViewController(alertVC, animated: true)
         case [4, 0]:
-                let alertVC = KindOfAlertListTableViewController()
-                let appearance = UINavigationBarAppearance()
-                appearance.configureWithOpaqueBackground()
-                navigationController?.navigationBar.standardAppearance = appearance
-                navigationController?.navigationBar.scrollEdgeAppearance = appearance
-                navigationController?.pushViewController(alertVC, animated: true)
+            let alertVC = KindOfAlertListTableViewController()
+            let appearance = UINavigationBarAppearance()
+            appearance.configureWithOpaqueBackground()
+            navigationController?.navigationBar.standardAppearance = appearance
+            navigationController?.navigationBar.scrollEdgeAppearance = appearance
+            navigationController?.pushViewController(alertVC, animated: true)
         default:
             break
         }

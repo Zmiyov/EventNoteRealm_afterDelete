@@ -28,6 +28,7 @@ class KindOfShootingTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Alert"
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(backButton))
         
         self.tableView = kindOfShootingTableView
         tableView.delegate = self
@@ -38,6 +39,10 @@ class KindOfShootingTableViewController: UITableViewController {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: idKindOfShootingCell)
         tableView.register(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: idKindOfShootingCellHeader)
 
+    }
+    
+    @objc func backButton() {
+        dismiss(animated: true, completion: nil)
     }
 
     // MARK: - Table view data source

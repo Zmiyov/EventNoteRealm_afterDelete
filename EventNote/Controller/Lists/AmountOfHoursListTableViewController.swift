@@ -23,7 +23,7 @@ class AmountOfHoursListTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Alert"
+        title = "Amount Of Hour"
         
         self.tableView = alertsTableView
         tableView.delegate = self
@@ -74,8 +74,8 @@ class AmountOfHoursListTableViewController: UITableViewController {
         if let kindSelected = amountOrHours {
             delegate?.amountOfHoursListTableViewController(self, didSelect: kindSelected)
             tableView.reloadData()
-            dismiss(animated: true, completion: nil)
         }
+        
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
