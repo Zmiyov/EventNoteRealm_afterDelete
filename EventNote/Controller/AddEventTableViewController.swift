@@ -15,7 +15,6 @@ class AddEventTableViewController: UITableViewController  {
     var amountOfHours: Int?
     var kindOfAlertOpted: KindOfAlertList?
     
-
     
     let idDatePickerCell = "idDatePickerCell"
     let idTextFieldCell = "idTextFieldCell"
@@ -40,15 +39,6 @@ class AddEventTableViewController: UITableViewController  {
         tableView.register(AddEventTableViewHeader.self, forHeaderFooterViewReuseIdentifier: idAddEventHeader)
         
         title = "New Event"
-        print("Did works")
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        print("Will works")
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        print("Did App works")
     }
     
     @objc func saveButton() {
@@ -56,7 +46,7 @@ class AddEventTableViewController: UITableViewController  {
     }
     
 //    private func updateSaveButtonState() {
-//        let shouldEnableSaveButton = nameTextField.text?.isEmpty == false && employeeType != nil
+//        let shouldEnableSaveButton = nameTextField.text?.isEmpty == false && kindOfShooting1 != nil
 //        saveBarButtonItem.isEnabled = shouldEnableSaveButton
 //    }
     
@@ -103,7 +93,13 @@ class AddEventTableViewController: UITableViewController  {
             case 2:
                 let cell = tableView.dequeueReusableCell(withIdentifier: idAddEventCell, for: indexPath) as! ListTableViewCell
                 let type = AddEventCellNameMainSectionType.allCases[indexPath.row]
-                cell.nameCellLabel.text = type.description
+                if let amountOfHours = amountOfHours {
+                    cell.nameCellLabel.text = amountOfHours.description + " " + "hour(s)"
+                    cell.nameCellLabel.textColor = .label
+                } else {
+                    cell.nameCellLabel.text = type.description
+                    cell.nameCellLabel.textColor = .darkGray
+                }
                 cell.accessoryType = .disclosureIndicator
                 return cell
                 
@@ -131,7 +127,13 @@ class AddEventTableViewController: UITableViewController  {
         case 4:
             let cell = tableView.dequeueReusableCell(withIdentifier: idAddEventCell, for: indexPath) as! ListTableViewCell
             let type = AddEventCellNameReminderSectionType.allCases[indexPath.row]
-            cell.nameCellLabel.text = type.description
+            if let kindOfAlertOpted = kindOfAlertOpted {
+                cell.nameCellLabel.text = kindOfAlertOpted.description
+                cell.nameCellLabel.textColor = .label
+            } else {
+                cell.nameCellLabel.text = type.description
+                cell.nameCellLabel.textColor = .darkGray
+            }
             cell.accessoryType = .disclosureIndicator
             return cell
         default:
@@ -171,6 +173,8 @@ class AddEventTableViewController: UITableViewController  {
             present(navController, animated: true)
         case [0, 2]:
             let alertVC = AmountOfHoursListTableViewController()
+            alertVC.delegate = self
+            alertVC.amountOrHours = amountOfHours
             alertVC.modalTransitionStyle = .coverVertical
             let navController = UINavigationController(rootViewController: alertVC)
             let appearance = UINavigationBarAppearance()
@@ -180,6 +184,8 @@ class AddEventTableViewController: UITableViewController  {
             present(navController, animated: true)
         case [4, 0]:
             let alertVC = KindOfAlertListTableViewController()
+            alertVC.delegate = self
+            alertVC.kindOfAlert = kindOfAlertOpted
             alertVC.modalTransitionStyle = .coverVertical
             let navController = UINavigationController(rootViewController: alertVC)
             let appearance = UINavigationBarAppearance()
