@@ -17,7 +17,7 @@
 		A547D47828A81D0200173BA8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A547D47628A81D0200173BA8 /* LaunchScreen.storyboard */; };
 		A547D48028A8212D00173BA8 /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A547D47F28A8212D00173BA8 /* EventModel.swift */; };
 		A54C769F28ABF81600C479AE /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54C769E28ABF81600C479AE /* UILabel.swift */; };
-		A5DE68AE28ACFDDF00C34183 /* AddEventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DE68AD28ACFDDF00C34183 /* AddEventTableViewCell.swift */; };
+		A5DE68AE28ACFDDF00C34183 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DE68AD28ACFDDF00C34183 /* ListTableViewCell.swift */; };
 		A5DE68B028AD05D500C34183 /* AddEventTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DE68AF28AD05D500C34183 /* AddEventTableViewHeader.swift */; };
 		A5DE68B228AD415700C34183 /* KindOfAlertListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DE68B128AD415700C34183 /* KindOfAlertListTableViewController.swift */; };
 		A5DE68B428AEC2EA00C34183 /* KindOfShootingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DE68B328AEC2EA00C34183 /* KindOfShootingTableViewController.swift */; };
@@ -44,7 +44,7 @@
 		A547D47928A81D0200173BA8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A547D47F28A8212D00173BA8 /* EventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
 		A54C769E28ABF81600C479AE /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
-		A5DE68AD28ACFDDF00C34183 /* AddEventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventTableViewCell.swift; sourceTree = "<group>"; };
+		A5DE68AD28ACFDDF00C34183 /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
 		A5DE68AF28AD05D500C34183 /* AddEventTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventTableViewHeader.swift; sourceTree = "<group>"; };
 		A5DE68B128AD415700C34183 /* KindOfAlertListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KindOfAlertListTableViewController.swift; sourceTree = "<group>"; };
 		A5DE68B328AEC2EA00C34183 /* KindOfShootingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KindOfShootingTableViewController.swift; sourceTree = "<group>"; };
@@ -146,11 +146,11 @@
 		A5DE68AB28ACFC9700C34183 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				A5E5619528AA362B00DC4E3E /* ScheduleCollectionViewCell.swift */,
-				A5DE68AD28ACFDDF00C34183 /* AddEventTableViewCell.swift */,
-				A5DE68AF28AD05D500C34183 /* AddEventTableViewHeader.swift */,
+				A5DE68AD28ACFDDF00C34183 /* ListTableViewCell.swift */,
 				A5DE68BE28AFD96600C34183 /* TextFieldTableViewCell.swift */,
 				A5DE68C028AFF9DA00C34183 /* DatePickerTableViewCell.swift */,
+				A5DE68AF28AD05D500C34183 /* AddEventTableViewHeader.swift */,
+				A5E5619528AA362B00DC4E3E /* ScheduleCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -294,7 +294,7 @@
 				A5DE68B028AD05D500C34183 /* AddEventTableViewHeader.swift in Sources */,
 				A547D46D28A81D0000173BA8 /* MainViewController.swift in Sources */,
 				A5DE68BD28AEE57700C34183 /* AddEventCellNameType.swift in Sources */,
-				A5DE68AE28ACFDDF00C34183 /* AddEventTableViewCell.swift in Sources */,
+				A5DE68AE28ACFDDF00C34183 /* ListTableViewCell.swift in Sources */,
 				A5DE68B728AEC55300C34183 /* AmountOfHoursListTableViewController.swift in Sources */,
 				A5DE68C128AFF9DA00C34183 /* DatePickerTableViewCell.swift in Sources */,
 				A547D46928A81D0000173BA8 /* AppDelegate.swift in Sources */,

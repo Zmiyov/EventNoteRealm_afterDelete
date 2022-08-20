@@ -97,7 +97,4 @@ class KindOfShootingTableViewController: UITableViewController {
         default: return 15
         }
     }
-    
-    
-
 }

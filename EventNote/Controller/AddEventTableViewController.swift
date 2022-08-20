@@ -11,8 +11,11 @@ class AddEventTableViewController: UITableViewController  {
     
     var event: Event?
     
-//    var kindOfAlertOpted: String?
-//    var kindOfShooting: String?
+    var kindOfShooting1: KindOfShootingList?
+    var amountOfHours: Int?
+    var kindOfAlertOpted: KindOfAlertList?
+    
+
     
     let idDatePickerCell = "idDatePickerCell"
     let idTextFieldCell = "idTextFieldCell"
@@ -33,15 +36,29 @@ class AddEventTableViewController: UITableViewController  {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.register(DatePickerTableViewCell.self, forCellReuseIdentifier: idDatePickerCell)
         tableView.register(TextFieldTableViewCell.self, forCellReuseIdentifier: idTextFieldCell)
-        tableView.register(AddEventTableViewCell.self, forCellReuseIdentifier: idAddEventCell)
+        tableView.register(ListTableViewCell.self, forCellReuseIdentifier: idAddEventCell)
         tableView.register(AddEventTableViewHeader.self, forHeaderFooterViewReuseIdentifier: idAddEventHeader)
         
         title = "New Event"
+        print("Did works")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        print("Will works")
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        print("Did App works")
     }
     
     @objc func saveButton() {
         
     }
+    
+//    private func updateSaveButtonState() {
+//        let shouldEnableSaveButton = nameTextField.text?.isEmpty == false && employeeType != nil
+//        saveBarButtonItem.isEnabled = shouldEnableSaveButton
+//    }
     
     
     //MARK: - Table View
@@ -62,15 +79,21 @@ class AddEventTableViewController: UITableViewController  {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: idAddEventCell, for: indexPath) as! AddEventTableViewCell
         
         switch indexPath.section {
         case 0:
             switch indexPath.row {
             case 0:
-                let cell = tableView.dequeueReusableCell(withIdentifier: idAddEventCell, for: indexPath) as! AddEventTableViewCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: idAddEventCell, for: indexPath) as! ListTableViewCell
                 let type = AddEventCellNameMainSectionType.allCases[indexPath.row]
-                cell.nameCellLabel.text = type.description
+                if let kindOfShooting1 = kindOfShooting1 {
+                    cell.nameCellLabel.text = kindOfShooting1.description
+                    cell.nameCellLabel.textColor = .label
+                } else {
+                    cell.nameCellLabel.text = type.description
+                    cell.nameCellLabel.textColor = .darkGray
+                }
+                cell.accessoryType = .disclosureIndicator
                 return cell
             case 1:
                 let cell = tableView.dequeueReusableCell(withIdentifier: idDatePickerCell, for: indexPath) as! DatePickerTableViewCell
@@ -78,13 +101,14 @@ class AddEventTableViewController: UITableViewController  {
                 cell.nameCellLabel.text = type.description
                 return cell
             case 2:
-                let cell = tableView.dequeueReusableCell(withIdentifier: idAddEventCell, for: indexPath) as! AddEventTableViewCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: idAddEventCell, for: indexPath) as! ListTableViewCell
                 let type = AddEventCellNameMainSectionType.allCases[indexPath.row]
                 cell.nameCellLabel.text = type.description
+                cell.accessoryType = .disclosureIndicator
                 return cell
                 
             default:
-                let cell = tableView.dequeueReusableCell(withIdentifier: idAddEventCell, for: indexPath) as! AddEventTableViewCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: idAddEventCell, for: indexPath) as! ListTableViewCell
                 let type = AddEventCellNameMainSectionType.allCases[indexPath.row]
                 cell.nameCellLabel.text = type.description
                 return cell
@@ -105,12 +129,13 @@ class AddEventTableViewController: UITableViewController  {
             cell.textField.placeholder = type.description
             return cell
         case 4:
-            let cell = tableView.dequeueReusableCell(withIdentifier: idAddEventCell, for: indexPath) as! AddEventTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: idAddEventCell, for: indexPath) as! ListTableViewCell
             let type = AddEventCellNameReminderSectionType.allCases[indexPath.row]
             cell.nameCellLabel.text = type.description
+            cell.accessoryType = .disclosureIndicator
             return cell
         default:
-            let cell = tableView.dequeueReusableCell(withIdentifier: idAddEventCell, for: indexPath) as! AddEventTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: idAddEventCell, for: indexPath) as! ListTableViewCell
             let type = AddEventCellNameContactsSectionType.allCases[indexPath.row]
             cell.nameCellLabel.text = type.description
             return cell
@@ -135,6 +160,8 @@ class AddEventTableViewController: UITableViewController  {
         switch indexPath {
         case [0, 0]:
             let alertVC = KindOfShootingTableViewController()
+            alertVC.delegate = self
+            alertVC.kindOfShooting = kindOfShooting1
             alertVC.modalTransitionStyle = .coverVertical
             let navController = UINavigationController(rootViewController: alertVC)
             let appearance = UINavigationBarAppearance()
@@ -166,18 +193,21 @@ class AddEventTableViewController: UITableViewController  {
     }
 }
 
-//extension AddEventTableViewController: KindOfShootingTableViewControllerDelegate, AmountOfHoursListTableViewControllerDelegate, KindOfAlertListTableViewControllerDelegate {
-//    func kindOfAlertListTableViewController(_ controller: KindOfAlertListTableViewController, didSelect kindOfAlert: KindOfAlertList) {
-//        kindOfAlertOpted = kindOfAlert.description
-//    }
-//
-//    func amountOfHoursListTableViewController(_ controller: AmountOfHoursListTableViewController, didSelect amount: Int) {
-//        event?.amountOfHours = amount
-//    }
-//
-//    func kindOfShootingTableViewController(_ controller: KindOfShootingTableViewController, didSelect kindOfShooting: KindOfShootingList) {
-//        event?.kindOfShooting = kindOfShooting.description
-//    }
-//}
+extension AddEventTableViewController: KindOfShootingTableViewControllerDelegate, AmountOfHoursListTableViewControllerDelegate, KindOfAlertListTableViewControllerDelegate {
+    func kindOfAlertListTableViewController(_ controller: KindOfAlertListTableViewController, didSelect kindOfAlert: KindOfAlertList) {
+        self.kindOfAlertOpted = kindOfAlert
+        tableView.reloadData()
+    }
+
+    func amountOfHoursListTableViewController(_ controller: AmountOfHoursListTableViewController, didSelect amount: Int) {
+        self.amountOfHours = amount
+        tableView.reloadData()
+    }
+
+    func kindOfShootingTableViewController(_ controller: KindOfShootingTableViewController, didSelect kindOfShooting: KindOfShootingList) {
+        self.kindOfShooting1 = kindOfShooting
+        tableView.reloadData()
+    }
+}
 
 

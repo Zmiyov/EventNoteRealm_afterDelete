@@ -1,5 +1,5 @@
 //
-//  AddEventTableViewCell.swift
+//  ListTableViewCell.swift
 //  EventNote
 //
 //  Created by Vladimir Pisarenko on 17.08.2022.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AddEventTableViewCell: UITableViewCell {
+class ListTableViewCell: UITableViewCell {
     
     let backgroundViewCell: UIView = {
         let view = UIView()
