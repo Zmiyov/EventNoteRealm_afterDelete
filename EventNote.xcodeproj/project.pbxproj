@@ -30,6 +30,7 @@
 		A5E5619628AA362B00DC4E3E /* ScheduleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E5619528AA362B00DC4E3E /* ScheduleCollectionViewCell.swift */; };
 		A5E5619828AA3E6100DC4E3E /* EventDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E5619728AA3E6100DC4E3E /* EventDetailsViewController.swift */; };
 		A5FE847528B173F3002AA152 /* EventRealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FE847428B173F3002AA152 /* EventRealmModel.swift */; };
+		A5FE847828B17A63002AA152 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FE847728B17A63002AA152 /* RealmManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		A5E5619528AA362B00DC4E3E /* ScheduleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCollectionViewCell.swift; sourceTree = "<group>"; };
 		A5E5619728AA3E6100DC4E3E /* EventDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailsViewController.swift; sourceTree = "<group>"; };
 		A5FE847428B173F3002AA152 /* EventRealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRealmModel.swift; sourceTree = "<group>"; };
+		A5FE847728B17A63002AA152 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		E4E3D2E7E9EDC120441B0F0C /* Pods-EventNote.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EventNote.release.xcconfig"; path = "Target Support Files/Pods-EventNote/Pods-EventNote.release.xcconfig"; sourceTree = "<group>"; };
 		F294DBB57595AF6E435B570C /* Pods_EventNote.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EventNote.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -112,6 +114,7 @@
 		A547D46728A81D0000173BA8 /* EventNote */ = {
 			isa = PBXGroup;
 			children = (
+				A5FE847628B17A33002AA152 /* Services */,
 				A547D48128A825AC00173BA8 /* Model */,
 				A5DE68AB28ACFC9700C34183 /* View */,
 				A5DE68AC28ACFCE800C34183 /* Controller */,
@@ -177,6 +180,14 @@
 				A5DE68B628AEC55300C34183 /* AmountOfHoursListTableViewController.swift */,
 			);
 			path = Lists;
+			sourceTree = "<group>";
+		};
+		A5FE847628B17A33002AA152 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				A5FE847728B17A63002AA152 /* RealmManager.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -298,6 +309,7 @@
 				A547D46D28A81D0000173BA8 /* MainViewController.swift in Sources */,
 				A5DE68BD28AEE57700C34183 /* AddEventCellNameType.swift in Sources */,
 				A5DE68AE28ACFDDF00C34183 /* ListTableViewCell.swift in Sources */,
+				A5FE847828B17A63002AA152 /* RealmManager.swift in Sources */,
 				A5DE68B728AEC55300C34183 /* AmountOfHoursListTableViewController.swift in Sources */,
 				A5DE68C128AFF9DA00C34183 /* DatePickerTableViewCell.swift in Sources */,
 				A547D46928A81D0000173BA8 /* AppDelegate.swift in Sources */,

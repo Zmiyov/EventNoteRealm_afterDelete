@@ -9,7 +9,9 @@ import UIKit
 
 class AddEventTableViewController: UITableViewController  {
     
-    var event: Event?
+    let eventModel = EventRealmModel()
+    
+//    var event: Event?
     
     var kindOfShooting1: KindOfShootingList?
     var amountOfHours: Int?
@@ -21,12 +23,12 @@ class AddEventTableViewController: UITableViewController  {
     let idAddEventCell = "idAddEventCell"
     let idAddEventHeader = "idAddEventHeader"
     
-    var addEventCellName: AddEventCellNameMainSectionType?
+//    var addEventCellName: AddEventCellNameMainSectionType?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(saveButton))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveButtonTapped))
     
         tableView.delegate = self
         tableView.dataSource = self
@@ -41,7 +43,26 @@ class AddEventTableViewController: UITableViewController  {
         title = "New Event"
     }
     
-    @objc func saveButton() {
+    @objc func saveButtonTapped() {
+        print("Save")
+        
+//        eventModel.kindOfShooting = "kindOfShooting"
+//        eventModel.dateAndTime = Date()
+//        eventModel.amountOfHours = 1
+//        eventModel.customerName = "customerName"
+//        eventModel.customerPhoneNumber = 38
+//        eventModel.additionalPhoneNumber = 39
+//        eventModel.customerTelegramOrChat = "customerTelegramOrChat"
+//        eventModel.customerInstagram = "customerInstagram"
+//        eventModel.mainLocation = "mainLocation"
+//        eventModel.startLocation = "startLocation"
+//        eventModel.endLocation = "endLocation"
+//        eventModel.priceForHour = 100
+//        eventModel.fullPrice = 200
+//        eventModel.prepayment = 300
+//        eventModel.alertString = "alertString"
+        tableView.reloadData()
+        RealmManager.shared.saveEventModel(model: eventModel)
         
     }
     
@@ -89,6 +110,7 @@ class AddEventTableViewController: UITableViewController  {
                 let cell = tableView.dequeueReusableCell(withIdentifier: idDatePickerCell, for: indexPath) as! DatePickerTableViewCell
                 let type = AddEventCellNameMainSectionType.allCases[indexPath.row]
                 cell.nameCellLabel.text = type.description
+                eventModel.dateAndTime = cell.datePicker.date
                 return cell
             case 2:
                 let cell = tableView.dequeueReusableCell(withIdentifier: idAddEventCell, for: indexPath) as! ListTableViewCell
@@ -96,6 +118,7 @@ class AddEventTableViewController: UITableViewController  {
                 if let amountOfHours = amountOfHours {
                     cell.nameCellLabel.text = amountOfHours.description + " " + "hour(s)"
                     cell.nameCellLabel.textColor = .label
+                    eventModel.amountOfHours = amountOfHours
                 } else {
                     cell.nameCellLabel.text = type.description
                     cell.nameCellLabel.textColor = .darkGray
@@ -113,6 +136,7 @@ class AddEventTableViewController: UITableViewController  {
             let cell = tableView.dequeueReusableCell(withIdentifier: idTextFieldCell, for: indexPath) as! TextFieldTableViewCell
             let type = AddEventCellNameContactsSectionType.allCases[indexPath.row]
             cell.textField.placeholder = type.description
+//            print(cell.textField.text)
             return cell
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: idTextFieldCell, for: indexPath) as! TextFieldTableViewCell
@@ -130,6 +154,7 @@ class AddEventTableViewController: UITableViewController  {
             if let kindOfAlertOpted = kindOfAlertOpted {
                 cell.nameCellLabel.text = kindOfAlertOpted.description
                 cell.nameCellLabel.textColor = .label
+                eventModel.alertString = kindOfAlertOpted.description
             } else {
                 cell.nameCellLabel.text = type.description
                 cell.nameCellLabel.textColor = .darkGray
@@ -197,6 +222,7 @@ class AddEventTableViewController: UITableViewController  {
             break
         }
     }
+
 }
 
 extension AddEventTableViewController: KindOfShootingTableViewControllerDelegate, AmountOfHoursListTableViewControllerDelegate, KindOfAlertListTableViewControllerDelegate {

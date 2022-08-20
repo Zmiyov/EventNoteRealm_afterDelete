@@ -19,7 +19,7 @@ class TextFieldTableViewCell: UITableViewCell {
     
     let textField: UITextField = {
         let textField = UITextField()
-        
+//        let addedText = textField.text
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
