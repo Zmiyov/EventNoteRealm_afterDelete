@@ -29,6 +29,7 @@
 		A5DE68C128AFF9DA00C34183 /* DatePickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DE68C028AFF9DA00C34183 /* DatePickerTableViewCell.swift */; };
 		A5E5619628AA362B00DC4E3E /* ScheduleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E5619528AA362B00DC4E3E /* ScheduleCollectionViewCell.swift */; };
 		A5E5619828AA3E6100DC4E3E /* EventDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E5619728AA3E6100DC4E3E /* EventDetailsViewController.swift */; };
+		A5FE847528B173F3002AA152 /* EventRealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FE847428B173F3002AA152 /* EventRealmModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,7 @@
 		A5DE68C028AFF9DA00C34183 /* DatePickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerTableViewCell.swift; sourceTree = "<group>"; };
 		A5E5619528AA362B00DC4E3E /* ScheduleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCollectionViewCell.swift; sourceTree = "<group>"; };
 		A5E5619728AA3E6100DC4E3E /* EventDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailsViewController.swift; sourceTree = "<group>"; };
+		A5FE847428B173F3002AA152 /* EventRealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRealmModel.swift; sourceTree = "<group>"; };
 		E4E3D2E7E9EDC120441B0F0C /* Pods-EventNote.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EventNote.release.xcconfig"; path = "Target Support Files/Pods-EventNote/Pods-EventNote.release.xcconfig"; sourceTree = "<group>"; };
 		F294DBB57595AF6E435B570C /* Pods_EventNote.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EventNote.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -131,6 +133,7 @@
 				A5DE68B828AECF3700C34183 /* KindOfShootingList.swift */,
 				A5DE68BA28AED66E00C34183 /* KindOfAlertList.swift */,
 				A5DE68BC28AEE57700C34183 /* AddEventCellNameType.swift */,
+				A5FE847428B173F3002AA152 /* EventRealmModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -298,6 +301,7 @@
 				A5DE68B728AEC55300C34183 /* AmountOfHoursListTableViewController.swift in Sources */,
 				A5DE68C128AFF9DA00C34183 /* DatePickerTableViewCell.swift in Sources */,
 				A547D46928A81D0000173BA8 /* AppDelegate.swift in Sources */,
+				A5FE847528B173F3002AA152 /* EventRealmModel.swift in Sources */,
 				A5DE68B228AD415700C34183 /* KindOfAlertListTableViewController.swift in Sources */,
 				A5E5619828AA3E6100DC4E3E /* EventDetailsViewController.swift in Sources */,
 				A5DE68B928AECF3700C34183 /* KindOfShootingList.swift in Sources */,

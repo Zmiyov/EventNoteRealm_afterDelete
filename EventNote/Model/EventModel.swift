@@ -10,10 +10,10 @@ import UIKit
 
 struct Event {
     var kindOfShooting: String
-    var customerName: String
-    //    var dateAndTime: Date
-        var amountOfHours: Int?
+    var dateAndTime: Date?
+    var amountOfHours: Int?
     
+    var customerName: String
     var customerPhoneNumber: Int
     var additionalPhoneNumber: Int?
     var customerTelegramOrChat: String?
@@ -22,13 +22,13 @@ struct Event {
     var mainLocation: String
     var startLocation: String?
     var endLocation: String?
-
+    
     var priceForHour: Int?
     var fullPrice: Int
     var prepayment: Int?
     
     var alertString: String?
-
-//    var notes: String?
+    
+    //    var notes: String?
     //    var customerPhoto: UIImage?
 }

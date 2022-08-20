@@ -9,4 +9,6 @@ pod 'FSCalendar'
 
   # Pods for EventNote
 
+pod 'RealmSwift', '~>10'
+
 end
