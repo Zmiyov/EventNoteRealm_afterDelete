@@ -19,6 +19,7 @@ class DatePickerTableViewCell: UITableViewCell {
     
     let datePicker: UIDatePicker = {
         let datePicker = UIDatePicker()
+        datePicker.minimumDate = Calendar.current.startOfDay(for: Date())
         datePicker.preferredDatePickerStyle = .compact
         datePicker.translatesAutoresizingMaskIntoConstraints = false
         return datePicker
