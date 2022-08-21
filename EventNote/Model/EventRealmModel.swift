@@ -13,19 +13,19 @@ class EventRealmModel: Object {
     @Persisted var dateAndTime = Date()
     @Persisted var amountOfHours: Int = 0
     
-    @Persisted var customerName: String = ""
-    @Persisted var customerPhoneNumber: Int = 0
-    @Persisted var additionalPhoneNumber: Int = 0
-    @Persisted var customerTelegramOrChat: String = ""
-    @Persisted var customerInstagram: String = ""
+    @Persisted var clientName: String = ""
+    @Persisted var clientPhoneNumber: String = ""
+    @Persisted var additionalPhoneNumber: String = ""
+    @Persisted var clientTelegramOrChat: String = ""
+    @Persisted var clientInstagram: String = ""
     
     @Persisted var mainLocation: String = ""
     @Persisted var startLocation: String = ""
     @Persisted var endLocation: String = ""
     
-    @Persisted var priceForHour: Int = 0
-    @Persisted var fullPrice: Int = 0
-    @Persisted var prepayment: Int = 0
+    @Persisted var priceForHour: String = ""
+    @Persisted var fullPrice: String = ""
+    @Persisted var prepayment: String = ""
     
     @Persisted var alertString: String = ""
 

@@ -38,7 +38,7 @@ class EventDetailsViewController: UIViewController {
                                           alighment: .center)
         kindOfShootingLabel.backgroundColor = .blue
         
-        let nameLabel = UILabel(text: event.customerName,
+        let nameLabel = UILabel(text: event.clientName,
                                 font: .systemFont(ofSize: 21, weight: .bold),
                                 alighment: .center)
         
@@ -46,7 +46,7 @@ class EventDetailsViewController: UIViewController {
                                     font: .systemFont(ofSize: 21, weight: .bold),
                                     alighment: .center)
         
-        let customerPhoneNumberLabel = UILabel(text: String(describing: event.customerPhoneNumber),
+        let customerPhoneNumberLabel = UILabel(text: String(describing: event.clientPhoneNumber),
                                                font: .systemFont(ofSize: 21, weight: .bold),
                                                alighment: .center)
         

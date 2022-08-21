@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TextFieldTableViewCell: UITableViewCell {
+class TextFieldTableViewCell: UITableViewCell, UITextFieldDelegate {
     
     let backgroundViewCell: UIView = {
         let view = UIView()
@@ -19,7 +19,6 @@ class TextFieldTableViewCell: UITableViewCell {
     
     let textField: UITextField = {
         let textField = UITextField()
-//        let addedText = textField.text
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
@@ -27,6 +26,7 @@ class TextFieldTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
+        textField.delegate = self
         setupView()
         
         self.selectionStyle = .none
@@ -35,6 +35,11 @@ class TextFieldTableViewCell: UITableViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        textField.text = nil
     }
     
     private func setupView() {
@@ -54,7 +59,6 @@ class TextFieldTableViewCell: UITableViewCell {
             textField.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -5)
          
         ])
-     
-        
     }
+
 }

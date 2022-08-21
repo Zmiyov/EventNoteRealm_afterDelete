@@ -10,9 +10,9 @@ import FSCalendar
 
 class MainViewController: UIViewController {
     
-    var events = [ Event(kindOfShooting: "Wedding", customerName: "Irina", customerPhoneNumber: 380668334455, mainLocation: "Kiev", fullPrice: 400),
-                   Event(kindOfShooting: "Reportage", customerName: "Dasha", customerPhoneNumber: 380998887766, mainLocation: "Centr", fullPrice: 300),
-                   Event(kindOfShooting: "Portrait", customerName: "Sasha", customerPhoneNumber: 380934445566, mainLocation: "Brovary", fullPrice: 500)
+    var events = [ Event(kindOfShooting: "Wedding", clientName: "Irina", clientPhoneNumber: "380668334455", mainLocation: "Kiev", fullPrice: "400"),
+                   Event(kindOfShooting: "Reportage", clientName: "Dasha", clientPhoneNumber: "380998887766", mainLocation: "Centr", fullPrice: "300"),
+                   Event(kindOfShooting: "Portrait", clientName: "Sasha", clientPhoneNumber: "380934445566", mainLocation: "Brovary", fullPrice: "500")
     ]
     
     var calendarHeightConstraint: NSLayoutConstraint!
@@ -172,7 +172,7 @@ extension MainViewController: UICollectionViewDelegateFlowLayout, UICollectionVi
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ScheduleCollectionViewCell
         let event = events[indexPath.item]
 
-        cell.nameLabel.text = event.customerName
+        cell.nameLabel.text = event.clientName
         cell.kindOfShootingLabel.text = event.kindOfShooting
         return cell
     }

@@ -11,19 +11,14 @@ class AddEventTableViewController: UITableViewController  {
     
     let eventModel = EventRealmModel()
     
-//    var event: Event?
-    
     var kindOfShooting1: KindOfShootingList?
     var amountOfHours: Int?
     var kindOfAlertOpted: KindOfAlertList?
-    
     
     let idDatePickerCell = "idDatePickerCell"
     let idTextFieldCell = "idTextFieldCell"
     let idAddEventCell = "idAddEventCell"
     let idAddEventHeader = "idAddEventHeader"
-    
-//    var addEventCellName: AddEventCellNameMainSectionType?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,24 +40,18 @@ class AddEventTableViewController: UITableViewController  {
     
     @objc func saveButtonTapped() {
         print("Save")
+//        tableView.reloadData()
+        print("This kind" + " " + eventModel.kindOfShooting)
+        print("This amount" + " " + String(eventModel.amountOfHours))
+        print(eventModel.dateAndTime)
         
-//        eventModel.kindOfShooting = "kindOfShooting"
-//        eventModel.dateAndTime = Date()
-//        eventModel.amountOfHours = 1
-//        eventModel.customerName = "customerName"
-//        eventModel.customerPhoneNumber = 38
-//        eventModel.additionalPhoneNumber = 39
-//        eventModel.customerTelegramOrChat = "customerTelegramOrChat"
-//        eventModel.customerInstagram = "customerInstagram"
-//        eventModel.mainLocation = "mainLocation"
-//        eventModel.startLocation = "startLocation"
-//        eventModel.endLocation = "endLocation"
-//        eventModel.priceForHour = 100
-//        eventModel.fullPrice = 200
-//        eventModel.prepayment = 300
-//        eventModel.alertString = "alertString"
-        tableView.reloadData()
-        RealmManager.shared.saveEventModel(model: eventModel)
+        print("This name" + " " + eventModel.clientName)
+        print("This PhoneNumber" + " " + eventModel.clientPhoneNumber)
+        print("This additionalPhoneNumber" + " " + eventModel.additionalPhoneNumber)
+        print("This clientTelegramOrChat" + " " + eventModel.clientTelegramOrChat)
+        print("This clientInstagram" + " " + eventModel.clientInstagram)
+        
+//        RealmManager.shared.saveEventModel(model: eventModel)
         
     }
     
@@ -100,6 +89,7 @@ class AddEventTableViewController: UITableViewController  {
                 if let kindOfShooting1 = kindOfShooting1 {
                     cell.nameCellLabel.text = kindOfShooting1.description
                     cell.nameCellLabel.textColor = .label
+                    eventModel.kindOfShooting = kindOfShooting1.description
                 } else {
                     cell.nameCellLabel.text = type.description
                     cell.nameCellLabel.textColor = .darkGray
@@ -133,21 +123,116 @@ class AddEventTableViewController: UITableViewController  {
                 return cell
             }
         case 1:
-            let cell = tableView.dequeueReusableCell(withIdentifier: idTextFieldCell, for: indexPath) as! TextFieldTableViewCell
-            let type = AddEventCellNameContactsSectionType.allCases[indexPath.row]
-            cell.textField.placeholder = type.description
-//            print(cell.textField.text)
-            return cell
+            switch indexPath.row {
+            case 0:
+                let cell = tableView.dequeueReusableCell(withIdentifier: idTextFieldCell, for: indexPath) as! TextFieldTableViewCell
+                let type = AddEventCellNameContactsSectionType.allCases[indexPath.row]
+                cell.textField.placeholder = type.description
+                cell.textField.addTarget(self, action: #selector(textChanged), for: .editingChanged)
+                cell.textField.text = eventModel.clientName
+                return cell
+            case 1:
+                let cell = tableView.dequeueReusableCell(withIdentifier: idTextFieldCell, for: indexPath) as! TextFieldTableViewCell
+                let type = AddEventCellNameContactsSectionType.allCases[indexPath.row]
+                cell.textField.placeholder = type.description
+                cell.textField.tag = 1
+                cell.textField.addTarget(self, action: #selector(textChanged), for: .editingChanged)
+                cell.textField.text = eventModel.clientPhoneNumber
+                return cell
+            case 2:
+                let cell = tableView.dequeueReusableCell(withIdentifier: idTextFieldCell, for: indexPath) as! TextFieldTableViewCell
+                let type = AddEventCellNameContactsSectionType.allCases[indexPath.row]
+                cell.textField.placeholder = type.description
+                cell.textField.tag = 2
+                cell.textField.addTarget(self, action: #selector(textChanged), for: .editingChanged)
+                cell.textField.text = eventModel.additionalPhoneNumber
+                return cell
+            case 3:
+                let cell = tableView.dequeueReusableCell(withIdentifier: idTextFieldCell, for: indexPath) as! TextFieldTableViewCell
+                let type = AddEventCellNameContactsSectionType.allCases[indexPath.row]
+                cell.textField.placeholder = type.description
+                cell.textField.tag = 3
+                cell.textField.addTarget(self, action: #selector(textChanged), for: .editingChanged)
+                cell.textField.text = eventModel.clientTelegramOrChat
+                return cell
+            case 4:
+                let cell = tableView.dequeueReusableCell(withIdentifier: idTextFieldCell, for: indexPath) as! TextFieldTableViewCell
+                let type = AddEventCellNameContactsSectionType.allCases[indexPath.row]
+                cell.textField.placeholder = type.description
+                cell.textField.tag = 4
+                cell.textField.addTarget(self, action: #selector(textChanged), for: .editingChanged)
+                cell.textField.text = eventModel.clientInstagram
+                return cell
+            default:
+                let cell = tableView.dequeueReusableCell(withIdentifier: idTextFieldCell, for: indexPath) as! TextFieldTableViewCell
+                let type = AddEventCellNameContactsSectionType.allCases[indexPath.row]
+                cell.textField.placeholder = type.description
+                return cell
+            }
         case 2:
-            let cell = tableView.dequeueReusableCell(withIdentifier: idTextFieldCell, for: indexPath) as! TextFieldTableViewCell
-            let type = AddEventCellLocationsMainSectionType.allCases[indexPath.row]
-            cell.textField.placeholder = type.description
-            return cell
+            switch indexPath.row {
+            case 0:
+                let cell = tableView.dequeueReusableCell(withIdentifier: idTextFieldCell, for: indexPath) as! TextFieldTableViewCell
+                let type = AddEventCellNameContactsSectionType.allCases[indexPath.row]
+                cell.textField.placeholder = type.description
+                cell.textField.tag = 5
+                cell.textField.addTarget(self, action: #selector(textChanged), for: .editingChanged)
+                cell.textField.text = eventModel.mainLocation
+                return cell
+            case 1:
+                let cell = tableView.dequeueReusableCell(withIdentifier: idTextFieldCell, for: indexPath) as! TextFieldTableViewCell
+                let type = AddEventCellNameContactsSectionType.allCases[indexPath.row]
+                cell.textField.placeholder = type.description
+                cell.textField.tag = 6
+                cell.textField.addTarget(self, action: #selector(textChanged), for: .editingChanged)
+                cell.textField.text = eventModel.startLocation
+                return cell
+            case 2:
+                let cell = tableView.dequeueReusableCell(withIdentifier: idTextFieldCell, for: indexPath) as! TextFieldTableViewCell
+                let type = AddEventCellNameContactsSectionType.allCases[indexPath.row]
+                cell.textField.placeholder = type.description
+                cell.textField.tag = 7
+                cell.textField.addTarget(self, action: #selector(textChanged), for: .editingChanged)
+                cell.textField.text = eventModel.endLocation
+                return cell
+            default:
+                let cell = tableView.dequeueReusableCell(withIdentifier: idTextFieldCell, for: indexPath) as! TextFieldTableViewCell
+                let type = AddEventCellNameContactsSectionType.allCases[indexPath.row]
+                cell.textField.placeholder = type.description
+                return cell
+            }
         case 3:
-            let cell = tableView.dequeueReusableCell(withIdentifier: idTextFieldCell, for: indexPath) as! TextFieldTableViewCell
-            let type = AddEventCellNamePaymentSectionType.allCases[indexPath.row]
-            cell.textField.placeholder = type.description
-            return cell
+            switch indexPath.row {
+            case 0:
+                let cell = tableView.dequeueReusableCell(withIdentifier: idTextFieldCell, for: indexPath) as! TextFieldTableViewCell
+                let type = AddEventCellNameContactsSectionType.allCases[indexPath.row]
+                cell.textField.placeholder = type.description
+                cell.textField.tag = 8
+                cell.textField.addTarget(self, action: #selector(textChanged), for: .editingChanged)
+                cell.textField.text = eventModel.priceForHour
+                return cell
+            case 1:
+                let cell = tableView.dequeueReusableCell(withIdentifier: idTextFieldCell, for: indexPath) as! TextFieldTableViewCell
+                let type = AddEventCellNameContactsSectionType.allCases[indexPath.row]
+                cell.textField.placeholder = type.description
+                cell.textField.tag = 9
+                cell.textField.addTarget(self, action: #selector(textChanged), for: .editingChanged)
+                cell.textField.text = eventModel.fullPrice
+                return cell
+            case 2:
+                let cell = tableView.dequeueReusableCell(withIdentifier: idTextFieldCell, for: indexPath) as! TextFieldTableViewCell
+                let type = AddEventCellNameContactsSectionType.allCases[indexPath.row]
+                cell.textField.placeholder = type.description
+                cell.textField.tag = 10
+                cell.textField.addTarget(self, action: #selector(textChanged), for: .editingChanged)
+                cell.textField.text = eventModel.prepayment
+                return cell
+            default:
+                let cell = tableView.dequeueReusableCell(withIdentifier: idTextFieldCell, for: indexPath) as! TextFieldTableViewCell
+                let type = AddEventCellNameContactsSectionType.allCases[indexPath.row]
+                cell.textField.placeholder = type.description
+                return cell
+            }
         case 4:
             let cell = tableView.dequeueReusableCell(withIdentifier: idAddEventCell, for: indexPath) as! ListTableViewCell
             let type = AddEventCellNameReminderSectionType.allCases[indexPath.row]
@@ -166,6 +251,37 @@ class AddEventTableViewController: UITableViewController  {
             let type = AddEventCellNameContactsSectionType.allCases[indexPath.row]
             cell.nameCellLabel.text = type.description
             return cell
+        }
+    }
+    
+    @objc func textChanged(sender: UITextField) {
+        if let name = sender.text {
+            switch sender.tag {
+            case 0:
+                eventModel.clientName = name
+            case 1:
+                eventModel.clientPhoneNumber = name
+            case 2:
+                eventModel.additionalPhoneNumber = name
+            case 3:
+                eventModel.clientTelegramOrChat = name
+            case 4:
+                eventModel.clientInstagram = name
+            case 5:
+                eventModel.mainLocation = name
+            case 6:
+                eventModel.startLocation = name
+            case 7:
+                eventModel.endLocation = name
+            case 8:
+                eventModel.priceForHour = name
+            case 9:
+                eventModel.fullPrice = name
+            case 10:
+                eventModel.prepayment = name
+            default:
+                break
+            }
         }
     }
     
@@ -222,7 +338,6 @@ class AddEventTableViewController: UITableViewController  {
             break
         }
     }
-
 }
 
 extension AddEventTableViewController: KindOfShootingTableViewControllerDelegate, AmountOfHoursListTableViewControllerDelegate, KindOfAlertListTableViewControllerDelegate {
@@ -242,4 +357,11 @@ extension AddEventTableViewController: KindOfShootingTableViewControllerDelegate
     }
 }
 
+extension AddEventTableViewController: UITextFieldDelegate {
+
+
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        textField.layoutIfNeeded()
+    }
+}
 

@@ -13,19 +13,19 @@ struct Event {
     var dateAndTime: Date?
     var amountOfHours: Int?
     
-    var customerName: String
-    var customerPhoneNumber: Int
-    var additionalPhoneNumber: Int?
-    var customerTelegramOrChat: String?
-    var customerInstagram: String?
+    var clientName: String
+    var clientPhoneNumber: String
+    var additionalPhoneNumber: String?
+    var clientTelegramOrChat: String?
+    var clientInstagram: String?
     
     var mainLocation: String
     var startLocation: String?
     var endLocation: String?
     
-    var priceForHour: Int?
-    var fullPrice: Int
-    var prepayment: Int?
+    var priceForHour: String?
+    var fullPrice: String
+    var prepayment: String?
     
     var alertString: String?
     
