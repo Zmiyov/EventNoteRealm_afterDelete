@@ -90,7 +90,6 @@ class MainViewController: UIViewController {
         let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe))
         swipeDown.direction = .down
         calendar.addGestureRecognizer(swipeDown)
-        
     }
     
     @objc func handleSwipe(gesture: UISwipeGestureRecognizer) {
@@ -103,7 +102,6 @@ class MainViewController: UIViewController {
             break
         }
     }
-    
 }
 
 //MARK: FSCalendarDataSource, FSCalendarDelegate
@@ -116,7 +114,7 @@ extension MainViewController: FSCalendarDataSource, FSCalendarDelegate {
     }
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        
+    
     }
 }
 
@@ -134,18 +132,14 @@ extension MainViewController {
             calendar.topAnchor.constraint(equalTo: view.topAnchor, constant: 90),
             calendar.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
             calendar.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0)
-        
         ])
-        
         view.addSubview(showHideButton)
         NSLayoutConstraint.activate([
             showHideButton.topAnchor.constraint(equalTo: calendar.bottomAnchor, constant: 0),
             showHideButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
             showHideButton.widthAnchor.constraint(equalToConstant: 100),
             showHideButton.heightAnchor.constraint(equalToConstant: 20)
-        
         ])
-        
         view.addSubview(collectionView)
         collectionView.backgroundColor = .white
         NSLayoutConstraint.activate([
@@ -154,7 +148,6 @@ extension MainViewController {
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
             collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0)
         ])
-
     }
 }
 
@@ -180,7 +173,6 @@ extension MainViewController: UICollectionViewDelegateFlowLayout, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let currentEvent = events[indexPath.item]
-
         let details = EventDetailsViewController()
         details.event = currentEvent
         let navVC = UINavigationController(rootViewController: details)
@@ -194,5 +186,4 @@ extension MainViewController: UICollectionViewDelegateFlowLayout, UICollectionVi
         
         present(navVC, animated: true)
     }
-    
 }

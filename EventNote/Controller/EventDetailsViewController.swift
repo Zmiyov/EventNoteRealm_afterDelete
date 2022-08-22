@@ -15,10 +15,7 @@ class EventDetailsViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .blue
         title = "Details"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Dismiss",
-                                                            style: .plain,
-                                                            target: self,
-                                                            action: #selector(dismissSelf))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Dismiss", style: .plain, target: self, action: #selector(dismissSelf))
         verticalStackView()
     }
     
@@ -32,7 +29,6 @@ class EventDetailsViewController: UIViewController {
             return
         }
 
-        
         let kindOfShootingLabel = UILabel(text: event.kindOfShooting,
                                           font: .systemFont(ofSize: 21, weight: .bold),
                                           alighment: .center)
@@ -53,12 +49,6 @@ class EventDetailsViewController: UIViewController {
         let priceLabel = UILabel(text: String(describing: event.fullPrice),
                                  font: .systemFont(ofSize: 21, weight: .bold),
                                  alighment: .center)
-
-        
-
-        
-//        let horizontalStackView = UIStackView(arrangedSubviews: [])
-        
         
         let verticalStackView = UIStackView(arrangedSubviews: [kindOfShootingLabel, nameLabel, locationLabel, customerPhoneNumberLabel, priceLabel])
         verticalStackView.frame = view.bounds

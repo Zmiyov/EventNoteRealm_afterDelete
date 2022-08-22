@@ -18,10 +18,6 @@ class KindOfShootingTableViewController: UITableViewController {
     
     var delegate: KindOfShootingTableViewControllerDelegate?
     var kindOfShooting: KindOfShootingList?
-
-
-//    let kindArray = [["Wedding", "Portrait", "Reportage", "Pregnant", "Birthday", "Family", "Love Story"]
-//    ]
     
     let kindOfShootingTableView = UITableView(frame: .zero, style: .insetGrouped)
     
@@ -38,13 +34,15 @@ class KindOfShootingTableViewController: UITableViewController {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: idKindOfShootingCell)
         tableView.register(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: idKindOfShootingCellHeader)
-
     }
     
+<<<<<<< HEAD
+=======
     @objc func backButton() {
         dismiss(animated: true, completion: nil)
     }
 
+>>>>>>> parent of 01cb934 (Polish segue present)
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -55,7 +53,6 @@ class KindOfShootingTableViewController: UITableViewController {
         return KindOfShootingList.allCases.count
     }
 
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: idKindOfShootingCell, for: indexPath)
         

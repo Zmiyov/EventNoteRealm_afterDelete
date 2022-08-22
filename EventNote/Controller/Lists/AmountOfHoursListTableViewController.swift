@@ -34,12 +34,14 @@ class AmountOfHoursListTableViewController: UITableViewController {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: idAmountOfHoursListCell)
         tableView.register(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: idAmountOfHoursListCellHeader)
-
     }
+<<<<<<< HEAD
+=======
     
     @objc func backButton() {
         dismiss(animated: true, completion: nil)
     }
+>>>>>>> parent of 01cb934 (Polish segue present)
 
     // MARK: - Table view data source
 
@@ -54,24 +56,19 @@ class AmountOfHoursListTableViewController: UITableViewController {
         }
     }
 
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: idAmountOfHoursListCell, for: indexPath)
         for i in 1...indexPath.row + 1 {
-            
             var content = cell.defaultContentConfiguration()
             content.text = String(i)
             cell.contentConfiguration = content
-            
         }
-        
 //TODO: switch for none
         if amountOrHours != nil && amountOrHours == indexPath.row + 1 {
             cell.accessoryType = .checkmark
         } else {
             cell.accessoryType = .none
         }
-        
         return cell
     }
     
@@ -82,7 +79,6 @@ class AmountOfHoursListTableViewController: UITableViewController {
             tableView.reloadData()
             dismiss(animated: true, completion: nil)
         }
-        
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

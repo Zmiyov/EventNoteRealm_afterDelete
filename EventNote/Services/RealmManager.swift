@@ -6,6 +6,7 @@
 //
 
 import RealmSwift
+import Realm
 
 class RealmManager {
     
@@ -14,10 +15,11 @@ class RealmManager {
     private init() {}
     
     let localRealm = try! Realm()
-    
+   
     func saveEventModel(model: EventRealmModel) {
         try! localRealm.write {
-            localRealm.add(model )
+            localRealm.add(model)
+            print("User Realm User file location: \(localRealm.configuration.fileURL!.path)")
         }
     }
     

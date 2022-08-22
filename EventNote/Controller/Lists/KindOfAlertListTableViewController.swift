@@ -19,7 +19,6 @@ class KindOfAlertListTableViewController: UITableViewController {
     var delegate: KindOfAlertListTableViewControllerDelegate?
     var kindOfAlert: KindOfAlertList?
 
-    
     let alertsTableView = UITableView(frame: .zero, style: .insetGrouped)
     
     override func viewDidLoad() {
@@ -37,10 +36,13 @@ class KindOfAlertListTableViewController: UITableViewController {
         tableView.register(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: idKindOfAlertCellHeader)
 
     }
+<<<<<<< HEAD
+=======
     
     @objc func backButton() {
         dismiss(animated: true, completion: nil)
     }
+>>>>>>> parent of 01cb934 (Polish segue present)
 
     // MARK: - Table view data source
 
@@ -56,7 +58,6 @@ class KindOfAlertListTableViewController: UITableViewController {
         }
     }
 
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "idKindOfAlertCell", for: indexPath)
         switch indexPath {
@@ -106,7 +107,6 @@ class KindOfAlertListTableViewController: UITableViewController {
                 dismiss(animated: true, completion: nil)
             }
         }
-        
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -124,7 +124,4 @@ class KindOfAlertListTableViewController: UITableViewController {
         default: return 15
         }
     }
-    
-    
-
 }

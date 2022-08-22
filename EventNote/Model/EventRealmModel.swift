@@ -6,11 +6,12 @@
 //
 
 import RealmSwift
+import Foundation
 
 class EventRealmModel: Object {
     
     @Persisted var kindOfShooting: String = ""
-    @Persisted var dateAndTime = Date()
+    @Persisted var dateAndTime: Date = Date()
     @Persisted var amountOfHours: Int = 0
     
     @Persisted var clientName: String = ""
