@@ -25,6 +25,7 @@ class AddEventTableViewController: UITableViewController  {
         super.viewDidLoad()
         title = "New Event"
         
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(backButton))
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveButtonTapped))
     
         tableView.delegate = self
@@ -37,6 +38,10 @@ class AddEventTableViewController: UITableViewController  {
         tableView.register(ListTableViewCell.self, forCellReuseIdentifier: idAddEventCell)
         tableView.register(AddEventTableViewHeader.self, forHeaderFooterViewReuseIdentifier: idAddEventHeader)
         
+    }
+    
+    @objc func backButton() {
+        dismiss(animated: true, completion: nil)
     }
     
     @objc func saveButtonTapped() {
@@ -276,35 +281,17 @@ class AddEventTableViewController: UITableViewController  {
             let alertVC = KindOfShootingTableViewController()
             alertVC.delegate = self
             alertVC.kindOfShooting = kindOfShooting1
-            alertVC.modalTransitionStyle = .coverVertical
-            let navController = UINavigationController(rootViewController: alertVC)
-            let appearance = UINavigationBarAppearance()
-            appearance.configureWithOpaqueBackground()
-            navController.navigationBar.standardAppearance = appearance
-            navController.navigationBar.scrollEdgeAppearance = appearance
-            present(navController, animated: true)
+            navigationController?.pushViewController(alertVC, animated: true)
         case [0, 2]:
             let alertVC = AmountOfHoursListTableViewController()
             alertVC.delegate = self
             alertVC.amountOrHours = amountOfHours
-            alertVC.modalTransitionStyle = .coverVertical
-            let navController = UINavigationController(rootViewController: alertVC)
-            let appearance = UINavigationBarAppearance()
-            appearance.configureWithOpaqueBackground()
-            navController.navigationBar.standardAppearance = appearance
-            navController.navigationBar.scrollEdgeAppearance = appearance
-            present(navController, animated: true)
+            navigationController?.pushViewController(alertVC, animated: true)
         case [4, 0]:
             let alertVC = KindOfAlertListTableViewController()
             alertVC.delegate = self
             alertVC.kindOfAlert = kindOfAlertOpted
-            alertVC.modalTransitionStyle = .coverVertical
-            let navController = UINavigationController(rootViewController: alertVC)
-            let appearance = UINavigationBarAppearance()
-            appearance.configureWithOpaqueBackground()
-            navController.navigationBar.standardAppearance = appearance
-            navController.navigationBar.scrollEdgeAppearance = appearance
-            present(navController, animated: true)
+            navigationController?.pushViewController(alertVC, animated: true)
         default:
             break
         }

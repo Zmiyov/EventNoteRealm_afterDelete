@@ -24,7 +24,6 @@ class KindOfAlertListTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Alert"
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(backButton))
         
         self.tableView = alertsTableView
         tableView.delegate = self
@@ -36,13 +35,7 @@ class KindOfAlertListTableViewController: UITableViewController {
         tableView.register(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: idKindOfAlertCellHeader)
 
     }
-<<<<<<< HEAD
-=======
     
-    @objc func backButton() {
-        dismiss(animated: true, completion: nil)
-    }
->>>>>>> parent of 01cb934 (Polish segue present)
 
     // MARK: - Table view data source
 
@@ -97,14 +90,12 @@ class KindOfAlertListTableViewController: UITableViewController {
             if let kindSelected = kindOfAlert {
                 delegate?.kindOfAlertListTableViewController(self, didSelect: kindSelected)
                 tableView.reloadData()
-                dismiss(animated: true, completion: nil)
             }
         default:
             kindOfAlert = KindOfAlertList.allCases[indexPath.row + 1]
             if let kindSelected = kindOfAlert {
                 delegate?.kindOfAlertListTableViewController(self, didSelect: kindSelected)
                 tableView.reloadData()
-                dismiss(animated: true, completion: nil)
             }
         }
     }

@@ -66,7 +66,13 @@ class MainViewController: UIViewController {
     @objc func addButtonTapped() {
         
         let addEventVC = AddEventTableViewController()
-        navigationController?.pushViewController(addEventVC, animated: true)
+        let navController = UINavigationController(rootViewController: addEventVC)
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        navController.navigationBar.standardAppearance = appearance
+        navController.navigationBar.scrollEdgeAppearance = appearance
+//        navigationController?.pushViewController(addEventVC, animated: true)
+        present(navController, animated: true)
     }
     
     @objc func showHideButtonTapped() {

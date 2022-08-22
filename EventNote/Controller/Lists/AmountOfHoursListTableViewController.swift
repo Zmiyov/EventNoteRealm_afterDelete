@@ -24,7 +24,6 @@ class AmountOfHoursListTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Amount Of Hour"
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(backButton))
         
         self.tableView = alertsTableView
         tableView.delegate = self
@@ -35,13 +34,7 @@ class AmountOfHoursListTableViewController: UITableViewController {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: idAmountOfHoursListCell)
         tableView.register(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: idAmountOfHoursListCellHeader)
     }
-<<<<<<< HEAD
-=======
-    
-    @objc func backButton() {
-        dismiss(animated: true, completion: nil)
-    }
->>>>>>> parent of 01cb934 (Polish segue present)
+
 
     // MARK: - Table view data source
 
@@ -77,7 +70,6 @@ class AmountOfHoursListTableViewController: UITableViewController {
         if let kindSelected = amountOrHours {
             delegate?.amountOfHoursListTableViewController(self, didSelect: kindSelected)
             tableView.reloadData()
-            dismiss(animated: true, completion: nil)
         }
     }
     

@@ -24,7 +24,6 @@ class KindOfShootingTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Alert"
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(backButton))
         
         self.tableView = kindOfShootingTableView
         tableView.delegate = self
@@ -36,13 +35,10 @@ class KindOfShootingTableViewController: UITableViewController {
         tableView.register(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: idKindOfShootingCellHeader)
     }
     
-<<<<<<< HEAD
-=======
-    @objc func backButton() {
-        dismiss(animated: true, completion: nil)
-    }
 
->>>>>>> parent of 01cb934 (Polish segue present)
+
+
+
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -75,7 +71,6 @@ class KindOfShootingTableViewController: UITableViewController {
         if let kindSelected = kindOfShooting {
             delegate?.kindOfShootingTableViewController(self, didSelect: kindSelected)
             tableView.reloadData()
-            dismiss(animated: true, completion: nil)
         }
     }
     
