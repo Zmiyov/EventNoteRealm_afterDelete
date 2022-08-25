@@ -11,11 +11,6 @@ import RealmSwift
 
 class MainViewController: UIViewController {
     
-//    var events = [ Event(kindOfShooting: "Wedding", clientName: "Irina", clientPhoneNumber: "380668334455", mainLocation: "Kiev", fullPrice: "400"),
-//                   Event(kindOfShooting: "Reportage", clientName: "Dasha", clientPhoneNumber: "380998887766", mainLocation: "Centr", fullPrice: "300"),
-//                   Event(kindOfShooting: "Portrait", clientName: "Sasha", clientPhoneNumber: "380934445566", mainLocation: "Brovary", fullPrice: "500")
-//    ]
-    
     var calendarHeightConstraint: NSLayoutConstraint!
     
     private var calendar: FSCalendar = {
@@ -43,7 +38,6 @@ class MainViewController: UIViewController {
     
     let localRealm = try! Realm()
     var eventRealmModelsArray: Results<EventRealmModel>!
-    var filteredEventRealmModelsArray = [EventRealmModel]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,15 +64,18 @@ class MainViewController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonTapped))
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        collectionView.reloadData()
+    }
+    
     @objc func addButtonTapped() {
-        
         let addEventVC = AddEventTableViewController()
         let navController = UINavigationController(rootViewController: addEventVC)
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
         navController.navigationBar.standardAppearance = appearance
         navController.navigationBar.scrollEdgeAppearance = appearance
-//        navigationController?.pushViewController(addEventVC, animated: true)
         present(navController, animated: true)
     }
     
@@ -117,7 +114,7 @@ class MainViewController: UIViewController {
     }
 }
 
-//MARK: FSCalendarDataSource, FSCalendarDelegate
+//MARK: - FSCalendarDataSource, FSCalendarDelegate
 
 extension MainViewController: FSCalendarDataSource, FSCalendarDelegate {
     
@@ -129,55 +126,20 @@ extension MainViewController: FSCalendarDataSource, FSCalendarDelegate {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
     
         datePredicate(date: date)
-        
-//        print(eventRealmModelsArray)
     }
     
     func datePredicate(date: Date) {
+        
         let startOfTheDay = date
         let endOfTheDay: Date = {
             let components = DateComponents(day: 1, second: -1)
             return Calendar.current.date(byAdding: components, to: startOfTheDay)!
         }()
+        
         let predicate = NSPredicate(format: "dateAndTime BETWEEN %@", [startOfTheDay, endOfTheDay])
         
-        eventRealmModelsArray = localRealm.objects(EventRealmModel.self).filter(predicate)
+        eventRealmModelsArray = localRealm.objects(EventRealmModel.self).filter(predicate).sorted(byKeyPath: "dateAndTime")
         collectionView.reloadData()
-    }
-    
-}
-
-
-//MARK: Set Constraints
-
-extension MainViewController {
-    
-    func setConstraints() {
-        view.addSubview(calendar)
-        
-        calendarHeightConstraint = NSLayoutConstraint(item: calendar, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 300)
-        calendar.addConstraint(calendarHeightConstraint)
-        
-        NSLayoutConstraint.activate([
-            calendar.topAnchor.constraint(equalTo: view.topAnchor, constant: 90),
-            calendar.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
-            calendar.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0)
-        ])
-        view.addSubview(showHideButton)
-        NSLayoutConstraint.activate([
-            showHideButton.topAnchor.constraint(equalTo: calendar.bottomAnchor, constant: 0),
-            showHideButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
-            showHideButton.widthAnchor.constraint(equalToConstant: 100),
-            showHideButton.heightAnchor.constraint(equalToConstant: 20)
-        ])
-        view.addSubview(collectionView)
-        collectionView.backgroundColor = .white
-        NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: showHideButton.bottomAnchor, constant: 10),
-            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
-            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
-            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0)
-        ])
     }
 }
 
@@ -217,5 +179,38 @@ extension MainViewController: UICollectionViewDelegateFlowLayout, UICollectionVi
         navVC.navigationBar.scrollEdgeAppearance = appearance
         
         present(navVC, animated: true)
+    }
+}
+
+//MARK: Set Constraints
+
+extension MainViewController {
+    
+    func setConstraints() {
+        view.addSubview(calendar)
+        
+        calendarHeightConstraint = NSLayoutConstraint(item: calendar, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 300)
+        calendar.addConstraint(calendarHeightConstraint)
+        
+        NSLayoutConstraint.activate([
+            calendar.topAnchor.constraint(equalTo: view.topAnchor, constant: 90),
+            calendar.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
+            calendar.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0)
+        ])
+        view.addSubview(showHideButton)
+        NSLayoutConstraint.activate([
+            showHideButton.topAnchor.constraint(equalTo: calendar.bottomAnchor, constant: 0),
+            showHideButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
+            showHideButton.widthAnchor.constraint(equalToConstant: 100),
+            showHideButton.heightAnchor.constraint(equalToConstant: 20)
+        ])
+        view.addSubview(collectionView)
+        collectionView.backgroundColor = .white
+        NSLayoutConstraint.activate([
+            collectionView.topAnchor.constraint(equalTo: showHideButton.bottomAnchor, constant: 10),
+            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
+            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
+            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0)
+        ])
     }
 }

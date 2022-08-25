@@ -45,18 +45,6 @@ class AddEventTableViewController: UITableViewController  {
     }
     
     @objc func saveButtonTapped() {
-        print("Save")
-//        tableView.reloadData()
-//        print("This kind" + " " + eventModel.kindOfShooting)
-//        print("This amount" + " " + String(eventModel.amountOfHours))
-//        print(eventModel.dateAndTime)
-//
-//        print("This name" + " " + eventModel.clientName)
-//        print("This PhoneNumber" + " " + eventModel.clientPhoneNumber)
-//        print("This additionalPhoneNumber" + " " + eventModel.additionalPhoneNumber)
-//        print("This clientTelegramOrChat" + " " + eventModel.clientTelegramOrChat)
-//        print("This clientInstagram" + " " + eventModel.clientInstagram)
-        
         RealmManager.shared.saveEventModel(model: eventModel)
         dismiss(animated: true, completion: nil)
     }

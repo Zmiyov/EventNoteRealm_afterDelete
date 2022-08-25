@@ -23,6 +23,10 @@ class RealmManager {
         }
     }
     
-
+    func deleteEventModel(model: EventRealmModel) {
+        try! localRealm.write {
+            localRealm.delete(model)
+        }
+    }
     
 }
