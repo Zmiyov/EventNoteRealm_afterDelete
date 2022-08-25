@@ -19,7 +19,7 @@ class RealmManager {
     func saveEventModel(model: EventRealmModel) {
         try! localRealm.write {
             localRealm.add(model)
-            print("User Realm User file location: \(localRealm.configuration.fileURL!.path)")
+//            print("User Realm User file location: \(localRealm.configuration.fileURL!.path)")
         }
     }
     

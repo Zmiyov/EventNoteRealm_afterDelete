@@ -7,13 +7,14 @@
 
 import UIKit
 import FSCalendar
+import RealmSwift
 
 class MainViewController: UIViewController {
     
-    var events = [ Event(kindOfShooting: "Wedding", clientName: "Irina", clientPhoneNumber: "380668334455", mainLocation: "Kiev", fullPrice: "400"),
-                   Event(kindOfShooting: "Reportage", clientName: "Dasha", clientPhoneNumber: "380998887766", mainLocation: "Centr", fullPrice: "300"),
-                   Event(kindOfShooting: "Portrait", clientName: "Sasha", clientPhoneNumber: "380934445566", mainLocation: "Brovary", fullPrice: "500")
-    ]
+//    var events = [ Event(kindOfShooting: "Wedding", clientName: "Irina", clientPhoneNumber: "380668334455", mainLocation: "Kiev", fullPrice: "400"),
+//                   Event(kindOfShooting: "Reportage", clientName: "Dasha", clientPhoneNumber: "380998887766", mainLocation: "Centr", fullPrice: "300"),
+//                   Event(kindOfShooting: "Portrait", clientName: "Sasha", clientPhoneNumber: "380934445566", mainLocation: "Brovary", fullPrice: "500")
+//    ]
     
     var calendarHeightConstraint: NSLayoutConstraint!
     
@@ -39,11 +40,17 @@ class MainViewController: UIViewController {
         collectionView.register(ScheduleCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
         return collectionView
     }()
+    
+    let localRealm = try! Realm()
+    var eventRealmModelsArray: Results<EventRealmModel>!
+    var filteredEventRealmModelsArray = [EventRealmModel]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         title = "Schedule"
+
+        datePredicate(date: Date())
         
         calendar.delegate = self
         calendar.dataSource = self
@@ -121,8 +128,25 @@ extension MainViewController: FSCalendarDataSource, FSCalendarDelegate {
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
     
+        datePredicate(date: date)
+        
+//        print(eventRealmModelsArray)
     }
+    
+    func datePredicate(date: Date) {
+        let startOfTheDay = date
+        let endOfTheDay: Date = {
+            let components = DateComponents(day: 1, second: -1)
+            return Calendar.current.date(byAdding: components, to: startOfTheDay)!
+        }()
+        let predicate = NSPredicate(format: "dateAndTime BETWEEN %@", [startOfTheDay, endOfTheDay])
+        
+        eventRealmModelsArray = localRealm.objects(EventRealmModel.self).filter(predicate)
+        collectionView.reloadData()
+    }
+    
 }
+
 
 //MARK: Set Constraints
 
@@ -157,6 +181,8 @@ extension MainViewController {
     }
 }
 
+//MARK: Collection View
+
 extension MainViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -164,12 +190,12 @@ extension MainViewController: UICollectionViewDelegateFlowLayout, UICollectionVi
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return events.count
+        return eventRealmModelsArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ScheduleCollectionViewCell
-        let event = events[indexPath.item]
+        let event = eventRealmModelsArray[indexPath.item]
 
         cell.nameLabel.text = event.clientName
         cell.kindOfShootingLabel.text = event.kindOfShooting
@@ -178,7 +204,7 @@ extension MainViewController: UICollectionViewDelegateFlowLayout, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let currentEvent = events[indexPath.item]
+        let currentEvent = eventRealmModelsArray[indexPath.item]
         let details = EventDetailsViewController()
         details.event = currentEvent
         let navVC = UINavigationController(rootViewController: details)

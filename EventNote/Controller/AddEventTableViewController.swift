@@ -50,7 +50,7 @@ class AddEventTableViewController: UITableViewController  {
 //        print("This kind" + " " + eventModel.kindOfShooting)
 //        print("This amount" + " " + String(eventModel.amountOfHours))
 //        print(eventModel.dateAndTime)
-//        
+//
 //        print("This name" + " " + eventModel.clientName)
 //        print("This PhoneNumber" + " " + eventModel.clientPhoneNumber)
 //        print("This additionalPhoneNumber" + " " + eventModel.additionalPhoneNumber)
@@ -59,8 +59,6 @@ class AddEventTableViewController: UITableViewController  {
         
         RealmManager.shared.saveEventModel(model: eventModel)
         dismiss(animated: true, completion: nil)
-//        print("User Realm User file location: \(realm.configuration.fileURL!.path)")
-        
     }
     
 //    private func updateSaveButtonState() {

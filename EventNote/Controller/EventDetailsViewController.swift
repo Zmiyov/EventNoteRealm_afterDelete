@@ -9,7 +9,7 @@ import UIKit
 
 class EventDetailsViewController: UIViewController {
     
-    var event: Event?
+    var event: EventRealmModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
