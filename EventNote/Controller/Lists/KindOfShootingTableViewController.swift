@@ -71,6 +71,7 @@ class KindOfShootingTableViewController: UITableViewController {
         if let kindSelected = kindOfShooting {
             delegate?.kindOfShootingTableViewController(self, didSelect: kindSelected)
             tableView.reloadData()
+            self.navigationController?.popViewController(animated: true)
         }
     }
     

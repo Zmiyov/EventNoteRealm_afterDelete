@@ -90,12 +90,14 @@ class KindOfAlertListTableViewController: UITableViewController {
             if let kindSelected = kindOfAlert {
                 delegate?.kindOfAlertListTableViewController(self, didSelect: kindSelected)
                 tableView.reloadData()
+                self.navigationController?.popViewController(animated: true)
             }
         default:
             kindOfAlert = KindOfAlertList.allCases[indexPath.row + 1]
             if let kindSelected = kindOfAlert {
                 delegate?.kindOfAlertListTableViewController(self, didSelect: kindSelected)
                 tableView.reloadData()
+                self.navigationController?.popViewController(animated: true)
             }
         }
     }

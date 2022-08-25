@@ -70,6 +70,7 @@ class AmountOfHoursListTableViewController: UITableViewController {
         if let kindSelected = amountOrHours {
             delegate?.amountOfHoursListTableViewController(self, didSelect: kindSelected)
             tableView.reloadData()
+            self.navigationController?.popViewController(animated: true)
         }
     }
     
