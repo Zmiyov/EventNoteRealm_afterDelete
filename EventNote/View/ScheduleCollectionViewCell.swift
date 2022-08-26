@@ -11,6 +11,8 @@ class ScheduleCollectionViewCell: UICollectionViewCell {
     
     let nameLabel = UILabel(font: UIFont.boldSystemFont(ofSize: 20), alighment: .left)
     let kindOfShootingLabel = UILabel(font: UIFont.boldSystemFont(ofSize: 17), alighment: .right)
+    let timeLabel = UILabel(font: UIFont.boldSystemFont(ofSize: 30), alighment: .left)
+    let locationLabel = UILabel(font: UIFont.boldSystemFont(ofSize: 17), alighment: .right)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -37,6 +39,18 @@ class ScheduleCollectionViewCell: UICollectionViewCell {
         kindOfShootingLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([kindOfShootingLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12),
                                      kindOfShootingLabel.topAnchor.constraint(equalTo: topAnchor, constant: 12)
+                                    ])
+        
+        addSubview(timeLabel)
+        timeLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([timeLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12),
+                                     timeLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -12)
+                                    ])
+        
+        addSubview(locationLabel)
+        locationLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([locationLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12),
+                                     locationLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -12)
                                     ])
         
     }

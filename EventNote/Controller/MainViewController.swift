@@ -158,9 +158,13 @@ extension MainViewController: UICollectionViewDelegateFlowLayout, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ScheduleCollectionViewCell
         let event = eventRealmModelsArray[indexPath.item]
-
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        let time = dateFormatter.string(from: event.dateAndTime)
         cell.nameLabel.text = event.clientName
         cell.kindOfShootingLabel.text = event.kindOfShooting
+        cell.timeLabel.text = time
+        cell.locationLabel.text = event.mainLocation
         return cell
     }
     
