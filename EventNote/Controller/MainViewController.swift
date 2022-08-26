@@ -43,9 +43,13 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         title = "Schedule"
-
-        datePredicate(date: Date())
         
+        let date = Date()
+        print(date)
+        print(eventRealmModelsArray)
+        datePredicate(date: date)
+        print(eventRealmModelsArray)
+
         calendar.delegate = self
         calendar.dataSource = self
         calendar.scope = .week
@@ -124,7 +128,6 @@ extension MainViewController: FSCalendarDataSource, FSCalendarDelegate {
     }
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-    
         datePredicate(date: date)
     }
     
@@ -140,6 +143,7 @@ extension MainViewController: FSCalendarDataSource, FSCalendarDelegate {
         
         eventRealmModelsArray = localRealm.objects(EventRealmModel.self).filter(predicate).sorted(byKeyPath: "dateAndTime")
         collectionView.reloadData()
+        print("predicate works")
     }
 }
 
@@ -183,6 +187,20 @@ extension MainViewController: UICollectionViewDelegateFlowLayout, UICollectionVi
         navVC.navigationBar.scrollEdgeAppearance = appearance
         
         present(navVC, animated: true)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        let config = UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { (elements) -> UIMenu? in
+                
+            let edit = UIAction(title: "Edit") { action in
+                print("Edit")
+            }
+            let delete = UIAction(title: "Delete") { action in
+                print("Delete")
+            }
+            return UIMenu(title: "", image: nil, identifier: nil, options: [], children: [edit, delete])
+        }
+        return config
     }
 }
 
