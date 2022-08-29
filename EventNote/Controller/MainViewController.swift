@@ -41,11 +41,10 @@ class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = .secondarySystemBackground
         title = "Schedule"
         
         let date = Calendar.current.startOfDay(for: Date())
-        print(date)
         datePredicate(date: date)
 
         calendar.delegate = self
@@ -137,14 +136,13 @@ extension MainViewController: FSCalendarDataSource, FSCalendarDelegate {
             return Calendar.current.date(byAdding: components, to: startOfTheDay)!
         }()
         
-        print(startOfTheDay)
-        print(endOfTheDay)
+//        print(startOfTheDay)
+//        print(endOfTheDay)
         
         let predicate = NSPredicate(format: "dateAndTime BETWEEN %@", [startOfTheDay, endOfTheDay])
         
         eventRealmModelsArray = localRealm.objects(EventRealmModel.self).filter(predicate).sorted(byKeyPath: "dateAndTime")
         collectionView.reloadData()
-        print("predicate works")
     }
 }
 
@@ -242,7 +240,7 @@ extension MainViewController {
             showHideButton.heightAnchor.constraint(equalToConstant: 20)
         ])
         view.addSubview(collectionView)
-        collectionView.backgroundColor = .white
+        collectionView.backgroundColor = .secondarySystemBackground
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: showHideButton.bottomAnchor, constant: 10),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),

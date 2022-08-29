@@ -14,9 +14,11 @@ class EventDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .tertiarySystemBackground
         title = "Details"
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Dismiss", style: .plain, target: self, action: #selector(dismissSelf))
         verticalStackView()
+        print(event?.amountOfHours)
     }
     
     @objc func dismissSelf() {
@@ -25,11 +27,9 @@ class EventDetailsViewController: UIViewController {
     
     func verticalStackView() {
         
-        guard let event = event else {
-            return
-        }
-
+        guard let event = event else { return }
         
+        print(event.clientName)
 
         let kindOfShootingLabel = UILabel(text: event.kindOfShooting, font: .systemFont(ofSize: 21, weight: .bold), alighment: .center)
         
@@ -58,10 +58,20 @@ class EventDetailsViewController: UIViewController {
         
         
         let verticalStackView = UIStackView()
+        verticalStackView.frame = view.bounds
         verticalStackView.backgroundColor = .darkGray
         verticalStackView.axis = .vertical
         verticalStackView.distribution = .fillEqually
         verticalStackView.spacing = 1
+        
+        view.addSubview(verticalStackView)
+//        NSLayoutConstraint.activate([
+//            verticalStackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 10),
+//            verticalStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
+//            verticalStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
+//            verticalStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -10),
+//            verticalStackView.heightAnchor.constraint(equalToConstant: 300)
+//        ])
         
         if event.kindOfShooting != "" {
             verticalStackView.addArrangedSubview(kindOfShootingLabel)
@@ -122,12 +132,6 @@ class EventDetailsViewController: UIViewController {
         }
         
 
-        view.addSubview(verticalStackView)
-        NSLayoutConstraint.activate([
-            verticalStackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 10),
-            verticalStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
-            verticalStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
-            verticalStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -10)
-        ])
+
     }
 }

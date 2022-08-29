@@ -26,7 +26,7 @@ class ScheduleCollectionViewCell: UICollectionViewCell {
     
     private func setupView() {
         
-        backgroundColor = .systemGray6
+        backgroundColor = .tertiarySystemBackground
         layer.cornerRadius = 12
         
         addSubview(nameLabel)

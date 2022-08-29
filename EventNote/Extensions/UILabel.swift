@@ -13,6 +13,7 @@ extension UILabel {
         self.font = font
         self.textAlignment = alighment
         self.textColor = .label
+        self.backgroundColor = .tertiarySystemBackground
         self.adjustsFontSizeToFitWidth = true
         self.translatesAutoresizingMaskIntoConstraints = false
     }
@@ -23,7 +24,7 @@ extension UILabel {
         self.font = font
         self.textAlignment = alighment
         self.textColor = .label
-        self.backgroundColor = .white
+        self.backgroundColor = .tertiarySystemBackground
         self.adjustsFontSizeToFitWidth = true
         self.translatesAutoresizingMaskIntoConstraints = false
     }
