@@ -16,9 +16,7 @@ class AddEventTableViewHeader: UITableViewHeaderFooterView {
     
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
-        
         setupView()
-        
     }
     
     required init?(coder: NSCoder) {

@@ -8,6 +8,10 @@
 import UIKit
 import RealmSwift
 
+protocol AddEventTableViewControllerDelegate {
+    func addEventTableViewController(_ controller: AddEventTableViewController)
+}
+
 class AddEventTableViewController: UITableViewController  {
     
     var eventModel = EventRealmModel()
@@ -21,6 +25,8 @@ class AddEventTableViewController: UITableViewController  {
     let idTextFieldCell = "idTextFieldCell"
     let idAddEventCell = "idAddEventCell"
     let idAddEventHeader = "idAddEventHeader"
+    
+    var delegate: AddEventTableViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,6 +56,7 @@ class AddEventTableViewController: UITableViewController  {
     
     @objc func saveButtonTapped() {
         RealmManager.shared.saveEventModel(model: eventModel)
+        delegate?.addEventTableViewController(self)
         dismiss(animated: true, completion: nil)
     }
     

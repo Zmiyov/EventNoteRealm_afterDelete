@@ -78,6 +78,7 @@ class MainViewController: UIViewController {
     
     @objc func addButtonTapped() {
         let addEventVC = AddEventTableViewController()
+        addEventVC.delegate = self
         let navController = UINavigationController(rootViewController: addEventVC)
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
@@ -201,6 +202,7 @@ extension MainViewController: UICollectionViewDelegateFlowLayout, UICollectionVi
                 
                 let editVC = AddEventTableViewController()
                 editVC.eventModel = self.eventRealmModelsArray[indexPath.item]
+                editVC.delegate = self
                 
                 let navController = UINavigationController(rootViewController: editVC)
                 let appearance = UINavigationBarAppearance()
@@ -252,5 +254,11 @@ extension MainViewController {
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
             collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0)
         ])
+    }
+}
+
+extension MainViewController: AddEventTableViewControllerDelegate {
+    func addEventTableViewController(_ controller: AddEventTableViewController) {
+        collectionView.reloadData()
     }
 }
