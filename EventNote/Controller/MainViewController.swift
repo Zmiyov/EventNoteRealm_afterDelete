@@ -209,9 +209,8 @@ extension MainViewController: UICollectionViewDelegateFlowLayout, UICollectionVi
                 navController.navigationBar.scrollEdgeAppearance = appearance
                 
                 self.present(navController, animated: true)
-                
-
             }
+            
             let delete = UIAction(title: "Delete") { action in
                 let model = self.eventRealmModelsArray[indexPath.item]
                 RealmManager.shared.deleteEventModel(model: model)

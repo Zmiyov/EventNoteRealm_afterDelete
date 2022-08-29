@@ -50,9 +50,6 @@ class ListTableViewCell: UITableViewCell {
         NSLayoutConstraint.activate([
             nameCellLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
             nameCellLabel.leadingAnchor.constraint(equalTo: backgroundViewCell.leadingAnchor, constant: 15)
-         
         ])
-     
-        
     }
 }

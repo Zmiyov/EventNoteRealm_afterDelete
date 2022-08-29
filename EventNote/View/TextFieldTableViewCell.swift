@@ -56,8 +56,6 @@ class TextFieldTableViewCell: UITableViewCell, UITextFieldDelegate {
             textField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
             textField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
             textField.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -5)
-         
         ])
     }
-
 }

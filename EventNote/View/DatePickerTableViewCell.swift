@@ -66,7 +66,5 @@ class DatePickerTableViewCell: UITableViewCell {
             datePicker.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
             datePicker.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -5)
         ])
-     
-        
     }
 }

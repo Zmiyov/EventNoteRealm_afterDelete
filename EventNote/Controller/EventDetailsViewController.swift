@@ -18,7 +18,6 @@ class EventDetailsViewController: UIViewController {
         title = "Details"
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Dismiss", style: .plain, target: self, action: #selector(dismissSelf))
         verticalStackView()
-        print(event?.amountOfHours)
     }
     
     @objc func dismissSelf() {
@@ -28,8 +27,6 @@ class EventDetailsViewController: UIViewController {
     func verticalStackView() {
         
         guard let event = event else { return }
-        
-        print(event.clientName)
 
         let kindOfShootingLabel = UILabel(text: event.kindOfShooting, font: .systemFont(ofSize: 21, weight: .bold), alighment: .center)
         
@@ -53,7 +50,7 @@ class EventDetailsViewController: UIViewController {
         let priceLabel = UILabel(text: "Full price:" + " " + String(describing: event.fullPrice), font: .systemFont(ofSize: 21, weight: .bold), alighment: .center)
         let priceForHourLabel = UILabel(text: "Price for hour:" + " " + event.priceForHour, font: .systemFont(ofSize: 21, weight: .bold), alighment: .center)
         let prepaymentLabel = UILabel(text: "Prepayment:" + " " + event.prepayment, font: .systemFont(ofSize: 21, weight: .bold), alighment: .center)
-        
+
         let alertStringLabel = UILabel(text: "Alert: " + event.alertString, font: .systemFont(ofSize: 21, weight: .bold), alighment: .center)
         
         
@@ -129,8 +126,5 @@ class EventDetailsViewController: UIViewController {
         if event.alertString != "" {
             verticalStackView.addArrangedSubview(alertStringLabel)
         }
-        
-
-
     }
 }
