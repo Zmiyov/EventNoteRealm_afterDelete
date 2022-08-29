@@ -11,7 +11,7 @@ class DatePickerTableViewCell: UITableViewCell {
     
     let backgroundViewCell: UIView = {
         let view = UIView()
-        view.backgroundColor = .white
+        view.backgroundColor = .tertiarySystemBackground
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()

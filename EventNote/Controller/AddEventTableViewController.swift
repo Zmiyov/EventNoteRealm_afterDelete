@@ -88,10 +88,9 @@ class AddEventTableViewController: UITableViewController  {
                 if eventModel.kindOfShooting != "" {
                     cell.nameCellLabel.text = eventModel.kindOfShooting
                     cell.nameCellLabel.textColor = .label
-                    
                 } else {
                     cell.nameCellLabel.text = type.description
-                    cell.nameCellLabel.textColor = .darkGray
+                    cell.nameCellLabel.textColor = .systemGray2
                 }
                 cell.accessoryType = .disclosureIndicator
                 return cell
@@ -111,7 +110,7 @@ class AddEventTableViewController: UITableViewController  {
                     cell.nameCellLabel.textColor = .label
                 } else {
                     cell.nameCellLabel.text = type.description
-                    cell.nameCellLabel.textColor = .darkGray
+                    cell.nameCellLabel.textColor = .systemGray2
                 }
                 cell.accessoryType = .disclosureIndicator
                 return cell

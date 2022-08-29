@@ -11,7 +11,7 @@ class ListTableViewCell: UITableViewCell {
     
     let backgroundViewCell: UIView = {
         let view = UIView()
-        view.backgroundColor = .white
+        view.backgroundColor = .tertiarySystemBackground
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -19,6 +19,7 @@ class ListTableViewCell: UITableViewCell {
     let nameCellLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 17)
+        
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
