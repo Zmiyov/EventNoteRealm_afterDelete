@@ -213,10 +213,9 @@ class AddEventTableViewController: UITableViewController  {
         case 4:
             let cell = tableView.dequeueReusableCell(withIdentifier: idAddEventCell, for: indexPath) as! ListTableViewCell
             let type = AddEventCellNameReminderSectionType.allCases[indexPath.row]
-            if let kindOfAlertOpted = kindOfAlertOpted {
-                cell.nameCellLabel.text = kindOfAlertOpted.description
+            if eventModel.alertString != "" {
+                cell.nameCellLabel.text = eventModel.alertString
                 cell.nameCellLabel.textColor = .label
-                eventModel.alertString = kindOfAlertOpted.description
             } else {
                 cell.nameCellLabel.text = type.description
                 cell.nameCellLabel.textColor = .darkGray
