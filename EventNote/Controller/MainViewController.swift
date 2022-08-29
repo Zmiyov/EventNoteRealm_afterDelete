@@ -194,14 +194,16 @@ extension MainViewController: UICollectionViewDelegateFlowLayout, UICollectionVi
                 
             let edit = UIAction(title: "Edit") { action in
                 
+                let addVC = AddEventTableViewController()
+                addVC.eventModel = self.eventRealmModelsArray[indexPath.item]
+                self.present(addVC, animated: true)
+                
                 print("Edit")
             }
             let delete = UIAction(title: "Delete") { action in
                 let model = self.eventRealmModelsArray[indexPath.item]
                 RealmManager.shared.deleteEventModel(model: model)
                 collectionView.reloadData()
-                
-                print("Delete")
             }
             return UIMenu(title: "", image: nil, identifier: nil, options: [], children: [edit, delete])
         }

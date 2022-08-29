@@ -10,7 +10,7 @@ import RealmSwift
 
 class AddEventTableViewController: UITableViewController  {
     
-    let eventModel = EventRealmModel()
+    var eventModel = EventRealmModel()
     
     var kindOfShooting1: KindOfShootingList?
     var amountOfHours: Int?
@@ -40,7 +40,7 @@ class AddEventTableViewController: UITableViewController  {
         tableView.register(ListTableViewCell.self, forCellReuseIdentifier: idAddEventCell)
         tableView.register(AddEventTableViewHeader.self, forHeaderFooterViewReuseIdentifier: idAddEventHeader)
         
-        
+        tableView.keyboardDismissMode = .onDrag
         
     }
     
