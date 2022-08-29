@@ -46,9 +46,7 @@ class MainViewController: UIViewController {
         
         let date = Date()
         print(date)
-        print(eventRealmModelsArray)
         datePredicate(date: date)
-        print(eventRealmModelsArray)
 
         calendar.delegate = self
         calendar.dataSource = self

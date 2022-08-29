@@ -11,6 +11,7 @@ import RealmSwift
 class AddEventTableViewController: UITableViewController  {
     
     var eventModel = EventRealmModel()
+    let localRealm = try! Realm()
     
     var kindOfShooting1: KindOfShootingList?
     var amountOfHours: Int?
@@ -84,10 +85,10 @@ class AddEventTableViewController: UITableViewController  {
             case 0:
                 let cell = tableView.dequeueReusableCell(withIdentifier: idAddEventCell, for: indexPath) as! ListTableViewCell
                 let type = AddEventCellNameMainSectionType.allCases[indexPath.row]
-                if let kindOfShooting1 = kindOfShooting1 {
-                    cell.nameCellLabel.text = kindOfShooting1.description
+                if eventModel.kindOfShooting != "" {
+                    cell.nameCellLabel.text = eventModel.kindOfShooting
                     cell.nameCellLabel.textColor = .label
-                    eventModel.kindOfShooting = kindOfShooting1.description
+                    
                 } else {
                     cell.nameCellLabel.text = type.description
                     cell.nameCellLabel.textColor = .darkGray
@@ -98,7 +99,9 @@ class AddEventTableViewController: UITableViewController  {
                 let cell = tableView.dequeueReusableCell(withIdentifier: idDatePickerCell, for: indexPath) as! DatePickerTableViewCell
                 let type = AddEventCellNameMainSectionType.allCases[indexPath.row]
                 cell.nameCellLabel.text = type.description
-                eventModel.dateAndTime = cell.datePicker.date
+                cell.datePicker.addTarget(self, action: #selector(dateChanged), for: .valueChanged)
+                cell.datePicker.date = eventModel.dateAndTime
+                
                 return cell
             case 2:
                 let cell = tableView.dequeueReusableCell(withIdentifier: idAddEventCell, for: indexPath) as! ListTableViewCell
@@ -106,7 +109,6 @@ class AddEventTableViewController: UITableViewController  {
                 if let amountOfHours = amountOfHours {
                     cell.nameCellLabel.text = amountOfHours.description + " " + "hour(s)"
                     cell.nameCellLabel.textColor = .label
-                    eventModel.amountOfHours = amountOfHours
                 } else {
                     cell.nameCellLabel.text = type.description
                     cell.nameCellLabel.textColor = .darkGray
@@ -220,31 +222,60 @@ class AddEventTableViewController: UITableViewController  {
         }
     }
     
+    @objc func dateChanged(sender: UIDatePicker) {
+        let date = sender.date
+        try! localRealm.write {
+            eventModel.dateAndTime = date
+        }
+    }
+    
     @objc func textChanged(sender: UITextField) {
         if let name = sender.text {
             switch sender.tag {
             case 0:
-                eventModel.clientName = name
+                try! localRealm.write {
+                    eventModel.clientName = name
+                }
             case 1:
-                eventModel.clientPhoneNumber = name
+                try! localRealm.write {
+                    eventModel.clientPhoneNumber = name
+                }
             case 2:
-                eventModel.additionalPhoneNumber = name
+                try! localRealm.write {
+                    eventModel.additionalPhoneNumber = name
+                }
             case 3:
-                eventModel.clientTelegramOrChat = name
+                try! localRealm.write {
+                    eventModel.clientTelegramOrChat = name
+                }
             case 4:
-                eventModel.clientInstagram = name
+                try! localRealm.write {
+                    eventModel.clientInstagram = name
+                }
             case 5:
-                eventModel.mainLocation = name
+                try! localRealm.write {
+                    eventModel.mainLocation = name
+                }
             case 6:
-                eventModel.startLocation = name
+                try! localRealm.write {
+                    eventModel.startLocation = name
+                }
             case 7:
-                eventModel.endLocation = name
+                try! localRealm.write {
+                    eventModel.endLocation = name
+                }
             case 8:
-                eventModel.priceForHour = name
+                try! localRealm.write {
+                    eventModel.priceForHour = name
+                }
             case 9:
-                eventModel.fullPrice = name
+                try! localRealm.write {
+                    eventModel.fullPrice = name
+                }
             case 10:
-                eventModel.prepayment = name
+                try! localRealm.write {
+                    eventModel.prepayment = name
+                }
             default:
                 break
             }
@@ -289,18 +320,28 @@ class AddEventTableViewController: UITableViewController  {
 }
 
 extension AddEventTableViewController: KindOfShootingTableViewControllerDelegate, AmountOfHoursListTableViewControllerDelegate, KindOfAlertListTableViewControllerDelegate {
-    func kindOfAlertListTableViewController(_ controller: KindOfAlertListTableViewController, didSelect kindOfAlert: KindOfAlertList) {
-        self.kindOfAlertOpted = kindOfAlert
-        tableView.reloadData()
-    }
-
-    func amountOfHoursListTableViewController(_ controller: AmountOfHoursListTableViewController, didSelect amount: Int) {
-        self.amountOfHours = amount
-        tableView.reloadData()
-    }
 
     func kindOfShootingTableViewController(_ controller: KindOfShootingTableViewController, didSelect kindOfShooting: KindOfShootingList) {
         self.kindOfShooting1 = kindOfShooting
+        try! localRealm.write {
+            eventModel.kindOfShooting = kindOfShooting.description
+        }
+        tableView.reloadData()
+    }
+    
+    func amountOfHoursListTableViewController(_ controller: AmountOfHoursListTableViewController, didSelect amount: Int) {
+        self.amountOfHours = amount
+        try! localRealm.write {
+            eventModel.amountOfHours = amount
+        }
+        tableView.reloadData()
+    }
+    
+    func kindOfAlertListTableViewController(_ controller: KindOfAlertListTableViewController, didSelect kindOfAlert: KindOfAlertList) {
+        self.kindOfAlertOpted = kindOfAlert
+        try! localRealm.write {
+            eventModel.alertString = kindOfAlert.description
+        }
         tableView.reloadData()
     }
 }
