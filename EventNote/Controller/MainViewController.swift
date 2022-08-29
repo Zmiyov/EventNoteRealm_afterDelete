@@ -16,13 +16,19 @@ class MainViewController: UIViewController {
     private var calendar: FSCalendar = {
         let calendar = FSCalendar()
         calendar.translatesAutoresizingMaskIntoConstraints = false
+        calendar.appearance.weekdayTextColor = .systemRed
+        calendar.appearance.titleFont = UIFont.boldSystemFont(ofSize: 17)
+        calendar.appearance.titleDefaultColor = .label
+        calendar.appearance.headerTitleColor = .label
+        calendar.appearance.headerTitleFont = UIFont.boldSystemFont(ofSize: 20)
+        
         return calendar
     }()
     
     let showHideButton: UIButton = {
         let button = UIButton()
         button.setTitle("Open calendar", for: .normal)
-        button.setTitleColor(UIColor.darkGray, for: .normal)
+        button.setTitleColor(UIColor.label, for: .normal)
         button.titleLabel?.font = UIFont(name: "Avenir Next Demi Bold", size: 14)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button

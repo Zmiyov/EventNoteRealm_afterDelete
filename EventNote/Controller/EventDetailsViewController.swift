@@ -58,20 +58,19 @@ class EventDetailsViewController: UIViewController {
         
         
         let verticalStackView = UIStackView()
-        verticalStackView.frame = view.bounds
         verticalStackView.backgroundColor = .darkGray
         verticalStackView.axis = .vertical
         verticalStackView.distribution = .fillEqually
         verticalStackView.spacing = 1
+        verticalStackView.translatesAutoresizingMaskIntoConstraints = false
         
         view.addSubview(verticalStackView)
-//        NSLayoutConstraint.activate([
-//            verticalStackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 10),
-//            verticalStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
-//            verticalStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
-//            verticalStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -10),
-//            verticalStackView.heightAnchor.constraint(equalToConstant: 300)
-//        ])
+        NSLayoutConstraint.activate([
+            verticalStackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 50),
+            verticalStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 25),
+            verticalStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -25),
+            verticalStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -25),
+        ])
         
         if event.kindOfShooting != "" {
             verticalStackView.addArrangedSubview(kindOfShootingLabel)
