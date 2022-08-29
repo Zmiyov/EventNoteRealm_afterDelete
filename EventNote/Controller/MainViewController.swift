@@ -44,7 +44,7 @@ class MainViewController: UIViewController {
         view.backgroundColor = .white
         title = "Schedule"
         
-        let date = Date()
+        let date = Calendar.current.startOfDay(for: Date())
         print(date)
         datePredicate(date: date)
 
@@ -137,6 +137,9 @@ extension MainViewController: FSCalendarDataSource, FSCalendarDelegate {
             return Calendar.current.date(byAdding: components, to: startOfTheDay)!
         }()
         
+        print(startOfTheDay)
+        print(endOfTheDay)
+        
         let predicate = NSPredicate(format: "dateAndTime BETWEEN %@", [startOfTheDay, endOfTheDay])
         
         eventRealmModelsArray = localRealm.objects(EventRealmModel.self).filter(predicate).sorted(byKeyPath: "dateAndTime")
@@ -192,11 +195,18 @@ extension MainViewController: UICollectionViewDelegateFlowLayout, UICollectionVi
                 
             let edit = UIAction(title: "Edit") { action in
                 
-                let addVC = AddEventTableViewController()
-                addVC.eventModel = self.eventRealmModelsArray[indexPath.item]
-                self.present(addVC, animated: true)
+                let editVC = AddEventTableViewController()
+                editVC.eventModel = self.eventRealmModelsArray[indexPath.item]
                 
-                print("Edit")
+                let navController = UINavigationController(rootViewController: editVC)
+                let appearance = UINavigationBarAppearance()
+                appearance.configureWithOpaqueBackground()
+                navController.navigationBar.standardAppearance = appearance
+                navController.navigationBar.scrollEdgeAppearance = appearance
+                
+                self.present(navController, animated: true)
+                
+
             }
             let delete = UIAction(title: "Delete") { action in
                 let model = self.eventRealmModelsArray[indexPath.item]
