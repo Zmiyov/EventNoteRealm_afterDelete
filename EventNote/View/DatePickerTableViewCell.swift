@@ -48,9 +48,9 @@ class DatePickerTableViewCell: UITableViewCell {
         self.addSubview(backgroundViewCell)
         NSLayoutConstraint.activate([
             backgroundViewCell.topAnchor.constraint(equalTo: self.topAnchor , constant: 0),
-            backgroundViewCell.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
-            backgroundViewCell.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
-            backgroundViewCell.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -1)
+            backgroundViewCell.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0),
+            backgroundViewCell.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0),
+            backgroundViewCell.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0)
         ])
         
         self.addSubview(nameCellLabel)
