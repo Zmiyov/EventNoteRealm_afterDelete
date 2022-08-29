@@ -352,7 +352,6 @@ extension AddEventTableViewController: KindOfShootingTableViewControllerDelegate
 }
 
 extension AddEventTableViewController: UITextFieldDelegate {
-
     func textFieldDidEndEditing(_ textField: UITextField) {
         textField.layoutIfNeeded()
     }

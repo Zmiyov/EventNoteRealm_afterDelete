@@ -175,9 +175,9 @@
 		A5DE68B528AEC52D00C34183 /* Lists */ = {
 			isa = PBXGroup;
 			children = (
-				A5DE68B128AD415700C34183 /* KindOfAlertListTableViewController.swift */,
 				A5DE68B328AEC2EA00C34183 /* KindOfShootingTableViewController.swift */,
 				A5DE68B628AEC55300C34183 /* AmountOfHoursListTableViewController.swift */,
+				A5DE68B128AD415700C34183 /* KindOfAlertListTableViewController.swift */,
 			);
 			path = Lists;
 			sourceTree = "<group>";

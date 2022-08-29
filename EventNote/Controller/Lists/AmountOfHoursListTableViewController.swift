@@ -55,7 +55,7 @@ class AmountOfHoursListTableViewController: UITableViewController {
             content.text = String(i)
             cell.contentConfiguration = content
         }
-//TODO: switch for none
+        
         if amountOrHours != nil && amountOrHours == indexPath.row + 1 {
             cell.accessoryType = .checkmark
         } else {
