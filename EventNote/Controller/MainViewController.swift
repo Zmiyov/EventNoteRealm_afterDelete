@@ -193,6 +193,7 @@ extension MainViewController: UICollectionViewDelegateFlowLayout, UICollectionVi
         let config = UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { (elements) -> UIMenu? in
                 
             let edit = UIAction(title: "Edit") { action in
+                
                 print("Edit")
             }
             let delete = UIAction(title: "Delete") { action in

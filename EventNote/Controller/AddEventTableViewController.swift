@@ -27,16 +27,20 @@ class AddEventTableViewController: UITableViewController  {
         
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(backButton))
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveButtonTapped))
+        
+        self.tableView = UITableView(frame: .zero, style: .insetGrouped)
     
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.backgroundColor = #colorLiteral(red: 0.9594197869, green: 0.9599153399, blue: 0.975127399, alpha: 1)
-        tableView.separatorStyle = .none
+//        tableView.backgroundColor = #colorLiteral(red: 0.9594197869, green: 0.9599153399, blue: 0.975127399, alpha: 1)
+//        tableView.separatorStyle = .none
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.register(DatePickerTableViewCell.self, forCellReuseIdentifier: idDatePickerCell)
         tableView.register(TextFieldTableViewCell.self, forCellReuseIdentifier: idTextFieldCell)
         tableView.register(ListTableViewCell.self, forCellReuseIdentifier: idAddEventCell)
         tableView.register(AddEventTableViewHeader.self, forHeaderFooterViewReuseIdentifier: idAddEventHeader)
+        
+        
         
     }
     

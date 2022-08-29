@@ -12,7 +12,6 @@ class TextFieldTableViewCell: UITableViewCell, UITextFieldDelegate {
     let backgroundViewCell: UIView = {
         let view = UIView()
         view.backgroundColor = .white
-        view.layer.cornerRadius = 5
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
