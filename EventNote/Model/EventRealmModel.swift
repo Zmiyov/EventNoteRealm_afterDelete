@@ -29,5 +29,6 @@ class EventRealmModel: Object {
     @Persisted var prepayment: String = ""
     
     @Persisted var alertString: String = ""
+    @Persisted var alertDate: Date?
 
 }

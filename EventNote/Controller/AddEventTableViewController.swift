@@ -32,8 +32,13 @@ class AddEventTableViewController: UITableViewController  {
         super.viewDidLoad()
         title = "New Event"
         
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(backButton))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveButtonTapped))
+        let cancelBarButton = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(backButton))
+        self.navigationItem.leftBarButtonItem = cancelBarButton
+        
+        let saveBarButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveButtonTapped))
+        navigationItem.rightBarButtonItem = saveBarButton
+        
+        updateSaveButtonState()
         
         self.tableView = UITableView(frame: .zero, style: .insetGrouped)
     
@@ -60,10 +65,10 @@ class AddEventTableViewController: UITableViewController  {
         dismiss(animated: true, completion: nil)
     }
     
-//    private func updateSaveButtonState() {
-//        let shouldEnableSaveButton = nameTextField.text?.isEmpty == false && kindOfShooting1 != nil
-//        saveBarButtonItem.isEnabled = shouldEnableSaveButton
-//    }
+    private func updateSaveButtonState() {
+        let shouldEnableSaveButton = eventModel.clientName != "" && kindOfShooting1 != nil
+        navigationItem.rightBarButtonItem!.isEnabled = shouldEnableSaveButton
+    }
     
     
     //MARK: - Table View
@@ -238,6 +243,7 @@ class AddEventTableViewController: UITableViewController  {
         if let name = sender.text {
             switch sender.tag {
             case 0:
+                updateSaveButtonState()
                 try! localRealm.write {
                     eventModel.clientName = name
                 }
@@ -328,6 +334,7 @@ extension AddEventTableViewController: KindOfShootingTableViewControllerDelegate
 
     func kindOfShootingTableViewController(_ controller: KindOfShootingTableViewController, didSelect kindOfShooting: KindOfShootingList) {
         self.kindOfShooting1 = kindOfShooting
+        updateSaveButtonState()
         try! localRealm.write {
             eventModel.kindOfShooting = kindOfShooting.description
         }

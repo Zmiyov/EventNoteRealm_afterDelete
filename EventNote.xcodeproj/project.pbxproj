@@ -15,7 +15,6 @@
 		A547D47328A81D0000173BA8 /* EventNote.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A547D47128A81D0000173BA8 /* EventNote.xcdatamodeld */; };
 		A547D47528A81D0200173BA8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A547D47428A81D0200173BA8 /* Assets.xcassets */; };
 		A547D47828A81D0200173BA8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A547D47628A81D0200173BA8 /* LaunchScreen.storyboard */; };
-		A547D48028A8212D00173BA8 /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A547D47F28A8212D00173BA8 /* EventModel.swift */; };
 		A54C769F28ABF81600C479AE /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54C769E28ABF81600C479AE /* UILabel.swift */; };
 		A5DE68AE28ACFDDF00C34183 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DE68AD28ACFDDF00C34183 /* ListTableViewCell.swift */; };
 		A5DE68B028AD05D500C34183 /* AddEventTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DE68AF28AD05D500C34183 /* AddEventTableViewHeader.swift */; };
@@ -44,7 +43,6 @@
 		A547D47428A81D0200173BA8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A547D47728A81D0200173BA8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A547D47928A81D0200173BA8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A547D47F28A8212D00173BA8 /* EventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
 		A54C769E28ABF81600C479AE /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 		A5DE68AD28ACFDDF00C34183 /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
 		A5DE68AF28AD05D500C34183 /* AddEventTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventTableViewHeader.swift; sourceTree = "<group>"; };
@@ -132,11 +130,10 @@
 		A547D48128A825AC00173BA8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				A547D47F28A8212D00173BA8 /* EventModel.swift */,
+				A5FE847428B173F3002AA152 /* EventRealmModel.swift */,
 				A5DE68B828AECF3700C34183 /* KindOfShootingList.swift */,
 				A5DE68BA28AED66E00C34183 /* KindOfAlertList.swift */,
 				A5DE68BC28AEE57700C34183 /* AddEventCellNameType.swift */,
-				A5FE847428B173F3002AA152 /* EventRealmModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -319,7 +316,6 @@
 				A5DE68B928AECF3700C34183 /* KindOfShootingList.swift in Sources */,
 				A547D47328A81D0000173BA8 /* EventNote.xcdatamodeld in Sources */,
 				A5DE68B428AEC2EA00C34183 /* KindOfShootingTableViewController.swift in Sources */,
-				A547D48028A8212D00173BA8 /* EventModel.swift in Sources */,
 				A5126F8B28AC448200153525 /* AddEventTableViewController.swift in Sources */,
 				A54C769F28ABF81600C479AE /* UILabel.swift in Sources */,
 				A5DE68BF28AFD96600C34183 /* TextFieldTableViewCell.swift in Sources */,
