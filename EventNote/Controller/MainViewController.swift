@@ -68,13 +68,14 @@ class MainViewController: UIViewController {
         appearance.configureWithDefaultBackground()
         self.navigationController?.navigationBar.standardAppearance = appearance
         self.navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Today", style: .plain, target: self, action: #selector(todayButtonTapped))
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonTapped))
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        collectionView.reloadData()
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        collectionView.reloadData()
+//    }
     
     @objc func addButtonTapped() {
         let addEventVC = AddEventTableViewController()
@@ -95,6 +96,12 @@ class MainViewController: UIViewController {
             calendar.setScope(.week, animated: true)
             showHideButton.setTitle("Open calendar", for: .normal)
         }
+    }
+    
+    @objc func todayButtonTapped() {
+        calendar.select(Date(), scrollToDate: true)
+        let date = Calendar.current.startOfDay(for: Date())
+        datePredicate(date: date)
     }
     
 //MARK: SwipeGestureRecognizer

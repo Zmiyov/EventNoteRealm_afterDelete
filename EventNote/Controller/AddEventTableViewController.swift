@@ -213,18 +213,7 @@ class AddEventTableViewController: UITableViewController  {
         case 4:
             let cell = tableView.dequeueReusableCell(withIdentifier: idAddEventCell, for: indexPath) as! ListTableViewCell
             let type = AddEventCellNameReminderSectionType.allCases[indexPath.row]
-            
-//            switch eventModel.alertString {
-//            case "None":
-//                cell.nameCellLabel.text = eventModel.alertString
-//                cell.nameCellLabel.textColor = .label
-//
-//            default:
-//                cell.nameCellLabel.text = type.description
-//                cell.nameCellLabel.textColor = .darkGray
-//            }
-            
-            
+
             if eventModel.alertString != "" {
                 cell.nameCellLabel.text = eventModel.alertString
                 cell.nameCellLabel.textColor = .label
@@ -232,8 +221,6 @@ class AddEventTableViewController: UITableViewController  {
                 cell.nameCellLabel.text = type.description
                 cell.nameCellLabel.textColor = .darkGray
             }
-            
-            
             cell.accessoryType = .disclosureIndicator
             return cell
             
@@ -379,62 +366,51 @@ extension AddEventTableViewController: KindOfShootingTableViewControllerDelegate
             try! localRealm.write {
                 eventModel.alertDate = setDate
             }
-            print(setDate)
         case "5 minutes before":
             let setDate = Calendar.current.date(byAdding: .minute, value: -5, to: currentDate)
             try! localRealm.write {
                 eventModel.alertDate = setDate
             }
-            print(setDate)
         case "10 minutes before":
             let setDate = Calendar.current.date(byAdding: .minute, value: -10, to: currentDate)
             try! localRealm.write {
                 eventModel.alertDate = setDate
             }
-            print(setDate)
         case "15 minutes before":
             let setDate = Calendar.current.date(byAdding: .minute, value: -15, to: currentDate)
             try! localRealm.write {
                 eventModel.alertDate = setDate
             }
-            print(setDate)
         case "30 minutes before":
             let setDate = Calendar.current.date(byAdding: .minute, value: -30, to: currentDate)
             try! localRealm.write {
                 eventModel.alertDate = setDate
             }
-            print(setDate)
         case "1 hour before":
             let setDate = Calendar.current.date(byAdding: .hour, value: -1, to: currentDate)
             try! localRealm.write {
                 eventModel.alertDate = setDate
             }
-            print(setDate)
         case "2 hours before":
             let setDate = Calendar.current.date(byAdding: .hour, value: -2, to: currentDate)
             try! localRealm.write {
                 eventModel.alertDate = setDate
             }
-            print(setDate)
         case "1 day before":
             let setDate = Calendar.current.date(byAdding: .day, value: -1, to: currentDate)
             try! localRealm.write {
                 eventModel.alertDate = setDate
             }
-            print(setDate)
         case "2 days before":
             let setDate = Calendar.current.date(byAdding: .day, value: -2, to: currentDate)
             try! localRealm.write {
                 eventModel.alertDate = setDate
             }
-            print(setDate)
         case "1 week before":
             let setDate = Calendar.current.date(byAdding: .day, value: -7, to: currentDate)
             try! localRealm.write {
                 eventModel.alertDate = setDate
             }
-            print(setDate)
-            
         default:
             try! localRealm.write {
                 eventModel.alertDate = nil
