@@ -15,6 +15,8 @@ protocol AddEventTableViewControllerDelegate {
 class AddEventTableViewController: UITableViewController  {
     
     var eventModel = EventRealmModel()
+    var day = Date()
+    
     let localRealm = try! Realm()
     
     var kindOfShooting1: KindOfShootingList?
@@ -110,8 +112,7 @@ class AddEventTableViewController: UITableViewController  {
                 let type = AddEventCellNameMainSectionType.allCases[indexPath.row]
                 cell.nameCellLabel.text = type.description
                 cell.datePicker.addTarget(self, action: #selector(dateChanged), for: .valueChanged)
-                cell.datePicker.date = eventModel.dateAndTime
-                
+                cell.datePicker.date = day
                 return cell
             case 2:
                 let cell = tableView.dequeueReusableCell(withIdentifier: idAddEventCell, for: indexPath) as! ListTableViewCell

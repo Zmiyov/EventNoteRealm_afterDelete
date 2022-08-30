@@ -12,6 +12,7 @@ import RealmSwift
 class MainViewController: UIViewController {
     
     var calendarHeightConstraint: NSLayoutConstraint!
+    var choosedDay = Date()
     
     private var calendar: FSCalendar = {
         let calendar = FSCalendar()
@@ -79,6 +80,7 @@ class MainViewController: UIViewController {
     
     @objc func addButtonTapped() {
         let addEventVC = AddEventTableViewController()
+        addEventVC.day = choosedDay
         addEventVC.delegate = self
         let navController = UINavigationController(rootViewController: addEventVC)
         let appearance = UINavigationBarAppearance()
@@ -138,7 +140,25 @@ extension MainViewController: FSCalendarDataSource, FSCalendarDelegate {
         view.layoutIfNeeded()
     }
     
+    func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
+        
+        let startOfTheDay = date
+        let endOfTheDay: Date = {
+            let components = DateComponents(day: 1, second: -1)
+            return Calendar.current.date(byAdding: components, to: startOfTheDay)!
+        }()
+        let predicate = NSPredicate(format: "dateAndTime BETWEEN %@", [startOfTheDay, endOfTheDay])
+        let eventRealmModelsArray = localRealm.objects(EventRealmModel.self).filter(predicate)
+        
+        if eventRealmModelsArray.count != 0 {
+            return 1
+        } else {
+            return 0
+        }
+    }
+    
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        choosedDay = date
         datePredicate(date: date)
     }
     
@@ -208,6 +228,7 @@ extension MainViewController: UICollectionViewDelegateFlowLayout, UICollectionVi
             let edit = UIAction(title: "Edit") { action in
                 
                 let editVC = AddEventTableViewController()
+                editVC.day = self.eventRealmModelsArray[indexPath.item].dateAndTime
                 editVC.eventModel = self.eventRealmModelsArray[indexPath.item]
                 editVC.delegate = self
                 
