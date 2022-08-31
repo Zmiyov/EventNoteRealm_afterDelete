@@ -114,6 +114,7 @@ class MainViewController: UIViewController {
         calendar.select(Date(), scrollToDate: true)
         let date = Calendar.current.startOfDay(for: Date())
         datePredicate(date: date)
+        dataSource.apply(filteredItemsSnapshot, animatingDifferences: true)
     }
     
 //MARK: SwipeGestureRecognizer
@@ -274,7 +275,7 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
             let delete = UIAction(title: "Delete") { action in
                 let model = self.eventRealmModelsArray[indexPath.item]
                 RealmManager.shared.deleteEventModel(model: model)
-                let date = Calendar.current.startOfDay(for: Date())
+                let date = self.choosedDay
                 self.datePredicate(date: date)
                 self.dataSource.apply(self.filteredItemsSnapshot, animatingDifferences: true)
             }
@@ -320,10 +321,8 @@ extension MainViewController {
 extension MainViewController: AddEventTableViewControllerDelegate {
     func addEventTableViewController(_ controller: AddEventTableViewController) {
         
-        let date = Calendar.current.startOfDay(for: Date())
+        let date = choosedDay
         datePredicate(date: date)
-        print("delegate works")
         dataSource.apply(filteredItemsSnapshot, animatingDifferences: true)
-        
     }
 }

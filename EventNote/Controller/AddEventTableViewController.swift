@@ -110,8 +110,12 @@ class AddEventTableViewController: UITableViewController  {
                 let cell = tableView.dequeueReusableCell(withIdentifier: idDatePickerCell, for: indexPath) as! DatePickerTableViewCell
                 let type = AddEventCellNameMainSectionType.allCases[indexPath.row]
                 cell.nameCellLabel.text = type.description
-                cell.datePicker.addTarget(self, action: #selector(dateChanged), for: .valueChanged)
                 cell.datePicker.date = editedDay
+                try! localRealm.write {
+                    eventModel.dateAndTime = editedDay
+                }
+                cell.datePicker.addTarget(self, action: #selector(dateChanged), for: .valueChanged)
+                
                 return cell
             case 2:
                 let cell = tableView.dequeueReusableCell(withIdentifier: idAddEventCell, for: indexPath) as! ListTableViewCell
