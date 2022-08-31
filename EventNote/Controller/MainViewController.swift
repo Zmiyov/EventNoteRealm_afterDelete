@@ -23,10 +23,8 @@ class MainViewController: UIViewController {
     var dataSource: UICollectionViewDiffableDataSource<Section, EventRealmModel>!
     var filteredItemsSnapshot: NSDiffableDataSourceSnapshot<Section, EventRealmModel> {
         var snapshot = NSDiffableDataSourceSnapshot<Section, EventRealmModel>()
-        
         snapshot.appendSections([.main])
         snapshot.appendItems(eventRealmModelsArray)
-        
         return snapshot
     }
     
@@ -205,14 +203,10 @@ extension MainViewController: FSCalendarDataSource, FSCalendarDelegate {
             return Calendar.current.date(byAdding: components, to: startOfTheDay)!
         }()
         
-//        print(startOfTheDay)
-//        print(endOfTheDay)
-        
         let predicate = NSPredicate(format: "dateAndTime BETWEEN %@", [startOfTheDay, endOfTheDay])
         
         let eventRealmModels = localRealm.objects(EventRealmModel.self).filter(predicate).sorted(byKeyPath: "dateAndTime")
         eventRealmModelsArray = Array(eventRealmModels)
-        collectionView.reloadData()
     }
 }
 
@@ -280,7 +274,9 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
             let delete = UIAction(title: "Delete") { action in
                 let model = self.eventRealmModelsArray[indexPath.item]
                 RealmManager.shared.deleteEventModel(model: model)
-                collectionView.reloadData()
+                let date = Calendar.current.startOfDay(for: Date())
+                self.datePredicate(date: date)
+                self.dataSource.apply(self.filteredItemsSnapshot, animatingDifferences: true)
             }
             return UIMenu(title: "", image: nil, identifier: nil, options: [], children: [edit, delete])
         }
@@ -323,6 +319,11 @@ extension MainViewController {
 
 extension MainViewController: AddEventTableViewControllerDelegate {
     func addEventTableViewController(_ controller: AddEventTableViewController) {
-        collectionView.reloadData()
+        
+        let date = Calendar.current.startOfDay(for: Date())
+        datePredicate(date: date)
+        print("delegate works")
+        dataSource.apply(filteredItemsSnapshot, animatingDifferences: true)
+        
     }
 }
