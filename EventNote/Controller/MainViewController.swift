@@ -14,11 +14,27 @@ class MainViewController: UIViewController {
     var calendarHeightConstraint: NSLayoutConstraint!
     var choosedDay = Date()
     
+    let localRealm = try! Realm()
+    var eventRealmModelsArray: [EventRealmModel]!
+    
+    enum Section: CaseIterable {
+        case main
+    }
+    var dataSource: UICollectionViewDiffableDataSource<Section, EventRealmModel>!
+    var filteredItemsSnapshot: NSDiffableDataSourceSnapshot<Section, EventRealmModel> {
+        var snapshot = NSDiffableDataSourceSnapshot<Section, EventRealmModel>()
+        
+        snapshot.appendSections([.main])
+        snapshot.appendItems(eventRealmModelsArray)
+        
+        return snapshot
+    }
+    
     private var calendar: FSCalendar = {
         let calendar = FSCalendar()
         calendar.translatesAutoresizingMaskIntoConstraints = false
         calendar.appearance.weekdayTextColor = .systemRed
-        calendar.appearance.titleFont = UIFont.boldSystemFont(ofSize: 17)
+        calendar.appearance.titleFont = UIFont.systemFont(ofSize: 17)
         calendar.appearance.titleDefaultColor = .label
         calendar.appearance.headerTitleColor = .label
         calendar.appearance.headerTitleFont = UIFont.boldSystemFont(ofSize: 20)
@@ -43,8 +59,6 @@ class MainViewController: UIViewController {
         return collectionView
     }()
     
-    let localRealm = try! Realm()
-    var eventRealmModelsArray: Results<EventRealmModel>!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,7 +74,7 @@ class MainViewController: UIViewController {
         showHideButton.addTarget(self, action: #selector(showHideButtonTapped), for: .touchUpInside)
         
         collectionView.delegate = self
-        collectionView.dataSource = self
+//        collectionView.dataSource = self
         
         setConstraints()
         swipeAction()
@@ -71,16 +85,14 @@ class MainViewController: UIViewController {
         self.navigationController?.navigationBar.scrollEdgeAppearance = appearance
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Today", style: .plain, target: self, action: #selector(todayButtonTapped))
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonTapped))
+        
+        createDataSource()
     }
     
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//        collectionView.reloadData()
-//    }
     
     @objc func addButtonTapped() {
         let addEventVC = AddEventTableViewController()
-        addEventVC.day = choosedDay
+        addEventVC.editedDay = choosedDay
         addEventVC.delegate = self
         let navController = UINavigationController(rootViewController: addEventVC)
         let appearance = UINavigationBarAppearance()
@@ -129,7 +141,29 @@ class MainViewController: UIViewController {
             break
         }
     }
+    
+    func createDataSource() {
+        dataSource = UICollectionViewDiffableDataSource<Section, EventRealmModel>(collectionView: collectionView, cellProvider: { (collectionView, indexPath, item) -> UICollectionViewCell? in
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ScheduleCollectionViewCell
+            
+            let event = item
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "HH:mm"
+            let time = dateFormatter.string(from: event.dateAndTime)
+            cell.nameLabel.text = event.clientName
+            cell.kindOfShootingLabel.text = event.kindOfShooting
+            cell.timeLabel.text = time
+            cell.locationLabel.text = event.mainLocation
+            
+            return cell
+        })
+        
+        dataSource.apply(filteredItemsSnapshot)
+    }
+    
 }
+
+
 
 //MARK: - FSCalendarDataSource, FSCalendarDelegate
 
@@ -160,6 +194,7 @@ extension MainViewController: FSCalendarDataSource, FSCalendarDelegate {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         choosedDay = date
         datePredicate(date: date)
+        dataSource.apply(filteredItemsSnapshot, animatingDifferences: true)
     }
     
     func datePredicate(date: Date) {
@@ -175,35 +210,36 @@ extension MainViewController: FSCalendarDataSource, FSCalendarDelegate {
         
         let predicate = NSPredicate(format: "dateAndTime BETWEEN %@", [startOfTheDay, endOfTheDay])
         
-        eventRealmModelsArray = localRealm.objects(EventRealmModel.self).filter(predicate).sorted(byKeyPath: "dateAndTime")
+        let eventRealmModels = localRealm.objects(EventRealmModel.self).filter(predicate).sorted(byKeyPath: "dateAndTime")
+        eventRealmModelsArray = Array(eventRealmModels)
         collectionView.reloadData()
     }
 }
 
 //MARK: Collection View
 
-extension MainViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
+extension MainViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.width, height: collectionView.frame.width/3)
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return eventRealmModelsArray.count
-    }
+//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        return eventRealmModelsArray.count
+//    }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ScheduleCollectionViewCell
-        let event = eventRealmModelsArray[indexPath.item]
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH:mm"
-        let time = dateFormatter.string(from: event.dateAndTime)
-        cell.nameLabel.text = event.clientName
-        cell.kindOfShootingLabel.text = event.kindOfShooting
-        cell.timeLabel.text = time
-        cell.locationLabel.text = event.mainLocation
-        return cell
-    }
+//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ScheduleCollectionViewCell
+//        let event = eventRealmModelsArray[indexPath.item]
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "HH:mm"
+//        let time = dateFormatter.string(from: event.dateAndTime)
+//        cell.nameLabel.text = event.clientName
+//        cell.kindOfShootingLabel.text = event.kindOfShooting
+//        cell.timeLabel.text = time
+//        cell.locationLabel.text = event.mainLocation
+//        return cell
+//    }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
@@ -228,8 +264,8 @@ extension MainViewController: UICollectionViewDelegateFlowLayout, UICollectionVi
             let edit = UIAction(title: "Edit") { action in
                 
                 let editVC = AddEventTableViewController()
-                editVC.day = self.eventRealmModelsArray[indexPath.item].dateAndTime
                 editVC.eventModel = self.eventRealmModelsArray[indexPath.item]
+                editVC.editedDay = self.eventRealmModelsArray[indexPath.item].dateAndTime
                 editVC.delegate = self
                 
                 let navController = UINavigationController(rootViewController: editVC)

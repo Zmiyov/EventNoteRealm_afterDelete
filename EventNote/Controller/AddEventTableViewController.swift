@@ -15,7 +15,7 @@ protocol AddEventTableViewControllerDelegate {
 class AddEventTableViewController: UITableViewController  {
     
     var eventModel = EventRealmModel()
-    var day = Date()
+    var editedDay = Date()
     
     let localRealm = try! Realm()
     
@@ -54,7 +54,6 @@ class AddEventTableViewController: UITableViewController  {
         tableView.register(AddEventTableViewHeader.self, forHeaderFooterViewReuseIdentifier: idAddEventHeader)
         
         tableView.keyboardDismissMode = .onDrag
-        
     }
     
     @objc func backButton() {
@@ -112,7 +111,7 @@ class AddEventTableViewController: UITableViewController  {
                 let type = AddEventCellNameMainSectionType.allCases[indexPath.row]
                 cell.nameCellLabel.text = type.description
                 cell.datePicker.addTarget(self, action: #selector(dateChanged), for: .valueChanged)
-                cell.datePicker.date = day
+                cell.datePicker.date = editedDay
                 return cell
             case 2:
                 let cell = tableView.dequeueReusableCell(withIdentifier: idAddEventCell, for: indexPath) as! ListTableViewCell
@@ -126,7 +125,6 @@ class AddEventTableViewController: UITableViewController  {
                 }
                 cell.accessoryType = .disclosureIndicator
                 return cell
-                
             default:
                 let cell = tableView.dequeueReusableCell(withIdentifier: idAddEventCell, for: indexPath) as! ListTableViewCell
                 let type = AddEventCellNameMainSectionType.allCases[indexPath.row]
