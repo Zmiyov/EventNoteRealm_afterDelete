@@ -236,10 +236,11 @@ class AddEventTableViewController: UITableViewController  {
     }
     
     @objc func dateChanged(sender: UIDatePicker) {
-        let date = sender.date
+        editedDay = sender.date
         try! localRealm.write {
-            eventModel.dateAndTime = date
+            eventModel.dateAndTime = editedDay
         }
+        
     }
     
     @objc func textChanged(sender: UITextField) {
