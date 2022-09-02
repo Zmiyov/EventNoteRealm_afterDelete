@@ -9,7 +9,7 @@ import UIKit
 import RealmSwift
 
 protocol AddEventTableViewControllerDelegate {
-    func addEventTableViewController(_ controller: AddEventTableViewController)
+    func addEventTableViewController(_ controller: AddEventTableViewController, event: EventRealmModel)
 }
 
 class AddEventTableViewController: UITableViewController  {
@@ -62,7 +62,7 @@ class AddEventTableViewController: UITableViewController  {
     
     @objc func saveButtonTapped() {
         RealmManager.shared.saveEventModel(model: eventModel)
-        delegate?.addEventTableViewController(self)
+        delegate?.addEventTableViewController(self, event: eventModel)
         dismiss(animated: true, completion: nil)
     }
     

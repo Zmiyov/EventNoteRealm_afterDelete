@@ -312,11 +312,13 @@ extension MainViewController {
 }
 
 extension MainViewController: AddEventTableViewControllerDelegate {
-    func addEventTableViewController(_ controller: AddEventTableViewController) {
+    
+    func addEventTableViewController(_ controller: AddEventTableViewController, event: EventRealmModel) {
         let date = choosedDay
         datePredicate(date: date)
         dataSource.apply(filteredItemsSnapshot, animatingDifferences: true)
-        ShootingReminder.shared.schedule(date: Date())
+        ShootingReminder.shared.schedule(date: Date(), title: event.clientName, body: event.kindOfShooting)
         print("in delegate", Date())
     }
+    
 }

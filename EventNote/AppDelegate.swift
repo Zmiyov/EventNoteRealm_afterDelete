@@ -11,7 +11,6 @@ import CoreData
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
     let center = UNUserNotificationCenter.current()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -22,7 +21,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         center.delegate = self
-//        schedule(date: Date())
         return true
     }
     

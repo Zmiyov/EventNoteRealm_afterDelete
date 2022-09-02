@@ -12,12 +12,12 @@ struct ShootingReminder {
     
     static let shared = ShootingReminder()
     
-    func schedule(date: Date) {
+    func schedule(date: Date, title: String, body: String) {
         
         let content = UNMutableNotificationContent()
         content.sound = UNNotificationSound.default
-        content.title = "Title"
-        content.body = "Body"
+        content.title = title
+        content.body = body
         
         print("Date in schedule", Date())
         
