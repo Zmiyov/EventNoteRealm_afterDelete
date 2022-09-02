@@ -12,11 +12,45 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
+    let center = UNUserNotificationCenter.current()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        center.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
+            if let error = error {
+                print(error)
+            }
+        }
+        center.delegate = self
+        schedule(date: Date())
         return true
     }
+    
+    
+    func schedule(date: Date) {
+        
+        let content = UNMutableNotificationContent()
+        content.sound = UNNotificationSound.default
+        content.title = "Title"
+        content.body = "Body"
+        
+        print(Date())
+        
+        let dateOfTrigger = Calendar.current.date(byAdding: .second, value: 5, to: date)!
+        let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: dateOfTrigger)
+        
+        let timeIntervalTrigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+        
+        let request = UNNotificationRequest(identifier: "Date", content: content, trigger: timeIntervalTrigger)
+        
+        UNUserNotificationCenter.current().add(request) { error in
+            if let error = error {
+                print(error)
+            }
+            print("reminder added")
+        }
+    }
+    
 
     // MARK: UISceneSession Lifecycle
 
@@ -31,6 +65,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
+    
+    
+    
 
     // MARK: - Core Data stack
 
@@ -79,3 +116,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.sound, .banner])
+    }
+    
+}

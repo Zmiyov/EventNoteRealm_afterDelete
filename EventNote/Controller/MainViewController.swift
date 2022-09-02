@@ -8,6 +8,7 @@
 import UIKit
 import FSCalendar
 import RealmSwift
+import UserNotifications
 
 class MainViewController: UIViewController {
     
@@ -191,6 +192,7 @@ extension MainViewController: FSCalendarDataSource, FSCalendarDelegate {
     }
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        print(date)
         choosedDay = date
         datePredicate(date: date)
         dataSource.apply(filteredItemsSnapshot, animatingDifferences: true)
@@ -320,9 +322,9 @@ extension MainViewController {
 
 extension MainViewController: AddEventTableViewControllerDelegate {
     func addEventTableViewController(_ controller: AddEventTableViewController) {
-        
         let date = choosedDay
         datePredicate(date: date)
         dataSource.apply(filteredItemsSnapshot, animatingDifferences: true)
+        ShootingReminder.shared.schedule()
     }
 }

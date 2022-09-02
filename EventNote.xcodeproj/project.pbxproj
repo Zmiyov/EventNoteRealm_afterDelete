@@ -16,6 +16,7 @@
 		A547D47528A81D0200173BA8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A547D47428A81D0200173BA8 /* Assets.xcassets */; };
 		A547D47828A81D0200173BA8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A547D47628A81D0200173BA8 /* LaunchScreen.storyboard */; };
 		A54C769F28ABF81600C479AE /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54C769E28ABF81600C479AE /* UILabel.swift */; };
+		A5BC5FB828C0E27500136552 /* ShootingReminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5BC5FB728C0E27500136552 /* ShootingReminder.swift */; };
 		A5DE68AE28ACFDDF00C34183 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DE68AD28ACFDDF00C34183 /* ListTableViewCell.swift */; };
 		A5DE68B028AD05D500C34183 /* AddEventTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DE68AF28AD05D500C34183 /* AddEventTableViewHeader.swift */; };
 		A5DE68B228AD415700C34183 /* KindOfAlertListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DE68B128AD415700C34183 /* KindOfAlertListTableViewController.swift */; };
@@ -44,6 +45,7 @@
 		A547D47728A81D0200173BA8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A547D47928A81D0200173BA8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A54C769E28ABF81600C479AE /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
+		A5BC5FB728C0E27500136552 /* ShootingReminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShootingReminder.swift; sourceTree = "<group>"; };
 		A5DE68AD28ACFDDF00C34183 /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
 		A5DE68AF28AD05D500C34183 /* AddEventTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventTableViewHeader.swift; sourceTree = "<group>"; };
 		A5DE68B128AD415700C34183 /* KindOfAlertListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KindOfAlertListTableViewController.swift; sourceTree = "<group>"; };
@@ -112,13 +114,13 @@
 		A547D46728A81D0000173BA8 /* EventNote */ = {
 			isa = PBXGroup;
 			children = (
+				A547D46828A81D0000173BA8 /* AppDelegate.swift */,
+				A547D46A28A81D0000173BA8 /* SceneDelegate.swift */,
 				A5FE847628B17A33002AA152 /* Services */,
 				A547D48128A825AC00173BA8 /* Model */,
 				A5DE68AB28ACFC9700C34183 /* View */,
 				A5DE68AC28ACFCE800C34183 /* Controller */,
 				A54C769D28ABF74D00C479AE /* Extensions */,
-				A547D46828A81D0000173BA8 /* AppDelegate.swift */,
-				A547D46A28A81D0000173BA8 /* SceneDelegate.swift */,
 				A547D47428A81D0200173BA8 /* Assets.xcassets */,
 				A547D47628A81D0200173BA8 /* LaunchScreen.storyboard */,
 				A547D47928A81D0200173BA8 /* Info.plist */,
@@ -183,6 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				A5FE847728B17A63002AA152 /* RealmManager.swift */,
+				A5BC5FB728C0E27500136552 /* ShootingReminder.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -306,6 +309,7 @@
 				A547D46D28A81D0000173BA8 /* MainViewController.swift in Sources */,
 				A5DE68BD28AEE57700C34183 /* AddEventCellNameType.swift in Sources */,
 				A5DE68AE28ACFDDF00C34183 /* ListTableViewCell.swift in Sources */,
+				A5BC5FB828C0E27500136552 /* ShootingReminder.swift in Sources */,
 				A5FE847828B17A63002AA152 /* RealmManager.swift in Sources */,
 				A5DE68B728AEC55300C34183 /* AmountOfHoursListTableViewController.swift in Sources */,
 				A5DE68C128AFF9DA00C34183 /* DatePickerTableViewCell.swift in Sources */,

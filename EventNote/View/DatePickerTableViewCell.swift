@@ -20,7 +20,7 @@ class DatePickerTableViewCell: UITableViewCell {
         let datePicker = UIDatePicker()
         datePicker.minimumDate = Calendar.current.startOfDay(for: Date())
         datePicker.preferredDatePickerStyle = .compact
-        datePicker.minuteInterval = 15
+//        datePicker.minuteInterval = 5
         datePicker.translatesAutoresizingMaskIntoConstraints = false
         return datePicker
     }()
