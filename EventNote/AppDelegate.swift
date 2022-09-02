@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         center.delegate = self
-        schedule(date: Date())
+//        schedule(date: Date())
         return true
     }
     

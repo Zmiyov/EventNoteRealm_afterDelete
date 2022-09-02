@@ -13,7 +13,8 @@ import UserNotifications
 class MainViewController: UIViewController {
     
     var calendarHeightConstraint: NSLayoutConstraint!
-    var choosedDay = Date()
+    var choosedDay = Calendar.current.startOfDay(for: Date())
+    
     
     let localRealm = try! Realm()
     var eventRealmModelsArray: [EventRealmModel]!
@@ -63,9 +64,11 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .secondarySystemBackground
         title = "Schedule"
+        print("Choosed Day", choosedDay)
         
         let date = Calendar.current.startOfDay(for: Date())
         datePredicate(date: date)
+//        dataSource.apply(filteredItemsSnapshot, animatingDifferences: true)
 
         calendar.delegate = self
         calendar.dataSource = self
@@ -73,7 +76,6 @@ class MainViewController: UIViewController {
         showHideButton.addTarget(self, action: #selector(showHideButtonTapped), for: .touchUpInside)
         
         collectionView.delegate = self
-//        collectionView.dataSource = self
         
         setConstraints()
         swipeAction()
@@ -86,6 +88,11 @@ class MainViewController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonTapped))
         
         createDataSource()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+//        self.dataSource.apply(self.filteredItemsSnapshot)
     }
     
     
@@ -192,7 +199,7 @@ extension MainViewController: FSCalendarDataSource, FSCalendarDelegate {
     }
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        print(date)
+        print("in didselect", date)
         choosedDay = date
         datePredicate(date: date)
         dataSource.apply(filteredItemsSnapshot, animatingDifferences: true)
@@ -220,23 +227,6 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.width, height: collectionView.frame.width/3)
     }
-    
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return eventRealmModelsArray.count
-//    }
-    
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ScheduleCollectionViewCell
-//        let event = eventRealmModelsArray[indexPath.item]
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "HH:mm"
-//        let time = dateFormatter.string(from: event.dateAndTime)
-//        cell.nameLabel.text = event.clientName
-//        cell.kindOfShootingLabel.text = event.kindOfShooting
-//        cell.timeLabel.text = time
-//        cell.locationLabel.text = event.mainLocation
-//        return cell
-//    }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
@@ -280,6 +270,7 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
                 let date = self.choosedDay
                 self.datePredicate(date: date)
                 self.dataSource.apply(self.filteredItemsSnapshot, animatingDifferences: true)
+                
             }
             return UIMenu(title: "", image: nil, identifier: nil, options: [], children: [edit, delete])
         }
@@ -325,6 +316,7 @@ extension MainViewController: AddEventTableViewControllerDelegate {
         let date = choosedDay
         datePredicate(date: date)
         dataSource.apply(filteredItemsSnapshot, animatingDifferences: true)
-        ShootingReminder.shared.schedule()
+        ShootingReminder.shared.schedule(date: Date())
+        print("in delegate", Date())
     }
 }
