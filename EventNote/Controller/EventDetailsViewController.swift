@@ -79,24 +79,38 @@ class EventDetailsViewController: UIViewController {
             mainVerticalStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -25)
         ])
         
-        
         let timeLocationWeatherHorStackView = UIStackView()
         timeLocationWeatherHorStackView.axis = .horizontal
         timeLocationWeatherHorStackView.distribution = .fillEqually
         timeLocationWeatherHorStackView.spacing = 1
         timeLocationWeatherHorStackView.translatesAutoresizingMaskIntoConstraints = false
-
+        NSLayoutConstraint.activate([
+//            timeLocationWeatherHorStackView.topAnchor.constraint(equalTo: mainVerticalStackView.topAnchor, constant: 0),
+//            timeLocationWeatherHorStackView.leadingAnchor.constraint(equalTo: mainVerticalStackView.leadingAnchor, constant: 0),
+//            timeLocationWeatherHorStackView.trailingAnchor.constraint(equalTo: mainVerticalStackView.trailingAnchor, constant: 0),
+            timeLocationWeatherHorStackView.heightAnchor.constraint(equalToConstant: 200)
+//                kindOfShootingLabel.bottomAnchor.constraint(equalTo: timeLocationWeatherHorStackView.bottomAnchor, constant: 0)
+        ])
         
         let timeLocationVertStackView = UIStackView()
         timeLocationVertStackView.axis = .vertical
         timeLocationVertStackView.distribution = .fillEqually
         timeLocationVertStackView.spacing = 1
         timeLocationVertStackView.translatesAutoresizingMaskIntoConstraints = false
-
+        NSLayoutConstraint.activate([
+//            timeLocationVertStackView.topAnchor.constraint(equalTo: timeLocationWeatherHorStackView.topAnchor, constant: 0),
+//            timeLocationVertStackView.leadingAnchor.constraint(equalTo: timeLocationWeatherHorStackView.leadingAnchor, constant: 0),
+//            timeLocationVertStackView.trailingAnchor.constraint(equalTo: weatherImageView.trailingAnchor, constant: 0),
+            timeLocationVertStackView.heightAnchor.constraint(equalToConstant: 200),
+//            timeLocationVertStackView.widthAnchor.constraint(equalToConstant: timeLocationWeatherHorStackView.bounds.width / 2)
+//                kindOfShootingLabel.bottomAnchor.constraint(equalTo: timeLocationWeatherHorStackView.bottomAnchor, constant: 0)
+        ])
         
-
+        timeLocationVertStackView.addArrangedSubview(dateAndTimeLabel)
+        timeLocationVertStackView.addArrangedSubview(mainLocationLabel)
         
-
+        timeLocationWeatherHorStackView.addArrangedSubview(timeLocationVertStackView)
+        timeLocationWeatherHorStackView.addArrangedSubview(weatherImageView)
         
         
         
@@ -106,35 +120,12 @@ class EventDetailsViewController: UIViewController {
                 kindOfShootingLabel.topAnchor.constraint(equalTo: mainVerticalStackView.topAnchor, constant: 0),
                 kindOfShootingLabel.leadingAnchor.constraint(equalTo: mainVerticalStackView.leadingAnchor, constant: 0),
                 kindOfShootingLabel.trailingAnchor.constraint(equalTo: mainVerticalStackView.trailingAnchor, constant: 0),
-                kindOfShootingLabel.bottomAnchor.constraint(equalTo: timeLocationWeatherHorStackView.topAnchor, constant: 0),
                 kindOfShootingLabel.heightAnchor.constraint(equalToConstant: 44)
+//                kindOfShootingLabel.bottomAnchor.constraint(equalTo: timeLocationWeatherHorStackView.bottomAnchor, constant: 0)
             ])
         }
         
-        mainVerticalStackView.addSubview(timeLocationWeatherHorStackView)
-        NSLayoutConstraint.activate([
-//            timeLocationWeatherHorStackView.topAnchor.constraint(equalTo: mainVerticalStackView.topAnchor, constant: 0),
-//            timeLocationWeatherHorStackView.leadingAnchor.constraint(equalTo: mainVerticalStackView.leadingAnchor, constant: 0),
-//            timeLocationWeatherHorStackView.trailingAnchor.constraint(equalTo: mainVerticalStackView.trailingAnchor, constant: 0),
-            timeLocationWeatherHorStackView.heightAnchor.constraint(equalToConstant: 150)
-//                kindOfShootingLabel.bottomAnchor.constraint(equalTo: timeLocationWeatherHorStackView.bottomAnchor, constant: 0)
-        ])
-        
-        
-        timeLocationWeatherHorStackView.addSubview(timeLocationVertStackView)
-        NSLayoutConstraint.activate([
-//            timeLocationVertStackView.topAnchor.constraint(equalTo: timeLocationWeatherHorStackView.topAnchor, constant: 0),
-//            timeLocationVertStackView.leadingAnchor.constraint(equalTo: timeLocationWeatherHorStackView.leadingAnchor, constant: 0),
-//            timeLocationVertStackView.trailingAnchor.constraint(equalTo: weatherImageView.trailingAnchor, constant: 0),
-//            timeLocationVertStackView.heightAnchor.constraint(equalToConstant: 300),
-//            timeLocationVertStackView.widthAnchor.constraint(equalToConstant: timeLocationWeatherHorStackView.bounds.width / 2)
-//                kindOfShootingLabel.bottomAnchor.constraint(equalTo: timeLocationWeatherHorStackView.bottomAnchor, constant: 0)
-        ])
-        
-        timeLocationWeatherHorStackView.addSubview(weatherImageView)
-        
-        timeLocationVertStackView.addSubview(dateAndTimeLabel)
-        timeLocationVertStackView.addSubview(mainLocationLabel)
+        mainVerticalStackView.addArrangedSubview(timeLocationWeatherHorStackView)
         
         
         if event.amountOfHours != 0 {
