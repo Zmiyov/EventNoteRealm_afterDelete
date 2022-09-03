@@ -24,7 +24,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
-    
     func schedule(date: Date) {
         
         let content = UNMutableNotificationContent()
