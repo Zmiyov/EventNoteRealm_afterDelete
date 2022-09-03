@@ -64,11 +64,9 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .secondarySystemBackground
         title = "Schedule"
-        print("Choosed Day", choosedDay)
         
         let date = Calendar.current.startOfDay(for: Date())
         datePredicate(date: date)
-//        dataSource.apply(filteredItemsSnapshot, animatingDifferences: true)
 
         calendar.delegate = self
         calendar.dataSource = self
@@ -199,7 +197,6 @@ extension MainViewController: FSCalendarDataSource, FSCalendarDelegate {
     }
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        print("in didselect", date)
         choosedDay = date
         datePredicate(date: date)
         dataSource.apply(filteredItemsSnapshot, animatingDifferences: true)
@@ -270,7 +267,7 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
                 let date = self.choosedDay
                 self.datePredicate(date: date)
                 self.dataSource.apply(self.filteredItemsSnapshot, animatingDifferences: true)
-                
+                self.calendar.reloadData()
             }
             return UIMenu(title: "", image: nil, identifier: nil, options: [], children: [edit, delete])
         }
@@ -319,6 +316,7 @@ extension MainViewController: AddEventTableViewControllerDelegate {
         dataSource.apply(filteredItemsSnapshot, animatingDifferences: true)
         ShootingReminder.shared.schedule(date: Date(), title: event.clientName, body: event.kindOfShooting)
         print("in delegate", Date())
+        calendar.reloadData()
     }
     
 }

@@ -41,6 +41,7 @@ class EventDetailsViewController: UIViewController {
         weatherImageView.image = UIImage(named: "storm.png")
         
         let kindOfShootingLabel = UILabel(text: event.kindOfShooting, font: .systemFont(ofSize: 35, weight: .bold), alighment: .left)
+
         
         let amountOfHoursLabel = UILabel(text: "Amount of hours:" + " " + String(event.amountOfHours), font: .systemFont(ofSize: 21, weight: .bold), alighment: .center)
         
@@ -97,8 +98,7 @@ class EventDetailsViewController: UIViewController {
             //            timeLocationVertStackView.leadingAnchor.constraint(equalTo: timeLocationWeatherHorStackView.leadingAnchor, constant: 0),
             //            timeLocationVertStackView.trailingAnchor.constraint(equalTo: weatherImageView.trailingAnchor, constant: 0),
             timeLocationVertStackView.heightAnchor.constraint(equalToConstant: 200),
-            //            timeLocationVertStackView.widthAnchor.constraint(equalToConstant: timeLocationWeatherHorStackView.bounds.width / 2)
-            //            timeLocationVertStackView.bottomAnchor.constraint(equalTo: timeLocationWeatherHorStackView.bottomAnchor, constant: 0)
+
         ])
         
         timeLocationVertStackView.addArrangedSubview(dateAndTimeLabel)
