@@ -116,7 +116,6 @@ class AddEventTableViewController: UITableViewController  {
                     eventModel.dateAndTime = editedDay
                 }
                 cell.datePicker.addTarget(self, action: #selector(dateChanged), for: .valueChanged)
-                
                 return cell
             case 2:
                 let cell = tableView.dequeueReusableCell(withIdentifier: idAddEventCell, for: indexPath) as! ListTableViewCell
@@ -242,7 +241,7 @@ class AddEventTableViewController: UITableViewController  {
             eventModel.dateAndTime = editedDay
         }
         reminderLogic(kindOfAlert: eventModel.alertString)
-        print("Reminder After date changed in date picker", eventModel.alertDate)
+//        print("Reminder After date changed in date picker", eventModel.alertDate)
     }
     
     @objc func textChanged(sender: UITextField) {
@@ -356,6 +355,15 @@ extension AddEventTableViewController: KindOfShootingTableViewControllerDelegate
         tableView.reloadData()
     }
     
+    func kindOfAlertListTableViewController(_ controller: KindOfAlertListTableViewController, didSelect kindOfAlert: KindOfAlertList) {
+        self.kindOfAlertOpted = kindOfAlert
+        try! localRealm.write {
+            eventModel.alertString = kindOfAlert.description
+        }
+        reminderLogic(kindOfAlert: kindOfAlert.description)
+        tableView.reloadData()
+    }
+    
     fileprivate func reminderLogic(kindOfAlert: String) {
         
         let currentDate = eventModel.dateAndTime
@@ -421,25 +429,10 @@ extension AddEventTableViewController: KindOfShootingTableViewControllerDelegate
             }
         }
     }
-    
-    func kindOfAlertListTableViewController(_ controller: KindOfAlertListTableViewController, didSelect kindOfAlert: KindOfAlertList) {
-        self.kindOfAlertOpted = kindOfAlert
-        try! localRealm.write {
-            eventModel.alertString = kindOfAlert.description
-        }
-        
-        reminderLogic(kindOfAlert: kindOfAlert.description)
-        
-        tableView.reloadData()
-    }
 }
-
-
-
 
 extension AddEventTableViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         textField.layoutIfNeeded()
     }
 }
-

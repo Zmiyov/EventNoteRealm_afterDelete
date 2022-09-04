@@ -15,7 +15,6 @@ class MainViewController: UIViewController {
     var calendarHeightConstraint: NSLayoutConstraint!
     var choosedDay = Calendar.current.startOfDay(for: Date())
     
-    
     let localRealm = try! Realm()
     var eventRealmModelsArray: [EventRealmModel]!
     
@@ -88,12 +87,6 @@ class MainViewController: UIViewController {
         createDataSource()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-//        self.dataSource.apply(self.filteredItemsSnapshot)
-    }
-    
-    
     @objc func addButtonTapped() {
         let addEventVC = AddEventTableViewController()
         addEventVC.editedDay = choosedDay
@@ -147,6 +140,8 @@ class MainViewController: UIViewController {
         }
     }
     
+    //MARK: Collection view data source
+    
     func createDataSource() {
         dataSource = UICollectionViewDiffableDataSource<Section, EventRealmModel>(collectionView: collectionView, cellProvider: { (collectionView, indexPath, item) -> UICollectionViewCell? in
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ScheduleCollectionViewCell
@@ -165,10 +160,7 @@ class MainViewController: UIViewController {
         
         dataSource.apply(filteredItemsSnapshot)
     }
-    
 }
-
-
 
 //MARK: - FSCalendarDataSource, FSCalendarDelegate
 
@@ -217,7 +209,7 @@ extension MainViewController: FSCalendarDataSource, FSCalendarDelegate {
     }
 }
 
-//MARK: Collection View
+//MARK: Collection View delegate
 
 extension MainViewController: UICollectionViewDelegateFlowLayout {
     
@@ -315,12 +307,12 @@ extension MainViewController: AddEventTableViewControllerDelegate {
         datePredicate(date: date)
         dataSource.apply(filteredItemsSnapshot, animatingDifferences: true)
         if let date = event.alertDate {
+            UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [event.identifierID])
             ShootingReminder.shared.schedule(date: date, title: event.clientName, body: event.kindOfShooting, identifier: event.identifierID)
         }
-        print("Now date in delegate", Date())
-        print("Identifier in delegate", event.identifierID)
-        print("Date of reminder", event.alertDate)
+//        print("Now date in delegate", Date())
+//        print("Identifier in delegate", event.identifierID)
+//        print("Date of reminder", event.alertDate)
         calendar.reloadData()
     }
-    
 }

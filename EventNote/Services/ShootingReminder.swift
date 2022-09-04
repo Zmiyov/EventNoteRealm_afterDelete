@@ -19,7 +19,7 @@ struct ShootingReminder {
         content.title = title
         content.body = body
         
-        print("Date in schedule", date)
+//        print("Date in schedule", date)
         
 //        let dateOfTrigger = Calendar.current.date(byAdding: .second, value: 1, to: date)!
         let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date)
