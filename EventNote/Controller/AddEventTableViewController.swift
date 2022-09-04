@@ -241,7 +241,8 @@ class AddEventTableViewController: UITableViewController  {
         try! localRealm.write {
             eventModel.dateAndTime = editedDay
         }
-        
+        reminderLogic(kindOfAlert: eventModel.alertString)
+        print("Reminder After date changed in date picker", eventModel.alertDate)
     }
     
     @objc func textChanged(sender: UITextField) {
@@ -355,14 +356,11 @@ extension AddEventTableViewController: KindOfShootingTableViewControllerDelegate
         tableView.reloadData()
     }
     
-    func kindOfAlertListTableViewController(_ controller: KindOfAlertListTableViewController, didSelect kindOfAlert: KindOfAlertList) {
-        let currentDate = eventModel.dateAndTime
-        self.kindOfAlertOpted = kindOfAlert
-        try! localRealm.write {
-            eventModel.alertString = kindOfAlert.description
-        }
+    fileprivate func reminderLogic(kindOfAlert: String) {
         
-        switch kindOfAlert.description {
+        let currentDate = eventModel.dateAndTime
+        
+        switch kindOfAlert {
         case "None":
             try! localRealm.write {
                 eventModel.alertDate = nil
@@ -422,10 +420,22 @@ extension AddEventTableViewController: KindOfShootingTableViewControllerDelegate
                 eventModel.alertDate = nil
             }
         }
+    }
+    
+    func kindOfAlertListTableViewController(_ controller: KindOfAlertListTableViewController, didSelect kindOfAlert: KindOfAlertList) {
+        self.kindOfAlertOpted = kindOfAlert
+        try! localRealm.write {
+            eventModel.alertString = kindOfAlert.description
+        }
+        
+        reminderLogic(kindOfAlert: kindOfAlert.description)
         
         tableView.reloadData()
     }
 }
+
+
+
 
 extension AddEventTableViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {

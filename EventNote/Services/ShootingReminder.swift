@@ -21,12 +21,12 @@ struct ShootingReminder {
         
         print("Date in schedule", date)
         
-        let dateOfTrigger = Calendar.current.date(byAdding: .second, value: 1, to: date)!
-        let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: dateOfTrigger)
+//        let dateOfTrigger = Calendar.current.date(byAdding: .second, value: 1, to: date)!
+        let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date)
         
-        let timeIntervalTrigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+        let timeOfTrigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
         
-        let request = UNNotificationRequest(identifier: identifier, content: content, trigger: timeIntervalTrigger)
+        let request = UNNotificationRequest(identifier: identifier, content: content, trigger: timeOfTrigger)
         
         UNUserNotificationCenter.current().add(request) { error in
             if let error = error {
