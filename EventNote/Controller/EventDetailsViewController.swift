@@ -55,7 +55,7 @@ class EventDetailsViewController: UIViewController {
         let startLocationLabel = UILabel(text: "Start location:" + " " + event.startLocation, font: .systemFont(ofSize: 21, weight: .bold), alighment: .center)
         let endLocationLabel = UILabel(text: "End location:" + " " + event.endLocation, font: .systemFont(ofSize: 21, weight: .bold), alighment: .center)
         
-        let priceLabel = UILabel(text: "Full price:" + " " + String(describing: event.fullPrice), font: .systemFont(ofSize: 21, weight: .bold), alighment: .center)
+        let fullPriceLabel = UILabel(text: "Full price:" + " " + String(describing: event.fullPrice), font: .systemFont(ofSize: 21, weight: .bold), alighment: .center)
         let priceForHourLabel = UILabel(text: "Price for hour:" + " " + event.priceForHour, font: .systemFont(ofSize: 21, weight: .bold), alighment: .center)
         let prepaymentLabel = UILabel(text: "Prepayment:" + " " + event.prepayment, font: .systemFont(ofSize: 21, weight: .bold), alighment: .center)
 
@@ -66,14 +66,16 @@ class EventDetailsViewController: UIViewController {
         
         
         
-        let mainVerticalStackView = UIStackView(frame: .zero)
-        mainVerticalStackView.backgroundColor = .darkGray
+        let mainVerticalStackView = UIStackView()
+        
         mainVerticalStackView.axis = .vertical
+        mainVerticalStackView.frame = CGRect(x: 0, y: 60, width: Constants.screenWidth, height: Constants.screenHeight-60)
+        mainVerticalStackView.backgroundColor = .darkGray
         mainVerticalStackView.distribution = .fill
         mainVerticalStackView.spacing = 1
         mainVerticalStackView.translatesAutoresizingMaskIntoConstraints = false
         
-        view.addSubview(mainVerticalStackView)
+        self.view.addSubview(mainVerticalStackView)
         NSLayoutConstraint.activate([
             mainVerticalStackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
             mainVerticalStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
@@ -81,10 +83,10 @@ class EventDetailsViewController: UIViewController {
 //            mainVerticalStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -25)
         ])
         
-        let timeLocationWeatherHorStackView = UIStackView(frame: .zero)
+        let timeLocationWeatherHorStackView = UIStackView()
         timeLocationWeatherHorStackView.axis = .horizontal
         timeLocationWeatherHorStackView.distribution = .fillEqually
-        timeLocationWeatherHorStackView.spacing = 1
+//        timeLocationWeatherHorStackView.spacing = 1
         timeLocationWeatherHorStackView.translatesAutoresizingMaskIntoConstraints = false
 
         
@@ -97,8 +99,7 @@ class EventDetailsViewController: UIViewController {
             //            timeLocationVertStackView.topAnchor.constraint(equalTo: timeLocationWeatherHorStackView.topAnchor, constant: 0),
             //            timeLocationVertStackView.leadingAnchor.constraint(equalTo: timeLocationWeatherHorStackView.leadingAnchor, constant: 0),
             //            timeLocationVertStackView.trailingAnchor.constraint(equalTo: weatherImageView.trailingAnchor, constant: 0),
-            timeLocationVertStackView.heightAnchor.constraint(equalToConstant: 200),
-
+            timeLocationVertStackView.heightAnchor.constraint(equalToConstant: 200)
         ])
         
         timeLocationVertStackView.addArrangedSubview(dateAndTimeLabel)
@@ -188,9 +189,9 @@ class EventDetailsViewController: UIViewController {
         }
         
         if event.fullPrice != "" {
-            mainVerticalStackView.addArrangedSubview(priceLabel)
+            mainVerticalStackView.addArrangedSubview(fullPriceLabel)
             NSLayoutConstraint.activate([
-                priceLabel.heightAnchor.constraint(equalToConstant: 44)
+                fullPriceLabel.heightAnchor.constraint(equalToConstant: 44)
             ])
         }
         

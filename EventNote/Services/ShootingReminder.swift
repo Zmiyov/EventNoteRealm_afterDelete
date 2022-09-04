@@ -32,7 +32,6 @@ struct ShootingReminder {
             if let error = error {
                 print(error)
             }
-            print("reminder added")
         }
     }
     
