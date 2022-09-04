@@ -314,8 +314,12 @@ extension MainViewController: AddEventTableViewControllerDelegate {
         let date = choosedDay
         datePredicate(date: date)
         dataSource.apply(filteredItemsSnapshot, animatingDifferences: true)
-        ShootingReminder.shared.schedule(date: Date(), title: event.clientName, body: event.kindOfShooting)
-        print("in delegate", Date())
+        if let date = event.alertDate {
+            ShootingReminder.shared.schedule(date: date, title: event.clientName, body: event.kindOfShooting, identifier: event.identifierID)
+        }
+        print("Now date in delegate", Date())
+        print("Identifier in delegate", event.identifierID)
+        print("Date of reminder", event.alertDate)
         calendar.reloadData()
     }
     

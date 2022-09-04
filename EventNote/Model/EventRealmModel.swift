@@ -30,5 +30,7 @@ class EventRealmModel: Object {
     
     @Persisted var alertString: String = ""
     @Persisted var alertDate: Date?
+    
+    @Persisted var identifierID: String = UUID().uuidString
 
 }

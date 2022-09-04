@@ -61,6 +61,7 @@ class AddEventTableViewController: UITableViewController  {
     }
     
     @objc func saveButtonTapped() {
+//        eventModel.identifierID = UUID().uuidString
         RealmManager.shared.saveEventModel(model: eventModel)
         delegate?.addEventTableViewController(self, event: eventModel)
         dismiss(animated: true, completion: nil)
