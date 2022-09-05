@@ -70,7 +70,7 @@ class MainViewController: UIViewController {
         calendar.delegate = self
         calendar.dataSource = self
         calendar.scope = .week
-        showHideButton.addTarget(self, action: #selector(showHideButtonTapped), for: .touchUpInside)
+        showHideButton.addTarget(self, action: #selector(showHideButtonTapped), for: .touchDown)
         
         collectionView.delegate = self
         
@@ -100,12 +100,26 @@ class MainViewController: UIViewController {
     }
     
     @objc func showHideButtonTapped() {
+        animateButton()
+        perform(#selector(showHideCalendar), with: nil, afterDelay: 0.2)
+
+    }
+    
+    @objc func showHideCalendar() {
         if calendar.scope == .week {
             calendar.setScope(.month, animated: true)
             showHideButton.setTitle("Close calendar", for: .normal)
         } else {
             calendar.setScope(.week, animated: true)
             showHideButton.setTitle("Open calendar", for: .normal)
+        }
+    }
+    
+    func animateButton() {
+        UIView.animate(withDuration: 0.2, animations: {self.showHideButton.transform = CGAffineTransform.identity.scaledBy(x: 0.9, y: 0.9)}) { finish in
+            UIView.animate(withDuration: 0.1) {
+                self.showHideButton.transform = CGAffineTransform.identity
+            }
         }
     }
     
@@ -309,6 +323,8 @@ extension MainViewController: AddEventTableViewControllerDelegate {
         if let date = event.alertDate {
             UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [event.identifierID])
             ShootingReminder.shared.schedule(date: date, title: event.clientName, body: event.kindOfShooting, identifier: event.identifierID)
+        } else {
+            UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [event.identifierID])
         }
 //        print("Now date in delegate", Date())
 //        print("Identifier in delegate", event.identifierID)
