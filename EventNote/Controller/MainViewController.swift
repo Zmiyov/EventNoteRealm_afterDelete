@@ -31,6 +31,7 @@ class MainViewController: UIViewController {
     
     private var calendar: FSCalendar = {
         let calendar = FSCalendar()
+        calendar.firstWeekday = 2
         calendar.translatesAutoresizingMaskIntoConstraints = false
         calendar.appearance.weekdayTextColor = .systemRed
         calendar.appearance.titleFont = UIFont.systemFont(ofSize: 17)
