@@ -103,7 +103,6 @@ class MainViewController: UIViewController {
     @objc func showHideButtonTapped() {
         animateButton()
         perform(#selector(showHideCalendar), with: nil, afterDelay: 0.2)
-
     }
     
     @objc func showHideCalendar() {
@@ -147,9 +146,9 @@ class MainViewController: UIViewController {
     @objc func handleSwipe(gesture: UISwipeGestureRecognizer) {
         switch gesture.direction {
         case .up:
-            showHideButtonTapped()
+            perform(#selector(showHideCalendar), with: nil, afterDelay: 0.2)
         case .down:
-            showHideButtonTapped()
+            perform(#selector(showHideCalendar), with: nil, afterDelay: 0.2)
         default:
             break
         }
