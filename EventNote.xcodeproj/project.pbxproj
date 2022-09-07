@@ -34,6 +34,7 @@
 		A5F170F128C8836300B2059A /* DeadlineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F170F028C8836300B2059A /* DeadlineViewController.swift */; };
 		A5F170F328C8912800B2059A /* DeadlinesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F170F228C8912800B2059A /* DeadlinesList.swift */; };
 		A5F170F528C892FE00B2059A /* DeadlinesListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F170F428C892FE00B2059A /* DeadlinesListTableViewController.swift */; };
+		A5F170F728C8B45500B2059A /* DeadlineCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F170F628C8B45500B2059A /* DeadlineCollectionViewCell.swift */; };
 		A5FE847528B173F3002AA152 /* EventRealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FE847428B173F3002AA152 /* EventRealmModel.swift */; };
 		A5FE847828B17A63002AA152 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FE847728B17A63002AA152 /* RealmManager.swift */; };
 /* End PBXBuildFile section */
@@ -68,6 +69,7 @@
 		A5F170F028C8836300B2059A /* DeadlineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineViewController.swift; sourceTree = "<group>"; };
 		A5F170F228C8912800B2059A /* DeadlinesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlinesList.swift; sourceTree = "<group>"; };
 		A5F170F428C892FE00B2059A /* DeadlinesListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlinesListTableViewController.swift; sourceTree = "<group>"; };
+		A5F170F628C8B45500B2059A /* DeadlineCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineCollectionViewCell.swift; sourceTree = "<group>"; };
 		A5FE847428B173F3002AA152 /* EventRealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRealmModel.swift; sourceTree = "<group>"; };
 		A5FE847728B17A63002AA152 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		E4E3D2E7E9EDC120441B0F0C /* Pods-EventNote.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EventNote.release.xcconfig"; path = "Target Support Files/Pods-EventNote/Pods-EventNote.release.xcconfig"; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 				A5DE68C028AFF9DA00C34183 /* DatePickerTableViewCell.swift */,
 				A5DE68AF28AD05D500C34183 /* AddEventTableViewHeader.swift */,
 				A5E5619528AA362B00DC4E3E /* ScheduleCollectionViewCell.swift */,
+				A5F170F628C8B45500B2059A /* DeadlineCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -341,6 +344,7 @@
 				A5DE68B428AEC2EA00C34183 /* KindOfShootingTableViewController.swift in Sources */,
 				A5126F8B28AC448200153525 /* AddEventTableViewController.swift in Sources */,
 				A54C769F28ABF81600C479AE /* UILabel.swift in Sources */,
+				A5F170F728C8B45500B2059A /* DeadlineCollectionViewCell.swift in Sources */,
 				A5DE68BF28AFD96600C34183 /* TextFieldTableViewCell.swift in Sources */,
 				A547D46B28A81D0000173BA8 /* SceneDelegate.swift in Sources */,
 				A5DE68BB28AED66E00C34183 /* KindOfAlertList.swift in Sources */,

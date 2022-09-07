@@ -28,7 +28,7 @@ class DeadlineViewController: UIViewController {
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.register(ScheduleCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        collectionView.register(DeadlineCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
         return collectionView
     }()
     
@@ -54,16 +54,17 @@ class DeadlineViewController: UIViewController {
     
     func createDataSource() {
         dataSource = UICollectionViewDiffableDataSource<Section, EventRealmModel>(collectionView: collectionView, cellProvider: { (collectionView, indexPath, item) -> UICollectionViewCell? in
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ScheduleCollectionViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! DeadlineCollectionViewCell
             
             let event = item
             let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "HH:mm"
-            let time = dateFormatter.string(from: event.dateAndTime)
+            dateFormatter.dateFormat = "YYYY, MMMM d"
+            guard let deadlineDate = event.deadlineDate else { return nil }
+            let time = dateFormatter.string(from: deadlineDate)
             cell.nameLabel.text = event.clientName
             cell.kindOfShootingLabel.text = event.kindOfShooting
             cell.timeLabel.text = time
-            cell.locationLabel.text = event.mainLocation
+            cell.contactsLabel.text = event.clientPhoneNumber
             
             return cell
         })
