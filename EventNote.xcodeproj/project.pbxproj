@@ -32,6 +32,7 @@
 		A5E5619828AA3E6100DC4E3E /* EventDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E5619728AA3E6100DC4E3E /* EventDetailsViewController.swift */; };
 		A5F170EF28C8816500B2059A /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F170EE28C8816500B2059A /* TabBarController.swift */; };
 		A5F170F128C8836300B2059A /* DeadlineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F170F028C8836300B2059A /* DeadlineViewController.swift */; };
+		A5F170F328C8912800B2059A /* DeadlinesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F170F228C8912800B2059A /* DeadlinesList.swift */; };
 		A5FE847528B173F3002AA152 /* EventRealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FE847428B173F3002AA152 /* EventRealmModel.swift */; };
 		A5FE847828B17A63002AA152 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FE847728B17A63002AA152 /* RealmManager.swift */; };
 /* End PBXBuildFile section */
@@ -64,6 +65,7 @@
 		A5E5619728AA3E6100DC4E3E /* EventDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailsViewController.swift; sourceTree = "<group>"; };
 		A5F170EE28C8816500B2059A /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		A5F170F028C8836300B2059A /* DeadlineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineViewController.swift; sourceTree = "<group>"; };
+		A5F170F228C8912800B2059A /* DeadlinesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlinesList.swift; sourceTree = "<group>"; };
 		A5FE847428B173F3002AA152 /* EventRealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRealmModel.swift; sourceTree = "<group>"; };
 		A5FE847728B17A63002AA152 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		E4E3D2E7E9EDC120441B0F0C /* Pods-EventNote.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EventNote.release.xcconfig"; path = "Target Support Files/Pods-EventNote/Pods-EventNote.release.xcconfig"; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 			children = (
 				A5FE847428B173F3002AA152 /* EventRealmModel.swift */,
 				A5DE68B828AECF3700C34183 /* KindOfShootingList.swift */,
+				A5F170F228C8912800B2059A /* DeadlinesList.swift */,
 				A5DE68BA28AED66E00C34183 /* KindOfAlertList.swift */,
 				A5DE68BC28AEE57700C34183 /* AddEventCellNameType.swift */,
 				A5C8CE5C28C4AB67009C87B1 /* Constants.swift */,
@@ -337,6 +340,7 @@
 				A5DE68BF28AFD96600C34183 /* TextFieldTableViewCell.swift in Sources */,
 				A547D46B28A81D0000173BA8 /* SceneDelegate.swift in Sources */,
 				A5DE68BB28AED66E00C34183 /* KindOfAlertList.swift in Sources */,
+				A5F170F328C8912800B2059A /* DeadlinesList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

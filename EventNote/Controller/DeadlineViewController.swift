@@ -7,7 +7,6 @@
 
 import UIKit
 import RealmSwift
-import UserNotifications
 
 class DeadlineViewController: UIViewController {
     
@@ -39,8 +38,8 @@ class DeadlineViewController: UIViewController {
         view.backgroundColor = .secondarySystemBackground
         title = "Deadline"
         
-        let date = Calendar.current.startOfDay(for: Date())
-        datePredicate(date: date)
+//        let date = Calendar.current.startOfDay(for: Date())
+        datePredicate()
 
         
         collectionView.delegate = self
@@ -74,7 +73,7 @@ class DeadlineViewController: UIViewController {
     
     func datePredicate() {
         
-        let startOfTheDay = Date()
+        let startOfTheDay = Calendar.current.startOfDay(for: Date())
 //        let endOfTheDay: Date = {
 //            let components = DateComponents(day: 1, second: -1)
 //            return Calendar.current.date(byAdding: components, to: startOfTheDay)!
@@ -122,7 +121,7 @@ extension DeadlineViewController: UICollectionViewDelegateFlowLayout {
                 let model = self.eventWithDeadlineArray[indexPath.item]
                 RealmManager.shared.deleteEventModel(model: model)
 
-                self.datePredicate(date: date)
+                self.datePredicate()
                 self.dataSource.apply(self.filteredItemsSnapshot, animatingDifferences: true)
                 
             }
@@ -137,7 +136,6 @@ extension DeadlineViewController: UICollectionViewDelegateFlowLayout {
 extension DeadlineViewController {
     
     func setConstraints() {
-        
         view.addSubview(collectionView)
         collectionView.backgroundColor = .secondarySystemBackground
         NSLayoutConstraint.activate([
