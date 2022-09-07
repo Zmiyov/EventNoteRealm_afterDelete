@@ -120,6 +120,19 @@ class AddEventTableViewController: UITableViewController  {
             case 2:
                 let cell = tableView.dequeueReusableCell(withIdentifier: idAddEventCell, for: indexPath) as! ListTableViewCell
                 let type = AddEventCellNameMainSectionType.allCases[indexPath.row]
+
+                if eventModel.deadlineString != "" {
+                    cell.nameCellLabel.text = "Deadline: " + eventModel.deadlineString
+                    cell.nameCellLabel.textColor = .label
+                } else {
+                    cell.nameCellLabel.text = type.description
+                    cell.nameCellLabel.textColor = .darkGray
+                }
+                cell.accessoryType = .disclosureIndicator
+                return cell
+            case 3:
+                let cell = tableView.dequeueReusableCell(withIdentifier: idAddEventCell, for: indexPath) as! ListTableViewCell
+                let type = AddEventCellNameMainSectionType.allCases[indexPath.row]
                 if let amountOfHours = amountOfHours {
                     cell.nameCellLabel.text = amountOfHours.description + " " + "hour(s)"
                     cell.nameCellLabel.textColor = .label
@@ -319,12 +332,16 @@ class AddEventTableViewController: UITableViewController  {
             alertVC.kindOfShooting = kindOfShooting1
             navigationController?.pushViewController(alertVC, animated: true)
         case [0, 2]:
+            let alertVC = DeadlinesListTableViewController()
+            alertVC.delegate = self
+            alertVC.deadline = deadlineOpted
+            navigationController?.pushViewController(alertVC, animated: true)
+        case [0, 3]:
             let alertVC = AmountOfHoursListTableViewController()
             alertVC.delegate = self
             alertVC.amountOrHours = amountOfHours
             navigationController?.pushViewController(alertVC, animated: true)
         case [4, 0]:
-            
             let alertVC = KindOfAlertListTableViewController()
             alertVC.delegate = self
             alertVC.kindOfAlert = kindOfAlertOpted

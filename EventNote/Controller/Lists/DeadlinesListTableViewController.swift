@@ -13,8 +13,8 @@ protocol DeadlinesListTableViewControllerDelegate {
 
 class DeadlinesListTableViewController: UITableViewController {
     
-    let idKindOfAlertCell = "idKindOfAlertCell"
-    let idKindOfAlertCellHeader = "idKindOfAlertCellHeader"
+    let idKindOfDeadlineCell = "idKindOfDeadlineCell"
+    let idKindOfDeadlineCellHeader = "idKindOfDeadlineCellHeader"
     
     var delegate: DeadlinesListTableViewControllerDelegate?
     var deadline: DeadlinesList?
@@ -30,8 +30,8 @@ class DeadlinesListTableViewController: UITableViewController {
         tableView.dataSource = self
         tableView.alwaysBounceVertical = false
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: idKindOfAlertCell)
-        tableView.register(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: idKindOfAlertCellHeader)
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: idKindOfDeadlineCell)
+        tableView.register(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: idKindOfDeadlineCellHeader)
 
     }
     
@@ -45,13 +45,13 @@ class DeadlinesListTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0: return 1
-        case 1: return 10
+        case 1: return 9
         default: return 1
         }
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "idKindOfAlertCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "idKindOfDeadlineCell", for: indexPath)
         switch indexPath {
         case [0, 0]:
             let type = DeadlinesList.allCases[indexPath.row]
@@ -106,7 +106,7 @@ class DeadlinesListTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: idKindOfAlertCellHeader)
+        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: idKindOfDeadlineCellHeader)
         return header
     }
     
