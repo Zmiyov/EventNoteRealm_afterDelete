@@ -42,6 +42,11 @@ class DeadlineViewController: UIViewController {
         datePredicate()
         collectionView.delegate = self
         createDataSource()
+        
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithDefaultBackground()
+        self.navigationController?.navigationBar.standardAppearance = appearance
+        self.navigationController?.navigationBar.scrollEdgeAppearance = appearance
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -73,16 +78,10 @@ class DeadlineViewController: UIViewController {
     }
     
     func datePredicate() {
-        
         let startOfTheDay = Calendar.current.startOfDay(for: Date()) as NSDate
-
         let predicate = NSPredicate(format: "isDone == false && deadlineDate > %@", startOfTheDay)
-        print(startOfTheDay)
-        
         let eventRealmModels = localRealm.objects(EventRealmModel.self).filter(predicate).sorted(byKeyPath: "deadlineDate")
-
         eventWithDeadlineArray = Array(eventRealmModels)
-
     }
 }
 
@@ -135,10 +134,11 @@ extension DeadlineViewController: UICollectionViewDelegateFlowLayout {
 extension DeadlineViewController {
     
     func setConstraints() {
+        
         view.addSubview(collectionView)
         collectionView.backgroundColor = .secondarySystemBackground
         NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
+            collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
             collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0)
