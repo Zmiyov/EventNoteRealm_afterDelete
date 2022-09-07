@@ -38,17 +38,17 @@ class DeadlineViewController: UIViewController {
         view.backgroundColor = .secondarySystemBackground
         title = "Deadlines"
         
-//        let date = Calendar.current.startOfDay(for: Date())
-        datePredicate()
-
-        
-        collectionView.delegate = self
-        
         setConstraints()
-        
+        datePredicate()
+        collectionView.delegate = self
         createDataSource()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        datePredicate()
+        self.dataSource.apply(self.filteredItemsSnapshot, animatingDifferences: false)
+    }
     
     //MARK: Collection view data source
     
