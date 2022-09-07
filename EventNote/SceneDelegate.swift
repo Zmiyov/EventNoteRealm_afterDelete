@@ -16,12 +16,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
-        let controller = MainViewController()
-        let navController = UINavigationController(rootViewController: controller)
+        window.rootViewController = TabBarController()
+//        let controller = TabBarController()
+//        let navController = UINavigationController(rootViewController: controller)
 //        navController.navigationBar.isTranslucent = false
 //        navController.navigationBar.barStyle = .black
 //        navController.navigationBar.
-        window.rootViewController = navController
+//        window.rootViewController = navController
         window.makeKeyAndVisible()
         self.window = window
     }

@@ -30,6 +30,8 @@
 		A5DE68C128AFF9DA00C34183 /* DatePickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DE68C028AFF9DA00C34183 /* DatePickerTableViewCell.swift */; };
 		A5E5619628AA362B00DC4E3E /* ScheduleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E5619528AA362B00DC4E3E /* ScheduleCollectionViewCell.swift */; };
 		A5E5619828AA3E6100DC4E3E /* EventDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E5619728AA3E6100DC4E3E /* EventDetailsViewController.swift */; };
+		A5F170EF28C8816500B2059A /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F170EE28C8816500B2059A /* TabBarController.swift */; };
+		A5F170F128C8836300B2059A /* DeadlineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F170F028C8836300B2059A /* DeadlineViewController.swift */; };
 		A5FE847528B173F3002AA152 /* EventRealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FE847428B173F3002AA152 /* EventRealmModel.swift */; };
 		A5FE847828B17A63002AA152 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FE847728B17A63002AA152 /* RealmManager.swift */; };
 /* End PBXBuildFile section */
@@ -60,6 +62,8 @@
 		A5DE68C028AFF9DA00C34183 /* DatePickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerTableViewCell.swift; sourceTree = "<group>"; };
 		A5E5619528AA362B00DC4E3E /* ScheduleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCollectionViewCell.swift; sourceTree = "<group>"; };
 		A5E5619728AA3E6100DC4E3E /* EventDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailsViewController.swift; sourceTree = "<group>"; };
+		A5F170EE28C8816500B2059A /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		A5F170F028C8836300B2059A /* DeadlineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineViewController.swift; sourceTree = "<group>"; };
 		A5FE847428B173F3002AA152 /* EventRealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRealmModel.swift; sourceTree = "<group>"; };
 		A5FE847728B17A63002AA152 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		E4E3D2E7E9EDC120441B0F0C /* Pods-EventNote.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EventNote.release.xcconfig"; path = "Target Support Files/Pods-EventNote/Pods-EventNote.release.xcconfig"; sourceTree = "<group>"; };
@@ -166,7 +170,9 @@
 		A5DE68AC28ACFCE800C34183 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				A5F170EE28C8816500B2059A /* TabBarController.swift */,
 				A547D46C28A81D0000173BA8 /* MainViewController.swift */,
+				A5F170F028C8836300B2059A /* DeadlineViewController.swift */,
 				A5126F8A28AC448200153525 /* AddEventTableViewController.swift */,
 				A5E5619728AA3E6100DC4E3E /* EventDetailsViewController.swift */,
 				A5DE68B528AEC52D00C34183 /* Lists */,
@@ -311,6 +317,7 @@
 				A5C8CE5D28C4AB67009C87B1 /* Constants.swift in Sources */,
 				A5DE68B028AD05D500C34183 /* AddEventTableViewHeader.swift in Sources */,
 				A547D46D28A81D0000173BA8 /* MainViewController.swift in Sources */,
+				A5F170F128C8836300B2059A /* DeadlineViewController.swift in Sources */,
 				A5DE68BD28AEE57700C34183 /* AddEventCellNameType.swift in Sources */,
 				A5DE68AE28ACFDDF00C34183 /* ListTableViewCell.swift in Sources */,
 				A5BC5FB828C0E27500136552 /* ShootingReminder.swift in Sources */,
@@ -322,6 +329,7 @@
 				A5DE68B228AD415700C34183 /* KindOfAlertListTableViewController.swift in Sources */,
 				A5E5619828AA3E6100DC4E3E /* EventDetailsViewController.swift in Sources */,
 				A5DE68B928AECF3700C34183 /* KindOfShootingList.swift in Sources */,
+				A5F170EF28C8816500B2059A /* TabBarController.swift in Sources */,
 				A547D47328A81D0000173BA8 /* EventNote.xcdatamodeld in Sources */,
 				A5DE68B428AEC2EA00C34183 /* KindOfShootingTableViewController.swift in Sources */,
 				A5126F8B28AC448200153525 /* AddEventTableViewController.swift in Sources */,
