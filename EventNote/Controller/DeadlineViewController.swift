@@ -118,11 +118,10 @@ extension DeadlineViewController: UICollectionViewDelegateFlowLayout {
             let markAsDone = UIAction(title: "Done") { action in
                 let model = self.eventWithDeadlineArray[indexPath.item]
                 try! self.localRealm.write {
-                    model.isDone = false
+                    model.isDone = true
                 }
                 self.datePredicate()
                 self.dataSource.apply(self.filteredItemsSnapshot, animatingDifferences: true)
-                
             }
             return UIMenu(title: "", image: nil, identifier: nil, options: [], children: [markAsDone])
         }
