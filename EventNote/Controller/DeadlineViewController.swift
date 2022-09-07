@@ -12,7 +12,7 @@ import UserNotifications
 class DeadlineViewController: UIViewController {
     
     let localRealm = try! Realm()
-    var eventRealmModelsArray: [EventRealmModel]!
+    var eventWithDeadlineArray: [EventRealmModel]!
     
     enum Section: CaseIterable {
         case main
@@ -21,7 +21,7 @@ class DeadlineViewController: UIViewController {
     var filteredItemsSnapshot: NSDiffableDataSourceSnapshot<Section, EventRealmModel> {
         var snapshot = NSDiffableDataSourceSnapshot<Section, EventRealmModel>()
         snapshot.appendSections([.main])
-        snapshot.appendItems(eventRealmModelsArray)
+        snapshot.appendItems(eventWithDeadlineArray)
         return snapshot
     }
     
@@ -72,18 +72,19 @@ class DeadlineViewController: UIViewController {
         dataSource.apply(filteredItemsSnapshot)
     }
     
-    func datePredicate(date: Date) {
+    func datePredicate() {
         
-        let startOfTheDay = date
-        let endOfTheDay: Date = {
-            let components = DateComponents(day: 1, second: -1)
-            return Calendar.current.date(byAdding: components, to: startOfTheDay)!
-        }()
+        let startOfTheDay = Date()
+//        let endOfTheDay: Date = {
+//            let components = DateComponents(day: 1, second: -1)
+//            return Calendar.current.date(byAdding: components, to: startOfTheDay)!
+//        }()
+//
+//        let predicate = NSPredicate(format: "dateAndTime BETWEEN %@", [startOfTheDay, endOfTheDay])
+        let predicate = NSPredicate(format: "isDone == false && deadlineDate > %@", [startOfTheDay])
         
-        let predicate = NSPredicate(format: "dateAndTime BETWEEN %@", [startOfTheDay, endOfTheDay])
-        
-        let eventRealmModels = localRealm.objects(EventRealmModel.self).filter(predicate).sorted(byKeyPath: "dateAndTime")
-        eventRealmModelsArray = Array(eventRealmModels)
+        let eventRealmModels = localRealm.objects(EventRealmModel.self).filter(predicate).sorted(byKeyPath: "deadlineDate")
+        eventWithDeadlineArray = Array(eventRealmModels)
     }
 }
 
@@ -99,7 +100,7 @@ extension DeadlineViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let currentEvent = eventRealmModelsArray[indexPath.item]
+        let currentEvent = eventWithDeadlineArray[indexPath.item]
         let details = EventDetailsViewController()
         details.event = currentEvent
         let navVC = UINavigationController(rootViewController: details)
@@ -118,7 +119,7 @@ extension DeadlineViewController: UICollectionViewDelegateFlowLayout {
         let config = UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { (elements) -> UIMenu? in
             
             let markAsDone = UIAction(title: "Done") { action in
-                let model = self.eventRealmModelsArray[indexPath.item]
+                let model = self.eventWithDeadlineArray[indexPath.item]
                 RealmManager.shared.deleteEventModel(model: model)
 
                 self.datePredicate(date: date)
