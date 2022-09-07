@@ -20,6 +20,7 @@ class AddEventTableViewController: UITableViewController  {
     let localRealm = try! Realm()
     
     var kindOfShooting1: KindOfShootingList?
+    var deadlineOpted: DeadlinesList?
     var amountOfHours: Int?
     var kindOfAlertOpted: KindOfAlertList?
     
@@ -239,7 +240,7 @@ class AddEventTableViewController: UITableViewController  {
         try! localRealm.write {
             eventModel.dateAndTime = editedDay
         }
-        reminderLogic(kindOfAlert: eventModel.alertString)
+        eventReminderLogic(kindOfAlert: eventModel.alertString)
     }
     
     @objc func textChanged(sender: UITextField) {
@@ -334,7 +335,7 @@ class AddEventTableViewController: UITableViewController  {
     }
 }
 
-extension AddEventTableViewController: KindOfShootingTableViewControllerDelegate, AmountOfHoursListTableViewControllerDelegate, KindOfAlertListTableViewControllerDelegate {
+extension AddEventTableViewController: KindOfShootingTableViewControllerDelegate, DeadlinesListTableViewControllerDelegate, AmountOfHoursListTableViewControllerDelegate, KindOfAlertListTableViewControllerDelegate {
 
     func kindOfShootingTableViewController(_ controller: KindOfShootingTableViewController, didSelect kindOfShooting: KindOfShootingList) {
         self.kindOfShooting1 = kindOfShooting
@@ -342,6 +343,15 @@ extension AddEventTableViewController: KindOfShootingTableViewControllerDelegate
         try! localRealm.write {
             eventModel.kindOfShooting = kindOfShooting.description
         }
+        tableView.reloadData()
+    }
+    
+    func deadlinesListTableViewController(_ controller: DeadlinesListTableViewController, didSelect deadline: DeadlinesList) {
+        self.deadlineOpted = deadline
+        try! localRealm.write {
+            eventModel.deadlineString = deadline.description
+        }
+//        deadlineReminderLogic(kindOfAlert: deadlineOpted.description)
         tableView.reloadData()
     }
     
@@ -358,11 +368,11 @@ extension AddEventTableViewController: KindOfShootingTableViewControllerDelegate
         try! localRealm.write {
             eventModel.alertString = kindOfAlert.description
         }
-        reminderLogic(kindOfAlert: kindOfAlert.description)
+        eventReminderLogic(kindOfAlert: kindOfAlert.description)
         tableView.reloadData()
     }
     
-    fileprivate func reminderLogic(kindOfAlert: String) {
+    fileprivate func eventReminderLogic(kindOfAlert: String) {
         
         let currentDate = eventModel.dateAndTime
         
