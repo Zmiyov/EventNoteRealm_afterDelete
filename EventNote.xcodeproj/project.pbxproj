@@ -166,10 +166,10 @@
 		A5DE68AC28ACFCE800C34183 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				A5DE68B528AEC52D00C34183 /* Lists */,
 				A547D46C28A81D0000173BA8 /* MainViewController.swift */,
 				A5126F8A28AC448200153525 /* AddEventTableViewController.swift */,
 				A5E5619728AA3E6100DC4E3E /* EventDetailsViewController.swift */,
+				A5DE68B528AEC52D00C34183 /* Lists */,
 			);
 			path = Controller;
 			sourceTree = "<group>";

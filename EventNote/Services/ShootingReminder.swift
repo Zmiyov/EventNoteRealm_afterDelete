@@ -19,13 +19,8 @@ struct ShootingReminder {
         content.title = title
         content.body = body
         
-//        print("Date in schedule", date)
-        
-//        let dateOfTrigger = Calendar.current.date(byAdding: .second, value: 1, to: date)!
         let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date)
-        
         let timeOfTrigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
-        
         let request = UNNotificationRequest(identifier: identifier, content: content, trigger: timeOfTrigger)
         
         UNUserNotificationCenter.current().add(request) { error in
@@ -34,28 +29,5 @@ struct ShootingReminder {
             }
         }
     }
-    
-    func unschedule() {
-        
-    }
-    
-//    private func authorizeIfNeeded(completion: @escaping (Bool) -> ()) {
-//
-//        let notificationCenter = UNUserNotificationCenter.current()
-//        notificationCenter.getNotificationSettings { settings in
-//            switch settings.authorizationStatus {
-//            case .authorized:
-//                completion(true)
-//            case .notDetermined:
-//                notificationCenter.requestAuthorization(options: [.sound, .alert]) { granted, _ in
-//                    completion(granted)
-//                }
-//            case .denied, .provisional, .ephemeral:
-//                completion(false)
-//            @unknown default:
-//                completion(false)
-//            }
-//        }
-//    }
 }
 
