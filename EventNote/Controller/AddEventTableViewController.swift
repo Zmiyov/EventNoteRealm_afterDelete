@@ -454,6 +454,67 @@ extension AddEventTableViewController: KindOfShootingTableViewControllerDelegate
             }
         }
     }
+    
+    fileprivate func deadlineReminderLogic(deadline: String) {
+        
+        let currentDate = eventModel.dateAndTime
+        
+        switch deadline {
+        case "None":
+            try! localRealm.write {
+                eventModel.deadlineDate = nil
+            }
+        case "In a day":
+            let setDate = Calendar.current.date(byAdding: .day, value: 1, to: currentDate)
+            try! localRealm.write {
+                eventModel.deadlineDate = setDate
+            }
+        case "In a week":
+            let setDate = Calendar.current.date(byAdding: .day, value: 7, to: currentDate)
+            try! localRealm.write {
+                eventModel.deadlineDate = setDate
+            }
+        case "In a two weeks":
+            let setDate = Calendar.current.date(byAdding: .day, value: 14, to: currentDate)
+            try! localRealm.write {
+                eventModel.deadlineDate = setDate
+            }
+        case "In a month":
+            let setDate = Calendar.current.date(byAdding: .month, value: 1, to: currentDate)
+            try! localRealm.write {
+                eventModel.deadlineDate = setDate
+            }
+        case "In a two months":
+            let setDate = Calendar.current.date(byAdding: .month, value: 2, to: currentDate)
+            try! localRealm.write {
+                eventModel.deadlineDate = setDate
+            }
+        case "In a three months":
+            let setDate = Calendar.current.date(byAdding: .month, value: 3, to: currentDate)
+            try! localRealm.write {
+                eventModel.deadlineDate = setDate
+            }
+        case "In a four months":
+            let setDate = Calendar.current.date(byAdding: .month, value: 4, to: currentDate)
+            try! localRealm.write {
+                eventModel.deadlineDate = setDate
+            }
+        case "In a five months":
+            let setDate = Calendar.current.date(byAdding: .month, value: 5, to: currentDate)
+            try! localRealm.write {
+                eventModel.deadlineDate = setDate
+            }
+        case "In a six months":
+            let setDate = Calendar.current.date(byAdding: .month, value: 6, to: currentDate)
+            try! localRealm.write {
+                eventModel.deadlineDate = setDate
+            }
+        default:
+            try! localRealm.write {
+                eventModel.deadlineDate = nil
+            }
+        }
+    }
 }
 
 extension AddEventTableViewController: UITextFieldDelegate {
