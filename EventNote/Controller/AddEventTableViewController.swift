@@ -368,7 +368,7 @@ extension AddEventTableViewController: KindOfShootingTableViewControllerDelegate
         try! localRealm.write {
             eventModel.deadlineString = deadline.description
         }
-//        deadlineReminderLogic(kindOfAlert: deadlineOpted.description)
+        deadlineReminderLogic(deadline: deadline.description)
         tableView.reloadData()
     }
     
@@ -466,6 +466,7 @@ extension AddEventTableViewController: KindOfShootingTableViewControllerDelegate
             }
         case "In a day":
             let setDate = Calendar.current.date(byAdding: .day, value: 1, to: currentDate)
+            print("In a day ", setDate)
             try! localRealm.write {
                 eventModel.deadlineDate = setDate
             }

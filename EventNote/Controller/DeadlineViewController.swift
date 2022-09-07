@@ -36,7 +36,7 @@ class DeadlineViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .secondarySystemBackground
-        title = "Deadline"
+        title = "Deadlines"
         
 //        let date = Calendar.current.startOfDay(for: Date())
         datePredicate()
@@ -73,17 +73,15 @@ class DeadlineViewController: UIViewController {
     
     func datePredicate() {
         
-        let startOfTheDay = Calendar.current.startOfDay(for: Date())
-//        let endOfTheDay: Date = {
-//            let components = DateComponents(day: 1, second: -1)
-//            return Calendar.current.date(byAdding: components, to: startOfTheDay)!
-//        }()
-//
-//        let predicate = NSPredicate(format: "dateAndTime BETWEEN %@", [startOfTheDay, endOfTheDay])
-        let predicate = NSPredicate(format: "isDone == false && deadlineDate > %@", [startOfTheDay])
+        let startOfTheDay = Calendar.current.startOfDay(for: Date()) as NSDate
+
+        let predicate = NSPredicate(format: "isDone == false && deadlineDate > %@", startOfTheDay)
+        print(startOfTheDay)
         
         let eventRealmModels = localRealm.objects(EventRealmModel.self).filter(predicate).sorted(byKeyPath: "deadlineDate")
+
         eventWithDeadlineArray = Array(eventRealmModels)
+
     }
 }
 
