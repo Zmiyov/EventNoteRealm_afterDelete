@@ -12,6 +12,8 @@ class EventRealmModel: Object {
     
     @Persisted var kindOfShooting: String = ""
     @Persisted var dateAndTime: Date = Date()
+    @Persisted var deadlineDate: Date?
+    @Persisted var deadlineString: String = ""
     @Persisted var amountOfHours: Int = 0
     
     @Persisted var clientName: String = ""
@@ -31,6 +33,7 @@ class EventRealmModel: Object {
     @Persisted var alertString: String = ""
     @Persisted var alertDate: Date?
     
+    @Persisted var isDone: Bool = false
     @Persisted var identifierID: String = UUID().uuidString
 
 }
