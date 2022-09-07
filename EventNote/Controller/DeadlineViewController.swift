@@ -117,8 +117,9 @@ extension DeadlineViewController: UICollectionViewDelegateFlowLayout {
             
             let markAsDone = UIAction(title: "Done") { action in
                 let model = self.eventWithDeadlineArray[indexPath.item]
-                RealmManager.shared.deleteEventModel(model: model)
-
+                try! self.localRealm.write {
+                    model.isDone = false
+                }
                 self.datePredicate()
                 self.dataSource.apply(self.filteredItemsSnapshot, animatingDifferences: true)
                 

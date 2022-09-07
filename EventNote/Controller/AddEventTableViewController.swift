@@ -367,6 +367,7 @@ extension AddEventTableViewController: KindOfShootingTableViewControllerDelegate
         self.deadlineOpted = deadline
         try! localRealm.write {
             eventModel.deadlineString = deadline.description
+            eventModel.isDone = false
         }
         deadlineReminderLogic(deadline: deadline.description)
         tableView.reloadData()
