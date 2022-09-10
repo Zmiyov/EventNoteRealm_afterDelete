@@ -31,6 +31,7 @@
 		A5E5619628AA362B00DC4E3E /* ScheduleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E5619528AA362B00DC4E3E /* ScheduleCollectionViewCell.swift */; };
 		A5E5619828AA3E6100DC4E3E /* EventDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E5619728AA3E6100DC4E3E /* EventDetailsViewController.swift */; };
 		A5F0ECF228CD2ACB001D1354 /* CoreDataDBEventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F0ECF128CD2ACB001D1354 /* CoreDataDBEventModel.swift */; };
+		A5F0ECF428CD32F3001D1354 /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F0ECF328CD32F3001D1354 /* EventModel.swift */; };
 		A5F170EF28C8816500B2059A /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F170EE28C8816500B2059A /* TabBarController.swift */; };
 		A5F170F128C8836300B2059A /* DeadlineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F170F028C8836300B2059A /* DeadlineViewController.swift */; };
 		A5F170F328C8912800B2059A /* DeadlinesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F170F228C8912800B2059A /* DeadlinesList.swift */; };
@@ -67,6 +68,7 @@
 		A5E5619528AA362B00DC4E3E /* ScheduleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCollectionViewCell.swift; sourceTree = "<group>"; };
 		A5E5619728AA3E6100DC4E3E /* EventDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailsViewController.swift; sourceTree = "<group>"; };
 		A5F0ECF128CD2ACB001D1354 /* CoreDataDBEventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataDBEventModel.swift; sourceTree = "<group>"; };
+		A5F0ECF328CD32F3001D1354 /* EventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
 		A5F170EE28C8816500B2059A /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		A5F170F028C8836300B2059A /* DeadlineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineViewController.swift; sourceTree = "<group>"; };
 		A5F170F228C8912800B2059A /* DeadlinesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlinesList.swift; sourceTree = "<group>"; };
@@ -130,9 +132,9 @@
 			children = (
 				A547D46828A81D0000173BA8 /* AppDelegate.swift */,
 				A547D46A28A81D0000173BA8 /* SceneDelegate.swift */,
+				A5FE847628B17A33002AA152 /* Services */,
 				A5F0ECF028CD2A82001D1354 /* CoreDataDBModel */,
 				A5F0ECEF28CD2A38001D1354 /* RealmModel */,
-				A5FE847628B17A33002AA152 /* Services */,
 				A547D48128A825AC00173BA8 /* Model */,
 				A5DE68AB28ACFC9700C34183 /* View */,
 				A5DE68AC28ACFCE800C34183 /* Controller */,
@@ -148,6 +150,7 @@
 		A547D48128A825AC00173BA8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A5F0ECF328CD32F3001D1354 /* EventModel.swift */,
 				A5DE68B828AECF3700C34183 /* KindOfShootingList.swift */,
 				A5F170F228C8912800B2059A /* DeadlinesList.swift */,
 				A5DE68BA28AED66E00C34183 /* KindOfAlertList.swift */,
@@ -364,6 +367,7 @@
 				A5DE68B428AEC2EA00C34183 /* KindOfShootingTableViewController.swift in Sources */,
 				A5126F8B28AC448200153525 /* AddEventTableViewController.swift in Sources */,
 				A54C769F28ABF81600C479AE /* UILabel.swift in Sources */,
+				A5F0ECF428CD32F3001D1354 /* EventModel.swift in Sources */,
 				A5F170F728C8B45500B2059A /* DeadlineCollectionViewCell.swift in Sources */,
 				A5DE68BF28AFD96600C34183 /* TextFieldTableViewCell.swift in Sources */,
 				A547D46B28A81D0000173BA8 /* SceneDelegate.swift in Sources */,
