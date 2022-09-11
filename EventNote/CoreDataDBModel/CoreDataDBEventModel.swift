@@ -10,9 +10,34 @@ import CoreData
 
 class EventEntity: NSManagedObject {
     
+    class func getAllEvents(context: NSManagedObjectContext) throws -> [EventEntity] {
+        let request: NSFetchRequest<EventEntity> = EventEntity.fetchRequest()
+        
+        do {
+            let events = try context.fetch(request)
+            return events
+        } catch {
+            throw error
+        }
+    }
+    
+    class func find(id: String, context: NSManagedObjectContext) throws -> EventEntity {
+        
+        let request: NSFetchRequest<EventEntity> = EventEntity.fetchRequest()
+        request.predicate = NSPredicate(format: "id == %d", id)
+        
+        do {
+            let events = try context.fetch(request)
+            assert(events.count == 1, "There are few events ralated to one ID")
+            return events[0]
+        } catch {
+            throw error
+        }
+    }
+    
     class func findOrCreate(event: EventModel, context: NSManagedObjectContext) throws -> EventEntity {
 
-        let request: NSFetchRequest<EventEntity> = EventEntity.fetchRequest() as! NSFetchRequest<EventEntity>
+        let request: NSFetchRequest<EventEntity> = EventEntity.fetchRequest()
         request.predicate = NSPredicate(format: "identifierID == %d", event.identifierID)
         
         do {

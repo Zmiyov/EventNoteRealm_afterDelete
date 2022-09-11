@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21F79" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="EventEntity" representedClassName=".EventEntity" syncable="YES" codeGenerationType="category">
-        <attribute name="additionalPhoneNumber" attributeType="String" defaultValueString=""/>
+        <attribute name="additionalPhoneNumber" optional="YES" attributeType="String"/>
         <attribute name="alertDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="alertString" attributeType="String" defaultValueString=""/>
+        <attribute name="alertString" optional="YES" attributeType="String"/>
         <attribute name="amountOfHours" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="clientInstagram" attributeType="String" defaultValueString=""/>
-        <attribute name="clientName" attributeType="String" defaultValueString=""/>
-        <attribute name="clientPhoneNumber" attributeType="String" defaultValueString=""/>
-        <attribute name="clientTelegramOrChat" attributeType="String" defaultValueString=""/>
-        <attribute name="dateAndTime" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="clientInstagram" optional="YES" attributeType="String"/>
+        <attribute name="clientName" optional="YES" attributeType="String"/>
+        <attribute name="clientPhoneNumber" optional="YES" attributeType="String"/>
+        <attribute name="clientTelegramOrChat" optional="YES" attributeType="String"/>
+        <attribute name="dateAndTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="deadlineDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="deadlineString" attributeType="String" defaultValueString=""/>
-        <attribute name="endLocation" attributeType="String" defaultValueString=""/>
-        <attribute name="fullPrice" attributeType="String" defaultValueString=""/>
-        <attribute name="identifierID" attributeType="String"/>
+        <attribute name="deadlineString" optional="YES" attributeType="String"/>
+        <attribute name="endLocation" optional="YES" attributeType="String"/>
+        <attribute name="fullPrice" optional="YES" attributeType="String"/>
+        <attribute name="identifierID" optional="YES" attributeType="String"/>
         <attribute name="isDone" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
-        <attribute name="kindOfShooting" attributeType="String" defaultValueString=""/>
-        <attribute name="mainLocation" attributeType="String" defaultValueString=""/>
-        <attribute name="prepayment" attributeType="String" defaultValueString=""/>
-        <attribute name="priceForHour" attributeType="String" defaultValueString=""/>
-        <attribute name="startLocation" attributeType="String" defaultValueString=""/>
+        <attribute name="kindOfShooting" optional="YES" attributeType="String"/>
+        <attribute name="mainLocation" optional="YES" attributeType="String"/>
+        <attribute name="prepayment" optional="YES" attributeType="String"/>
+        <attribute name="priceForHour" optional="YES" attributeType="String"/>
+        <attribute name="startLocation" optional="YES" attributeType="String"/>
     </entity>
     <elements>
         <element name="EventEntity" positionX="-63" positionY="-18" width="128" height="329"/>

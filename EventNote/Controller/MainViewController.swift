@@ -9,14 +9,18 @@ import UIKit
 import FSCalendar
 import RealmSwift
 import UserNotifications
+import CoreData
 
 class MainViewController: UIViewController {
     
     var calendarHeightConstraint: NSLayoutConstraint!
     var choosedDay = Calendar.current.startOfDay(for: Date())
     
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
     let localRealm = try! Realm()
     var eventRealmModelsArray: [EventRealmModel]!
+    var eventModelsArray: [EventEntity]?
     
     enum Section: CaseIterable {
         case main
@@ -86,6 +90,28 @@ class MainViewController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonTapped))
         
         createDataSource()
+    }
+    
+    func fetchEvents(date: Date) {
+        
+        let startOfTheDay = date
+        let endOfTheDay: Date = {
+            let components = DateComponents(day: 1, second: -1)
+            return Calendar.current.date(byAdding: components, to: startOfTheDay)!
+        }()
+        
+        do {
+            let request = EventEntity.fetchRequest() as NSFetchRequest<EventEntity>
+            let predicate = NSPredicate(format: "dateAndTime BETWEEN %@", [startOfTheDay, endOfTheDay])
+            request.predicate = predicate
+            let sortByDate = NSSortDescriptor(key: "dateAndTime", ascending: true)
+            request.sortDescriptors = [sortByDate]
+            
+            let eventEntityModelsArray = try context.fetch(request)
+            self.eventModelsArray = eventEntityModelsArray
+        } catch {
+            print(error)
+        }
     }
     
     @objc func addButtonTapped() {
