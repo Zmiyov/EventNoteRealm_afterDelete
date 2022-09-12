@@ -7,14 +7,11 @@
 
 import UIKit
 import CoreData
-//import RealmSwift
 
 class DeadlineViewController: UIViewController {
     
-//    let localRealm = try! Realm()
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
-    var eventWithDeadlineArray: [EventEntity]!
+    var eventWithDeadlineArray: [EventEntity] = []
     
     enum Section: CaseIterable {
         case main
@@ -35,15 +32,14 @@ class DeadlineViewController: UIViewController {
         return collectionView
     }()
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .secondarySystemBackground
         title = "Deadlines"
         
         setConstraints()
-//        datePredicate()
         fetchEvents()
+        
         collectionView.delegate = self
         createDataSource()
         
@@ -55,7 +51,6 @@ class DeadlineViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        datePredicate()
         fetchEvents()
         self.dataSource.apply(self.filteredItemsSnapshot, animatingDifferences: false)
     }
@@ -78,37 +73,24 @@ class DeadlineViewController: UIViewController {
             
             return cell
         })
-        
         dataSource.apply(filteredItemsSnapshot)
     }
     
-//    func datePredicate() {
-//        let startOfTheDay = Calendar.current.startOfDay(for: Date()) as NSDate
-//        let predicate = NSPredicate(format: "isDone == false && deadlineDate > %@", startOfTheDay)
-//        let eventRealmModels = localRealm.objects(EventRealmModel.self).filter(predicate).sorted(byKeyPath: "deadlineDate")
-//        eventWithDeadlineArray = Array(eventRealmModels)
-//    }
-    
     func fetchEvents() {
-        
-        let startOfTheDay = Calendar.current.startOfDay(for: Date()) as NSDate
-        
         do {
+            let startOfTheDay = Calendar.current.startOfDay(for: Date()) as NSDate
             let request = EventEntity.fetchRequest() as NSFetchRequest<EventEntity>
             let predicate = NSPredicate(format: "isDone == false && deadlineDate > %@", startOfTheDay)
             request.predicate = predicate
             let sortByDate = NSSortDescriptor(key: "deadlineDate", ascending: true)
             request.sortDescriptors = [sortByDate]
             
-            let eventModelsArray = try context.fetch(request)
-            self.eventWithDeadlineArray = eventModelsArray
+            self.eventWithDeadlineArray = try context.fetch(request)
         } catch {
             print(error)
         }
     }
 }
-
-    
 
 //MARK: Collection View delegate
 
@@ -140,15 +122,14 @@ extension DeadlineViewController: UICollectionViewDelegateFlowLayout {
             
             let markAsDone = UIAction(title: "Done") { action in
                 let model = self.eventWithDeadlineArray[indexPath.item]
-//                try! self.localRealm.write {
-                    model.isDone = true
-//                }
-//                self.datePredicate()
+                model.isDone = true
+                
                 do {
                     try self.context.save()
                 } catch {
                     print(error)
                 }
+                
                 self.fetchEvents()
                 self.dataSource.apply(self.filteredItemsSnapshot, animatingDifferences: true)
             }
