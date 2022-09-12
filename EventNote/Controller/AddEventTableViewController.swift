@@ -265,8 +265,6 @@ class AddEventTableViewController: UITableViewController  {
         
     }
     
-    
-    
     @objc func dateChanged(sender: UIDatePicker) {
         editedDay = sender.date
 //        try! localRealm.write {
