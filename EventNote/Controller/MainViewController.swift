@@ -20,7 +20,7 @@ class MainViewController: UIViewController {
     
     let localRealm = try! Realm()
     var eventRealmModelsArray: [EventRealmModel]!
-    var eventModelsArray: [EventEntity]?
+    var eventEntityModelsArray: [EventEntity]?
     
     enum Section: CaseIterable {
         case main
@@ -107,8 +107,8 @@ class MainViewController: UIViewController {
             let sortByDate = NSSortDescriptor(key: "dateAndTime", ascending: true)
             request.sortDescriptors = [sortByDate]
             
-            let eventEntityModelsArray = try context.fetch(request)
-            self.eventModelsArray = eventEntityModelsArray
+            let eventModelsArray = try context.fetch(request)
+            self.eventEntityModelsArray = eventModelsArray
         } catch {
             print(error)
         }
