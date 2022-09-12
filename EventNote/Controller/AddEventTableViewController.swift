@@ -36,8 +36,7 @@ class AddEventTableViewController: UITableViewController  {
         super.viewDidLoad()
         title = "New Event"
         
-        let entity = NSEntityDescription.entity(forEntityName: "EventEntity", in: context)!
-        self.eventModel = EventEntity(entity: entity, insertInto: context)
+        createOrFetchEvent()
         
         let cancelBarButton = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(backButton))
         self.navigationItem.leftBarButtonItem = cancelBarButton
@@ -83,6 +82,15 @@ class AddEventTableViewController: UITableViewController  {
     private func updateSaveButtonState() {
         let shouldEnableSaveButton = eventModel.clientName != nil
         navigationItem.rightBarButtonItem!.isEnabled = shouldEnableSaveButton
+    }
+    
+    func createOrFetchEvent() {
+        if eventModel == nil {
+            let entity = NSEntityDescription.entity(forEntityName: "EventEntity", in: context)!
+            self.eventModel = EventEntity(entity: entity, insertInto: context)
+        } else {
+            return
+        }
     }
     
     
