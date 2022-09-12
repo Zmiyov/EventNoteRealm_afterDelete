@@ -19,7 +19,7 @@ class MainViewController: UIViewController {
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
 //    let localRealm = try! Realm()
-    var eventRealmModelsArray: [EventEntity]!
+    var eventRealmModelsArray: [EventEntity] = []
 //    var eventEntityModelsArray: [EventEntity]?
     
     enum Section: CaseIterable {
@@ -103,8 +103,8 @@ class MainViewController: UIViewController {
         
         do {
             let request = EventEntity.fetchRequest() as NSFetchRequest<EventEntity>
-            let predicate = NSPredicate(format: "dateAndTime BETWEEN %@", [startOfTheDay, endOfTheDay])
-            request.predicate = predicate
+//            let predicate = NSPredicate(format: "dateAndTime BETWEEN %@", [startOfTheDay, endOfTheDay])
+//            request.predicate = predicate
             let sortByDate = NSSortDescriptor(key: "dateAndTime", ascending: true)
             request.sortDescriptors = [sortByDate]
             
@@ -280,7 +280,7 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
         let config = UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { (elements) -> UIMenu? in
                 
-            let edit = UIAction(title: "Edit") { action in
+            let editAction = UIAction(title: "Edit") { action in
                 
                 let editVC = AddEventTableViewController()
                 editVC.eventModel = self.eventRealmModelsArray[indexPath.item]
@@ -296,10 +296,16 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
                 self.present(navController, animated: true)
             }
             
-            let delete = UIAction(title: "Delete") { action in
-                let model = self.eventRealmModelsArray[indexPath.item]
+            let deleteAction = UIAction(title: "Delete") { action in
+                let eventToRemove = self.eventRealmModelsArray[indexPath.item]
 //                RealmManager.shared.deleteEventModel(model: model)
+                self.context.delete(eventToRemove) 
                 
+                do {
+                    try self.context.save()
+                } catch {
+                    print(error)
+                }
                 
                 let date = self.choosedDay
 //                self.datePredicate(date: date)
@@ -308,7 +314,7 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
                 self.dataSource.apply(self.filteredItemsSnapshot, animatingDifferences: true)
                 self.calendar.reloadData()
             }
-            return UIMenu(title: "", image: nil, identifier: nil, options: [], children: [edit, delete])
+            return UIMenu(title: "", image: nil, identifier: nil, options: [], children: [editAction, deleteAction])
         }
         return config
     }
@@ -352,7 +358,7 @@ extension MainViewController: AddEventTableViewControllerDelegate {
     func addEventTableViewController(_ controller: AddEventTableViewController, event: EventEntity) {
         let date = choosedDay
 //        datePredicate(date: date)
-        fetchEvents(date: date)
+//        fetchEvents(date: date)
         dataSource.apply(filteredItemsSnapshot, animatingDifferences: true)
         if let date = event.alertDate {
             UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [event.identifierID!])

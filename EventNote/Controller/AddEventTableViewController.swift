@@ -15,10 +15,12 @@ protocol AddEventTableViewControllerDelegate {
 
 class AddEventTableViewController: UITableViewController  {
     
-    var eventModel = EventEntity()
+    var eventModel: EventEntity!
+    
     var editedDay = Date()
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
 //    var eventEntityModel = EventEntity()
     
 //    let localRealm = try! Realm()
@@ -39,13 +41,16 @@ class AddEventTableViewController: UITableViewController  {
         super.viewDidLoad()
         title = "New Event"
         
+        let entity = NSEntityDescription.entity(forEntityName: "EventEntity", in: context)!
+        self.eventModel = EventEntity(entity: entity, insertInto: context)
+        
         let cancelBarButton = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(backButton))
         self.navigationItem.leftBarButtonItem = cancelBarButton
         
         let saveBarButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveButtonTapped))
         navigationItem.rightBarButtonItem = saveBarButton
         
-        updateSaveButtonState()
+//        updateSaveButtonState()
         
         self.tableView = UITableView(frame: .zero, style: .insetGrouped)
     
@@ -76,6 +81,9 @@ class AddEventTableViewController: UITableViewController  {
             print(error)
         }
         
+        print(eventModel.identifierID)
+        print(eventModel.clientName)
+        print(eventModel.dateAndTime)
         // Realm
 //        RealmManager.shared.saveEventModel(model: eventModel)
         
@@ -84,7 +92,7 @@ class AddEventTableViewController: UITableViewController  {
     }
     
     private func updateSaveButtonState() {
-        let shouldEnableSaveButton = eventModel.clientName != ""
+        let shouldEnableSaveButton = eventModel.clientName != nil
         navigationItem.rightBarButtonItem!.isEnabled = shouldEnableSaveButton
     }
     

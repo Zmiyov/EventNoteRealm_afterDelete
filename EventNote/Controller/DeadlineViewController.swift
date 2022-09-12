@@ -6,19 +6,22 @@
 //
 
 import UIKit
-import RealmSwift
+import CoreData
+//import RealmSwift
 
 class DeadlineViewController: UIViewController {
     
-    let localRealm = try! Realm()
-    var eventWithDeadlineArray: [EventRealmModel]!
+//    let localRealm = try! Realm()
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    var eventWithDeadlineArray: [EventEntity]!
     
     enum Section: CaseIterable {
         case main
     }
-    var dataSource: UICollectionViewDiffableDataSource<Section, EventRealmModel>!
-    var filteredItemsSnapshot: NSDiffableDataSourceSnapshot<Section, EventRealmModel> {
-        var snapshot = NSDiffableDataSourceSnapshot<Section, EventRealmModel>()
+    var dataSource: UICollectionViewDiffableDataSource<Section, EventEntity>!
+    var filteredItemsSnapshot: NSDiffableDataSourceSnapshot<Section, EventEntity> {
+        var snapshot = NSDiffableDataSourceSnapshot<Section, EventEntity>()
         snapshot.appendSections([.main])
         snapshot.appendItems(eventWithDeadlineArray)
         return snapshot
@@ -39,7 +42,8 @@ class DeadlineViewController: UIViewController {
         title = "Deadlines"
         
         setConstraints()
-        datePredicate()
+//        datePredicate()
+        fetchEvents()
         collectionView.delegate = self
         createDataSource()
         
@@ -51,14 +55,15 @@ class DeadlineViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        datePredicate()
+//        datePredicate()
+        fetchEvents()
         self.dataSource.apply(self.filteredItemsSnapshot, animatingDifferences: false)
     }
     
     //MARK: Collection view data source
     
     func createDataSource() {
-        dataSource = UICollectionViewDiffableDataSource<Section, EventRealmModel>(collectionView: collectionView, cellProvider: { (collectionView, indexPath, item) -> UICollectionViewCell? in
+        dataSource = UICollectionViewDiffableDataSource<Section, EventEntity>(collectionView: collectionView, cellProvider: { (collectionView, indexPath, item) -> UICollectionViewCell? in
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! DeadlineCollectionViewCell
             
             let event = item
@@ -77,11 +82,29 @@ class DeadlineViewController: UIViewController {
         dataSource.apply(filteredItemsSnapshot)
     }
     
-    func datePredicate() {
+//    func datePredicate() {
+//        let startOfTheDay = Calendar.current.startOfDay(for: Date()) as NSDate
+//        let predicate = NSPredicate(format: "isDone == false && deadlineDate > %@", startOfTheDay)
+//        let eventRealmModels = localRealm.objects(EventRealmModel.self).filter(predicate).sorted(byKeyPath: "deadlineDate")
+//        eventWithDeadlineArray = Array(eventRealmModels)
+//    }
+    
+    func fetchEvents() {
+        
         let startOfTheDay = Calendar.current.startOfDay(for: Date()) as NSDate
-        let predicate = NSPredicate(format: "isDone == false && deadlineDate > %@", startOfTheDay)
-        let eventRealmModels = localRealm.objects(EventRealmModel.self).filter(predicate).sorted(byKeyPath: "deadlineDate")
-        eventWithDeadlineArray = Array(eventRealmModels)
+        
+        do {
+            let request = EventEntity.fetchRequest() as NSFetchRequest<EventEntity>
+            let predicate = NSPredicate(format: "isDone == false && deadlineDate > %@", startOfTheDay)
+            request.predicate = predicate
+            let sortByDate = NSSortDescriptor(key: "deadlineDate", ascending: true)
+            request.sortDescriptors = [sortByDate]
+            
+            let eventModelsArray = try context.fetch(request)
+            self.eventWithDeadlineArray = eventModelsArray
+        } catch {
+            print(error)
+        }
     }
 }
 
@@ -117,10 +140,16 @@ extension DeadlineViewController: UICollectionViewDelegateFlowLayout {
             
             let markAsDone = UIAction(title: "Done") { action in
                 let model = self.eventWithDeadlineArray[indexPath.item]
-                try! self.localRealm.write {
+//                try! self.localRealm.write {
                     model.isDone = true
+//                }
+//                self.datePredicate()
+                do {
+                    try self.context.save()
+                } catch {
+                    print(error)
                 }
-                self.datePredicate()
+                self.fetchEvents()
                 self.dataSource.apply(self.filteredItemsSnapshot, animatingDifferences: true)
             }
             return UIMenu(title: "", image: nil, identifier: nil, options: [], children: [markAsDone])
@@ -134,7 +163,6 @@ extension DeadlineViewController: UICollectionViewDelegateFlowLayout {
 extension DeadlineViewController {
     
     func setConstraints() {
-        
         view.addSubview(collectionView)
         collectionView.backgroundColor = .secondarySystemBackground
         NSLayoutConstraint.activate([
