@@ -12,8 +12,6 @@ class EventDetailsViewController: UIViewController {
     var event: EventEntity?
     let dateFormatter = DateFormatter()
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .tertiarySystemBackground
@@ -35,35 +33,33 @@ class EventDetailsViewController: UIViewController {
         let timeOfShooting = dateFormatter.string(from: event.dateAndTime!)
         
         let dateAndTimeLabel = UILabel(text: timeOfShooting, font: .systemFont(ofSize: 40, weight: .bold), alighment: .center)
-        let mainLocationLabel = UILabel(text: event.mainLocation!, font: .systemFont(ofSize: 25, weight: .bold), alighment: .center)
+        let mainLocationLabel = UILabel(text: event.mainLocation ?? "", font: .systemFont(ofSize: 25, weight: .bold), alighment: .center)
         
         let weatherImageView = UIImageView()
         weatherImageView.image = UIImage(named: "storm.png")
         
-        let kindOfShootingLabel = UILabel(text: event.kindOfShooting!, font: .systemFont(ofSize: 35, weight: .bold), alighment: .left)
+        let kindOfShootingLabel = UILabel(text: event.kindOfShooting ?? "", font: .systemFont(ofSize: 35, weight: .bold), alighment: .left)
 
         
         let amountOfHoursLabel = UILabel(text: "Amount of hours:" + " " + String(event.amountOfHours), font: .systemFont(ofSize: 21, weight: .bold), alighment: .center)
         
         let nameLabel = UILabel(text: event.clientName!, font: .systemFont(ofSize: 21, weight: .bold), alighment: .center)
-        let clientPhoneNumberLabel = UILabel(text: event.clientPhoneNumber!, font: .systemFont(ofSize: 21, weight: .bold), alighment: .center)
-        let additionalPhoneNumberLabel = UILabel(text: event.additionalPhoneNumber!, font: .systemFont(ofSize: 21, weight: .bold), alighment: .center)
-        let clientTelegramOrChatLabel = UILabel(text: "Telegram:" + " " + event.clientTelegramOrChat!, font: .systemFont(ofSize: 21, weight: .bold), alighment: .center)
-        let clientInstagramLabel = UILabel(text: "Instagram:" + " " + event.clientInstagram!, font: .systemFont(ofSize: 21, weight: .bold), alighment: .center)
+        let clientPhoneNumberLabel = UILabel(text: event.clientPhoneNumber ?? "", font: .systemFont(ofSize: 21, weight: .bold), alighment: .center)
+        let additionalPhoneNumberLabel = UILabel(text: event.additionalPhoneNumber ?? "", font: .systemFont(ofSize: 21, weight: .bold), alighment: .center)
+        let clientTelegramOrChatLabel = UILabel(text: "Telegram:" + " " + (event.clientTelegramOrChat ?? ""), font: .systemFont(ofSize: 21, weight: .bold), alighment: .center)
+        let clientInstagramLabel = UILabel(text: "Instagram:" + " " + (event.clientInstagram ?? ""), font: .systemFont(ofSize: 21, weight: .bold), alighment: .center)
         
         
-        let startLocationLabel = UILabel(text: "Start location:" + " " + event.startLocation!, font: .systemFont(ofSize: 21, weight: .bold), alighment: .center)
-        let endLocationLabel = UILabel(text: "End location:" + " " + event.endLocation!, font: .systemFont(ofSize: 21, weight: .bold), alighment: .center)
+        let startLocationLabel = UILabel(text: "Start location:" + " " + (event.startLocation ?? ""), font: .systemFont(ofSize: 21, weight: .bold), alighment: .center)
+        let endLocationLabel = UILabel(text: "End location:" + " " + (event.endLocation ?? ""), font: .systemFont(ofSize: 21, weight: .bold), alighment: .center)
         
-        let fullPriceLabel = UILabel(text: "Full price:" + " " + event.fullPrice!, font: .systemFont(ofSize: 21, weight: .bold), alighment: .center)
-        let priceForHourLabel = UILabel(text: "Price for hour:" + " " + event.priceForHour!, font: .systemFont(ofSize: 21, weight: .bold), alighment: .center)
-        let prepaymentLabel = UILabel(text: "Prepayment:" + " " + event.prepayment!, font: .systemFont(ofSize: 21, weight: .bold), alighment: .center)
+        let fullPriceLabel = UILabel(text: "Full price:" + " " + (event.fullPrice ?? ""), font: .systemFont(ofSize: 21, weight: .bold), alighment: .center)
+        let priceForHourLabel = UILabel(text: "Price for hour:" + " " + (event.priceForHour ?? ""), font: .systemFont(ofSize: 21, weight: .bold), alighment: .center)
+        let prepaymentLabel = UILabel(text: "Prepayment:" + " " + (event.prepayment ?? ""), font: .systemFont(ofSize: 21, weight: .bold), alighment: .center)
 
-        let alertStringLabel = UILabel(text: "Alert: " + event.alertString!, font: .systemFont(ofSize: 21, weight: .bold), alighment: .center)
+        let alertStringLabel = UILabel(text: "Alert: " + (event.alertString ?? ""), font: .systemFont(ofSize: 21, weight: .bold), alighment: .center)
         
         let emptyLabel = UILabel(text: "", font: .systemFont(ofSize: 21, weight: .bold), alighment: .center)
-        
-        
         
         
         let mainVerticalStackView = UIStackView()
@@ -80,13 +76,11 @@ class EventDetailsViewController: UIViewController {
             mainVerticalStackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
             mainVerticalStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
             mainVerticalStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
-//            mainVerticalStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -25)
         ])
         
         let timeLocationWeatherHorStackView = UIStackView()
         timeLocationWeatherHorStackView.axis = .horizontal
         timeLocationWeatherHorStackView.distribution = .fillEqually
-//        timeLocationWeatherHorStackView.spacing = 1
         timeLocationWeatherHorStackView.translatesAutoresizingMaskIntoConstraints = false
 
         
@@ -96,9 +90,6 @@ class EventDetailsViewController: UIViewController {
         timeLocationVertStackView.spacing = 1
         timeLocationVertStackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            //            timeLocationVertStackView.topAnchor.constraint(equalTo: timeLocationWeatherHorStackView.topAnchor, constant: 0),
-            //            timeLocationVertStackView.leadingAnchor.constraint(equalTo: timeLocationWeatherHorStackView.leadingAnchor, constant: 0),
-            //            timeLocationVertStackView.trailingAnchor.constraint(equalTo: weatherImageView.trailingAnchor, constant: 0),
             timeLocationVertStackView.heightAnchor.constraint(equalToConstant: 200)
         ])
         
@@ -108,8 +99,6 @@ class EventDetailsViewController: UIViewController {
         timeLocationWeatherHorStackView.addArrangedSubview(timeLocationVertStackView)
         timeLocationWeatherHorStackView.addArrangedSubview(weatherImageView)
         
-        
-        
         if event.kindOfShooting != nil {
             mainVerticalStackView.addArrangedSubview(kindOfShootingLabel)
             NSLayoutConstraint.activate([
@@ -117,19 +106,13 @@ class EventDetailsViewController: UIViewController {
                 kindOfShootingLabel.leadingAnchor.constraint(equalTo: mainVerticalStackView.leadingAnchor, constant: 0),
                 kindOfShootingLabel.trailingAnchor.constraint(equalTo: mainVerticalStackView.trailingAnchor, constant: 0),
                 kindOfShootingLabel.heightAnchor.constraint(equalToConstant: 50)
-//                kindOfShootingLabel.bottomAnchor.constraint(equalTo: timeLocationWeatherHorStackView.bottomAnchor, constant: 0)
             ])
         }
         
         mainVerticalStackView.addArrangedSubview(timeLocationWeatherHorStackView)
         NSLayoutConstraint.activate([
-//            timeLocationWeatherHorStackView.topAnchor.constraint(equalTo: mainVerticalStackView.topAnchor, constant: 0),
-//            timeLocationWeatherHorStackView.leadingAnchor.constraint(equalTo: mainVerticalStackView.leadingAnchor, constant: 0),
-//            timeLocationWeatherHorStackView.trailingAnchor.constraint(equalTo: mainVerticalStackView.trailingAnchor, constant: 0),
-            timeLocationWeatherHorStackView.heightAnchor.constraint(equalToConstant: 200),
-//            timeLocationWeatherHorStackView.bottomAnchor.constraint(equalTo: timeLocationWeatherHorStackView.bottomAnchor, constant: 0)
+            timeLocationWeatherHorStackView.heightAnchor.constraint(equalToConstant: 200)
         ])
-        
         
         if event.amountOfHours != 0 {
             mainVerticalStackView.addArrangedSubview(amountOfHoursLabel)
@@ -138,10 +121,6 @@ class EventDetailsViewController: UIViewController {
         if event.clientName != nil {
             mainVerticalStackView.addArrangedSubview(nameLabel)
             NSLayoutConstraint.activate([
-//                nameLabel.topAnchor.constraint(equalTo: mainVerticalStackView.topAnchor, constant: 0),
-//                nameLabel.leadingAnchor.constraint(equalTo: mainVerticalStackView.leadingAnchor, constant: 0),
-//                nameLabel.trailingAnchor.constraint(equalTo: mainVerticalStackView.trailingAnchor, constant: 0),
-//                nameLabel.bottomAnchor.constraint(equalTo: timeLocationWeatherHorStackView.bottomAnchor, constant: 0),
                 nameLabel.heightAnchor.constraint(equalToConstant: 44)
             ])
         }

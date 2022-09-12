@@ -7,7 +7,6 @@
 
 import UIKit
 import FSCalendar
-//import RealmSwift
 import UserNotifications
 import CoreData
 
@@ -18,9 +17,7 @@ class MainViewController: UIViewController {
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
-//    let localRealm = try! Realm()
-    var eventRealmModelsArray: [EventEntity] = []
-//    var eventEntityModelsArray: [EventEntity]?
+    var eventEntityModelsArray: [EventEntity] = []
     
     enum Section: CaseIterable {
         case main
@@ -29,7 +26,7 @@ class MainViewController: UIViewController {
     var filteredItemsSnapshot: NSDiffableDataSourceSnapshot<Section, EventEntity> {
         var snapshot = NSDiffableDataSourceSnapshot<Section, EventEntity>()
         snapshot.appendSections([.main])
-        snapshot.appendItems(eventRealmModelsArray)
+        snapshot.appendItems(eventEntityModelsArray)
         return snapshot
     }
     
@@ -70,7 +67,6 @@ class MainViewController: UIViewController {
         title = "Schedule"
         
         let date = Calendar.current.startOfDay(for: Date())
-//        datePredicate(date: date)
         fetchEvents(date: date)
 
         calendar.delegate = self
@@ -94,22 +90,20 @@ class MainViewController: UIViewController {
     }
     
     func fetchEvents(date: Date) {
-        
-        let startOfTheDay = date
-        let endOfTheDay: Date = {
-            let components = DateComponents(day: 1, second: -1)
-            return Calendar.current.date(byAdding: components, to: startOfTheDay)!
-        }()
-        
+
         do {
+            let startOfTheDay = date
+            let endOfTheDay: Date = {
+                let components = DateComponents(day: 1, second: -1)
+                return Calendar.current.date(byAdding: components, to: startOfTheDay)!
+            }()
             let request = EventEntity.fetchRequest() as NSFetchRequest<EventEntity>
-//            let predicate = NSPredicate(format: "dateAndTime BETWEEN %@", [startOfTheDay, endOfTheDay])
-//            request.predicate = predicate
+            request.predicate = NSPredicate(format: "(dateAndTime >= %@) AND (dateAndTime <= %@)", startOfTheDay as CVarArg, endOfTheDay as CVarArg)
+        
             let sortByDate = NSSortDescriptor(key: "dateAndTime", ascending: true)
             request.sortDescriptors = [sortByDate]
             
-            let eventModelsArray = try context.fetch(request)
-            self.eventRealmModelsArray = eventModelsArray
+            self.eventEntityModelsArray = try context.fetch(request)
         } catch {
             print(error)
         }
@@ -153,7 +147,6 @@ class MainViewController: UIViewController {
     @objc func todayButtonTapped() {
         calendar.select(Date(), scrollToDate: true)
         let date = Calendar.current.startOfDay(for: Date())
-//        datePredicate(date: date)
         fetchEvents(date: date)
         dataSource.apply(filteredItemsSnapshot, animatingDifferences: true)
     }
@@ -215,15 +208,25 @@ extension MainViewController: FSCalendarDataSource, FSCalendarDelegate {
     
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
         
-//        let startOfTheDay = date
-//        let endOfTheDay: Date = {
-//            let components = DateComponents(day: 1, second: -1)
-//            return Calendar.current.date(byAdding: components, to: startOfTheDay)!
-//        }()
-//        let predicate = NSPredicate(format: "dateAndTime BETWEEN %@", [startOfTheDay, endOfTheDay])
-//        let eventRealmModelsArray = localRealm.objects(EventRealmModel.self).filter(predicate)
+        var eventEntityModelsArrayForDotsInCalendar = [EventEntity]()
+        do {
+            let startOfTheDay = date
+            let endOfTheDay: Date = {
+                let components = DateComponents(day: 1, second: -1)
+                return Calendar.current.date(byAdding: components, to: startOfTheDay)!
+            }()
+            let request = EventEntity.fetchRequest() as NSFetchRequest<EventEntity>
+            request.predicate = NSPredicate(format: "(dateAndTime >= %@) AND (dateAndTime <= %@)", startOfTheDay as CVarArg, endOfTheDay as CVarArg)
         
-        if eventRealmModelsArray.count != 0 {
+            let sortByDate = NSSortDescriptor(key: "dateAndTime", ascending: true)
+            request.sortDescriptors = [sortByDate]
+            
+            eventEntityModelsArrayForDotsInCalendar = try context.fetch(request)
+        } catch {
+            print(error)
+        }
+        
+        if eventEntityModelsArrayForDotsInCalendar.count != 0 {
             return 1
         } else {
             return 0
@@ -232,24 +235,9 @@ extension MainViewController: FSCalendarDataSource, FSCalendarDelegate {
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         choosedDay = date
-//        datePredicate(date: date)
         fetchEvents(date: date)
         dataSource.apply(filteredItemsSnapshot, animatingDifferences: true)
     }
-    
-//    func datePredicate(date: Date) {
-//
-//        let startOfTheDay = date
-//        let endOfTheDay: Date = {
-//            let components = DateComponents(day: 1, second: -1)
-//            return Calendar.current.date(byAdding: components, to: startOfTheDay)!
-//        }()
-//
-//        let predicate = NSPredicate(format: "dateAndTime BETWEEN %@", [startOfTheDay, endOfTheDay])
-//
-//        let eventRealmModels = localRealm.objects(EventRealmModel.self).filter(predicate).sorted(byKeyPath: "dateAndTime")
-//        eventRealmModelsArray = Array(eventRealmModels)
-//    }
 }
 
 //MARK: Collection View delegate
@@ -262,7 +250,7 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let currentEvent = eventRealmModelsArray[indexPath.item]
+        let currentEvent = eventEntityModelsArray[indexPath.item]
         let details = EventDetailsViewController()
         details.event = currentEvent
         let navVC = UINavigationController(rootViewController: details)
@@ -283,8 +271,8 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
             let editAction = UIAction(title: "Edit") { action in
                 
                 let editVC = AddEventTableViewController()
-                editVC.eventModel = self.eventRealmModelsArray[indexPath.item]
-                editVC.editedDay = self.eventRealmModelsArray[indexPath.item].dateAndTime!
+                editVC.eventModel = self.eventEntityModelsArray[indexPath.item]
+                editVC.editedDay = self.eventEntityModelsArray[indexPath.item].dateAndTime!
                 editVC.delegate = self
                 
                 let navController = UINavigationController(rootViewController: editVC)
@@ -297,8 +285,7 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
             }
             
             let deleteAction = UIAction(title: "Delete") { action in
-                let eventToRemove = self.eventRealmModelsArray[indexPath.item]
-//                RealmManager.shared.deleteEventModel(model: model)
+                let eventToRemove = self.eventEntityModelsArray[indexPath.item]
                 self.context.delete(eventToRemove) 
                 
                 do {
@@ -308,7 +295,6 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
                 }
                 
                 let date = self.choosedDay
-//                self.datePredicate(date: date)
                 self.fetchEvents(date: date)
                 
                 self.dataSource.apply(self.filteredItemsSnapshot, animatingDifferences: true)
@@ -357,8 +343,8 @@ extension MainViewController: AddEventTableViewControllerDelegate {
     
     func addEventTableViewController(_ controller: AddEventTableViewController, event: EventEntity) {
         let date = choosedDay
-//        datePredicate(date: date)
-//        fetchEvents(date: date)
+
+        fetchEvents(date: date)
         dataSource.apply(filteredItemsSnapshot, animatingDifferences: true)
         if let date = event.alertDate {
             UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [event.identifierID!])

@@ -6,7 +6,6 @@
 //
 
 import UIKit
-//import RealmSwift
 import CoreData
 
 protocol AddEventTableViewControllerDelegate {
@@ -16,14 +15,10 @@ protocol AddEventTableViewControllerDelegate {
 class AddEventTableViewController: UITableViewController  {
     
     var eventModel: EventEntity!
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     var editedDay = Date()
     
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
-//    var eventEntityModel = EventEntity()
-    
-//    let localRealm = try! Realm()
     
     var kindOfShooting1: KindOfShootingList?
     var deadlineOpted: DeadlinesList?
@@ -81,12 +76,6 @@ class AddEventTableViewController: UITableViewController  {
             print(error)
         }
         
-        print(eventModel.identifierID)
-        print(eventModel.clientName)
-        print(eventModel.dateAndTime)
-        // Realm
-//        RealmManager.shared.saveEventModel(model: eventModel)
-        
         delegate?.addEventTableViewController(self, event: eventModel)
         dismiss(animated: true, completion: nil)
     }
@@ -136,9 +125,9 @@ class AddEventTableViewController: UITableViewController  {
                 let type = AddEventCellNameMainSectionType.allCases[indexPath.row]
                 cell.nameCellLabel.text = type.description
                 cell.datePicker.date = editedDay
-//                try! localRealm.write {
-                    eventModel.dateAndTime = editedDay
-//                }
+                
+                eventModel.dateAndTime = editedDay
+                
                 cell.datePicker.addTarget(self, action: #selector(dateChanged), for: .valueChanged)
                 return cell
             case 2:
@@ -275,9 +264,8 @@ class AddEventTableViewController: UITableViewController  {
     
     @objc func dateChanged(sender: UIDatePicker) {
         editedDay = sender.date
-//        try! localRealm.write {
-            eventModel.dateAndTime = editedDay
-//        }
+        
+        eventModel.dateAndTime = editedDay
         
         guard let alertString = eventModel.alertString else { return }
         eventReminderLogic(kindOfAlert: alertString)
@@ -288,49 +276,27 @@ class AddEventTableViewController: UITableViewController  {
             switch sender.tag {
             case 0:
                 updateSaveButtonState()
-//                try! localRealm.write {
-                    eventModel.clientName = textValue
-//                }
+                eventModel.clientName = textValue
             case 1:
-//                try! localRealm.write {
-                    eventModel.clientPhoneNumber = textValue
-//                }
+                eventModel.clientPhoneNumber = textValue
             case 2:
-//                try! localRealm.write {
-                    eventModel.additionalPhoneNumber = textValue
-//                }
+                eventModel.additionalPhoneNumber = textValue
             case 3:
-//                try! localRealm.write {
-                    eventModel.clientTelegramOrChat = textValue
-//                }
+                eventModel.clientTelegramOrChat = textValue
             case 4:
-//                try! localRealm.write {
-                    eventModel.clientInstagram = textValue
-//                }
+                eventModel.clientInstagram = textValue
             case 5:
-//                try! localRealm.write {
-                    eventModel.mainLocation = textValue
-//                }
+                eventModel.mainLocation = textValue
             case 6:
-//                try! localRealm.write {
-                    eventModel.startLocation = textValue
-//                }
+                eventModel.startLocation = textValue
             case 7:
-//                try! localRealm.write {
-                    eventModel.endLocation = textValue
-//                }
+                eventModel.endLocation = textValue
             case 8:
-//                try! localRealm.write {
-                    eventModel.priceForHour = textValue
-//                }
+                eventModel.priceForHour = textValue
             case 9:
-//                try! localRealm.write {
-                    eventModel.fullPrice = textValue
-//                }
+                eventModel.fullPrice = textValue
             case 10:
-//                try! localRealm.write {
-                    eventModel.prepayment = textValue
-//                }
+                eventModel.prepayment = textValue
             default:
                 break
             }
@@ -384,35 +350,35 @@ extension AddEventTableViewController: KindOfShootingTableViewControllerDelegate
     func kindOfShootingTableViewController(_ controller: KindOfShootingTableViewController, didSelect kindOfShooting: KindOfShootingList) {
         self.kindOfShooting1 = kindOfShooting
         updateSaveButtonState()
-//        try! localRealm.write {
-            eventModel.kindOfShooting = kindOfShooting.description
-//        }
+        
+        eventModel.kindOfShooting = kindOfShooting.description
+        
         tableView.reloadData()
     }
     
     func deadlinesListTableViewController(_ controller: DeadlinesListTableViewController, didSelect deadline: DeadlinesList) {
         self.deadlineOpted = deadline
-//        try! localRealm.write {
-            eventModel.deadlineString = deadline.description
-            eventModel.isDone = false
-//        }
+        
+        eventModel.deadlineString = deadline.description
+        eventModel.isDone = false
+        
         deadlineReminderLogic(deadline: deadline.description)
         tableView.reloadData()
     }
     
     func amountOfHoursListTableViewController(_ controller: AmountOfHoursListTableViewController, didSelect amount: Int) {
         self.amountOfHours = amount
-//        try! localRealm.write {
+
         eventModel.amountOfHours = Int16(amount)
-//        }
+
         tableView.reloadData()
     }
     
     func kindOfAlertListTableViewController(_ controller: KindOfAlertListTableViewController, didSelect kindOfAlert: KindOfAlertList) {
         self.kindOfAlertOpted = kindOfAlert
-//        try! localRealm.write {
-            eventModel.alertString = kindOfAlert.description
-//        }
+        
+        eventModel.alertString = kindOfAlert.description
+        
         eventReminderLogic(kindOfAlert: kindOfAlert.description)
         tableView.reloadData()
     }
@@ -423,63 +389,39 @@ extension AddEventTableViewController: KindOfShootingTableViewControllerDelegate
         
         switch kindOfAlert {
         case "None":
-//            try! localRealm.write {
-                eventModel.alertDate = nil
-//            }
+            eventModel.alertDate = nil
         case "At time of event":
             let setDate = currentDate
-//            try! localRealm.write {
-                eventModel.alertDate = setDate
-//            }
+            eventModel.alertDate = setDate
         case "5 minutes before":
             let setDate = Calendar.current.date(byAdding: .minute, value: -5, to: currentDate)
-//            try! localRealm.write {
-                eventModel.alertDate = setDate
-//            }
+            eventModel.alertDate = setDate
         case "10 minutes before":
             let setDate = Calendar.current.date(byAdding: .minute, value: -10, to: currentDate)
-//            try! localRealm.write {
-                eventModel.alertDate = setDate
-//            }
+            eventModel.alertDate = setDate
         case "15 minutes before":
             let setDate = Calendar.current.date(byAdding: .minute, value: -15, to: currentDate)
-//            try! localRealm.write {
-                eventModel.alertDate = setDate
-//            }
+            eventModel.alertDate = setDate
         case "30 minutes before":
             let setDate = Calendar.current.date(byAdding: .minute, value: -30, to: currentDate)
-//            try! localRealm.write {
-                eventModel.alertDate = setDate
-//            }
+            eventModel.alertDate = setDate
         case "1 hour before":
             let setDate = Calendar.current.date(byAdding: .hour, value: -1, to: currentDate)
-//            try! localRealm.write {
-                eventModel.alertDate = setDate
-//            }
+            eventModel.alertDate = setDate
         case "2 hours before":
             let setDate = Calendar.current.date(byAdding: .hour, value: -2, to: currentDate)
-//            try! localRealm.write {
-                eventModel.alertDate = setDate
-//            }
+            eventModel.alertDate = setDate
         case "1 day before":
             let setDate = Calendar.current.date(byAdding: .day, value: -1, to: currentDate)
-//            try! localRealm.write {
-                eventModel.alertDate = setDate
-//            }
+            eventModel.alertDate = setDate
         case "2 days before":
             let setDate = Calendar.current.date(byAdding: .day, value: -2, to: currentDate)
-//            try! localRealm.write {
-                eventModel.alertDate = setDate
-//            }
+            eventModel.alertDate = setDate
         case "1 week before":
             let setDate = Calendar.current.date(byAdding: .day, value: -7, to: currentDate)
-//            try! localRealm.write {
-                eventModel.alertDate = setDate
-//            }
+            eventModel.alertDate = setDate
         default:
-//            try! localRealm.write {
-                eventModel.alertDate = nil
-//            }
+            eventModel.alertDate = nil
         }
     }
     
@@ -489,58 +431,36 @@ extension AddEventTableViewController: KindOfShootingTableViewControllerDelegate
         
         switch deadline {
         case "None":
-//            try! localRealm.write {
-                eventModel.deadlineDate = nil
-//            }
+            eventModel.deadlineDate = nil
         case "In a day":
             let setDate = Calendar.current.date(byAdding: .day, value: 1, to: currentDate)
-//            try! localRealm.write {
-                eventModel.deadlineDate = setDate
-//            }
+            eventModel.deadlineDate = setDate
         case "In a week":
             let setDate = Calendar.current.date(byAdding: .day, value: 7, to: currentDate)
-//            try! localRealm.write {
-                eventModel.deadlineDate = setDate
-//            }
+            eventModel.deadlineDate = setDate
         case "In a two weeks":
             let setDate = Calendar.current.date(byAdding: .day, value: 14, to: currentDate)
-//            try! localRealm.write {
-                eventModel.deadlineDate = setDate
-//            }
+            eventModel.deadlineDate = setDate
         case "In a month":
             let setDate = Calendar.current.date(byAdding: .month, value: 1, to: currentDate)
-//            try! localRealm.write {
-                eventModel.deadlineDate = setDate
-//            }
+            eventModel.deadlineDate = setDate
         case "In a two months":
             let setDate = Calendar.current.date(byAdding: .month, value: 2, to: currentDate)
-//            try! localRealm.write {
-                eventModel.deadlineDate = setDate
-//            }
+            eventModel.deadlineDate = setDate
         case "In a three months":
             let setDate = Calendar.current.date(byAdding: .month, value: 3, to: currentDate)
-//            try! localRealm.write {
-                eventModel.deadlineDate = setDate
-//            }
+            eventModel.deadlineDate = setDate
         case "In a four months":
             let setDate = Calendar.current.date(byAdding: .month, value: 4, to: currentDate)
-//            try! localRealm.write {
-                eventModel.deadlineDate = setDate
-//            }
+            eventModel.deadlineDate = setDate
         case "In a five months":
             let setDate = Calendar.current.date(byAdding: .month, value: 5, to: currentDate)
-//            try! localRealm.write {
-                eventModel.deadlineDate = setDate
-//            }
+            eventModel.deadlineDate = setDate
         case "In a six months":
             let setDate = Calendar.current.date(byAdding: .month, value: 6, to: currentDate)
-//            try! localRealm.write {
-                eventModel.deadlineDate = setDate
-//            }
+            eventModel.deadlineDate = setDate
         default:
-//            try! localRealm.write {
-                eventModel.deadlineDate = nil
-//            }
+            eventModel.deadlineDate = nil
         }
     }
 }
