@@ -344,8 +344,6 @@ extension MainViewController: AddEventTableViewControllerDelegate {
     func addEventTableViewController(_ controller: AddEventTableViewController, event: EventEntity) {
         let date = choosedDay
 
-        fetchEvents(date: date)
-        dataSource.apply(filteredItemsSnapshot, animatingDifferences: true)
         if let date = event.alertDate {
             UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [event.identifierID!])
             ShootingReminder.shared.schedule(date: date, title: event.clientName ?? "No name", body: event.kindOfShooting ?? "No Kind", identifier: event.identifierID!)
@@ -355,6 +353,10 @@ extension MainViewController: AddEventTableViewControllerDelegate {
 //        print("Now date in delegate", Date())
 //        print("Identifier in delegate", event.identifierID)
 //        print("Date of reminder", event.alertDate)
+        
+        fetchEvents(date: date)
+        dataSource.apply(filteredItemsSnapshot, animatingDifferences: true)
         calendar.reloadData()
+        collectionView.reloadData()
     }
 }

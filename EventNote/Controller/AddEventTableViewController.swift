@@ -44,7 +44,7 @@ class AddEventTableViewController: UITableViewController  {
         let saveBarButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveButtonTapped))
         navigationItem.rightBarButtonItem = saveBarButton
         
-//        updateSaveButtonState()
+        updateSaveButtonState()
         
         self.tableView = UITableView(frame: .zero, style: .insetGrouped)
     
