@@ -17,12 +17,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
         window.rootViewController = TabBarController()
-//        let controller = TabBarController()
-//        let navController = UINavigationController(rootViewController: controller)
-//        navController.navigationBar.isTranslucent = false
-//        navController.navigationBar.barStyle = .black
-//        navController.navigationBar.
-//        window.rootViewController = navController
+        
+        let tabBarAppearence = UITabBarAppearance()
+        tabBarAppearence.configureWithOpaqueBackground()
+        UITabBar.appearance().scrollEdgeAppearance = tabBarAppearence
+
         window.makeKeyAndVisible()
         self.window = window
     }

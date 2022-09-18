@@ -65,6 +65,7 @@ class DeadlineViewController: UIViewController {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "YYYY, MMMM d"
             guard let deadlineDate = event.deadlineDate else { return nil }
+            print(deadlineDate)
             let time = dateFormatter.string(from: deadlineDate)
             cell.nameLabel.text = event.clientName
             cell.kindOfShootingLabel.text = event.kindOfShooting
