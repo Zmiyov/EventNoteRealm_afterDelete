@@ -18,6 +18,7 @@
 		A54C769F28ABF81600C479AE /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54C769E28ABF81600C479AE /* UILabel.swift */; };
 		A5BC5FB828C0E27500136552 /* ShootingReminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5BC5FB728C0E27500136552 /* ShootingReminder.swift */; };
 		A5C8CE5D28C4AB67009C87B1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C8CE5C28C4AB67009C87B1 /* Constants.swift */; };
+		A5D4D9D428DA351C002BDBC5 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D4D9D328DA351C002BDBC5 /* MapViewController.swift */; };
 		A5D87DF428CFB04A0092022E /* EventEntityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D87DF328CFB04A0092022E /* EventEntityModel.swift */; };
 		A5DE68AE28ACFDDF00C34183 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DE68AD28ACFDDF00C34183 /* ListTableViewCell.swift */; };
 		A5DE68B028AD05D500C34183 /* AddEventTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DE68AF28AD05D500C34183 /* AddEventTableViewHeader.swift */; };
@@ -53,6 +54,7 @@
 		A54C769E28ABF81600C479AE /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 		A5BC5FB728C0E27500136552 /* ShootingReminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShootingReminder.swift; sourceTree = "<group>"; };
 		A5C8CE5C28C4AB67009C87B1 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		A5D4D9D328DA351C002BDBC5 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		A5D87DF328CFB04A0092022E /* EventEntityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventEntityModel.swift; sourceTree = "<group>"; };
 		A5DE68AD28ACFDDF00C34183 /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
 		A5DE68AF28AD05D500C34183 /* AddEventTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventTableViewHeader.swift; sourceTree = "<group>"; };
@@ -163,6 +165,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		A5D4D9D228DA34E1002BDBC5 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				A5D4D9D328DA351C002BDBC5 /* MapViewController.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
 		A5DE68AB28ACFC9700C34183 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -184,6 +194,7 @@
 				A5F170F028C8836300B2059A /* DeadlineViewController.swift */,
 				A5126F8A28AC448200153525 /* AddEventTableViewController.swift */,
 				A5E5619728AA3E6100DC4E3E /* EventDetailsViewController.swift */,
+				A5D4D9D228DA34E1002BDBC5 /* Map */,
 				A5DE68B528AEC52D00C34183 /* Lists */,
 			);
 			path = Controller;
@@ -349,6 +360,7 @@
 				A547D46B28A81D0000173BA8 /* SceneDelegate.swift in Sources */,
 				A5DE68BB28AED66E00C34183 /* KindOfAlertList.swift in Sources */,
 				A5F170F328C8912800B2059A /* DeadlinesList.swift in Sources */,
+				A5D4D9D428DA351C002BDBC5 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
