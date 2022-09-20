@@ -147,7 +147,7 @@ class AddEventTableViewController: UITableViewController  {
                     cell.nameCellLabel.textColor = .label
                 } else {
                     cell.nameCellLabel.text = type.description
-                    cell.nameCellLabel.textColor = .darkGray
+                    cell.nameCellLabel.textColor = .systemGray2
                 }
                 cell.accessoryType = .disclosureIndicator
                 return cell
@@ -185,15 +185,15 @@ class AddEventTableViewController: UITableViewController  {
                 cell.textField.tag = 1
                 cell.textField.text = eventModel.clientPhoneNumber
                 return cell
+//            case 2:
+//                cell.textField.tag = 2
+//                cell.textField.text = eventModel.additionalPhoneNumber
+//                return cell
             case 2:
-                cell.textField.tag = 2
-                cell.textField.text = eventModel.additionalPhoneNumber
-                return cell
-            case 3:
                 cell.textField.tag = 3
                 cell.textField.text = eventModel.clientTelegramOrChat
                 return cell
-            case 4:
+            case 3:
                 cell.textField.tag = 4
                 cell.textField.text = eventModel.clientInstagram
                 return cell
@@ -208,18 +208,18 @@ class AddEventTableViewController: UITableViewController  {
             cell.textField.addTarget(self, action: #selector(textChanged), for: .editingChanged)
             
             switch indexPath.row {
-            case 0:
-                cell.textField.tag = 5
-                cell.textField.text = eventModel.mainLocation
-                return cell
+//            case 0:
+//                cell.textField.tag = 5
+//                cell.textField.text = eventModel.mainLocation
+//                return cell
             case 1:
                 cell.textField.tag = 6
                 cell.textField.text = eventModel.startLocation
                 return cell
-            case 2:
-                cell.textField.tag = 7
-                cell.textField.text = eventModel.endLocation
-                return cell
+//            case 2:
+//                cell.textField.tag = 7
+//                cell.textField.text = eventModel.endLocation
+//                return cell
             default:
                 return cell
             }
@@ -231,15 +231,15 @@ class AddEventTableViewController: UITableViewController  {
             cell.textField.addTarget(self, action: #selector(textChanged), for: .editingChanged)
             
             switch indexPath.row {
+//            case 0:
+//                cell.textField.tag = 8
+//                cell.textField.text = eventModel.priceForHour
+//                return cell
             case 0:
-                cell.textField.tag = 8
-                cell.textField.text = eventModel.priceForHour
-                return cell
-            case 1:
                 cell.textField.tag = 9
                 cell.textField.text = eventModel.fullPrice
                 return cell
-            case 2:
+            case 1:
                 cell.textField.tag = 10
                 cell.textField.text = eventModel.prepayment
                 return cell
@@ -251,12 +251,12 @@ class AddEventTableViewController: UITableViewController  {
             let cell = tableView.dequeueReusableCell(withIdentifier: idAddEventCell, for: indexPath) as! ListTableViewCell
             let type = AddEventCellNameReminderSectionType.allCases[indexPath.row]
 
-            if eventModel.alertString != "" {
+            if eventModel.alertString != nil {
                 cell.nameCellLabel.text = eventModel.alertString
                 cell.nameCellLabel.textColor = .label
             } else {
                 cell.nameCellLabel.text = type.description
-                cell.nameCellLabel.textColor = .darkGray
+                cell.nameCellLabel.textColor = .systemGray2
             }
             cell.accessoryType = .disclosureIndicator
             return cell

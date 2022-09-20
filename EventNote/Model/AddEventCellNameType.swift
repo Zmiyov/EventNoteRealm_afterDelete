@@ -30,7 +30,7 @@ enum AddEventCellNameMainSectionType: CaseIterable, CustomStringConvertible {
 enum AddEventCellNameContactsSectionType: CaseIterable, CustomStringConvertible {
     case name
     case phone
-    case additionalPhone
+//    case additionalPhone
     case telegram
     case instagram
     
@@ -40,8 +40,8 @@ enum AddEventCellNameContactsSectionType: CaseIterable, CustomStringConvertible 
             return "Name"
         case .phone:
             return "Phone"
-        case .additionalPhone:
-            return "Additional Phone"
+//        case .additionalPhone:
+//            return "Additional Phone"
         case .telegram:
             return "Telegram"
         case .instagram:
@@ -52,32 +52,32 @@ enum AddEventCellNameContactsSectionType: CaseIterable, CustomStringConvertible 
 
 enum AddEventCellLocationsMainSectionType: CaseIterable, CustomStringConvertible {
     
-    case main
+//    case main
     case start
-    case end
+//    case end
     
     var description: String {
         switch self {
-        case .main:
-            return "Main"
+//        case .main:
+//            return "Main"
         case .start:
-            return "Start"
-        case .end:
-            return "End"
+            return "Start Location"
+//        case .end:
+//            return "End"
         }
     }
 }
 
 enum AddEventCellNamePaymentSectionType: CaseIterable, CustomStringConvertible {
     
-    case forHour
+//    case forHour
     case fullPrice
     case prepayment
     
     var description: String {
         switch self {
-        case .forHour:
-            return "For Hour"
+//        case .forHour:
+//            return "For Hour"
         case .fullPrice:
             return "Full Price"
         case .prepayment:
