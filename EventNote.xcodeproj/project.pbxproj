@@ -32,6 +32,9 @@
 		A5DE68C128AFF9DA00C34183 /* DatePickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DE68C028AFF9DA00C34183 /* DatePickerTableViewCell.swift */; };
 		A5E5619628AA362B00DC4E3E /* ScheduleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E5619528AA362B00DC4E3E /* ScheduleCollectionViewCell.swift */; };
 		A5E5619828AA3E6100DC4E3E /* EventDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E5619728AA3E6100DC4E3E /* EventDetailsViewController.swift */; };
+		A5E77F2128DA6194002FC27E /* GooglePlaces.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5E77F2028DA6194002FC27E /* GooglePlaces.xcframework */; };
+		A5E77F2528DA6233002FC27E /* GooglePlaces.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A5E77F2428DA6233002FC27E /* GooglePlaces.bundle */; };
+		A5E77F2728DA6329002FC27E /* GooglePlacesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E77F2628DA6329002FC27E /* GooglePlacesManager.swift */; };
 		A5F0ECF428CD32F3001D1354 /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F0ECF328CD32F3001D1354 /* EventModel.swift */; };
 		A5F170EF28C8816500B2059A /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F170EE28C8816500B2059A /* TabBarController.swift */; };
 		A5F170F128C8836300B2059A /* DeadlineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F170F028C8836300B2059A /* DeadlineViewController.swift */; };
@@ -68,6 +71,9 @@
 		A5DE68C028AFF9DA00C34183 /* DatePickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerTableViewCell.swift; sourceTree = "<group>"; };
 		A5E5619528AA362B00DC4E3E /* ScheduleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCollectionViewCell.swift; sourceTree = "<group>"; };
 		A5E5619728AA3E6100DC4E3E /* EventDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailsViewController.swift; sourceTree = "<group>"; };
+		A5E77F2028DA6194002FC27E /* GooglePlaces.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = GooglePlaces.xcframework; path = "../../../GooglePlaces-7.1.0-beta/GooglePlaces.xcframework"; sourceTree = "<group>"; };
+		A5E77F2428DA6233002FC27E /* GooglePlaces.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GooglePlaces.bundle; path = "../../../../GooglePlaces-7.1.0-beta/GooglePlaces.xcframework/ios-arm64/GooglePlaces.framework/Resources/GooglePlaces.bundle"; sourceTree = "<group>"; };
+		A5E77F2628DA6329002FC27E /* GooglePlacesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GooglePlacesManager.swift; sourceTree = "<group>"; };
 		A5F0ECF328CD32F3001D1354 /* EventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
 		A5F170EE28C8816500B2059A /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		A5F170F028C8836300B2059A /* DeadlineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineViewController.swift; sourceTree = "<group>"; };
@@ -83,6 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5E77F2128DA6194002FC27E /* GooglePlaces.xcframework in Frameworks */,
 				4F7BBF2B58A79DB5795C54B9 /* Pods_EventNote.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -102,6 +109,7 @@
 		9A182D316C1528C8285447A8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A5E77F2028DA6194002FC27E /* GooglePlaces.xcframework */,
 				F294DBB57595AF6E435B570C /* Pods_EventNote.framework */,
 			);
 			name = Frameworks;
@@ -139,6 +147,7 @@
 				A547D47628A81D0200173BA8 /* LaunchScreen.storyboard */,
 				A547D47928A81D0200173BA8 /* Info.plist */,
 				A547D47128A81D0000173BA8 /* EventNote.xcdatamodeld */,
+				A5E77F2428DA6233002FC27E /* GooglePlaces.bundle */,
 			);
 			path = EventNote;
 			sourceTree = "<group>";
@@ -215,6 +224,7 @@
 			isa = PBXGroup;
 			children = (
 				A5BC5FB728C0E27500136552 /* ShootingReminder.swift */,
+				A5E77F2628DA6329002FC27E /* GooglePlacesManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -280,6 +290,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A547D47828A81D0200173BA8 /* LaunchScreen.storyboard in Resources */,
+				A5E77F2528DA6233002FC27E /* GooglePlaces.bundle in Resources */,
 				A547D47528A81D0200173BA8 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -346,6 +357,7 @@
 				A5DE68C128AFF9DA00C34183 /* DatePickerTableViewCell.swift in Sources */,
 				A5F170F528C892FE00B2059A /* DeadlinesListTableViewController.swift in Sources */,
 				A547D46928A81D0000173BA8 /* AppDelegate.swift in Sources */,
+				A5E77F2728DA6329002FC27E /* GooglePlacesManager.swift in Sources */,
 				A5DE68B228AD415700C34183 /* KindOfAlertListTableViewController.swift in Sources */,
 				A5E5619828AA3E6100DC4E3E /* EventDetailsViewController.swift in Sources */,
 				A5DE68B928AECF3700C34183 /* KindOfShootingList.swift in Sources */,
