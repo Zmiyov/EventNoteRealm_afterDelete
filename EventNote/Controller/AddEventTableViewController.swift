@@ -202,27 +202,18 @@ class AddEventTableViewController: UITableViewController  {
             }
             
         case 2:
-            let cell = tableView.dequeueReusableCell(withIdentifier: idTextFieldCell, for: indexPath) as! TextFieldTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: idAddEventCell, for: indexPath) as! ListTableViewCell
             let type = AddEventCellLocationsMainSectionType.allCases[indexPath.row]
-            cell.textField.placeholder = type.description
-            cell.textField.addTarget(self, action: #selector(textChanged), for: .editingChanged)
             
-            switch indexPath.row {
-//            case 0:
-//                cell.textField.tag = 5
-//                cell.textField.text = eventModel.mainLocation
-//                return cell
-            case 1:
-                cell.textField.tag = 6
-                cell.textField.text = eventModel.startLocation
-                return cell
-//            case 2:
-//                cell.textField.tag = 7
-//                cell.textField.text = eventModel.endLocation
-//                return cell
-            default:
-                return cell
+            if eventModel.mainLocation != nil {
+                cell.nameCellLabel.text = eventModel.mainLocation
+                cell.nameCellLabel.textColor = .label
+            } else {
+                cell.nameCellLabel.text = type.description
+                cell.nameCellLabel.textColor = .systemGray2
             }
+            cell.accessoryType = .disclosureIndicator
+            return cell
             
         case 3:
             let cell = tableView.dequeueReusableCell(withIdentifier: idTextFieldCell, for: indexPath) as! TextFieldTableViewCell

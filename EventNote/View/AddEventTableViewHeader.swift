@@ -11,7 +11,7 @@ class AddEventTableViewHeader: UITableViewHeaderFooterView {
     
     let headerLabel = UILabel(text: "", font: .systemFont(ofSize: 20), alighment: .left)
     
-    let headerNameArray = ["Main", "Contacts", "Locations", "Payment", "Reminder"]
+    let headerNameArray = ["Main", "Contacts", "Location", "Payment", "Reminder"]
     
     
     override init(reuseIdentifier: String?) {

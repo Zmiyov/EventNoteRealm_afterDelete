@@ -14,6 +14,7 @@ class MapKitViewController: UIViewController, UISearchResultsUpdating {
     let mapView = MKMapView()
     
     var locationData: LocationDataModel?
+    let locationManager = CLLocationManager()
     
     var resultsViewController: GMSAutocompleteResultsViewController?
     var searchController: UISearchController?
@@ -38,7 +39,6 @@ class MapKitViewController: UIViewController, UISearchResultsUpdating {
         searchController?.hidesNavigationBarDuringPresentation = false
         navigationItem.searchController = searchController
         
-        
         // This makes the view area include the nav bar even though it is opaque.
         // Adjust the view placement down.
         self.extendedLayoutIncludesOpaqueBars = true
@@ -53,8 +53,6 @@ class MapKitViewController: UIViewController, UISearchResultsUpdating {
         super.viewDidLayoutSubviews()
         mapView.frame = CGRect(x: 0, y: view.safeAreaInsets.top, width: view.frame.size.width, height: view.frame.size.height - view.safeAreaInsets.top)
     }
-    
-    
     
     func updateSearchResults(for searchController: UISearchController) {
         guard let query = searchController.searchBar.text, !query.trimmingCharacters(in: .whitespaces).isEmpty else { return }
@@ -98,3 +96,41 @@ extension MapKitViewController: GMSAutocompleteResultsViewControllerDelegate {
     
 }
 
+extension MapKitViewController: CLLocationManagerDelegate {
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        
+        switch manager.authorizationStatus {
+
+        case .notDetermined:
+            locationManager.requestWhenInUseAuthorization()
+        case .restricted:
+            locationManager.requestWhenInUseAuthorization()
+        case .denied:
+            return
+        case .authorizedAlways:
+            locationManager.requestLocation()
+            return
+        case .authorizedWhenInUse:
+            locationManager.requestLocation()
+            return
+        @unknown default:
+            locationManager.requestWhenInUseAuthorization()
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+//        let target = CLLocationCoordinate2D(latitude: locationManager.location?.coordinate.latitude ?? 0.0, longitude: locationManager.location?.coordinate.longitude ?? 0.0)
+        let target = CLLocationCoordinate2D(latitude: 50.4501, longitude: 30.5234)
+//        googleMap.camera = GMSCameraPosition(target: target, zoom: 10, bearing: 0, viewingAngle: 0)
+        mapView.camera = MKMapCamera(lookingAtCenter: target, fromDistance: 2000.0, pitch: 0, heading: 0)
+
+//        let marker = GMSMarker()
+//        marker.position = target
+//        marker.title = "Hi"
+//        marker.snippet = "I'm here"
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print(error)
+    }
+}
