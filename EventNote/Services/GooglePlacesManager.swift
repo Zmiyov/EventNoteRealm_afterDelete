@@ -8,6 +8,7 @@
 import Foundation
 import GooglePlaces
 
+
 struct Place {
     let name: String
     let identifier: String

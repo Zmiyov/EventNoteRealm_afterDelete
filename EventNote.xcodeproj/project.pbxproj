@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		4F7BBF2B58A79DB5795C54B9 /* Pods_EventNote.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F294DBB57595AF6E435B570C /* Pods_EventNote.framework */; };
 		A5126F8B28AC448200153525 /* AddEventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5126F8A28AC448200153525 /* AddEventTableViewController.swift */; };
+		A53929BC28DA6AD500F03D42 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A53929BB28DA6AD500F03D42 /* CoreGraphics.framework */; };
+		A53929BE28DA6ADC00F03D42 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A53929BD28DA6ADC00F03D42 /* CoreLocation.framework */; };
+		A53929C028DA6AEF00F03D42 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A53929BF28DA6AEF00F03D42 /* libc++.tbd */; };
+		A53929C228DA6AFF00F03D42 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A53929C128DA6AFF00F03D42 /* libz.tbd */; };
+		A53929C428DA6B0F00F03D42 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A53929C328DA6B0F00F03D42 /* QuartzCore.framework */; };
+		A53929C628DA6B1600F03D42 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A53929C528DA6B1600F03D42 /* UIKit.framework */; };
 		A547D46928A81D0000173BA8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A547D46828A81D0000173BA8 /* AppDelegate.swift */; };
 		A547D46B28A81D0000173BA8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A547D46A28A81D0000173BA8 /* SceneDelegate.swift */; };
 		A547D46D28A81D0000173BA8 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A547D46C28A81D0000173BA8 /* MainViewController.swift */; };
@@ -16,6 +22,7 @@
 		A547D47528A81D0200173BA8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A547D47428A81D0200173BA8 /* Assets.xcassets */; };
 		A547D47828A81D0200173BA8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A547D47628A81D0200173BA8 /* LaunchScreen.storyboard */; };
 		A54C769F28ABF81600C479AE /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54C769E28ABF81600C479AE /* UILabel.swift */; };
+		A5973A6428DB6C6A00890DBB /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5973A6328DB6C6A00890DBB /* LocationModel.swift */; };
 		A5BC5FB828C0E27500136552 /* ShootingReminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5BC5FB728C0E27500136552 /* ShootingReminder.swift */; };
 		A5C8CE5D28C4AB67009C87B1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C8CE5C28C4AB67009C87B1 /* Constants.swift */; };
 		A5D4D9D428DA351C002BDBC5 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D4D9D328DA351C002BDBC5 /* MapViewController.swift */; };
@@ -46,6 +53,12 @@
 /* Begin PBXFileReference section */
 		214843824417410227A0911F /* Pods-EventNote.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EventNote.debug.xcconfig"; path = "Target Support Files/Pods-EventNote/Pods-EventNote.debug.xcconfig"; sourceTree = "<group>"; };
 		A5126F8A28AC448200153525 /* AddEventTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventTableViewController.swift; sourceTree = "<group>"; };
+		A53929BB28DA6AD500F03D42 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A53929BD28DA6ADC00F03D42 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		A53929BF28DA6AEF00F03D42 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		A53929C128DA6AFF00F03D42 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		A53929C328DA6B0F00F03D42 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		A53929C528DA6B1600F03D42 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A547D46528A81D0000173BA8 /* EventNote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EventNote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A547D46828A81D0000173BA8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A547D46A28A81D0000173BA8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -55,6 +68,7 @@
 		A547D47728A81D0200173BA8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A547D47928A81D0200173BA8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A54C769E28ABF81600C479AE /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
+		A5973A6328DB6C6A00890DBB /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
 		A5BC5FB728C0E27500136552 /* ShootingReminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShootingReminder.swift; sourceTree = "<group>"; };
 		A5C8CE5C28C4AB67009C87B1 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A5D4D9D328DA351C002BDBC5 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -89,6 +103,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A53929C628DA6B1600F03D42 /* UIKit.framework in Frameworks */,
+				A53929C428DA6B0F00F03D42 /* QuartzCore.framework in Frameworks */,
+				A53929C228DA6AFF00F03D42 /* libz.tbd in Frameworks */,
+				A53929C028DA6AEF00F03D42 /* libc++.tbd in Frameworks */,
+				A53929BE28DA6ADC00F03D42 /* CoreLocation.framework in Frameworks */,
+				A53929BC28DA6AD500F03D42 /* CoreGraphics.framework in Frameworks */,
 				A5E77F2128DA6194002FC27E /* GooglePlaces.xcframework in Frameworks */,
 				4F7BBF2B58A79DB5795C54B9 /* Pods_EventNote.framework in Frameworks */,
 			);
@@ -109,6 +129,12 @@
 		9A182D316C1528C8285447A8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A53929C528DA6B1600F03D42 /* UIKit.framework */,
+				A53929C328DA6B0F00F03D42 /* QuartzCore.framework */,
+				A53929C128DA6AFF00F03D42 /* libz.tbd */,
+				A53929BF28DA6AEF00F03D42 /* libc++.tbd */,
+				A53929BD28DA6ADC00F03D42 /* CoreLocation.framework */,
+				A53929BB28DA6AD500F03D42 /* CoreGraphics.framework */,
 				A5E77F2028DA6194002FC27E /* GooglePlaces.xcframework */,
 				F294DBB57595AF6E435B570C /* Pods_EventNote.framework */,
 			);
@@ -162,6 +188,7 @@
 				A5DE68BA28AED66E00C34183 /* KindOfAlertList.swift */,
 				A5DE68BC28AEE57700C34183 /* AddEventCellNameType.swift */,
 				A5C8CE5C28C4AB67009C87B1 /* Constants.swift */,
+				A5973A6328DB6C6A00890DBB /* LocationModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -372,6 +399,7 @@
 				A547D46B28A81D0000173BA8 /* SceneDelegate.swift in Sources */,
 				A5DE68BB28AED66E00C34183 /* KindOfAlertList.swift in Sources */,
 				A5F170F328C8912800B2059A /* DeadlinesList.swift in Sources */,
+				A5973A6428DB6C6A00890DBB /* LocationModel.swift in Sources */,
 				A5D4D9D428DA351C002BDBC5 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -519,6 +547,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -547,6 +576,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

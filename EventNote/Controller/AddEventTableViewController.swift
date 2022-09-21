@@ -342,6 +342,11 @@ class AddEventTableViewController: UITableViewController  {
             alertVC.delegate = self
             alertVC.amountOrHours = amountOfHours
             navigationController?.pushViewController(alertVC, animated: true)
+        case [2, 0]:
+            let alertVC = MapKitViewController()
+//            alertVC.delegate = self
+//            alertVC.kindOfAlert = kindOfAlertOpted
+            navigationController?.pushViewController(alertVC, animated: true)
         case [4, 0]:
             let alertVC = KindOfAlertListTableViewController()
             alertVC.delegate = self

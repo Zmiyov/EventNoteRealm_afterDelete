@@ -7,13 +7,18 @@
 
 import UIKit
 import CoreData
+import GooglePlaces
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    
+    
 
     let center = UNUserNotificationCenter.current()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        
         
         center.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
             if let error = error {
@@ -23,30 +28,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         center.delegate = self
         return true
     }
-    
-//    func schedule(date: Date) {
-//
-//        let content = UNMutableNotificationContent()
-//        content.sound = UNNotificationSound.default
-//        content.title = "Title"
-//        content.body = "Body"
-//
-//        print(Date())
-//
-//        let dateOfTrigger = Calendar.current.date(byAdding: .second, value: 5, to: date)!
-//        let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: dateOfTrigger)
-//
-//        let timeIntervalTrigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
-//
-//        let request = UNNotificationRequest(identifier: "Date", content: content, trigger: timeIntervalTrigger)
-//
-//        UNUserNotificationCenter.current().add(request) { error in
-//            if let error = error {
-//                print(error)
-//            }
-//            print("reminder added")
-//        }
-//    }
     
 
     // MARK: UISceneSession Lifecycle

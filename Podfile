@@ -5,10 +5,8 @@ target 'EventNote' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
-pod 'FSCalendar'
-
   # Pods for EventNote
 
-pod 'RealmSwift', '~>10'
+pod 'FSCalendar'
 
 end
