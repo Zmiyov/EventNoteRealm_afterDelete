@@ -137,7 +137,7 @@ class MainViewController: UIViewController {
     }
     
     func animateButton() {
-        UIView.animate(withDuration: 0.2, animations: {self.showHideButton.transform = CGAffineTransform.identity.scaledBy(x: 0.9, y: 0.9)}) { finish in
+        UIView.animate(withDuration: 0.2, animations: { self.showHideButton.transform = CGAffineTransform.identity.scaledBy(x: 0.9, y: 0.9)}) { finish in
             UIView.animate(withDuration: 0.1) {
                 self.showHideButton.transform = CGAffineTransform.identity
             }
@@ -351,7 +351,7 @@ extension MainViewController: AddEventTableViewControllerDelegate {
             UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [event.identifierID!])
         }
 //        print("Now date in delegate", Date())
-//        print("Identifier in delegate", event.identifierID)
+        print("Identifier in delegate", event.identifierID)
 //        print("Date of reminder", event.alertDate)
         
         fetchEvents(date: date)

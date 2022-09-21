@@ -9,30 +9,30 @@ import Foundation
 
 class EventModel {
     
-    var kindOfShooting: String = ""
+    var kindOfShooting: String?
     var dateAndTime: Date = Date()
     var deadlineDate: Date?
-    var deadlineString: String = ""
+    var deadlineString: String?
     var amountOfHours: Int = 0
     
-    var clientName: String = ""
-    var clientPhoneNumber: String = ""
-    var additionalPhoneNumber: String = ""
-    var clientTelegramOrChat: String = ""
-    var clientInstagram: String = ""
+    var clientName: String?
+    var clientPhoneNumber: String?
+    var additionalPhoneNumber: String?
+    var clientTelegramOrChat: String?
+    var clientInstagram: String?
     
-    var mainLocation: String = ""
-    var startLocation: String = ""
-    var endLocation: String = ""
+    var mainLocation: String?
+    var startLocation: String?
+    var endLocation: String?
     
-    var priceForHour: String = ""
-    var fullPrice: String = ""
-    var prepayment: String = ""
+    var priceForHour: String?
+    var fullPrice: String?
+    var prepayment: String?
     
-    var alertString: String = ""
+    var alertString: String?
     var alertDate: Date?
     
     var isDone: Bool = false
-    var identifierID: String = UUID().uuidString
+    var identifierID: String?
 
 }
