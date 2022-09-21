@@ -10,7 +10,7 @@ import Foundation
 class EventModel {
     
     var kindOfShooting: String?
-    var dateAndTime: Date = Date()
+    var dateAndTime: Date?
     var deadlineDate: Date?
     var deadlineString: String?
     var amountOfHours: Int = 0
@@ -33,6 +33,6 @@ class EventModel {
     var alertDate: Date?
     
     var isDone: Bool = false
-    var identifierID: String?
+    var identifierID: String = UUID().uuidString
 
 }

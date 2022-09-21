@@ -271,7 +271,7 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
             let editAction = UIAction(title: "Edit") { action in
                 
                 let editVC = AddEventTableViewController()
-                editVC.eventModel = self.eventEntityModelsArray[indexPath.item]
+                editVC.eventModelEntity = self.eventEntityModelsArray[indexPath.item]
                 editVC.editedDay = self.eventEntityModelsArray[indexPath.item].dateAndTime!
                 editVC.delegate = self
                 
@@ -351,7 +351,7 @@ extension MainViewController: AddEventTableViewControllerDelegate {
             UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [event.identifierID!])
         }
 //        print("Now date in delegate", Date())
-        print("Identifier in delegate", event.identifierID)
+//        print("Identifier in delegate", event.identifierID)
 //        print("Date of reminder", event.alertDate)
         
         fetchEvents(date: date)
