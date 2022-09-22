@@ -24,6 +24,7 @@ class AddEventTableViewController: UITableViewController  {
     var kindOfShooting1: KindOfShootingList?
     var deadlineOpted: DeadlinesList?
     var amountOfHours: Int?
+    var locationData: LocationDataModel?
     var kindOfAlertOpted: KindOfAlertList?
     
     let idDatePickerCell = "idDatePickerCell"
@@ -380,7 +381,8 @@ class AddEventTableViewController: UITableViewController  {
             navigationController?.pushViewController(alertVC, animated: true)
         case [2, 0]:
             let alertVC = MapKitViewController()
-
+            alertVC.delegate = self
+            
             navigationController?.pushViewController(alertVC, animated: true)
         case [4, 0]:
             let alertVC = KindOfAlertListTableViewController()
@@ -466,6 +468,14 @@ extension AddEventTableViewController: AmountOfHoursListTableViewControllerDeleg
         tableView.reloadData()
     }
 }
+
+extension AddEventTableViewController: MapKitViewControllerDelegate {
+    func mapKitViewController(_ controller: MapKitViewController, didSelect locationData: LocationDataModel) {
+        self.locationData = locationData
+        eventModel.mainLocation = locationData.name
+    }
+}
+
 
 extension AddEventTableViewController: KindOfAlertListTableViewControllerDelegate {
     func kindOfAlertListTableViewController(_ controller: KindOfAlertListTableViewController, didSelect kindOfAlert: KindOfAlertList) {

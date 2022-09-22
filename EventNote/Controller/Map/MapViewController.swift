@@ -9,12 +9,18 @@ import UIKit
 import MapKit
 import GooglePlaces
 
+protocol MapKitViewControllerDelegate {
+    func mapKitViewController(_ controller: MapKitViewController, didSelect locationData: LocationDataModel)
+}
+
 class MapKitViewController: UIViewController {
 
     let mapView = MKMapView()
     
     var locationData: LocationDataModel?
     let locationManager = CLLocationManager()
+    
+    var delegate: MapKitViewControllerDelegate?
     
     var resultsViewController: GMSAutocompleteResultsViewController?
     var searchController: UISearchController?
