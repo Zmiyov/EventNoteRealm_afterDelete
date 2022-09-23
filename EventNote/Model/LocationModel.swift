@@ -8,7 +8,7 @@
 import Foundation
 
 struct LocationDataModel {
-    var name: String
-    var longitude: Double
-    var latitude: Double
+    var name: String?
+    var longitude: Double?
+    var latitude: Double?
 }

@@ -382,7 +382,9 @@ class AddEventTableViewController: UITableViewController  {
         case [2, 0]:
             let alertVC = MapKitViewController()
             alertVC.delegate = self
-            
+//            if let locationData = locationData {
+//                alertVC.locationData = locationData
+//            }
             navigationController?.pushViewController(alertVC, animated: true)
         case [4, 0]:
             let alertVC = KindOfAlertListTableViewController()
@@ -473,6 +475,7 @@ extension AddEventTableViewController: MapKitViewControllerDelegate {
     func mapKitViewController(_ controller: MapKitViewController, didSelect locationData: LocationDataModel) {
         self.locationData = locationData
         eventModel.mainLocation = locationData.name
+        print(self.locationData?.longitude)
     }
 }
 

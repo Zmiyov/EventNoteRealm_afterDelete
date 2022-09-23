@@ -17,7 +17,7 @@ class MapKitViewController: UIViewController {
 
     let mapView = MKMapView()
     
-    var locationData: LocationDataModel?
+    var locationData = LocationDataModel()
     let locationManager = CLLocationManager()
     
     var delegate: MapKitViewControllerDelegate?
@@ -28,7 +28,10 @@ class MapKitViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Places Apple"
+        title = "Places"
+        
+        let saveBarButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveButtonTapped))
+        navigationItem.rightBarButtonItem = saveBarButton
         
         configureMapView()
         
@@ -55,13 +58,20 @@ class MapKitViewController: UIViewController {
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        mapView.frame = CGRect(x: 0, y: view.safeAreaInsets.top, width: view.frame.size.width, height: view.frame.size.height - view.safeAreaInsets.top)
+        mapView.frame = CGRect(x: 0, y: view.safeAreaInsets.top,
+                               width: view.frame.size.width,
+                               height: view.frame.size.height - view.safeAreaInsets.top)
+    }
+    
+    @objc func saveButtonTapped() {
+        self.delegate?.mapKitViewController(self, didSelect: locationData)
     }
     
     func configureMapView() {
         view.addSubview(mapView)
         mapView.setUserTrackingMode(.follow, animated:true)
-        let myLocation = CLLocationCoordinate2D(latitude: locationManager.location?.coordinate.latitude ?? 30.5446104, longitude: locationManager.location?.coordinate.longitude ?? 50.4421291)
+        let myLocation = CLLocationCoordinate2D(latitude: locationManager.location?.coordinate.latitude ?? 30.5446104,
+                                                longitude: locationManager.location?.coordinate.longitude ?? 50.4421291)
         mapView.camera = MKMapCamera(lookingAtCenter: myLocation, fromEyeCoordinate: myLocation, eyeAltitude: 15000)
     }
     
@@ -94,9 +104,14 @@ extension MapKitViewController: GMSAutocompleteResultsViewControllerDelegate {
         
         searchController?.isActive = false
         guard let name = place.name else { return }
-        locationData?.name = name
-        locationData?.longitude = place.coordinate.longitude
-        locationData?.latitude = place.coordinate.latitude
+        locationData.name = name
+        locationData.longitude = place.coordinate.longitude
+        locationData.latitude = place.coordinate.latitude
+        
+        let placePin = MKPointAnnotation()
+        placePin.title = place.formattedAddress
+        placePin.coordinate = CLLocationCoordinate2D(latitude: place.coordinate.latitude, longitude: place.coordinate.longitude)
+        mapView.addAnnotation(placePin)
         
         // Do something with the selected place.
         print("Place name: \(place.name)")
