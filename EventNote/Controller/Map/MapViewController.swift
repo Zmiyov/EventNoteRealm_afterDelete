@@ -32,7 +32,6 @@ class MapKitViewController: UIViewController {
         
         let saveBarButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveButtonTapped))
         navigationItem.rightBarButtonItem = saveBarButton
-        
         configureMapView()
         
         locationManager.delegate = self
@@ -42,23 +41,21 @@ class MapKitViewController: UIViewController {
         resultsViewController?.delegate = self
         
         configureSearchController()
-        
         navigationController?.navigationBar.isTranslucent = false
         navigationItem.searchController = searchController
+
         
-        // This makes the view area include the nav bar even though it is opaque.
-        // Adjust the view placement down.
         self.extendedLayoutIncludesOpaqueBars = true
         self.edgesForExtendedLayout = .top
-        
-        // When UISearchController presents the results view, present it in
-        // this view controller, not one further up the chain.
         definesPresentationContext = true
+        
+        updateSaveButtonState()
     }
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        mapView.frame = CGRect(x: 0, y: view.safeAreaInsets.top,
+        mapView.frame = CGRect(x: 0,
+                               y: view.safeAreaInsets.top,
                                width: view.frame.size.width,
                                height: view.frame.size.height - view.safeAreaInsets.top)
     }
@@ -68,11 +65,16 @@ class MapKitViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
+    private func updateSaveButtonState() {
+        let shouldEnableSaveButton = locationData.name != nil
+        navigationItem.rightBarButtonItem!.isEnabled = shouldEnableSaveButton
+    }
+    
     func configureMapView() {
         view.addSubview(mapView)
         mapView.setUserTrackingMode(.follow, animated:true)
-        let myLocation = CLLocationCoordinate2D(latitude: locationManager.location?.coordinate.latitude ?? 30.5446104,
-                                                longitude: locationManager.location?.coordinate.longitude ?? 50.4421291)
+        let myLocation = CLLocationCoordinate2D(latitude: locationManager.location?.coordinate.latitude ?? 50.4421291,
+                                                longitude: locationManager.location?.coordinate.longitude ?? 30.5446104)
         mapView.camera = MKMapCamera(lookingAtCenter: myLocation, fromEyeCoordinate: myLocation, eyeAltitude: 15000)
     }
     
@@ -118,13 +120,14 @@ extension MapKitViewController: GMSAutocompleteResultsViewControllerDelegate {
         print("Place name: \(place.name)")
         print("Place address: \(place.formattedAddress)")
         print("Place attributions: \(place.attributions)")
-        print("\(place.coordinate.longitude)")
+        
         print("\(place.coordinate.latitude)")
+        print("\(place.coordinate.longitude)")
         
         let target = CLLocationCoordinate2D(latitude: place.coordinate.latitude, longitude: place.coordinate.longitude)
-//        googleMap.camera = GMSCameraPosition(target: target, zoom: 15, bearing: 0, viewingAngle: 0)
         mapView.camera = MKMapCamera(lookingAtCenter: target, fromDistance: 3000.0, pitch: 0, heading: 0)
         
+        updateSaveButtonState()
     }
     
     func resultsController(_ resultsController: GMSAutocompleteResultsViewController, didFailAutocompleteWithError error: Error) {

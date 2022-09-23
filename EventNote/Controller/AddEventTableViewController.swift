@@ -112,6 +112,8 @@ class AddEventTableViewController: UITableViewController  {
         eventModelEntity?.mainLocation = eventModel.mainLocation
         eventModelEntity?.startLocation = eventModel.startLocation
         eventModelEntity?.endLocation = eventModel.endLocation
+        eventModelEntity?.latitude = eventModel.latitude ?? 0
+        eventModelEntity?.longitude = eventModel.longitude ?? 0
         
         eventModelEntity?.priceForHour = eventModel.priceForHour
         eventModelEntity?.fullPrice = eventModel.fullPrice
@@ -141,6 +143,8 @@ class AddEventTableViewController: UITableViewController  {
             eventModel.mainLocation = eventModelEntity.mainLocation
             eventModel.startLocation = eventModelEntity.startLocation
             eventModel.endLocation = eventModelEntity.endLocation
+            eventModel.latitude = eventModelEntity.latitude
+            eventModel.longitude = eventModelEntity.longitude
             
             eventModel.priceForHour = eventModelEntity.priceForHour
             eventModel.fullPrice = eventModelEntity.fullPrice
@@ -402,9 +406,7 @@ extension AddEventTableViewController: KindOfShootingTableViewControllerDelegate
     func kindOfShootingTableViewController(_ controller: KindOfShootingTableViewController, didSelect kindOfShooting: KindOfShootingList) {
         self.kindOfShooting1 = kindOfShooting
         updateSaveButtonState()
-        
         eventModel.kindOfShooting = kindOfShooting.description
-        
         tableView.reloadData()
     }
 }
@@ -412,10 +414,8 @@ extension AddEventTableViewController: KindOfShootingTableViewControllerDelegate
 extension AddEventTableViewController: DeadlinesListTableViewControllerDelegate {
     func deadlinesListTableViewController(_ controller: DeadlinesListTableViewController, didSelect deadline: DeadlinesList) {
         self.deadlineOpted = deadline
-        
         eventModel.deadlineString = deadline.description
         eventModel.isDone = false
-        
         deadlineReminderLogic(deadline: deadline.description)
         tableView.reloadData()
     }
@@ -472,7 +472,8 @@ extension AddEventTableViewController: MapKitViewControllerDelegate {
     func mapKitViewController(_ controller: MapKitViewController, didSelect locationData: LocationDataModel) {
         self.locationData = locationData
         eventModel.mainLocation = locationData.name
-        print(eventModel.mainLocation)
+        eventModel.latitude = locationData.latitude
+        eventModel.longitude = locationData.longitude
         tableView.reloadData()
     }
 }

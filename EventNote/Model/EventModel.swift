@@ -24,6 +24,8 @@ class EventModel {
     var mainLocation: String?
     var startLocation: String?
     var endLocation: String?
+    var latitude: Double?
+    var longitude: Double?
     
     var priceForHour: String?
     var fullPrice: String?
