@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 class EventDetailsViewController: UIViewController {
     
@@ -23,6 +24,15 @@ class EventDetailsViewController: UIViewController {
     
     @objc func dismissSelf() {
         dismiss(animated: true, completion: nil)
+    }
+    
+    func navigateWithAppTo(latitude: Double, longitude: Double) {
+        let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        
+        let opt = MapAppOpt.mapsAlertController(coordinate: coordinate, name: "Destination", title: "Navigate to Destination", message: "Any message") { com in
+            
+        }
+        self.present(opt, animated: true, completion: nil)
     }
     
     func mainVerticalStackView() {
