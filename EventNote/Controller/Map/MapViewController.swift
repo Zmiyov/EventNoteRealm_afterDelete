@@ -65,6 +65,7 @@ class MapKitViewController: UIViewController {
     
     @objc func saveButtonTapped() {
         self.delegate?.mapKitViewController(self, didSelect: locationData)
+        self.navigationController?.popViewController(animated: true)
     }
     
     func configureMapView() {

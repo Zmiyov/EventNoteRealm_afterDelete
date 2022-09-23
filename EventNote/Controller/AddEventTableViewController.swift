@@ -38,8 +38,6 @@ class AddEventTableViewController: UITableViewController  {
         super.viewDidLoad()
         title = "New Event"
         
-//        createOrFetchEvent()
-        
         copyEntityToModel()
         
         let cancelBarButton = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(backButton))
@@ -398,6 +396,7 @@ class AddEventTableViewController: UITableViewController  {
 }
 
 //MARK: - Delegates
+
 extension AddEventTableViewController: KindOfShootingTableViewControllerDelegate {
     
     func kindOfShootingTableViewController(_ controller: KindOfShootingTableViewController, didSelect kindOfShooting: KindOfShootingList) {
@@ -464,9 +463,7 @@ extension AddEventTableViewController: DeadlinesListTableViewControllerDelegate 
 extension AddEventTableViewController: AmountOfHoursListTableViewControllerDelegate {
     func amountOfHoursListTableViewController(_ controller: AmountOfHoursListTableViewController, didSelect amount: Int) {
         self.amountOfHours = amount
-
         eventModel.amountOfHours = amount
-
         tableView.reloadData()
     }
 }
@@ -475,7 +472,8 @@ extension AddEventTableViewController: MapKitViewControllerDelegate {
     func mapKitViewController(_ controller: MapKitViewController, didSelect locationData: LocationDataModel) {
         self.locationData = locationData
         eventModel.mainLocation = locationData.name
-        print(self.locationData?.longitude)
+        print(eventModel.mainLocation)
+        tableView.reloadData()
     }
 }
 
@@ -483,9 +481,7 @@ extension AddEventTableViewController: MapKitViewControllerDelegate {
 extension AddEventTableViewController: KindOfAlertListTableViewControllerDelegate {
     func kindOfAlertListTableViewController(_ controller: KindOfAlertListTableViewController, didSelect kindOfAlert: KindOfAlertList) {
         self.kindOfAlertOpted = kindOfAlert
-        
         eventModel.alertString = kindOfAlert.description
-        
         eventReminderLogic(kindOfAlert: kindOfAlert.description)
         tableView.reloadData()
     }
