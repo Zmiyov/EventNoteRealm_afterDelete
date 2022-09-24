@@ -90,7 +90,7 @@ public enum MapAppOpt {
         }
         if #available(iOS 10.0, *) {
             UIApplication.shared.open(url, options: [:]) { success in
-                print("Open \(url.absoluteString): \(success)")
+//                print("Open \(url.absoluteString): \(success)")
                 completion?(success)
             }
         } else {

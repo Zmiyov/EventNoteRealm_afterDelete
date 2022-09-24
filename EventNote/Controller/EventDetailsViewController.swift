@@ -26,17 +26,18 @@ class EventDetailsViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    //MARK: - Alert
+    
     func navigateWithAppTo(latitude: Double, longitude: Double) {
         let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
         
         let opt = MapAppOpt.mapsAlertController(coordinate: coordinate, name: "Destination", title: "Navigate to Destination", message: "Any message") { com in
-            
         }
         self.present(opt, animated: true, completion: nil)
     }
+    //MARK: - Gesture for location
     
     func prepareTapGestureToChooseMonth(label: UILabel) {
-        
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapFunction))
         tapGesture.numberOfTapsRequired = 1
         
@@ -45,16 +46,16 @@ class EventDetailsViewController: UIViewController {
     }
     
     @objc func tapFunction() {
-        
         navigateWithAppTo(latitude: event!.latitude, longitude: event!.longitude)
-        
     }
+    
+    //MARK: - Stack View
     
     func mainVerticalStackView() {
         
         guard let event = event else { return }
-
         dateFormatter.dateFormat = "HH:mm"
+        
         let timeOfShooting = dateFormatter.string(from: event.dateAndTime!)
         
         let dateAndTimeLabel = UILabel(text: timeOfShooting, font: .systemFont(ofSize: 40, weight: .bold), alighment: .center)

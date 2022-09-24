@@ -116,13 +116,11 @@ extension MapKitViewController: GMSAutocompleteResultsViewControllerDelegate {
         placePin.coordinate = CLLocationCoordinate2D(latitude: place.coordinate.latitude, longitude: place.coordinate.longitude)
         mapView.addAnnotation(placePin)
         
-        // Do something with the selected place.
-        print("Place name: \(place.name)")
-        print("Place address: \(place.formattedAddress)")
-        print("Place attributions: \(place.attributions)")
-        
-        print("\(place.coordinate.latitude)")
-        print("\(place.coordinate.longitude)")
+//        print("Place name: \(place.name)")
+//        print("Place address: \(place.formattedAddress)")
+//        print("Place attributions: \(place.attributions)")
+//        print("\(place.coordinate.latitude)")
+//        print("\(place.coordinate.longitude)")
         
         let target = CLLocationCoordinate2D(latitude: place.coordinate.latitude, longitude: place.coordinate.longitude)
         mapView.camera = MKMapCamera(lookingAtCenter: target, fromDistance: 3000.0, pitch: 0, heading: 0)
