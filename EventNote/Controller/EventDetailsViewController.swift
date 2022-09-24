@@ -35,6 +35,21 @@ class EventDetailsViewController: UIViewController {
         self.present(opt, animated: true, completion: nil)
     }
     
+    func prepareTapGestureToChooseMonth(label: UILabel) {
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapFunction))
+        tapGesture.numberOfTapsRequired = 1
+        
+        label.addGestureRecognizer(tapGesture)
+        label.isUserInteractionEnabled = true
+    }
+    
+    @objc func tapFunction() {
+        
+        navigateWithAppTo(latitude: event!.latitude, longitude: event!.longitude)
+        
+    }
+    
     func mainVerticalStackView() {
         
         guard let event = event else { return }
@@ -102,6 +117,10 @@ class EventDetailsViewController: UIViewController {
         
         timeLocationVertStackView.addArrangedSubview(dateAndTimeLabel)
         timeLocationVertStackView.addArrangedSubview(mainLocationLabel)
+        
+        if event.mainLocation != nil {
+            prepareTapGestureToChooseMonth(label: mainLocationLabel)
+        }
         
         timeLocationWeatherHorStackView.addArrangedSubview(timeLocationVertStackView)
         timeLocationWeatherHorStackView.addArrangedSubview(weatherImageView)

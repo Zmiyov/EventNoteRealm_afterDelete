@@ -104,8 +104,8 @@ public enum MapAppOpt {
         for navigationApp in MapAppOpt.avaliableApps {
             let action = UIAlertAction(title: navigationApp.appName, style: .default) { action in
                 navigationApp.openWithMap(coordinate: coordinate, name: name, completion: completion)
-                mapsAlertView.addAction(action)
             }
+            mapsAlertView.addAction(action)
         }
         let cancelAction = UIAlertAction(title: "Dismiss", style: .cancel) { action in
             completion?(false)
