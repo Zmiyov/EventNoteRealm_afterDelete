@@ -99,9 +99,6 @@ class EventDetailsViewController: UIViewController {
         timeLocationVertStackView.distribution = .fillEqually
         timeLocationVertStackView.spacing = 1
         timeLocationVertStackView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            timeLocationVertStackView.heightAnchor.constraint(equalToConstant: 200)
-        ])
         
         timeLocationVertStackView.addArrangedSubview(dateAndTimeLabel)
         timeLocationVertStackView.addArrangedSubview(mainLocationLabel)
@@ -121,7 +118,7 @@ class EventDetailsViewController: UIViewController {
         
         mainVerticalStackView.addArrangedSubview(timeLocationWeatherHorStackView)
         NSLayoutConstraint.activate([
-            timeLocationWeatherHorStackView.heightAnchor.constraint(equalToConstant: 200)
+            timeLocationWeatherHorStackView.heightAnchor.constraint(equalToConstant: mainVerticalStackView.frame.width / 2 - 15)
         ])
         
         if event.amountOfHours != 0 {
