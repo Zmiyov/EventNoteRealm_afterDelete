@@ -22,6 +22,7 @@
 		A547D47528A81D0200173BA8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A547D47428A81D0200173BA8 /* Assets.xcassets */; };
 		A547D47828A81D0200173BA8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A547D47628A81D0200173BA8 /* LaunchScreen.storyboard */; };
 		A54C769F28ABF81600C479AE /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54C769E28ABF81600C479AE /* UILabel.swift */; };
+		A5913AB328E0DBB40030D04F /* GooglePlaceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5913AB228E0DBB40030D04F /* GooglePlaceKey.swift */; };
 		A5973A6428DB6C6A00890DBB /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5973A6328DB6C6A00890DBB /* LocationModel.swift */; };
 		A5BC5FB828C0E27500136552 /* ShootingReminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5BC5FB728C0E27500136552 /* ShootingReminder.swift */; };
 		A5C0C5C528DE59BA00B0EDDF /* MapAppOpt.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C0C5C428DE59BA00B0EDDF /* MapAppOpt.swift */; };
@@ -69,6 +70,7 @@
 		A547D47728A81D0200173BA8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A547D47928A81D0200173BA8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A54C769E28ABF81600C479AE /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
+		A5913AB228E0DBB40030D04F /* GooglePlaceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GooglePlaceKey.swift; sourceTree = "<group>"; };
 		A5973A6328DB6C6A00890DBB /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
 		A5BC5FB728C0E27500136552 /* ShootingReminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShootingReminder.swift; sourceTree = "<group>"; };
 		A5C0C5C428DE59BA00B0EDDF /* MapAppOpt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAppOpt.swift; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 				A5DE68AB28ACFC9700C34183 /* View */,
 				A5DE68AC28ACFCE800C34183 /* Controller */,
 				A54C769D28ABF74D00C479AE /* Extensions */,
+				A5913AB128E0DB840030D04F /* Constants */,
 				A547D47428A81D0200173BA8 /* Assets.xcassets */,
 				A547D47628A81D0200173BA8 /* LaunchScreen.storyboard */,
 				A547D47928A81D0200173BA8 /* Info.plist */,
@@ -201,6 +204,14 @@
 				A54C769E28ABF81600C479AE /* UILabel.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		A5913AB128E0DB840030D04F /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				A5913AB228E0DBB40030D04F /* GooglePlaceKey.swift */,
+			);
+			path = Constants;
 			sourceTree = "<group>";
 		};
 		A5C0C5C328DE599C00B0EDDF /* Alert */ = {
@@ -408,6 +419,7 @@
 				A5F0ECF428CD32F3001D1354 /* EventModel.swift in Sources */,
 				A5F170F728C8B45500B2059A /* DeadlineCollectionViewCell.swift in Sources */,
 				A5DE68BF28AFD96600C34183 /* TextFieldTableViewCell.swift in Sources */,
+				A5913AB328E0DBB40030D04F /* GooglePlaceKey.swift in Sources */,
 				A547D46B28A81D0000173BA8 /* SceneDelegate.swift in Sources */,
 				A5DE68BB28AED66E00C34183 /* KindOfAlertList.swift in Sources */,
 				A5F170F328C8912800B2059A /* DeadlinesList.swift in Sources */,

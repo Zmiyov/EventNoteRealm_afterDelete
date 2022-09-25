@@ -7,11 +7,14 @@
 
 import UIKit
 import CoreLocation
+import WeatherKit
 
 class EventDetailsViewController: UIViewController {
     
     var event: EventEntity?
     let dateFormatter = DateFormatter()
+    
+    let service = WeatherService()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,10 +23,17 @@ class EventDetailsViewController: UIViewController {
         title = dateFormatter.string(from: event!.dateAndTime!)
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Dismiss", style: .plain, target: self, action: #selector(dismissSelf))
         mainVerticalStackView()
+//        displayWeather()
     }
     
     @objc func dismissSelf() {
         dismiss(animated: true, completion: nil)
+    }
+    
+    func displayWeather() {
+        if let event = event {
+            getWeather(latitude: event.latitude, longitude: event.longitude)
+        }
     }
     
     //MARK: - Alert
@@ -35,6 +45,7 @@ class EventDetailsViewController: UIViewController {
         }
         self.present(opt, animated: true, completion: nil)
     }
+    
     //MARK: - Gesture for location
     
     func prepareTapGestureToChooseMonth(label: UILabel) {
@@ -47,6 +58,20 @@ class EventDetailsViewController: UIViewController {
     
     @objc func tapFunction() {
         navigateWithAppTo(latitude: event!.latitude, longitude: event!.longitude)
+    }
+    
+    //MARK: - Weather
+    
+    func getWeather(latitude: Double, longitude: Double) {
+        let location = CLLocation(latitude: latitude, longitude: longitude)
+        Task {
+            do {
+                let result = try await service.weather(for: location)
+                print("Daily: " + String(describing: result.dailyForecast))
+            } catch {
+                print(error)
+            }
+        }
     }
     
     //MARK: - Stack View
@@ -65,22 +90,15 @@ class EventDetailsViewController: UIViewController {
         weatherImageView.image = UIImage(named: "storm.png")
         
         let kindOfShootingLabel = UILabel(text: event.kindOfShooting ?? "", font: .systemFont(ofSize: 35, weight: .bold), alighment: .left)
-
         
         let amountOfHoursLabel = UILabel(text: "Amount of hours:" + " " + String(event.amountOfHours), font: .systemFont(ofSize: 21, weight: .bold), alighment: .center)
         
         let nameLabel = UILabel(text: event.clientName!, font: .systemFont(ofSize: 21, weight: .bold), alighment: .center)
         let clientPhoneNumberLabel = UILabel(text: event.clientPhoneNumber ?? "", font: .systemFont(ofSize: 21, weight: .bold), alighment: .center)
-        let additionalPhoneNumberLabel = UILabel(text: event.additionalPhoneNumber ?? "", font: .systemFont(ofSize: 21, weight: .bold), alighment: .center)
         let clientTelegramOrChatLabel = UILabel(text: "Telegram:" + " " + (event.clientTelegramOrChat ?? ""), font: .systemFont(ofSize: 21, weight: .bold), alighment: .center)
         let clientInstagramLabel = UILabel(text: "Instagram:" + " " + (event.clientInstagram ?? ""), font: .systemFont(ofSize: 21, weight: .bold), alighment: .center)
         
-        
-        let startLocationLabel = UILabel(text: "Start location:" + " " + (event.startLocation ?? ""), font: .systemFont(ofSize: 21, weight: .bold), alighment: .center)
-        let endLocationLabel = UILabel(text: "End location:" + " " + (event.endLocation ?? ""), font: .systemFont(ofSize: 21, weight: .bold), alighment: .center)
-        
         let fullPriceLabel = UILabel(text: "Full price:" + " " + (event.fullPrice ?? ""), font: .systemFont(ofSize: 21, weight: .bold), alighment: .center)
-        let priceForHourLabel = UILabel(text: "Price for hour:" + " " + (event.priceForHour ?? ""), font: .systemFont(ofSize: 21, weight: .bold), alighment: .center)
         let prepaymentLabel = UILabel(text: "Prepayment:" + " " + (event.prepayment ?? ""), font: .systemFont(ofSize: 21, weight: .bold), alighment: .center)
 
         let alertStringLabel = UILabel(text: "Alert: " + (event.alertString ?? ""), font: .systemFont(ofSize: 21, weight: .bold), alighment: .center)
@@ -159,13 +177,6 @@ class EventDetailsViewController: UIViewController {
             ])
         }
         
-        if event.additionalPhoneNumber != nil {
-            mainVerticalStackView.addArrangedSubview(additionalPhoneNumberLabel)
-            NSLayoutConstraint.activate([
-                additionalPhoneNumberLabel.heightAnchor.constraint(equalToConstant: 44)
-            ])
-        }
-        
         if event.clientTelegramOrChat != nil {
             mainVerticalStackView.addArrangedSubview(clientTelegramOrChatLabel)
             NSLayoutConstraint.activate([
@@ -180,31 +191,10 @@ class EventDetailsViewController: UIViewController {
             ])
         }
         
-        if event.startLocation != nil {
-            mainVerticalStackView.addArrangedSubview(startLocationLabel)
-            NSLayoutConstraint.activate([
-                startLocationLabel.heightAnchor.constraint(equalToConstant: 44)
-            ])
-        }
-        
-        if event.endLocation != nil {
-            mainVerticalStackView.addArrangedSubview(endLocationLabel)
-            NSLayoutConstraint.activate([
-                endLocationLabel.heightAnchor.constraint(equalToConstant: 44)
-            ])
-        }
-        
         if event.fullPrice != nil {
             mainVerticalStackView.addArrangedSubview(fullPriceLabel)
             NSLayoutConstraint.activate([
                 fullPriceLabel.heightAnchor.constraint(equalToConstant: 44)
-            ])
-        }
-        
-        if event.priceForHour != nil {
-            mainVerticalStackView.addArrangedSubview(priceForHourLabel)
-            NSLayoutConstraint.activate([
-                priceForHourLabel.heightAnchor.constraint(equalToConstant: 44)
             ])
         }
         
