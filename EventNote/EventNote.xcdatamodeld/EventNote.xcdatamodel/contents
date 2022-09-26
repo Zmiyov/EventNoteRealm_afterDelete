@@ -15,6 +15,7 @@
         <attribute name="endLocation" optional="YES" attributeType="String"/>
         <attribute name="fullPrice" optional="YES" attributeType="String"/>
         <attribute name="identifierID" optional="YES" attributeType="String"/>
+        <attribute name="isCertificate" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="isDone" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="kindOfShooting" optional="YES" attributeType="String"/>
         <attribute name="latitude" optional="YES" attributeType="Double" usesScalarValueType="YES"/>

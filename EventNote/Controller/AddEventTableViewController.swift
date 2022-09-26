@@ -67,16 +67,12 @@ class AddEventTableViewController: UITableViewController  {
     }
     
     @objc func saveButtonTapped() {
-        
-        createOrFetchEvent()
-
-        // Core Data Saving in db
+        createOrFetchEventEntity()
         do {
             try self.context.save()
         } catch {
             print(error)
         }
-    //MARK:
         delegate?.addEventTableViewController(self, event: eventModelEntity!)
         dismiss(animated: true, completion: nil)
     }
@@ -86,7 +82,7 @@ class AddEventTableViewController: UITableViewController  {
         navigationItem.rightBarButtonItem!.isEnabled = shouldEnableSaveButton
     }
     
-    func createOrFetchEvent() {
+    func createOrFetchEventEntity() {
         if eventModelEntity == nil {
             let entity = NSEntityDescription.entity(forEntityName: "EventEntity", in: context)!
             self.eventModelEntity = EventEntity(entity: entity, insertInto: context)
@@ -122,6 +118,7 @@ class AddEventTableViewController: UITableViewController  {
         eventModelEntity?.alertString = eventModel.alertString
         eventModelEntity?.alertDate = eventModel.alertDate
         
+        eventModelEntity?.isCertificate = eventModel.isCertificate
         eventModelEntity?.isDone = eventModel.isDone
         eventModelEntity?.identifierID = eventModel.identifierID
     }
@@ -153,6 +150,7 @@ class AddEventTableViewController: UITableViewController  {
             eventModel.alertString = eventModelEntity.alertString
             eventModel.alertDate = eventModelEntity.alertDate
             
+            eventModel.isCertificate = eventModelEntity.isCertificate
             eventModel.isDone = eventModelEntity.isDone
             eventModel.identifierID = eventModelEntity.identifierID!
         }
