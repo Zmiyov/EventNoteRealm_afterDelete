@@ -156,8 +156,6 @@ class AddEventTableViewController: UITableViewController  {
         }
     }
     
-
-    
     //MARK: - Table View
     
     override func numberOfSections(in tableView: UITableView) -> Int {

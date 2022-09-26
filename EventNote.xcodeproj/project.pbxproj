@@ -22,6 +22,7 @@
 		A547D47528A81D0200173BA8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A547D47428A81D0200173BA8 /* Assets.xcassets */; };
 		A547D47828A81D0200173BA8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A547D47628A81D0200173BA8 /* LaunchScreen.storyboard */; };
 		A54C769F28ABF81600C479AE /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54C769E28ABF81600C479AE /* UILabel.swift */; };
+		A567D30828E23FB500EF5D75 /* SwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A567D30728E23FB500EF5D75 /* SwitchTableViewCell.swift */; };
 		A5913AB328E0DBB40030D04F /* GooglePlaceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5913AB228E0DBB40030D04F /* GooglePlaceKey.swift */; };
 		A5973A6428DB6C6A00890DBB /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5973A6328DB6C6A00890DBB /* LocationModel.swift */; };
 		A5BC5FB828C0E27500136552 /* ShootingReminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5BC5FB728C0E27500136552 /* ShootingReminder.swift */; };
@@ -70,6 +71,7 @@
 		A547D47728A81D0200173BA8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A547D47928A81D0200173BA8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A54C769E28ABF81600C479AE /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
+		A567D30728E23FB500EF5D75 /* SwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchTableViewCell.swift; sourceTree = "<group>"; };
 		A5913AB228E0DBB40030D04F /* GooglePlaceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GooglePlaceKey.swift; sourceTree = "<group>"; };
 		A5973A6328DB6C6A00890DBB /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
 		A5BC5FB728C0E27500136552 /* ShootingReminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShootingReminder.swift; sourceTree = "<group>"; };
@@ -239,6 +241,7 @@
 				A5DE68AF28AD05D500C34183 /* AddEventTableViewHeader.swift */,
 				A5E5619528AA362B00DC4E3E /* ScheduleCollectionViewCell.swift */,
 				A5F170F628C8B45500B2059A /* DeadlineCollectionViewCell.swift */,
+				A567D30728E23FB500EF5D75 /* SwitchTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -395,6 +398,7 @@
 			files = (
 				A5E5619628AA362B00DC4E3E /* ScheduleCollectionViewCell.swift in Sources */,
 				A5C8CE5D28C4AB67009C87B1 /* Constants.swift in Sources */,
+				A567D30828E23FB500EF5D75 /* SwitchTableViewCell.swift in Sources */,
 				A5DE68B028AD05D500C34183 /* AddEventTableViewHeader.swift in Sources */,
 				A5C0C5C528DE59BA00B0EDDF /* MapAppOpt.swift in Sources */,
 				A547D46D28A81D0000173BA8 /* MainViewController.swift in Sources */,
