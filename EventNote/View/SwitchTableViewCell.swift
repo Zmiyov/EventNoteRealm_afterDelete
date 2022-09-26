@@ -26,6 +26,8 @@ class SwitchTableViewCell: UITableViewCell {
     
     let switchCertificate: UISwitch = {
         let switchLabel = UISwitch()
+//        switchLabel.isOn = true
+        switchLabel.translatesAutoresizingMaskIntoConstraints = false
         return switchLabel
     }()
     
@@ -54,13 +56,13 @@ class SwitchTableViewCell: UITableViewCell {
         self.addSubview(nameCellLabel)
         NSLayoutConstraint.activate([
             nameCellLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            nameCellLabel.leadingAnchor.constraint(equalTo: backgroundViewCell.leadingAnchor, constant: 15)
+            nameCellLabel.leadingAnchor.constraint(equalTo: backgroundViewCell.leadingAnchor, constant: 20)
         ])
         
-        self.addSubview(switchCertificate)
+        self.contentView.addSubview(switchCertificate)
         NSLayoutConstraint.activate([
-            nameCellLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            nameCellLabel.leadingAnchor.constraint(equalTo: backgroundViewCell.trailingAnchor, constant: -15)
+            switchCertificate.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            switchCertificate.trailingAnchor.constraint(equalTo: backgroundViewCell.trailingAnchor, constant: -15)
         ])
     }
 }

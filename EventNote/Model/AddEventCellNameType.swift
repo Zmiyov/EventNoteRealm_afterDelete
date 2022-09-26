@@ -8,6 +8,7 @@
 import Foundation
 
 enum AddEventCellNameMainSectionType: CaseIterable, CustomStringConvertible {
+   
     case kindOfShooting
     case date
     case deadline
@@ -28,9 +29,9 @@ enum AddEventCellNameMainSectionType: CaseIterable, CustomStringConvertible {
 }
 
 enum AddEventCellNameContactsSectionType: CaseIterable, CustomStringConvertible {
+    
     case name
     case phone
-//    case additionalPhone
     case telegram
     case instagram
     
@@ -40,8 +41,6 @@ enum AddEventCellNameContactsSectionType: CaseIterable, CustomStringConvertible 
             return "Name"
         case .phone:
             return "Phone"
-//        case .additionalPhone:
-//            return "Additional Phone"
         case .telegram:
             return "Telegram"
         case .instagram:
@@ -52,36 +51,30 @@ enum AddEventCellNameContactsSectionType: CaseIterable, CustomStringConvertible 
 
 enum AddEventCellLocationsMainSectionType: CaseIterable, CustomStringConvertible {
     
-//    case main
     case start
-//    case end
     
     var description: String {
         switch self {
-//        case .main:
-//            return "Main"
         case .start:
             return "Start Location"
-//        case .end:
-//            return "End"
         }
     }
 }
 
 enum AddEventCellNamePaymentSectionType: CaseIterable, CustomStringConvertible {
     
-//    case forHour
     case fullPrice
     case prepayment
+    case isCertificate
     
     var description: String {
         switch self {
-//        case .forHour:
-//            return "For Hour"
         case .fullPrice:
             return "Full Price"
         case .prepayment:
             return "Prepayment"
+        case .isCertificate:
+            return "Certificate"
         }
     }
 }

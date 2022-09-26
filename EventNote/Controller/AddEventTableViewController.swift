@@ -30,6 +30,7 @@ class AddEventTableViewController: UITableViewController  {
     let idDatePickerCell = "idDatePickerCell"
     let idTextFieldCell = "idTextFieldCell"
     let idAddEventCell = "idAddEventCell"
+    let idSwitchCell = "idSwitchCell"
     let idAddEventHeader = "idAddEventHeader"
     
     weak var delegate: AddEventTableViewControllerDelegate?
@@ -57,6 +58,7 @@ class AddEventTableViewController: UITableViewController  {
         tableView.register(DatePickerTableViewCell.self, forCellReuseIdentifier: idDatePickerCell)
         tableView.register(TextFieldTableViewCell.self, forCellReuseIdentifier: idTextFieldCell)
         tableView.register(ListTableViewCell.self, forCellReuseIdentifier: idAddEventCell)
+        tableView.register(SwitchTableViewCell.self, forCellReuseIdentifier: idSwitchCell)
         tableView.register(AddEventTableViewHeader.self, forHeaderFooterViewReuseIdentifier: idAddEventHeader)
         
         tableView.keyboardDismissMode = .onDrag
@@ -274,21 +276,39 @@ class AddEventTableViewController: UITableViewController  {
             return cell
             
         case 3:
-            let cell = tableView.dequeueReusableCell(withIdentifier: idTextFieldCell, for: indexPath) as! TextFieldTableViewCell
-            let type = AddEventCellNamePaymentSectionType.allCases[indexPath.row]
-            cell.textField.placeholder = type.description
-            cell.textField.addTarget(self, action: #selector(textChanged), for: .editingChanged)
-            
             switch indexPath.row {
             case 0:
+                let cell = tableView.dequeueReusableCell(withIdentifier: idTextFieldCell, for: indexPath) as! TextFieldTableViewCell
+                let type = AddEventCellNamePaymentSectionType.allCases[indexPath.row]
+                cell.textField.placeholder = type.description
+                cell.textField.addTarget(self, action: #selector(textChanged), for: .editingChanged)
                 cell.textField.tag = 4
                 cell.textField.text = eventModel.fullPrice
                 return cell
             case 1:
+                let cell = tableView.dequeueReusableCell(withIdentifier: idTextFieldCell, for: indexPath) as! TextFieldTableViewCell
+                let type = AddEventCellNamePaymentSectionType.allCases[indexPath.row]
+                cell.textField.placeholder = type.description
+                cell.textField.addTarget(self, action: #selector(textChanged), for: .editingChanged)
                 cell.textField.tag = 5
                 cell.textField.text = eventModel.prepayment
                 return cell
+            case 2:
+                let cell = tableView.dequeueReusableCell(withIdentifier: idSwitchCell, for: indexPath) as! SwitchTableViewCell
+                let type = AddEventCellNamePaymentSectionType.allCases[indexPath.row]
+                cell.nameCellLabel.text = type.description
+                if eventModel.isCertificate == false {
+                    cell.switchCertificate.isOn = false
+                } else {
+                    cell.switchCertificate.isOn = true
+                }
+                cell.switchCertificate.addTarget(self, action: #selector(switchValueChanged), for: .valueChanged)
+                return cell
             default:
+                let cell = tableView.dequeueReusableCell(withIdentifier: idTextFieldCell, for: indexPath) as! TextFieldTableViewCell
+                let type = AddEventCellNamePaymentSectionType.allCases[indexPath.row]
+                cell.textField.placeholder = type.description
+                cell.textField.addTarget(self, action: #selector(textChanged), for: .editingChanged)
                 return cell
             }
             
@@ -343,6 +363,14 @@ class AddEventTableViewController: UITableViewController  {
             default:
                 break
             }
+        }
+    }
+    
+    @objc func switchValueChanged() {
+        if eventModel.isCertificate == false {
+            eventModel.isCertificate = true
+        } else {
+            eventModel.isCertificate = false
         }
     }
     
