@@ -19,9 +19,11 @@ class EventDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .tertiarySystemBackground
+        
         dateFormatter.dateFormat = "YYYY, MMMM d"
         title = dateFormatter.string(from: event!.dateAndTime!)
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Dismiss", style: .plain, target: self, action: #selector(dismissSelf))
+        
         mainVerticalStackView()
 //        displayWeather()
     }
@@ -41,7 +43,7 @@ class EventDetailsViewController: UIViewController {
     func navigateWithAppTo(latitude: Double, longitude: Double) {
         let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
         
-        let opt = MapAppOpt.mapsAlertController(coordinate: coordinate, name: "Destination", title: "Navigate to Destination", message: "Any message") { com in
+        let opt = MapAppOpt.mapsAlertController(coordinate: coordinate, name: "Destination", title: "Navigate to Location", message: "Any message") { com in
         }
         self.present(opt, animated: true, completion: nil)
     }
@@ -85,6 +87,7 @@ class EventDetailsViewController: UIViewController {
         
         let dateAndTimeLabel = UILabel(text: timeOfShooting, font: .systemFont(ofSize: 40, weight: .bold), alighment: .center)
         let mainLocationLabel = UILabel(text: event.mainLocation ?? "", font: .systemFont(ofSize: 25, weight: .bold), alighment: .center)
+        mainLocationLabel.numberOfLines = 2
         
         let weatherImageView = UIImageView()
         weatherImageView.image = UIImage(named: "storm.png")
@@ -161,6 +164,9 @@ class EventDetailsViewController: UIViewController {
         
         if event.amountOfHours != 0 {
             mainVerticalStackView.addArrangedSubview(amountOfHoursLabel)
+            NSLayoutConstraint.activate([
+                amountOfHoursLabel.heightAnchor.constraint(equalToConstant: 44)
+            ])
         }
         
         if event.clientName != nil {
