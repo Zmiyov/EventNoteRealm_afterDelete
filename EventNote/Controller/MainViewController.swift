@@ -104,8 +104,8 @@ class MainViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        addFloatingButton.frame = CGRect(x: view.frame.size.width - 60 - 8,
-                                         y: view.frame.size.height - 60 - 8 - view.safeAreaInsets.bottom,
+        addFloatingButton.frame = CGRect(x: view.frame.size.width - 60 - 25,
+                                         y: view.frame.size.height - 60 - 25 - view.safeAreaInsets.bottom,
                                          width: 60,
                                          height: 60)
     }

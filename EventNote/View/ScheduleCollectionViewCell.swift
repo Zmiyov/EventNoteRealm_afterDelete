@@ -14,6 +14,7 @@ class ScheduleCollectionViewCell: UICollectionViewCell {
     let timeLabel = UILabel(font: UIFont.boldSystemFont(ofSize: 30), alighment: .left)
     let locationLabel = UILabel(font: UIFont.boldSystemFont(ofSize: 17), alighment: .right)
     
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
@@ -48,9 +49,11 @@ class ScheduleCollectionViewCell: UICollectionViewCell {
                                     ])
         
         addSubview(locationLabel)
+        locationLabel.numberOfLines = 2
         locationLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([locationLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12),
-                                     locationLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -12)
+                                     locationLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -12),
+                                     locationLabel.widthAnchor.constraint(equalToConstant: self.frame.width / 2)
                                     ])
         
     }
