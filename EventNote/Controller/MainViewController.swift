@@ -43,7 +43,7 @@ class MainViewController: UIViewController {
         return calendar
     }()
     
-    let showHideButton: UIButton = {
+    private let showHideButton: UIButton = {
         let button = UIButton()
         button.setTitle("Open calendar", for: .normal)
         button.setTitleColor(UIColor.label, for: .normal)
@@ -52,12 +52,24 @@ class MainViewController: UIViewController {
         return button
     }()
     
-    let collectionView: UICollectionView = {
+    private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.register(ScheduleCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
         return collectionView
+    }()
+    
+    private let addFloatingButton: UIButton = {
+        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 60, height: 60 ))
+        button.layer.masksToBounds = true
+        button.layer.cornerRadius = 30
+        button.backgroundColor = .systemRed
+        let image = UIImage(systemName: "plus", withConfiguration: UIImage.SymbolConfiguration(pointSize: 32, weight: .medium))
+        button.setImage(image, for: .normal)
+        button.tintColor = .label
+        button.setTitleColor(.white, for: .normal)
+        return button
     }()
     
 
@@ -73,6 +85,7 @@ class MainViewController: UIViewController {
         calendar.dataSource = self
         calendar.scope = .week
         showHideButton.addTarget(self, action: #selector(showHideButtonTapped), for: .touchDown)
+        addFloatingButton.addTarget(self, action: #selector(addButtonTapped), for: .touchUpInside)
         
         collectionView.delegate = self
         
@@ -87,6 +100,14 @@ class MainViewController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonTapped))
         
         createDataSource()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        addFloatingButton.frame = CGRect(x: view.frame.size.width - 60 - 8,
+                                         y: view.frame.size.height - 60 - 8 - view.safeAreaInsets.bottom,
+                                         width: 60,
+                                         height: 60)
     }
     
     func fetchEvents(date: Date) {
@@ -189,6 +210,13 @@ class MainViewController: UIViewController {
             cell.kindOfShootingLabel.text = event.kindOfShooting
             cell.timeLabel.text = time
             cell.locationLabel.text = event.mainLocation
+            if event.isCertificate == true {
+                cell.backgroundColor = .red
+                cell.nameLabel.backgroundColor = .red
+                cell.kindOfShootingLabel.backgroundColor = .red
+                cell.timeLabel.backgroundColor = .red
+                cell.locationLabel.backgroundColor = .red
+            }
             
             return cell
         })
@@ -336,6 +364,7 @@ extension MainViewController {
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
             collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0)
         ])
+        view.addSubview(addFloatingButton)
     }
 }
 
