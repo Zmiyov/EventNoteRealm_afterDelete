@@ -56,6 +56,7 @@ class MainViewController: UIViewController {
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.alwaysBounceVertical = true
         collectionView.register(ScheduleCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
         return collectionView
     }()

@@ -34,7 +34,6 @@ class DeadlinesListTableViewController: UITableViewController {
         tableView.register(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: idKindOfDeadlineCellHeader)
 
     }
-    
 
     // MARK: - Table view data source
 

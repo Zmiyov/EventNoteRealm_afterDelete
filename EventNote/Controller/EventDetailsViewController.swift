@@ -22,7 +22,7 @@ class EventDetailsViewController: UIViewController {
         
         dateFormatter.dateFormat = "YYYY, MMMM d"
         title = dateFormatter.string(from: event!.dateAndTime!)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Dismiss", style: .plain, target: self, action: #selector(dismissSelf))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Close", style: .plain, target: self, action: #selector(dismissSelf))
         
         mainVerticalStackView()
 //        displayWeather()
