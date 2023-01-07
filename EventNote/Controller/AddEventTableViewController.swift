@@ -248,14 +248,17 @@ class AddEventTableViewController: UITableViewController  {
             case 1:
                 cell.textField.tag = 1
                 cell.textField.text = eventModel.clientPhoneNumber
+                cell.textField.keyboardType = .phonePad
                 return cell
             case 2:
                 cell.textField.tag = 2
                 cell.textField.text = eventModel.clientTelegramOrChat
+                cell.textField.keyboardType = .twitter
                 return cell
             case 3:
                 cell.textField.tag = 3
                 cell.textField.text = eventModel.clientInstagram
+                cell.textField.keyboardType = .twitter
                 return cell
             default:
                 return cell
@@ -284,6 +287,7 @@ class AddEventTableViewController: UITableViewController  {
                 cell.textField.addTarget(self, action: #selector(textChanged), for: .editingChanged)
                 cell.textField.tag = 4
                 cell.textField.text = eventModel.fullPrice
+                cell.textField.keyboardType = .numberPad
                 return cell
             case 1:
                 let cell = tableView.dequeueReusableCell(withIdentifier: idTextFieldCell, for: indexPath) as! TextFieldTableViewCell
@@ -292,6 +296,7 @@ class AddEventTableViewController: UITableViewController  {
                 cell.textField.addTarget(self, action: #selector(textChanged), for: .editingChanged)
                 cell.textField.tag = 5
                 cell.textField.text = eventModel.prepayment
+                cell.textField.keyboardType = .numberPad
                 return cell
             case 2:
                 let cell = tableView.dequeueReusableCell(withIdentifier: idSwitchCell, for: indexPath) as! SwitchTableViewCell
