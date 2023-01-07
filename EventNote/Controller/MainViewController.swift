@@ -214,18 +214,10 @@ class MainViewController: UIViewController {
             
             switch event.isCertificate {
             case true:
-                cell.backgroundColor = .red
-                cell.nameLabel.backgroundColor = .red
-                cell.kindOfShootingLabel.backgroundColor = .red
-                cell.timeLabel.backgroundColor = .red
-                cell.locationLabel.backgroundColor = .red
+                cell.backgroundColor = .systemRed
                 return cell
             case false:
                 cell.backgroundColor = .tertiarySystemBackground
-                cell.nameLabel.backgroundColor = .tertiarySystemBackground
-                cell.kindOfShootingLabel.backgroundColor = .tertiarySystemBackground
-                cell.timeLabel.backgroundColor = .tertiarySystemBackground
-                cell.locationLabel.backgroundColor = .tertiarySystemBackground
                 return cell
             }
         })
