@@ -201,9 +201,9 @@ class MainViewController: UIViewController {
     
     func createDataSource() {
         dataSource = UICollectionViewDiffableDataSource<Section, EventEntity>(collectionView: collectionView, cellProvider: { (collectionView, indexPath, item) -> UICollectionViewCell? in
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ScheduleCollectionViewCell
             
             let event = item
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ScheduleCollectionViewCell
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "HH:mm"
             let time = dateFormatter.string(from: event.dateAndTime!)
@@ -211,15 +211,23 @@ class MainViewController: UIViewController {
             cell.kindOfShootingLabel.text = event.kindOfShooting
             cell.timeLabel.text = time
             cell.locationLabel.text = event.mainLocation
-            if event.isCertificate == true {
+            
+            switch event.isCertificate {
+            case true:
                 cell.backgroundColor = .red
                 cell.nameLabel.backgroundColor = .red
                 cell.kindOfShootingLabel.backgroundColor = .red
                 cell.timeLabel.backgroundColor = .red
                 cell.locationLabel.backgroundColor = .red
+                return cell
+            case false:
+                cell.backgroundColor = .tertiarySystemBackground
+                cell.nameLabel.backgroundColor = .tertiarySystemBackground
+                cell.kindOfShootingLabel.backgroundColor = .tertiarySystemBackground
+                cell.timeLabel.backgroundColor = .tertiarySystemBackground
+                cell.locationLabel.backgroundColor = .tertiarySystemBackground
+                return cell
             }
-            
-            return cell
         })
         
         dataSource.apply(filteredItemsSnapshot)
