@@ -18,7 +18,7 @@ class EventDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .tertiarySystemBackground
+        view.backgroundColor = .systemBackground
         
         dateFormatter.dateFormat = "YYYY, MMMM d"
         title = dateFormatter.string(from: event!.dateAndTime!)
@@ -50,7 +50,7 @@ class EventDetailsViewController: UIViewController {
     
     //MARK: - Gesture for location
     
-    func prepareTapGestureToChooseMonth(label: UILabel) {
+    func prepareTapGestureToChooseNavigator(label: UILabel) {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapFunction))
         tapGesture.numberOfTapsRequired = 1
         
@@ -88,6 +88,8 @@ class EventDetailsViewController: UIViewController {
         let dateAndTimeLabel = UILabel(text: timeOfShooting, font: .systemFont(ofSize: 40, weight: .bold), alighment: .center)
         let mainLocationLabel = UILabel(text: event.mainLocation ?? "", font: .systemFont(ofSize: 25, weight: .bold), alighment: .center)
         mainLocationLabel.numberOfLines = 2
+        mainLocationLabel.backgroundColor = .systemGreen
+        
         
         let weatherImageView = UIImageView()
         weatherImageView.image = UIImage(named: "storm.png")
@@ -95,6 +97,8 @@ class EventDetailsViewController: UIViewController {
         let kindOfShootingLabel = UILabel(text: event.kindOfShooting ?? "", font: .systemFont(ofSize: 35, weight: .bold), alighment: .left)
         
         let amountOfHoursLabel = UILabel(text: "Amount of hours:" + " " + String(event.amountOfHours), font: .systemFont(ofSize: 21, weight: .bold), alighment: .center)
+        amountOfHoursLabel.backgroundColor = .tertiarySystemBackground
+        amountOfHoursLabel.layer.cornerRadius = 8
         
         let nameLabel = UILabel(text: event.clientName!, font: .systemFont(ofSize: 21, weight: .bold), alighment: .center)
         let clientPhoneNumberLabel = UILabel(text: event.clientPhoneNumber ?? "", font: .systemFont(ofSize: 21, weight: .bold), alighment: .center)
@@ -113,7 +117,7 @@ class EventDetailsViewController: UIViewController {
         
         mainVerticalStackView.axis = .vertical
         mainVerticalStackView.frame = CGRect(x: 0, y: 60, width: Constants.screenWidth, height: Constants.screenHeight-60)
-        mainVerticalStackView.backgroundColor = .darkGray
+        mainVerticalStackView.backgroundColor = .clear
         mainVerticalStackView.distribution = .fill
         mainVerticalStackView.spacing = 1
         mainVerticalStackView.translatesAutoresizingMaskIntoConstraints = false
@@ -129,23 +133,26 @@ class EventDetailsViewController: UIViewController {
         timeLocationWeatherHorStackView.axis = .horizontal
         timeLocationWeatherHorStackView.distribution = .fillEqually
         timeLocationWeatherHorStackView.translatesAutoresizingMaskIntoConstraints = false
+        timeLocationWeatherHorStackView.backgroundColor = .tertiarySystemBackground
+        timeLocationWeatherHorStackView.layer.cornerRadius = 8
+        timeLocationWeatherHorStackView.clipsToBounds = true
 
         
-        let timeLocationVertStackView = UIStackView()
-        timeLocationVertStackView.axis = .vertical
-        timeLocationVertStackView.distribution = .fillEqually
-        timeLocationVertStackView.spacing = 1
-        timeLocationVertStackView.translatesAutoresizingMaskIntoConstraints = false
-        
-        timeLocationVertStackView.addArrangedSubview(dateAndTimeLabel)
-        timeLocationVertStackView.addArrangedSubview(mainLocationLabel)
+//        let timeLocationVertStackView = UIStackView()
+//        timeLocationVertStackView.axis = .vertical
+//        timeLocationVertStackView.distribution = .fillEqually
+//        timeLocationVertStackView.spacing = 1
+//        timeLocationVertStackView.translatesAutoresizingMaskIntoConstraints = false
+//
+//        timeLocationVertStackView.addArrangedSubview(dateAndTimeLabel)
+//        timeLocationVertStackView.addArrangedSubview(mainLocationLabel)
         
         if event.mainLocation != nil {
-            prepareTapGestureToChooseMonth(label: mainLocationLabel)
+            prepareTapGestureToChooseNavigator(label: mainLocationLabel)
         }
         
-        timeLocationWeatherHorStackView.addArrangedSubview(timeLocationVertStackView)
-        timeLocationWeatherHorStackView.addArrangedSubview(weatherImageView)
+        timeLocationWeatherHorStackView.addArrangedSubview(dateAndTimeLabel)
+        timeLocationWeatherHorStackView.addArrangedSubview(mainLocationLabel)
         
         if event.kindOfShooting != nil {
             mainVerticalStackView.addArrangedSubview(kindOfShootingLabel)
