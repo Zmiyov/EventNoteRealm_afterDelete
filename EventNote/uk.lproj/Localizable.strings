@@ -1,7 +1,116 @@
-/* 
+/*
   Localizable.strings
   EventNote
 
   Created by Vladimir Pisarenko on 08.01.2023.
   
 */
+
+//TabBarController
+"Schedule" = "Календар";
+"Deadlines" = "Дедлайни";
+
+//MainViewController
+"Open calendar" = "Відкрити календар";
+"Close calendar" = "Закрити календар";
+"Today" = "Сьогодні";
+"Edit" = "Редагувати";
+"Delete" = "Видалити";
+"No name" = "Обрати";
+"No Kind" = "Обрати";
+
+//DeadLineViewController
+"Done" = "Готово";
+
+//AddEventTableViewController
+"New Event" = "Нова подія";
+"Back" = "Назад";
+"Deadline: " = "Дедлайн: ";
+"hour(s)" = "годин(а)";
+
+//EventDetailsViewController
+"Close" = "Закрити";
+"Navigate to Location" = "Слідувати до локації";
+"Amount of hours:" = "Кількість годин";
+"Full price:" = "Повна вартість";
+"Prepayment:" = "Передплата";
+"Alert: " = "Нагадування";
+
+//MapViewController
+"Places" = "Локації";
+
+//MapAppOpt
+"Dismiss" = "Закрити";
+
+//KindOfShootingTableViewController
+"Kind Of Shooting" = "Вид зйомки";
+
+//DeadlinesListTableViewController
+"Deadline Date" = "Дата віддачі";
+
+//AmountOfHoursListTableViewController
+"Amount Of Hour" = "Кількість годин";
+
+//KindOfAlertListTableViewController
+"Choose Alert" = "Обрати нагадування";
+
+//AddEventTableViewHeader
+"Main" = "Головне";
+"Contacts" = "Контакти";
+"Location" = "Локація";
+"Payment" = "Оплата";
+"Reminder" = "Нагадування";
+
+//KindOfShootingList
+"Wedding" = "Весілля";
+"Portrait" = "Портрет";
+"Reportage" = "Репортаж";
+"Pregnant" = "Вагітність";
+"Birthday" = "День Народження";
+"Family" = "Сімейна";
+"Love Story" = "Лавсторі";
+
+//DeadlinesList
+"None" = "Немає";
+"In a day" = "Через день";
+"In a week" = "Через тиждень";
+"In a two weeks" = "Через два тиждня";
+"In a month" = "Через місяць";
+"In a two months" = "Через два місяця";
+"In a three months" = "Через три місяця";
+"In a four months" = "Через чотири місяця";
+"In a five months" = "Через п'ять місяців";
+"In a six months" = "Через шість місяців";
+
+//KindOfAlertList
+"None" = "Немає";
+"At time of event" = "Початок події";
+"5 minutes before" = "За 5 хвилин";
+"10 minutes before" = "За 10 хвилин";
+"15 minutes before" = "За 15 хвилин";
+"30 minutes before" = "За 30 хвилин";
+"1 hour before" = "За 1 годину";
+"2 hours before" = "За 2 години";
+"1 day before" = "За 1 день";
+"2 days before" = "За 2 дня";
+"1 week before" = "За 1 тиждень";
+
+//AddEventCellNameType
+"Kind of shooting" = "Вид зйомки";
+"Date" = "Дата";
+"Deadline" = "Дедлайн";
+"Amount of Hours" = "Кількість годин";
+
+"Name" = "Им'я";
+"Phone" = "Телефон";
+"Telegram" = "Telegram";
+"Instagram" = "Instagram";
+
+"Start Location" = "Локація";
+
+"Full Price" = "Сума";
+"Prepayment" = "Передплата";
+"Certificate" = "Сертифікат";
+
+"Alert" = "Нагадування";
+
