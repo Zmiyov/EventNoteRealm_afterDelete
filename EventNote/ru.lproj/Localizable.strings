@@ -1,4 +1,4 @@
-/* 
+/*
   Localizable.strings
   EventNote
 
@@ -11,106 +11,106 @@
 "Deadlines" = "Дедлайны";
 
 //MainViewController
-"Open calendar" = "";
-"Close calendar" = ""
-"Today" = ""
-"Edit" = ""
-"Delete" = ""
-"No name" = ""
-"No Kind" = ""
+"Open calendar" = "Открыть календарь";
+"Close calendar" = "Закрыть календарь";
+"Today" = "Сегодня";
+"Edit" = "Редактировать";
+"Delete" = "Удалить";
+"No name" = "Выбрать";
+"No Kind" = "Выбрать";
 
 //DeadLineViewController
-"Done" = ""
+"Done" = "Готово";
 
 //AddEventTableViewController
-"New Event" = ""
-"Back" = ""
-"Deadline: " = ""
-"hour(s)" = ""
+"New Event" = "Новое событие";
+"Back" = "Назад";
+"Deadline: " = "Дедлайн: ";
+"hour(s)" = "час(ов)";
 
 //EventDetailsViewController
-"Close" = ""
-"Navigate to Location" = "";
-"Amount of hours:" = "";
-"Full price:" = "";
-"Prepayment:" = "";
-"Alert: " = "";
+"Close" = "Закрыть";
+"Navigate to Location" = "Следовать к локации";
+"Amount of hours:" = "Количество часов";
+"Full price:" = "Полная стоимость";
+"Prepayment:" = "Предоплата";
+"Alert: " = "Напоминание";
 
 //MapViewController
-"Places" = "";
+"Places" = "Локации";
 
 //MapAppOpt
-"Dismiss" = "";
+"Dismiss" = "Закрыть";
 
 //KindOfShootingTableViewController
-"Kind Of Shooting" = "";
+"Kind Of Shooting" = "Тип съемки";
 
 //DeadlinesListTableViewController
-"Deadline Date" = "";
+"Deadline Date" = "Дата отдачи";
 
 //AmountOfHoursListTableViewController
-"Amount Of Hour" = "";
+"Amount Of Hour" = "Количество часов";
 
 //KindOfAlertListTableViewController
-"Choose Alert" = "";
+"Choose Alert" = "Выберете напоминание";
 
 //AddEventTableViewHeader
-"Main" = "";
-"Contacts" = "";
-"Location" = "";
-"Payment" = "";
-"Reminder" = "";
+"Main" = "Главное";
+"Contacts" = "Контакты";
+"Location" = "Локация";
+"Payment" = "Оплата";
+"Reminder" = "Напоминание";
 
 //KindOfShootingList
-"Wedding" = "";
-"Portrait" = "";
-"Reportage" = "";
-"Pregnant" = "";
-"Birthday" = "";
-"Family" = "";
-"Love Story" = "";
+"Wedding" = "Свадьба";
+"Portrait" = "Портрет";
+"Reportage" = "Репортаж";
+"Pregnant" = "Беременность";
+"Birthday" = "День Рождения";
+"Family" = "Семейная";
+"Love Story" = "Лавстори";
 
 //DeadlinesList
-"None" = "";
-"In a day" = "";
-"In a week" = "";
-"In a two weeks" = "";
-"In a month" = "";
-"In a two months" = "";
-"In a three months" = "";
-"In a four months" = "";
-"In a five months" = "";
-"In a six months" = "";
+"None" = "Нет";
+"In a day" = "Через день";
+"In a week" = "Через неделю";
+"In a two weeks" = "Через две недели";
+"In a month" = "Через месяц";
+"In a two months" = "Через два месяца";
+"In a three months" = "Через три месяца";
+"In a four months" = "Через четыре месяца";
+"In a five months" = "Через пять месяцев";
+"In a six months" = "Через шесть месяцев";
 
 //KindOfAlertList
-"None" = "";
-"At time of event" = "";
-"5 minutes before" = "";
-"10 minutes before" = "";
-"15 minutes before" = "";
-"30 minutes before" = "";
-"1 hour before" = "";
-"2 hours before" = "";
-"1 day before" = "";
-"2 days before" = "";
-"1 week before" = "";
+"None" = "Нет";
+"At time of event" = "Во время события";
+"5 minutes before" = "За 5 минут";
+"10 minutes before" = "За 10 минут";
+"15 minutes before" = "За 15 минут";
+"30 minutes before" = "За 30 минут";
+"1 hour before" = "За 1 час";
+"2 hours before" = "За 2 часа";
+"1 day before" = "За 1 день";
+"2 days before" = "За 2 дня";
+"1 week before" = "За 1 неделю";
 
 //AddEventCellNameType
-"Kind of shooting" = "";
-"Date" = "";
-"Deadline" = "";
-"Amount of Hours" = "";
+"Kind of shooting" = "Тип съемки";
+"Date" = "Дата";
+"Deadline" = "Дедлайн";
+"Amount of Hours" = "Количество часов";
 
-"Name" = "";
-"Phone" = "";
-"Telegram" = "";
-"Instagram" = "";
+"Name" = "Имя";
+"Phone" = "Телефон";
+"Telegram" = "Telegram";
+"Instagram" = "Instagram";
 
-"Start Location" = "";
+"Start Location" = "Локация";
 
-"Full Price" = "";
-"Prepayment" = "";
-"Certificate" = "";
+"Full Price" = "Сумма";
+"Prepayment" = "Предоплата";
+"Certificate" = "Сертификат";
 
-"Alert" = "";
+"Alert" = "Напоминание";
 

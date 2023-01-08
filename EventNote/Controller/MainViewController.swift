@@ -48,6 +48,7 @@ class MainViewController: UIViewController {
         button.setTitle("Open calendar".localized(), for: .normal)
         button.setTitleColor(UIColor.label, for: .normal)
         button.titleLabel?.font = UIFont(name: "Avenir Next Demi Bold", size: 14)
+        button.contentHorizontalAlignment = .left
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -354,7 +355,7 @@ extension MainViewController {
         NSLayoutConstraint.activate([
             showHideButton.topAnchor.constraint(equalTo: calendar.bottomAnchor, constant: 0),
             showHideButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
-            showHideButton.widthAnchor.constraint(equalToConstant: 100),
+            showHideButton.widthAnchor.constraint(equalToConstant: 150),
             showHideButton.heightAnchor.constraint(equalToConstant: 20)
         ])
         view.addSubview(collectionView)

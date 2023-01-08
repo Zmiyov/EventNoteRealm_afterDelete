@@ -187,7 +187,7 @@ class AddEventTableViewController: UITableViewController  {
                     cell.nameCellLabel.text = eventModel.kindOfShooting
                     cell.nameCellLabel.textColor = .label
                 } else {
-                    cell.nameCellLabel.text = type.description
+                    cell.nameCellLabel.text = type.description.localized()
                     cell.nameCellLabel.textColor = .systemGray2
                 }
                 cell.accessoryType = .disclosureIndicator
@@ -195,7 +195,7 @@ class AddEventTableViewController: UITableViewController  {
             case 1:
                 let cell = tableView.dequeueReusableCell(withIdentifier: idDatePickerCell, for: indexPath) as! DatePickerTableViewCell
                 let type = AddEventCellNameMainSectionType.allCases[indexPath.row]
-                cell.nameCellLabel.text = type.description
+                cell.nameCellLabel.text = type.description.localized()
                 cell.datePicker.date = editedDay
                 
                 eventModel.dateAndTime = editedDay
@@ -210,7 +210,7 @@ class AddEventTableViewController: UITableViewController  {
                     cell.nameCellLabel.text = "Deadline: ".localized() + deadlineString
                     cell.nameCellLabel.textColor = .label
                 } else {
-                    cell.nameCellLabel.text = type.description
+                    cell.nameCellLabel.text = type.description.localized()
                     cell.nameCellLabel.textColor = .systemGray2
                 }
                 cell.accessoryType = .disclosureIndicator
@@ -222,7 +222,7 @@ class AddEventTableViewController: UITableViewController  {
                     cell.nameCellLabel.text = amountOfHours.description + " " + "hour(s)".localized()
                     cell.nameCellLabel.textColor = .label
                 } else {
-                    cell.nameCellLabel.text = type.description
+                    cell.nameCellLabel.text = type.description.localized()
                     cell.nameCellLabel.textColor = .systemGray2
                 }
                 cell.accessoryType = .disclosureIndicator
@@ -230,14 +230,14 @@ class AddEventTableViewController: UITableViewController  {
             default:
                 let cell = tableView.dequeueReusableCell(withIdentifier: idAddEventCell, for: indexPath) as! ListTableViewCell
                 let type = AddEventCellNameMainSectionType.allCases[indexPath.row]
-                cell.nameCellLabel.text = type.description
+                cell.nameCellLabel.text = type.description.localized()
                 return cell
             }
             
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: idTextFieldCell, for: indexPath) as! TextFieldTableViewCell
             let type = AddEventCellNameContactsSectionType.allCases[indexPath.row]
-            cell.textField.placeholder = type.description
+            cell.textField.placeholder = type.description.localized()
             cell.textField.addTarget(self, action: #selector(textChanged), for: .editingChanged)
             
             switch indexPath.row {
@@ -272,7 +272,7 @@ class AddEventTableViewController: UITableViewController  {
                 cell.nameCellLabel.text = eventModel.mainLocation
                 cell.nameCellLabel.textColor = .label
             } else {
-                cell.nameCellLabel.text = type.description
+                cell.nameCellLabel.text = type.description.localized()
                 cell.nameCellLabel.textColor = .systemGray2
             }
             cell.accessoryType = .disclosureIndicator
@@ -283,7 +283,7 @@ class AddEventTableViewController: UITableViewController  {
             case 0:
                 let cell = tableView.dequeueReusableCell(withIdentifier: idTextFieldCell, for: indexPath) as! TextFieldTableViewCell
                 let type = AddEventCellNamePaymentSectionType.allCases[indexPath.row]
-                cell.textField.placeholder = type.description
+                cell.textField.placeholder = type.description.localized()
                 cell.textField.addTarget(self, action: #selector(textChanged), for: .editingChanged)
                 cell.textField.tag = 4
                 cell.textField.text = eventModel.fullPrice
@@ -292,7 +292,7 @@ class AddEventTableViewController: UITableViewController  {
             case 1:
                 let cell = tableView.dequeueReusableCell(withIdentifier: idTextFieldCell, for: indexPath) as! TextFieldTableViewCell
                 let type = AddEventCellNamePaymentSectionType.allCases[indexPath.row]
-                cell.textField.placeholder = type.description
+                cell.textField.placeholder = type.description.localized()
                 cell.textField.addTarget(self, action: #selector(textChanged), for: .editingChanged)
                 cell.textField.tag = 5
                 cell.textField.text = eventModel.prepayment
@@ -301,7 +301,7 @@ class AddEventTableViewController: UITableViewController  {
             case 2:
                 let cell = tableView.dequeueReusableCell(withIdentifier: idSwitchCell, for: indexPath) as! SwitchTableViewCell
                 let type = AddEventCellNamePaymentSectionType.allCases[indexPath.row]
-                cell.nameCellLabel.text = type.description
+                cell.nameCellLabel.text = type.description.localized()
                 if eventModel.isCertificate == false {
                     cell.switchCertificate.isOn = false
                 } else {
@@ -312,7 +312,7 @@ class AddEventTableViewController: UITableViewController  {
             default:
                 let cell = tableView.dequeueReusableCell(withIdentifier: idTextFieldCell, for: indexPath) as! TextFieldTableViewCell
                 let type = AddEventCellNamePaymentSectionType.allCases[indexPath.row]
-                cell.textField.placeholder = type.description
+                cell.textField.placeholder = type.description.localized()
                 cell.textField.addTarget(self, action: #selector(textChanged), for: .editingChanged)
                 return cell
             }
@@ -325,7 +325,7 @@ class AddEventTableViewController: UITableViewController  {
                 cell.nameCellLabel.text = eventModel.alertString
                 cell.nameCellLabel.textColor = .label
             } else {
-                cell.nameCellLabel.text = type.description
+                cell.nameCellLabel.text = type.description.localized()
                 cell.nameCellLabel.textColor = .systemGray2
             }
             cell.accessoryType = .disclosureIndicator
@@ -334,7 +334,7 @@ class AddEventTableViewController: UITableViewController  {
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: idAddEventCell, for: indexPath) as! ListTableViewCell
             let type = AddEventCellNameContactsSectionType.allCases[indexPath.row]
-            cell.nameCellLabel.text = type.description
+            cell.nameCellLabel.text = type.description.localized()
             return cell
         }
         
