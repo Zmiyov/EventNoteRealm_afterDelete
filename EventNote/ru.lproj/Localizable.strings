@@ -1,0 +1,116 @@
+/* 
+  Localizable.strings
+  EventNote
+
+  Created by Vladimir Pisarenko on 08.01.2023.
+  
+*/
+
+//TabBarController
+"Schedule" = "Календарь";
+"Deadlines" = "Дедлайны";
+
+//MainViewController
+"Open calendar" = "";
+"Close calendar" = ""
+"Today" = ""
+"Edit" = ""
+"Delete" = ""
+"No name" = ""
+"No Kind" = ""
+
+//DeadLineViewController
+"Done" = ""
+
+//AddEventTableViewController
+"New Event" = ""
+"Back" = ""
+"Deadline: " = ""
+"hour(s)" = ""
+
+//EventDetailsViewController
+"Close" = ""
+"Navigate to Location" = "";
+"Amount of hours:" = "";
+"Full price:" = "";
+"Prepayment:" = "";
+"Alert: " = "";
+
+//MapViewController
+"Places" = "";
+
+//MapAppOpt
+"Dismiss" = "";
+
+//KindOfShootingTableViewController
+"Kind Of Shooting" = "";
+
+//DeadlinesListTableViewController
+"Deadline Date" = "";
+
+//AmountOfHoursListTableViewController
+"Amount Of Hour" = "";
+
+//KindOfAlertListTableViewController
+"Choose Alert" = "";
+
+//AddEventTableViewHeader
+"Main" = "";
+"Contacts" = "";
+"Location" = "";
+"Payment" = "";
+"Reminder" = "";
+
+//KindOfShootingList
+"Wedding" = "";
+"Portrait" = "";
+"Reportage" = "";
+"Pregnant" = "";
+"Birthday" = "";
+"Family" = "";
+"Love Story" = "";
+
+//DeadlinesList
+"None" = "";
+"In a day" = "";
+"In a week" = "";
+"In a two weeks" = "";
+"In a month" = "";
+"In a two months" = "";
+"In a three months" = "";
+"In a four months" = "";
+"In a five months" = "";
+"In a six months" = "";
+
+//KindOfAlertList
+"None" = "";
+"At time of event" = "";
+"5 minutes before" = "";
+"10 minutes before" = "";
+"15 minutes before" = "";
+"30 minutes before" = "";
+"1 hour before" = "";
+"2 hours before" = "";
+"1 day before" = "";
+"2 days before" = "";
+"1 week before" = "";
+
+//AddEventCellNameType
+"Kind of shooting" = "";
+"Date" = "";
+"Deadline" = "";
+"Amount of Hours" = "";
+
+"Name" = "";
+"Phone" = "";
+"Telegram" = "";
+"Instagram" = "";
+
+"Start Location" = "";
+
+"Full Price" = "";
+"Prepayment" = "";
+"Certificate" = "";
+
+"Alert" = "";
+

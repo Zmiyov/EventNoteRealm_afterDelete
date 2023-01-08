@@ -22,7 +22,7 @@ class EventDetailsViewController: UIViewController {
         
         dateFormatter.dateFormat = "YYYY, MMMM d"
         title = dateFormatter.string(from: event!.dateAndTime!)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Close", style: .plain, target: self, action: #selector(dismissSelf))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Close".localized(), style: .plain, target: self, action: #selector(dismissSelf))
         
         mainVerticalStackView()
 //        displayWeather()
@@ -43,7 +43,7 @@ class EventDetailsViewController: UIViewController {
     func navigateWithAppTo(latitude: Double, longitude: Double) {
         let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
         
-        let opt = MapAppOpt.mapsAlertController(coordinate: coordinate, name: "Destination", title: "Navigate to Location", message: "Any message") { com in
+        let opt = MapAppOpt.mapsAlertController(coordinate: coordinate, name: "Destination", title: "Navigate to Location".localized(), message: "Any message") { com in
         }
         self.present(opt, animated: true, completion: nil)
     }
@@ -96,7 +96,7 @@ class EventDetailsViewController: UIViewController {
         
         let kindOfShootingLabel = UILabel(text: event.kindOfShooting ?? "", font: .systemFont(ofSize: 35, weight: .bold), alighment: .left)
         
-        let amountOfHoursLabel = UILabel(text: "Amount of hours:" + " " + String(event.amountOfHours), font: .systemFont(ofSize: 21, weight: .bold), alighment: .center)
+        let amountOfHoursLabel = UILabel(text: "Amount of hours:".localized() + " " + String(event.amountOfHours), font: .systemFont(ofSize: 21, weight: .bold), alighment: .center)
         amountOfHoursLabel.backgroundColor = .tertiarySystemBackground
         amountOfHoursLabel.layer.cornerRadius = 8
         
@@ -105,10 +105,10 @@ class EventDetailsViewController: UIViewController {
         let clientTelegramOrChatLabel = UILabel(text: "Telegram:" + " " + (event.clientTelegramOrChat ?? ""), font: .systemFont(ofSize: 21, weight: .bold), alighment: .center)
         let clientInstagramLabel = UILabel(text: "Instagram:" + " " + (event.clientInstagram ?? ""), font: .systemFont(ofSize: 21, weight: .bold), alighment: .center)
         
-        let fullPriceLabel = UILabel(text: "Full price:" + " " + (event.fullPrice ?? ""), font: .systemFont(ofSize: 21, weight: .bold), alighment: .center)
-        let prepaymentLabel = UILabel(text: "Prepayment:" + " " + (event.prepayment ?? ""), font: .systemFont(ofSize: 21, weight: .bold), alighment: .center)
+        let fullPriceLabel = UILabel(text: "Full price:".localized() + " " + (event.fullPrice ?? ""), font: .systemFont(ofSize: 21, weight: .bold), alighment: .center)
+        let prepaymentLabel = UILabel(text: "Prepayment:".localized() + " " + (event.prepayment ?? ""), font: .systemFont(ofSize: 21, weight: .bold), alighment: .center)
 
-        let alertStringLabel = UILabel(text: "Alert: " + (event.alertString ?? ""), font: .systemFont(ofSize: 21, weight: .bold), alighment: .center)
+        let alertStringLabel = UILabel(text: "Alert: ".localized() + (event.alertString ?? ""), font: .systemFont(ofSize: 21, weight: .bold), alighment: .center)
         
         let emptyLabel = UILabel(text: "", font: .systemFont(ofSize: 21, weight: .bold), alighment: .center)
         

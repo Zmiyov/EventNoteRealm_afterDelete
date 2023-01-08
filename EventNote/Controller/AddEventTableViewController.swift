@@ -37,11 +37,11 @@ class AddEventTableViewController: UITableViewController  {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "New Event"
+        title = "New Event".localized()
         
         copyEntityToModel()
         
-        let cancelBarButton = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(backButton))
+        let cancelBarButton = UIBarButtonItem(title: "Back".localized(), style: .plain, target: self, action: #selector(backButton))
         self.navigationItem.leftBarButtonItem = cancelBarButton
         
         let saveBarButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveButtonTapped))
@@ -207,7 +207,7 @@ class AddEventTableViewController: UITableViewController  {
                 let type = AddEventCellNameMainSectionType.allCases[indexPath.row]
 
                 if let deadlineString = eventModel.deadlineString {
-                    cell.nameCellLabel.text = "Deadline: " + deadlineString
+                    cell.nameCellLabel.text = "Deadline: ".localized() + deadlineString
                     cell.nameCellLabel.textColor = .label
                 } else {
                     cell.nameCellLabel.text = type.description
@@ -219,7 +219,7 @@ class AddEventTableViewController: UITableViewController  {
                 let cell = tableView.dequeueReusableCell(withIdentifier: idAddEventCell, for: indexPath) as! ListTableViewCell
                 let type = AddEventCellNameMainSectionType.allCases[indexPath.row]
                 if let amountOfHours = amountOfHours {
-                    cell.nameCellLabel.text = amountOfHours.description + " " + "hour(s)"
+                    cell.nameCellLabel.text = amountOfHours.description + " " + "hour(s)".localized()
                     cell.nameCellLabel.textColor = .label
                 } else {
                     cell.nameCellLabel.text = type.description

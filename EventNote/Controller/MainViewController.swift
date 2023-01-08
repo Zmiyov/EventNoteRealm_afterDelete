@@ -45,7 +45,7 @@ class MainViewController: UIViewController {
     
     private let showHideButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Open calendar", for: .normal)
+        button.setTitle("Open calendar".localized(), for: .normal)
         button.setTitleColor(UIColor.label, for: .normal)
         button.titleLabel?.font = UIFont(name: "Avenir Next Demi Bold", size: 14)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -77,7 +77,7 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .secondarySystemBackground
-        title = "Schedule"
+        title = "Schedule".localized()
         
         let date = Calendar.current.startOfDay(for: Date())
         fetchEvents(date: date)
@@ -97,7 +97,7 @@ class MainViewController: UIViewController {
         appearance.configureWithDefaultBackground()
         self.navigationController?.navigationBar.standardAppearance = appearance
         self.navigationController?.navigationBar.scrollEdgeAppearance = appearance
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Today", style: .plain, target: self, action: #selector(todayButtonTapped))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Today".localized(), style: .plain, target: self, action: #selector(todayButtonTapped))
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonTapped))
         
         createDataSource()
@@ -151,10 +151,10 @@ class MainViewController: UIViewController {
     @objc func showHideCalendar() {
         if calendar.scope == .week {
             calendar.setScope(.month, animated: true)
-            showHideButton.setTitle("Close calendar", for: .normal)
+            showHideButton.setTitle("Close calendar".localized(), for: .normal)
         } else {
             calendar.setScope(.week, animated: true)
-            showHideButton.setTitle("Open calendar", for: .normal)
+            showHideButton.setTitle("Open calendar".localized(), for: .normal)
         }
     }
     
@@ -297,7 +297,7 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
         let config = UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { (elements) -> UIMenu? in
                 
-            let editAction = UIAction(title: "Edit") { action in
+            let editAction = UIAction(title: "Edit".localized()) { action in
                 
                 let editVC = AddEventTableViewController()
                 editVC.eventModelEntity = self.eventEntityModelsArray[indexPath.item]
@@ -313,7 +313,7 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
                 self.present(navController, animated: true)
             }
             
-            let deleteAction = UIAction(title: "Delete") { action in
+            let deleteAction = UIAction(title: "Delete".localized()) { action in
                 let eventToRemove = self.eventEntityModelsArray[indexPath.item]
                 self.context.delete(eventToRemove) 
                 
@@ -376,7 +376,7 @@ extension MainViewController: AddEventTableViewControllerDelegate {
 
         if let date = event.alertDate {
             UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [event.identifierID!])
-            ShootingReminder.shared.schedule(date: date, title: event.clientName ?? "No name", body: event.kindOfShooting ?? "No Kind", identifier: event.identifierID!)
+            ShootingReminder.shared.schedule(date: date, title: event.clientName ?? "No name".localized(), body: event.kindOfShooting ?? "No Kind".localized(), identifier: event.identifierID!)
         } else {
             UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [event.identifierID!])
         }

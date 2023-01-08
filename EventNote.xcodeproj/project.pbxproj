@@ -41,6 +41,8 @@
 		A5DE68BD28AEE57700C34183 /* AddEventCellNameType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DE68BC28AEE57700C34183 /* AddEventCellNameType.swift */; };
 		A5DE68BF28AFD96600C34183 /* TextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DE68BE28AFD96600C34183 /* TextFieldTableViewCell.swift */; };
 		A5DE68C128AFF9DA00C34183 /* DatePickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DE68C028AFF9DA00C34183 /* DatePickerTableViewCell.swift */; };
+		A5E28113296AC61200F078EB /* String+Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E28112296AC61200F078EB /* String+Localized.swift */; };
+		A5E28116296AC85900F078EB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A5E28118296AC85900F078EB /* Localizable.strings */; };
 		A5E5619628AA362B00DC4E3E /* ScheduleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E5619528AA362B00DC4E3E /* ScheduleCollectionViewCell.swift */; };
 		A5E5619828AA3E6100DC4E3E /* EventDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E5619728AA3E6100DC4E3E /* EventDetailsViewController.swift */; };
 		A5E77F2128DA6194002FC27E /* GooglePlaces.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5E77F2028DA6194002FC27E /* GooglePlaces.xcframework */; };
@@ -91,6 +93,10 @@
 		A5DE68BC28AEE57700C34183 /* AddEventCellNameType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventCellNameType.swift; sourceTree = "<group>"; };
 		A5DE68BE28AFD96600C34183 /* TextFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldTableViewCell.swift; sourceTree = "<group>"; };
 		A5DE68C028AFF9DA00C34183 /* DatePickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerTableViewCell.swift; sourceTree = "<group>"; };
+		A5E28112296AC61200F078EB /* String+Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Localized.swift"; sourceTree = "<group>"; };
+		A5E28117296AC85900F078EB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A5E28119296AC88D00F078EB /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A5E2811A296ACB3200F078EB /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A5E5619528AA362B00DC4E3E /* ScheduleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCollectionViewCell.swift; sourceTree = "<group>"; };
 		A5E5619728AA3E6100DC4E3E /* EventDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailsViewController.swift; sourceTree = "<group>"; };
 		A5E77F2028DA6194002FC27E /* GooglePlaces.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = GooglePlaces.xcframework; path = "../../../GooglePlaces-7.1.0-beta/GooglePlaces.xcframework"; sourceTree = "<group>"; };
@@ -183,6 +189,7 @@
 				A547D47928A81D0200173BA8 /* Info.plist */,
 				A547D47128A81D0000173BA8 /* EventNote.xcdatamodeld */,
 				A5E77F2428DA6233002FC27E /* GooglePlaces.bundle */,
+				A5E28118296AC85900F078EB /* Localizable.strings */,
 			);
 			path = EventNote;
 			sourceTree = "<group>";
@@ -207,6 +214,7 @@
 			children = (
 				A54C769E28ABF81600C479AE /* UILabel.swift */,
 				A58EE8E02968CE8300C3BAF5 /* String+.swift */,
+				A5E28112296AC61200F078EB /* String+Localized.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -328,6 +336,8 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
+				uk,
 			);
 			mainGroup = A547D45C28A81D0000173BA8;
 			productRefGroup = A547D46628A81D0000173BA8 /* Products */;
@@ -345,6 +355,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A547D47828A81D0200173BA8 /* LaunchScreen.storyboard in Resources */,
+				A5E28116296AC85900F078EB /* Localizable.strings in Resources */,
 				A5E77F2528DA6233002FC27E /* GooglePlaces.bundle in Resources */,
 				A547D47528A81D0200173BA8 /* Assets.xcassets in Resources */,
 			);
@@ -403,6 +414,7 @@
 				A5C8CE5D28C4AB67009C87B1 /* Constants.swift in Sources */,
 				A567D30828E23FB500EF5D75 /* SwitchTableViewCell.swift in Sources */,
 				A5DE68B028AD05D500C34183 /* AddEventTableViewHeader.swift in Sources */,
+				A5E28113296AC61200F078EB /* String+Localized.swift in Sources */,
 				A5C0C5C528DE59BA00B0EDDF /* MapAppOpt.swift in Sources */,
 				A547D46D28A81D0000173BA8 /* MainViewController.swift in Sources */,
 				A5F170F128C8836300B2059A /* DeadlineViewController.swift in Sources */,
@@ -447,6 +459,16 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
+		A5E28118296AC85900F078EB /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A5E28117296AC85900F078EB /* en */,
+				A5E28119296AC88D00F078EB /* ru */,
+				A5E2811A296ACB3200F078EB /* uk */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -454,6 +476,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -514,6 +537,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";

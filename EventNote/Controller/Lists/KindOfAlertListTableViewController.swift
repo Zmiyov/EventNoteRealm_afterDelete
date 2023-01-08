@@ -23,7 +23,7 @@ class KindOfAlertListTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Alert"
+        title = "Choose Alert".localized()
         
         self.tableView = alertsTableView
         tableView.delegate = self
@@ -57,7 +57,7 @@ class KindOfAlertListTableViewController: UITableViewController {
             let type = KindOfAlertList.allCases[indexPath.row]
             
             var content = cell.defaultContentConfiguration()
-            content.text = type.description
+            content.text = type.description.localized()
             cell.contentConfiguration = content
             
             if kindOfAlert == type {
@@ -70,7 +70,7 @@ class KindOfAlertListTableViewController: UITableViewController {
             let type = KindOfAlertList.allCases[indexPath.row + 1]
             
             var content = cell.defaultContentConfiguration()
-            content.text = type.description
+            content.text = type.description.localized()
             cell.contentConfiguration = content
             
             if kindOfAlert == type {

@@ -107,7 +107,7 @@ public enum MapAppOpt {
             }
             mapsAlertView.addAction(action)
         }
-        let cancelAction = UIAlertAction(title: "Dismiss", style: .cancel) { action in
+        let cancelAction = UIAlertAction(title: "Dismiss".localized(), style: .cancel) { action in
             completion?(false)
         }
         mapsAlertView.addAction(cancelAction)

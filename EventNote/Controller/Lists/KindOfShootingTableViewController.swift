@@ -23,7 +23,7 @@ class KindOfShootingTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Alert"
+        title = "Kind Of Shooting".localized()
         
         self.tableView = kindOfShootingTableView
         tableView.delegate = self
@@ -50,7 +50,7 @@ class KindOfShootingTableViewController: UITableViewController {
         let type = KindOfShootingList.allCases[indexPath.row]
         
         var content = cell.defaultContentConfiguration()
-        content.text = type.description
+        content.text = type.description.localized()
         cell.contentConfiguration = content
         
         if kindOfShooting == type {

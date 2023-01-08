@@ -23,7 +23,7 @@ class AmountOfHoursListTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Amount Of Hour"
+        title = "Amount Of Hour".localized()
         
         self.tableView = alertsTableView
         tableView.delegate = self

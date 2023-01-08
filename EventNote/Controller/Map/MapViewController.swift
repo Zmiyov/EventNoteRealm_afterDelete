@@ -28,7 +28,7 @@ class MapKitViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Places"
+        title = "Places".localized()
         
         let saveBarButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveButtonTapped))
         navigationItem.rightBarButtonItem = saveBarButton
@@ -155,11 +155,12 @@ extension MapKitViewController: CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-//        let target = CLLocationCoordinate2D(latitude: locationManager.location?.coordinate.latitude ?? 0.0, longitude: locationManager.location?.coordinate.longitude ?? 0.0)
-        let target = CLLocationCoordinate2D(latitude: 50.4501, longitude: 30.5234)
-//        googleMap.camera = GMSCameraPosition(target: target, zoom: 10, bearing: 0, viewingAngle: 0)
-        mapView.camera = MKMapCamera(lookingAtCenter: target, fromDistance: 2000.0, pitch: 0, heading: 0)
 
+        let target = CLLocationCoordinate2D(latitude: 50.4501, longitude: 30.5234)
+        mapView.camera = MKMapCamera(lookingAtCenter: target, fromDistance: 2000.0, pitch: 0, heading: 0)
+        
+//        let target = CLLocationCoordinate2D(latitude: locationManager.location?.coordinate.latitude ?? 0.0, longitude: locationManager.location?.coordinate.longitude ?? 0.0)
+//        googleMap.camera = GMSCameraPosition(target: target, zoom: 10, bearing: 0, viewingAngle: 0)
 //        let marker = GMSMarker()
 //        marker.position = target
 //        marker.title = "Hi"

@@ -16,8 +16,8 @@ class TabBarController: UITabBarController {
     }
     
     func setupTabBar() {
-        let scheduleViewController = createNavController(viewController: MainViewController(), itemName: "Schedule", itemImage: "calendar")
-        let deadlineViewController = createNavController(viewController: DeadlineViewController(), itemName: "Deadlines", itemImage: "calendar.badge.exclamationmark")
+        let scheduleViewController = createNavController(viewController: MainViewController(), itemName: "Schedule".localized(), itemImage: "calendar")
+        let deadlineViewController = createNavController(viewController: DeadlineViewController(), itemName: "Deadlines".localized(), itemImage: "calendar.badge.exclamationmark")
          viewControllers = [scheduleViewController, deadlineViewController]
     }
 

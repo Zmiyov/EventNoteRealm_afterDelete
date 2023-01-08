@@ -23,7 +23,7 @@ class DeadlinesListTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Alert"
+        title = "Deadline Date".localized()
         
         self.tableView = alertsTableView
         tableView.delegate = self
@@ -56,7 +56,7 @@ class DeadlinesListTableViewController: UITableViewController {
             let type = DeadlinesList.allCases[indexPath.row]
             
             var content = cell.defaultContentConfiguration()
-            content.text = type.description
+            content.text = type.description.localized()
             cell.contentConfiguration = content
             
             if deadline == type {
@@ -69,7 +69,7 @@ class DeadlinesListTableViewController: UITableViewController {
             let type = DeadlinesList.allCases[indexPath.row + 1]
             
             var content = cell.defaultContentConfiguration()
-            content.text = type.description
+            content.text = type.description.localized()
             cell.contentConfiguration = content
             
             if deadline == type {

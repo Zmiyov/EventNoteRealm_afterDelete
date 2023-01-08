@@ -35,7 +35,7 @@ class DeadlineViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .secondarySystemBackground
-        title = "Deadlines"
+        title = "Deadlines".localized()
         
         
         setConstraints()
@@ -121,7 +121,7 @@ extension DeadlineViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
         let config = UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { (elements) -> UIMenu? in
             
-            let markAsDone = UIAction(title: "Done") { action in
+            let markAsDone = UIAction(title: "Done".localized()) { action in
                 let model = self.eventWithDeadlineArray[indexPath.item]
                 model.isDone = true
                 
