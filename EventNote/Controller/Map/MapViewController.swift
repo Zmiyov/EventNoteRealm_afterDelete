@@ -83,6 +83,7 @@ class MapKitViewController: UIViewController {
         searchController?.searchResultsUpdater = resultsViewController
         searchController?.searchBar.sizeToFit()
         searchController?.hidesNavigationBarDuringPresentation = false
+        
     }
 
 }
@@ -90,6 +91,7 @@ class MapKitViewController: UIViewController {
 extension MapKitViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         guard let query = searchController.searchBar.text, !query.trimmingCharacters(in: .whitespaces).isEmpty else { return }
+
         GooglePlacesManager.shared.findPlaces(query: query) { result in
             switch result {
             case .success(let places):

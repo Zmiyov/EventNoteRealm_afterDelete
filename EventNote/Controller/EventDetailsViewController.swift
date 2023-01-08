@@ -113,9 +113,10 @@ class EventDetailsViewController: UIViewController {
         weatherImageView.image = UIImage(named: "storm.png")
         
         let kindOfShootingLabel = UILabel(text: event.kindOfShooting ?? "", font: .systemFont(ofSize: 35, weight: .bold), alighment: .left)
+//        kindOfShootingLabel.backgroundColor = .clear
         
         let amountOfHoursLabel = UILabel(text: "Amount of hours:".localized() + " " + String(event.amountOfHours), font: .systemFont(ofSize: 21, weight: .bold), alighment: .center)
-        amountOfHoursLabel.backgroundColor = .tertiarySystemBackground
+//        amountOfHoursLabel.backgroundColor = .tertiarySystemBackground
         amountOfHoursLabel.layer.cornerRadius = 8
         
         let nameLabel = UILabel(text: event.clientName!, font: .systemFont(ofSize: 21, weight: .bold), alighment: .center)
