@@ -62,6 +62,24 @@ class EventDetailsViewController: UIViewController {
         navigateWithAppTo(latitude: event!.latitude, longitude: event!.longitude)
     }
     
+    //MARK: - Gesture for Phone Number
+    
+    func prepareTapGestureToCallPhoneNumber(label: UILabel) {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapCallNumberFunction))
+        tapGesture.numberOfTapsRequired = 1
+        
+        label.addGestureRecognizer(tapGesture)
+        label.isUserInteractionEnabled = true
+    }
+    
+    @objc func tapCallNumberFunction() {
+        guard let url = URL(string: "telprompt://\(event?.clientPhoneNumber ?? "")"),
+            UIApplication.shared.canOpenURL(url) else {
+            return
+        }
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+    }
+    
     //MARK: - Weather
     
     func getWeather(latitude: Double, longitude: Double) {
@@ -136,16 +154,6 @@ class EventDetailsViewController: UIViewController {
         timeLocationWeatherHorStackView.backgroundColor = .tertiarySystemBackground
         timeLocationWeatherHorStackView.layer.cornerRadius = 8
         timeLocationWeatherHorStackView.clipsToBounds = true
-
-        
-//        let timeLocationVertStackView = UIStackView()
-//        timeLocationVertStackView.axis = .vertical
-//        timeLocationVertStackView.distribution = .fillEqually
-//        timeLocationVertStackView.spacing = 1
-//        timeLocationVertStackView.translatesAutoresizingMaskIntoConstraints = false
-//
-//        timeLocationVertStackView.addArrangedSubview(dateAndTimeLabel)
-//        timeLocationVertStackView.addArrangedSubview(mainLocationLabel)
         
         if event.mainLocation != nil {
             prepareTapGestureToChooseNavigator(label: mainLocationLabel)
@@ -184,6 +192,7 @@ class EventDetailsViewController: UIViewController {
         }
         
         if event.clientPhoneNumber != nil {
+            prepareTapGestureToCallPhoneNumber(label: clientPhoneNumberLabel)
             mainVerticalStackView.addArrangedSubview(clientPhoneNumberLabel)
             NSLayoutConstraint.activate([
                 clientPhoneNumberLabel.heightAnchor.constraint(equalToConstant: 44)
