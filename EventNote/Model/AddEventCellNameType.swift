@@ -98,7 +98,7 @@ enum AddEventCellNameNotesSectionType: CaseIterable, CustomStringConvertible {
     var description: String {
         switch self {
         case .notes:
-            return "Notes"
+            return "Add Notes"
         }
     }
 }

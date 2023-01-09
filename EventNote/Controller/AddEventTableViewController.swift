@@ -345,9 +345,6 @@ class AddEventTableViewController: UITableViewController  {
                 cell.textView.text = type.description.localized()
                 cell.textView.textColor = .systemGray2
             }
-//            cell.textView.placeholder = type.description.localized()
-//            cell.textView.addTarget(self, action: #selector(textChanged), for: .editingChanged)
-//            cell.textField.tag = 6
             
             cell.textView.delegate = self
             
@@ -594,7 +591,7 @@ extension AddEventTableViewController: KindOfAlertListTableViewControllerDelegat
 extension AddEventTableViewController: UITextViewDelegate {
     
     func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.textColor == UIColor.lightGray {
+        if textView.textColor == UIColor.systemGray2 {
             textView.text = nil
             textView.textColor = UIColor.label
         }
@@ -602,7 +599,7 @@ extension AddEventTableViewController: UITextViewDelegate {
     
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
-            textView.text = "Placeholder"
+            textView.text = "Add Notes".localized()
             textView.textColor = .systemGray2
         }
     }

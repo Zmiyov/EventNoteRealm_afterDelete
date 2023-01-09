@@ -21,7 +21,6 @@ class TextViewTableViewCell: UITableViewCell {
         textView.backgroundColor = .clear
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.font = UIFont.systemFont(ofSize: 16.0)
-        textView.text = "Placeholder"
         textView.textColor = UIColor.lightGray
         
         return textView
