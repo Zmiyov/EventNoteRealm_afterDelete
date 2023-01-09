@@ -33,7 +33,7 @@
 "Navigate to Location" = "Слідувати до локації";
 "Amount of hours:" = "Кількість годин";
 "Full price:" = "Повна вартість";
-"Prepayment:" = "Передплата";
+"Deposit:" = "Передплата";
 "Alert: " = "Нагадування";
 
 //MapViewController

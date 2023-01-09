@@ -121,8 +121,10 @@ class EventDetailsViewController: UIViewController {
         let fullPriceLabel = UILabel(text: "Full price:".localized() + " " + (event.fullPrice ?? "None".localized()), font: .systemFont(ofSize: 19, weight: .bold), alighment: .center)
         fullPriceLabel.layer.borderWidth = 1
         fullPriceLabel.layer.borderColor = UIColor.systemGray.cgColor
+        fullPriceLabel.numberOfLines = 2
         
-        let prepaymentLabel = UILabel(text: "Prepayment:".localized() + " " + (event.prepayment ?? "None".localized()), font: .systemFont(ofSize: 19, weight: .bold), alighment: .center)
+        let prepaymentLabel = UILabel(text: "Deposit:".localized() + " " + (event.prepayment ?? "None".localized()), font: .systemFont(ofSize: 19, weight: .bold), alighment: .center)
+        prepaymentLabel.numberOfLines = 2
         
         //Contacts block
         let clientPhoneNumberLabel = UILabel(text: event.clientPhoneNumber ?? "", font: .systemFont(ofSize: 24, weight: .bold), alighment: .center)

@@ -33,7 +33,7 @@
 "Navigate to Location" = "Следовать к локации";
 "Amount of hours:" = "Количество часов";
 "Full price:" = "Полная стоимость";
-"Prepayment:" = "Предоплата";
+"Deposit:" = "Предоплата";
 "Alert: " = "Напоминание";
 
 //MapViewController
