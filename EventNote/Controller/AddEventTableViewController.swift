@@ -125,6 +125,8 @@ class AddEventTableViewController: UITableViewController  {
         eventModelEntity?.isCertificate = eventModel.isCertificate
         eventModelEntity?.isDone = eventModel.isDone
         eventModelEntity?.identifierID = eventModel.identifierID
+        
+        eventModelEntity?.notes = eventModel.notes
     }
     
     func copyEntityToModel() {
@@ -157,6 +159,8 @@ class AddEventTableViewController: UITableViewController  {
             eventModel.isCertificate = eventModelEntity.isCertificate
             eventModel.isDone = eventModelEntity.isDone
             eventModel.identifierID = eventModelEntity.identifierID!
+            
+            eventModel.notes = eventModelEntity.notes
         }
     }
     
@@ -606,7 +610,6 @@ extension AddEventTableViewController: UITextViewDelegate {
     
     func textViewDidChange(_ textView: UITextView) {
         if let textValue = textView.text {
-            print(textValue)
             eventModel.notes = textValue
         }
     }
