@@ -18,7 +18,7 @@ class EventDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = .secondarySystemBackground
         
         dateFormatter.dateFormat = "YYYY, MMMM d"
         title = dateFormatter.string(from: event!.dateAndTime!)
@@ -106,48 +106,74 @@ class EventDetailsViewController: UIViewController {
         let timeOfShooting = dateFormatter.string(from: event.dateAndTime!)
         
         let dateAndTimeLabel = UILabel(text: timeOfShooting, font: .systemFont(ofSize: 40, weight: .bold), alighment: .center)
-        let mainLocationLabel = UILabel(text: event.mainLocation ?? "", font: .systemFont(ofSize: 25, weight: .bold), alighment: .center)
+        dateAndTimeLabel.backgroundColor = .tertiarySystemBackground
+        let mainLocationLabel = UILabel(text: event.mainLocation ?? "None".localized(), font: .systemFont(ofSize: 25, weight: .bold), alighment: .center)
         mainLocationLabel.numberOfLines = 2
         mainLocationLabel.backgroundColor = .systemGreen
         
         
         //Kind and amount of hours block
-        let kindOfShootingLabel = UILabel(text: event.kindOfShooting ?? "", font: .systemFont(ofSize: 25, weight: .bold), alighment: .center)
+        let kindOfShootingLabel = UILabel(text: event.kindOfShooting?.localized() ?? "None".localized(), font: .systemFont(ofSize: 25, weight: .bold), alighment: .center)
         
         let amountOfHoursLabel = UILabel(text: String(event.amountOfHours) + " hour(s)", font: .systemFont(ofSize: 27, weight: .bold), alighment: .center)
         
         //Pricing block
-        let fullPriceLabel = UILabel(text: "Full price:".localized() + " " + (event.fullPrice ?? ""), font: .systemFont(ofSize: 19, weight: .bold), alighment: .center)
-        let prepaymentLabel = UILabel(text: "Prepayment:".localized() + " " + (event.prepayment ?? ""), font: .systemFont(ofSize: 19, weight: .bold), alighment: .center)
+        let fullPriceLabel = UILabel(text: "Full price:".localized() + " " + (event.fullPrice ?? "None".localized()), font: .systemFont(ofSize: 19, weight: .bold), alighment: .center)
+        fullPriceLabel.layer.borderWidth = 1
+        fullPriceLabel.layer.borderColor = UIColor.systemGray.cgColor
+        
+        let prepaymentLabel = UILabel(text: "Prepayment:".localized() + " " + (event.prepayment ?? "None".localized()), font: .systemFont(ofSize: 19, weight: .bold), alighment: .center)
         
         //Contacts block
-        let clientPhoneNumberLabel = UILabel(text: event.clientPhoneNumber ?? "", font: .systemFont(ofSize: 25, weight: .bold), alighment: .center)
-        let clientTelegramOrChatLabel = UILabel(text: "Telegram:" + " " + (event.clientTelegramOrChat ?? ""), font: .systemFont(ofSize: 19, weight: .bold), alighment: .left)
-        let clientInstagramLabel = UILabel(text: "Instagram:" + " " + (event.clientInstagram ?? ""), font: .systemFont(ofSize: 19, weight: .bold), alighment: .left)
+        let clientPhoneNumberLabel = UILabel(text: event.clientPhoneNumber ?? "", font: .systemFont(ofSize: 24, weight: .bold), alighment: .center)
+        let clientTelegramOrChatLabel = UILabel(text: "Telegram:" + " " + (event.clientTelegramOrChat ?? "None".localized()), font: .systemFont(ofSize: 19, weight: .bold), alighment: .left)
+        let clientInstagramLabel = UILabel(text: "Instagram:" + " " + (event.clientInstagram ?? "None".localized()), font: .systemFont(ofSize: 19, weight: .bold), alighment: .left)
         
         //Notes block
-        let notesLabel = UILabel(text: event.notes?.localized() ?? "", font: .systemFont(ofSize: 21, weight: .bold), alighment: .left)
+//        let notesLabel = UILabel(text: event.notes?.localized() ?? "None".localized(), font: .systemFont(ofSize: 21, weight: .bold), alighment: .left)
+        
+        let notesTextView = UITextView()
+        notesTextView.text = event.notes?.localized() ?? "None".localized()
+        notesTextView.font = .systemFont(ofSize: 17, weight: .regular)
+        notesTextView.isEditable = false
+        notesTextView.layer.borderColor = UIColor.systemGray.cgColor
+        notesTextView.layer.borderWidth = 2
+        notesTextView.layer.cornerRadius = 8
         
         //Alert block
-        let alertStringLabel = UILabel(text: "Alert: ".localized() + (event.alertString ?? ""), font: .systemFont(ofSize: 21, weight: .bold), alighment: .center)
+        let alertStringLabel = UILabel(text: "Alert: ".localized() + (event.alertString?.localized() ?? "None".localized()), font: .systemFont(ofSize: 21, weight: .bold), alighment: .center)
+        alertStringLabel.contentMode = .bottom
         
         let emptyLabel = UILabel(text: "", font: .systemFont(ofSize: 21, weight: .bold), alighment: .center)
         
+        //Scroll View
         
+        let scrollView = UIScrollView()
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        
+        self.view.addSubview(scrollView)
+        NSLayoutConstraint.activate([
+            scrollView.topAnchor.constraint(equalTo: view.topAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
+            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
+            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+        
+        //Main Stack
         let mainVerticalStackView = UIStackView()
-        
         mainVerticalStackView.axis = .vertical
-        mainVerticalStackView.frame = CGRect(x: 0, y: 60, width: Constants.screenWidth, height: Constants.screenHeight-60)
         mainVerticalStackView.backgroundColor = .clear
         mainVerticalStackView.distribution = .fill
         mainVerticalStackView.spacing = 1
         mainVerticalStackView.translatesAutoresizingMaskIntoConstraints = false
         
-        self.view.addSubview(mainVerticalStackView)
+        scrollView.addSubview(mainVerticalStackView)
         NSLayoutConstraint.activate([
-            mainVerticalStackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
-            mainVerticalStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
-            mainVerticalStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
+            mainVerticalStackView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 20),
+            mainVerticalStackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            mainVerticalStackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            mainVerticalStackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            mainVerticalStackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
         ])
         
 
@@ -178,7 +204,7 @@ class EventDetailsViewController: UIViewController {
         
         mainVerticalStackView.addArrangedSubview(timeLocationHorStackView)
         NSLayoutConstraint.activate([
-            timeLocationHorStackView.heightAnchor.constraint(equalToConstant: mainVerticalStackView.frame.width / 3 - 15)
+            timeLocationHorStackView.heightAnchor.constraint(equalToConstant: view.frame.width / 3 - 15)
         ])
         
         //Kind and amount of hours block
@@ -192,7 +218,7 @@ class EventDetailsViewController: UIViewController {
         
         mainVerticalStackView.addArrangedSubview(kindAndAmountHorStackView)
         NSLayoutConstraint.activate([
-            kindAndAmountHorStackView.heightAnchor.constraint(equalToConstant: mainVerticalStackView.frame.width / 4 - 15)
+            kindAndAmountHorStackView.heightAnchor.constraint(equalToConstant: view.frame.width / 4 - 15)
         ])
         
         //Pricing block
@@ -200,13 +226,17 @@ class EventDetailsViewController: UIViewController {
         pricingHorStackView.axis = .horizontal
         pricingHorStackView.distribution = .fillEqually
         pricingHorStackView.translatesAutoresizingMaskIntoConstraints = false
+        pricingHorStackView.layer.cornerRadius = 8
+        pricingHorStackView.clipsToBounds = true
+        pricingHorStackView.layer.borderWidth = 3
+        pricingHorStackView.layer.borderColor = UIColor.systemGray.cgColor
         
         pricingHorStackView.addArrangedSubview(fullPriceLabel)
         pricingHorStackView.addArrangedSubview(prepaymentLabel)
         
         mainVerticalStackView.addArrangedSubview(pricingHorStackView)
         NSLayoutConstraint.activate([
-            pricingHorStackView.heightAnchor.constraint(equalToConstant: mainVerticalStackView.frame.width / 4 - 15)
+            pricingHorStackView.heightAnchor.constraint(equalToConstant: view.frame.width / 4 - 15)
         ])
         
         
@@ -215,7 +245,7 @@ class EventDetailsViewController: UIViewController {
         prepareTapGestureToCallPhoneNumber(label: clientPhoneNumberLabel)
         mainVerticalStackView.addArrangedSubview(clientPhoneNumberLabel)
         NSLayoutConstraint.activate([
-            clientPhoneNumberLabel.heightAnchor.constraint(equalToConstant: 44)
+            clientPhoneNumberLabel.heightAnchor.constraint(equalToConstant: 64)
         ])
         
         
@@ -235,7 +265,14 @@ class EventDetailsViewController: UIViewController {
         
         //Notes block
         
-        //Notes block
+        mainVerticalStackView.addArrangedSubview(notesTextView)
+        NSLayoutConstraint.activate([
+            notesTextView.topAnchor.constraint(equalTo: clientInstagramLabel.bottomAnchor),
+//            notesTextView.bottomAnchor.constraint(equalTo: alertStringLabel.topAnchor)
+            notesTextView.heightAnchor.constraint(equalToConstant: 100)
+        ])
+        
+        //Alert block
         mainVerticalStackView.addArrangedSubview(alertStringLabel)
         NSLayoutConstraint.activate([
             alertStringLabel.heightAnchor.constraint(equalToConstant: 44),
