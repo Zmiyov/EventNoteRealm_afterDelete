@@ -60,6 +60,7 @@
 "Location" = "Локация";
 "Payment" = "Оплата";
 "Reminder" = "Напоминание";
+"Notes" = "Заметки";
 
 //KindOfShootingList
 "Wedding" = "Свадьба";
@@ -113,4 +114,6 @@
 "Certificate" = "Сертификат";
 
 "Alert" = "Напоминание";
+
+"Notes" = "Заметки";
 

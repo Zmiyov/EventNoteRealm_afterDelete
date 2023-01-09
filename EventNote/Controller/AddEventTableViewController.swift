@@ -161,7 +161,7 @@ class AddEventTableViewController: UITableViewController  {
     //MARK: - Table View
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 5
+        return 6
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -171,6 +171,7 @@ class AddEventTableViewController: UITableViewController  {
         case 2: return AddEventCellLocationsMainSectionType.allCases.count
         case 3: return AddEventCellNamePaymentSectionType.allCases.count
         case 4: return AddEventCellNameReminderSectionType.allCases.count
+        case 5: return AddEventCellNameNotesSectionType.allCases.count
         default: return 1
         }
     }
@@ -331,6 +332,16 @@ class AddEventTableViewController: UITableViewController  {
             cell.accessoryType = .disclosureIndicator
             return cell
             
+        case 5:
+            let cell = tableView.dequeueReusableCell(withIdentifier: idTextFieldCell, for: indexPath) as! TextFieldTableViewCell
+            let type = AddEventCellNameNotesSectionType.allCases[indexPath.row]
+            cell.textField.placeholder = type.description.localized()
+            cell.textField.addTarget(self, action: #selector(textChanged), for: .editingChanged)
+            cell.textField.tag = 6
+            cell.textField.text = eventModel.notes
+            cell.textField.keyboardType = .default
+            return cell
+            
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: idAddEventCell, for: indexPath) as! ListTableViewCell
             let type = AddEventCellNameContactsSectionType.allCases[indexPath.row]
@@ -365,6 +376,8 @@ class AddEventTableViewController: UITableViewController  {
                 eventModel.fullPrice = textValue
             case 5:
                 eventModel.prepayment = textValue
+            case 6:
+                eventModel.notes = textValue
             default:
                 break
             }
@@ -413,9 +426,6 @@ class AddEventTableViewController: UITableViewController  {
         case [2, 0]:
             let alertVC = MapKitViewController()
             alertVC.delegate = self
-//            if let locationData = locationData {
-//                alertVC.locationData = locationData
-//            }
             navigationController?.pushViewController(alertVC, animated: true)
         case [4, 0]:
             let alertVC = KindOfAlertListTableViewController()

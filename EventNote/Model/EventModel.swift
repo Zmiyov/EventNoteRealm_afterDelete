@@ -37,5 +37,7 @@ class EventModel {
     var isCertificate: Bool = false
     var isDone: Bool = false
     var identifierID: String = UUID().uuidString
+    
+    var notes: String?
 
 }

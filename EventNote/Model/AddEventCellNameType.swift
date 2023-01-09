@@ -91,3 +91,15 @@ enum AddEventCellNameReminderSectionType: CaseIterable, CustomStringConvertible 
     }
 }
 
+enum AddEventCellNameNotesSectionType: CaseIterable, CustomStringConvertible {
+    
+    case notes
+    
+    var description: String {
+        switch self {
+        case .notes:
+            return "Notes"
+        }
+    }
+}
+

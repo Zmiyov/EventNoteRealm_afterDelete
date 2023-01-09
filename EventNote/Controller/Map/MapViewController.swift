@@ -75,7 +75,9 @@ class MapKitViewController: UIViewController {
         mapView.setUserTrackingMode(.follow, animated:true)
         let myLocation = CLLocationCoordinate2D(latitude: locationManager.location?.coordinate.latitude ?? 50.4421291,
                                                 longitude: locationManager.location?.coordinate.longitude ?? 30.5446104)
-        mapView.camera = MKMapCamera(lookingAtCenter: myLocation, fromEyeCoordinate: myLocation, eyeAltitude: 15000)
+        mapView.camera = MKMapCamera(lookingAtCenter: myLocation,
+                                     fromEyeCoordinate: myLocation,
+                                     eyeAltitude: 15000)
     }
     
     func configureSearchController() {
@@ -83,25 +85,30 @@ class MapKitViewController: UIViewController {
         searchController?.searchResultsUpdater = resultsViewController
         searchController?.searchBar.sizeToFit()
         searchController?.hidesNavigationBarDuringPresentation = false
-        
-    }
-
-}
-
-extension MapKitViewController: UISearchResultsUpdating {
-    func updateSearchResults(for searchController: UISearchController) {
-        guard let query = searchController.searchBar.text, !query.trimmingCharacters(in: .whitespaces).isEmpty else { return }
-
-        GooglePlacesManager.shared.findPlaces(query: query) { result in
-            switch result {
-            case .success(let places):
-                print(places)
-            case .failure(let error):
-                print("In switch", error)
-            }
-        }
+//        searchController?.delegate = self
     }
 }
+
+//extension MapKitViewController: UISearchControllerDelegate {
+//    func searchController(_ searchController: UISearchController, willChangeFrom previousPlacement: UINavigationItem.SearchBarPlacement) {
+//        print("WillChange")
+//    }
+//}
+
+//extension MapKitViewController: UISearchResultsUpdating {
+//    func updateSearchResults(for searchController: UISearchController) {
+//        guard let query = searchController.searchBar.text, !query.trimmingCharacters(in: .whitespaces).isEmpty else { return }
+//
+//        GooglePlacesManager.shared.findPlaces(query: query) { result in
+//            switch result {
+//            case .success(let places):
+//                print(places)
+//            case .failure(let error):
+//                print("In switch", error)
+//            }
+//        }
+//    }
+//}
 
 extension MapKitViewController: GMSAutocompleteResultsViewControllerDelegate {
     
@@ -160,13 +167,6 @@ extension MapKitViewController: CLLocationManagerDelegate {
 
         let target = CLLocationCoordinate2D(latitude: 50.4501, longitude: 30.5234)
         mapView.camera = MKMapCamera(lookingAtCenter: target, fromDistance: 2000.0, pitch: 0, heading: 0)
-        
-//        let target = CLLocationCoordinate2D(latitude: locationManager.location?.coordinate.latitude ?? 0.0, longitude: locationManager.location?.coordinate.longitude ?? 0.0)
-//        googleMap.camera = GMSCameraPosition(target: target, zoom: 10, bearing: 0, viewingAngle: 0)
-//        let marker = GMSMarker()
-//        marker.position = target
-//        marker.title = "Hi"
-//        marker.snippet = "I'm here"
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
