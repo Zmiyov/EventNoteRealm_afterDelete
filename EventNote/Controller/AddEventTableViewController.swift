@@ -29,6 +29,7 @@ class AddEventTableViewController: UITableViewController  {
     
     let idDatePickerCell = "idDatePickerCell"
     let idTextFieldCell = "idTextFieldCell"
+    let idTextViewCell = "idTextViewCell"
     let idAddEventCell = "idAddEventCell"
     let idSwitchCell = "idSwitchCell"
     let idAddEventHeader = "idAddEventHeader"
@@ -57,6 +58,7 @@ class AddEventTableViewController: UITableViewController  {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.register(DatePickerTableViewCell.self, forCellReuseIdentifier: idDatePickerCell)
         tableView.register(TextFieldTableViewCell.self, forCellReuseIdentifier: idTextFieldCell)
+        tableView.register(TextViewTableViewCell.self, forCellReuseIdentifier: idTextViewCell)
         tableView.register(ListTableViewCell.self, forCellReuseIdentifier: idAddEventCell)
         tableView.register(SwitchTableViewCell.self, forCellReuseIdentifier: idSwitchCell)
         tableView.register(AddEventTableViewHeader.self, forHeaderFooterViewReuseIdentifier: idAddEventHeader)
@@ -333,13 +335,22 @@ class AddEventTableViewController: UITableViewController  {
             return cell
             
         case 5:
-            let cell = tableView.dequeueReusableCell(withIdentifier: idTextFieldCell, for: indexPath) as! TextFieldTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: idTextViewCell, for: indexPath) as! TextViewTableViewCell
             let type = AddEventCellNameNotesSectionType.allCases[indexPath.row]
-            cell.textField.placeholder = type.description.localized()
-            cell.textField.addTarget(self, action: #selector(textChanged), for: .editingChanged)
-            cell.textField.tag = 6
-            cell.textField.text = eventModel.notes
-            cell.textField.keyboardType = .default
+            
+            if eventModel.notes != nil {
+                cell.textView.text = eventModel.notes
+                cell.textView.textColor = .label
+            } else {
+                cell.textView.text = type.description.localized()
+                cell.textView.textColor = .systemGray2
+            }
+//            cell.textView.placeholder = type.description.localized()
+//            cell.textView.addTarget(self, action: #selector(textChanged), for: .editingChanged)
+//            cell.textField.tag = 6
+            
+            cell.textView.delegate = self
+            
             return cell
             
         default:
@@ -393,7 +404,12 @@ class AddEventTableViewController: UITableViewController  {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 44
+        switch indexPath.section {
+        case 5:
+            return 132
+        default:
+            return 44
+        }
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -569,8 +585,32 @@ extension AddEventTableViewController: KindOfAlertListTableViewControllerDelegat
     }
 }
 
-extension AddEventTableViewController: UITextFieldDelegate {
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        textField.layoutIfNeeded()
+//extension AddEventTableViewController: UITextFieldDelegate {
+//    func textFieldDidEndEditing(_ textField: UITextField) {
+//        textField.layoutIfNeeded()
+//    }
+//}
+
+extension AddEventTableViewController: UITextViewDelegate {
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == UIColor.lightGray {
+            textView.text = nil
+            textView.textColor = UIColor.label
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text = "Placeholder"
+            textView.textColor = .systemGray2
+        }
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        if let textValue = textView.text {
+            print(textValue)
+            eventModel.notes = textValue
+        }
     }
 }
