@@ -225,7 +225,8 @@ class AddEventTableViewController: UITableViewController  {
             case 3:
                 let cell = tableView.dequeueReusableCell(withIdentifier: idAddEventCell, for: indexPath) as! ListTableViewCell
                 let type = AddEventCellNameMainSectionType.allCases[indexPath.row]
-                if let amountOfHours = amountOfHours {
+                if eventModel.amountOfHours != 0 {
+                    let amountOfHours = eventModel.amountOfHours
                     cell.nameCellLabel.text = amountOfHours.description + " " + "hour(s)".localized()
                     cell.nameCellLabel.textColor = .label
                 } else {
