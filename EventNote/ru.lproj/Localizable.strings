@@ -20,7 +20,12 @@
 "No Kind" = "Выбрать";
 
 //DeadLineViewController
+"Deadlines" = "Дедлайны";
 "Done" = "Готово";
+
+//DeadlineCollectionViewCell
+"Submit by: " = "Отправить до: ";
+"day(s) left" = "дней осталось";
 
 //AddEventTableViewController
 "New Event" = "Новое событие";
