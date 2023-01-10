@@ -69,8 +69,8 @@ class DeadlineViewController: UIViewController {
             let time = dateFormatter.string(from: deadlineDate)
             cell.nameLabel.text = event.clientName
             cell.kindOfShootingLabel.text = event.kindOfShooting
-            cell.timeLabel.text = time
-            cell.contactsLabel.text = event.clientPhoneNumber
+            cell.timeValueLabel.text = time
+            cell.leftDaysValueLabel.text = "10"
             
             return cell
         })
