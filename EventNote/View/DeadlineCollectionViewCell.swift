@@ -65,8 +65,9 @@ class DeadlineCollectionViewCell: UICollectionViewCell {
         leftDaysValueLabel.textColor = .systemRed
         leftDaysValueLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            leftDaysValueLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -30),
-            leftDaysValueLabel.topAnchor.constraint(equalTo: topAnchor, constant: 12)
+            leftDaysValueLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            leftDaysValueLabel.topAnchor.constraint(equalTo: topAnchor, constant: 12),
+            leftDaysValueLabel.widthAnchor.constraint(equalToConstant: 40)
         ])
         
         addSubview(leftDaysLabel)
