@@ -70,7 +70,12 @@ class DeadlineViewController: UIViewController {
             cell.nameLabel.text = event.clientName
             cell.kindOfShootingLabel.text = event.kindOfShooting
             cell.timeValueLabel.text = time
-            cell.leftDaysValueLabel.text = "10"
+            
+//            let delta = event.deadlineDate?.timeIntervalSinceNow
+//            let leftDays = dateFormatter.string(from: delta)
+            let leftDays = Calendar.current.dateComponents([.day], from: .now, to: event.deadlineDate ?? .now)
+            
+            cell.leftDaysValueLabel.text = String(leftDays.day ?? 0)
             
             return cell
         })

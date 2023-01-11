@@ -14,7 +14,7 @@ class EventDetailsViewController: UIViewController {
     var event: EventEntity?
     let dateFormatter = DateFormatter()
     
-    let service = WeatherService()
+//    let service = WeatherService()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,11 +31,11 @@ class EventDetailsViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    func displayWeather() {
-        if let event = event {
-            getWeather(latitude: event.latitude, longitude: event.longitude)
-        }
-    }
+//    func displayWeather() {
+//        if let event = event {
+//            getWeather(latitude: event.latitude, longitude: event.longitude)
+//        }
+//    }
     
     //MARK: - Alert
     
@@ -81,17 +81,17 @@ class EventDetailsViewController: UIViewController {
     
     //MARK: - Weather
     
-    func getWeather(latitude: Double, longitude: Double) {
-        let location = CLLocation(latitude: latitude, longitude: longitude)
-        Task {
-            do {
-                let result = try await service.weather(for: location)
-                print("Daily: " + String(describing: result.dailyForecast))
-            } catch {
-                print(error)
-            }
-        }
-    }
+//    func getWeather(latitude: Double, longitude: Double) {
+//        let location = CLLocation(latitude: latitude, longitude: longitude)
+//        Task {
+//            do {
+//                let result = try await service.weather(for: location)
+//                print("Daily: " + String(describing: result.dailyForecast))
+//            } catch {
+//                print(error)
+//            }
+//        }
+//    }
     
     //MARK: - Stack View
     
