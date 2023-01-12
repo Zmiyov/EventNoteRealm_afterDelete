@@ -8,6 +8,6 @@
 import Foundation
 import CoreData
 
-class EventEntity: NSManagedObject {
+public class EventEntity: NSManagedObject {
     
 }

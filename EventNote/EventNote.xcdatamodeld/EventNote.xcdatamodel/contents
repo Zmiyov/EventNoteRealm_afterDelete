@@ -26,7 +26,7 @@
         <attribute name="prepayment" optional="YES" attributeType="String"/>
         <attribute name="priceForHour" optional="YES" attributeType="String"/>
         <attribute name="startLocation" optional="YES" attributeType="String"/>
-        <relationship name="images" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Images" inverseName="eventEntity" inverseEntity="Images"/>
+        <relationship name="images" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Images" inverseName="eventEntity" inverseEntity="Images"/>
     </entity>
     <entity name="Images" representedClassName="Images" syncable="YES" codeGenerationType="class">
         <attribute name="image" optional="YES" attributeType="Binary"/>

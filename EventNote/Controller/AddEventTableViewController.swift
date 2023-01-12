@@ -252,6 +252,7 @@ class AddEventTableViewController: UITableViewController  {
             case 0:
                 cell.textField.tag = 0
                 cell.textField.text = eventModel.clientName
+                cell.textField.keyboardType = .default
                 return cell
             case 1:
                 cell.textField.tag = 1
