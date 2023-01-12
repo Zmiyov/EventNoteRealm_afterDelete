@@ -15,6 +15,7 @@
         <attribute name="endLocation" optional="YES" attributeType="String"/>
         <attribute name="fullPrice" optional="YES" attributeType="String"/>
         <attribute name="identifierID" optional="YES" attributeType="String"/>
+        <attribute name="image" optional="YES" attributeType="Binary"/>
         <attribute name="isCertificate" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="isDone" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="kindOfShooting" optional="YES" attributeType="String"/>
@@ -25,5 +26,10 @@
         <attribute name="prepayment" optional="YES" attributeType="String"/>
         <attribute name="priceForHour" optional="YES" attributeType="String"/>
         <attribute name="startLocation" optional="YES" attributeType="String"/>
+        <relationship name="images" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Images" inverseName="eventEntity" inverseEntity="Images"/>
+    </entity>
+    <entity name="Images" representedClassName="Images" syncable="YES" codeGenerationType="class">
+        <attribute name="image" optional="YES" attributeType="Binary"/>
+        <relationship name="eventEntity" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="EventEntity" inverseName="images" inverseEntity="EventEntity"/>
     </entity>
 </model>
