@@ -38,13 +38,13 @@ class ScheduleCollectionViewCell: UICollectionViewCell {
         addSubview(kindOfShootingLabel)
         kindOfShootingLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([kindOfShootingLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15),
-                                     kindOfShootingLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 5)
+                                     kindOfShootingLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 10)
                                     ])
         
         addSubview(timeLabel)
         timeLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([timeLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15),
-                                     timeLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -15)
+                                     timeLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10)
                                     ])
         
         addSubview(locationLabel)
