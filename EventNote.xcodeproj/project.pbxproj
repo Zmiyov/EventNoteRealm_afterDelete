@@ -76,6 +76,7 @@
 		A547D47728A81D0200173BA8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A547D47928A81D0200173BA8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A54C769E28ABF81600C479AE /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
+		A54F50BB29708D81006E28D1 /* EventNote.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EventNote.entitlements; sourceTree = "<group>"; };
 		A567D30728E23FB500EF5D75 /* SwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchTableViewCell.swift; sourceTree = "<group>"; };
 		A58EE8E02968CE8300C3BAF5 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		A5913AB228E0DBB40030D04F /* GooglePlaceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GooglePlaceKey.swift; sourceTree = "<group>"; };
@@ -178,6 +179,7 @@
 		A547D46728A81D0000173BA8 /* EventNote */ = {
 			isa = PBXGroup;
 			children = (
+				A54F50BB29708D81006E28D1 /* EventNote.entitlements */,
 				A547D46828A81D0000173BA8 /* AppDelegate.swift */,
 				A547D46A28A81D0000173BA8 /* SceneDelegate.swift */,
 				A5FE847628B17A33002AA152 /* Services */,
@@ -598,6 +600,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = EventNote/EventNote.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = H32J47ML7Z;
@@ -616,7 +619,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.EventNote;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pysarenkodev.EventNote;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -633,6 +636,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = EventNote/EventNote.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = H32J47ML7Z;
@@ -651,7 +655,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.EventNote;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pysarenkodev.EventNote;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;

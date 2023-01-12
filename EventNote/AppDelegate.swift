@@ -56,7 +56,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          application to it. This property is optional since there are legitimate
          error conditions that could cause the creation of the store to fail.
         */
-        let container = NSPersistentContainer(name: "EventNote")
+        let container = NSPersistentCloudKitContainer(name: "EventNote")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 // Replace this implementation with code to handle the error appropriately.
@@ -72,6 +72,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                  */
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
+            
+            container.viewContext.automaticallyMergesChangesFromParent = true
+            
+            do {
+                try container.viewContext.setQueryGenerationFrom(.current)
+            } catch {
+                fatalError("###\(#function): Failed to pin viewContext to the current generation: \(error)")
+            }
+            
         })
         return container
     }()
